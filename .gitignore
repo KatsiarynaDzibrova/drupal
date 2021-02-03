@@ -2,8 +2,10 @@ vendor/
 
 .idea/
 
-web/sites/example.settings.local.php
-
+web/core/modules/
+web/modules/contrib/
+web/sites/default/files
+web/sites/default/files/js
 
 web/modules/README.txt
 web/profiles/README.txt
@@ -12,6 +14,7 @@ web/sites/README.txt
 web/sites/example.sites.php
 web/sites/example.settings.local.php
 web/sites/development.services.yml
+web/sites/default/default.settings.php
 
 web/.csslintrc
 web/.editorconfig
