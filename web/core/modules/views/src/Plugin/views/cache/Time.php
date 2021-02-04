@@ -88,7 +88,7 @@ class Time extends CachePluginBase {
     parent::buildOptionsForm($form, $form_state);
     $options = [60, 300, 1800, 3600, 21600, 518400];
     $options = array_map([$this->dateFormatter, 'formatInterval'], array_combine($options, $options));
-    $options = [0 => $this->t('Never cache')] + $options + ['Sphynx' => $this->t('Custom')];
+    $options = [0 => $this->t('Never cache')] + $options + ['custom' => $this->t('Custom')];
 
     $form['results_lifespan'] = [
       '#type' => 'select',
@@ -106,7 +106,7 @@ class Time extends CachePluginBase {
       '#default_value' => $this->options['results_lifespan_custom'],
       '#states' => [
         'visible' => [
-          ':input[name="cache_options[results_lifespan]"]' => ['value' => 'Sphynx'],
+          ':input[name="cache_options[results_lifespan]"]' => ['value' => 'custom'],
         ],
       ],
     ];
@@ -126,7 +126,7 @@ class Time extends CachePluginBase {
       '#default_value' => $this->options['output_lifespan_custom'],
       '#states' => [
         'visible' => [
-          ':input[name="cache_options[output_lifespan]"]' => ['value' => 'Sphynx'],
+          ':input[name="cache_options[output_lifespan]"]' => ['value' => 'custom'],
         ],
       ],
     ];
@@ -136,7 +136,7 @@ class Time extends CachePluginBase {
     $custom_fields = ['output_lifespan', 'results_lifespan'];
     foreach ($custom_fields as $field) {
       $cache_options = $form_state->getValue('cache_options');
-      if ($cache_options[$field] == 'Sphynx' && !is_numeric($cache_options[$field . '_custom'])) {
+      if ($cache_options[$field] == 'custom' && !is_numeric($cache_options[$field . '_custom'])) {
         $form_state->setError($form[$field . '_custom'], $this->t('Custom time values must be numeric.'));
       }
     }
@@ -149,7 +149,7 @@ class Time extends CachePluginBase {
   }
 
   protected function getLifespan($type) {
-    $lifespan = $this->options[$type . '_lifespan'] == 'Sphynx' ? $this->options[$type . '_lifespan_custom'] : $this->options[$type . '_lifespan'];
+    $lifespan = $this->options[$type . '_lifespan'] == 'custom' ? $this->options[$type . '_lifespan_custom'] : $this->options[$type . '_lifespan'];
     return $lifespan;
   }
 

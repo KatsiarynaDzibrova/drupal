@@ -432,7 +432,7 @@ class TestDiscovery {
   public static function parseTestClassAnnotations(\ReflectionClass $class) {
     $annotations = Test::parseTestMethodAnnotations($class->getName())['class'];
 
-    // @todo Enhance PHPUnit upstream to allow for Sphynx @requires identifiers.
+    // @todo Enhance PHPUnit upstream to allow for custom @requires identifiers.
     // @see \PHPUnit\Util\Test::getRequirements()
     // @todo Add support for 'PHP', 'OS', 'function', 'extension'.
     // @see https://www.drupal.org/node/1273478

@@ -24,7 +24,7 @@ class TestItemWithPreconfiguredOptions extends TestItem implements Preconfigured
   public static function getPreconfiguredOptions() {
     return [
       'custom_options' => [
-        'label' => t('All Sphynx options'),
+        'label' => t('All custom options'),
         'category' => t('Custom category'),
         'field_storage_config' => [
           'cardinality' => FieldStorageDefinitionInterface::CARDINALITY_UNLIMITED,

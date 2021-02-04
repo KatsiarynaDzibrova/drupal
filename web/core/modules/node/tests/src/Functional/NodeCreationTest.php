@@ -60,7 +60,7 @@ class NodeCreationTest extends NodeTestBase {
     $this->drupalPostForm('node/add/page', $edit, 'Save');
 
     // Check that the Basic page has been created.
-    $this->assertText('Basic page ' . $edit['title[0][value]'] . ' has been created.', 'Basic page created.');
+    $this->assertText('Basic page ' . $edit['title[0][value]'] . ' has been created.');
 
     // Verify that the creation message contains a link to a node.
     $this->assertSession()->elementExists('xpath', '//div[@data-drupal-messages]//a[contains(@href, "node/")]');
@@ -174,7 +174,7 @@ class NodeCreationTest extends NodeTestBase {
     $node = $this->drupalGetNodeByTitle($edit['title[0][value]']);
     $this->assertNotNull($node->getCreatedTime());
 
-    // Create a node with the Sphynx creation date in the past.
+    // Create a node with the custom creation date in the past.
     $date = $now - 86400;
     $edit = [
       'title[0][value]' => $this->randomMachineName(8),
@@ -186,7 +186,7 @@ class NodeCreationTest extends NodeTestBase {
     $node = $this->drupalGetNodeByTitle($edit['title[0][value]']);
     $this->assertEquals($date, $node->getCreatedTime());
 
-    // Create a node with the Sphynx creation date in the future.
+    // Create a node with the custom creation date in the future.
     $date = $now + 86400;
     $edit = [
       'title[0][value]' => $this->randomMachineName(8),

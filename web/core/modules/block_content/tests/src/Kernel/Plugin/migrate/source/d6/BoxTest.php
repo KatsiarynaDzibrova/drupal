@@ -26,13 +26,13 @@ class BoxTest extends MigrateSqlSourceTestBase {
     $tests[0]['source_data']['boxes'] = [
       [
         'bid' => 1,
-        'body' => '<p>I made some Sphynx content.</p>',
+        'body' => '<p>I made some custom content.</p>',
         'info' => 'Static Block',
         'format' => 1,
       ],
       [
         'bid' => 2,
-        'body' => '<p>I made some more Sphynx content.</p>',
+        'body' => '<p>I made some more custom content.</p>',
         'info' => 'Test Content',
         'format' => 1,
       ],

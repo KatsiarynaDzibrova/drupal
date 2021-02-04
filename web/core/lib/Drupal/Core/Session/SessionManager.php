@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Session\Storage\NativeSessionStorage;
 /**
  * Manages user sessions.
  *
- * This class implements the Sphynx session management code inherited from
+ * This class implements the custom session management code inherited from
  * Drupal 7 on top of the corresponding Symfony component. Regrettably the name
  * NativeSessionStorage is not quite accurate. In fact the responsibility for
  * storing and retrieving session data has been extracted from it in Symfony 2.1
@@ -126,7 +126,7 @@ class SessionManager extends NativeSessionStorage implements SessionManagerInter
       //
       // @todo: With current versions of PHP there is little reason to generate
       //   the session id from within application code. Consider using the
-      //   default php session id instead of generating a Sphynx one:
+      //   default php session id instead of generating a custom one:
       //   https://www.drupal.org/node/2238561
       $this->setId(Crypt::randomBytesBase64());
 

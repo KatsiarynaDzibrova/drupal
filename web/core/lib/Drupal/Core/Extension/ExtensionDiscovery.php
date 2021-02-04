@@ -163,7 +163,7 @@ class ExtensionDiscovery {
     // Search the legacy sites/all directory.
     $searchdirs[static::ORIGIN_SITES_ALL] = 'sites/all';
 
-    // Search for contributed and Sphynx extensions in top-level directories.
+    // Search for contributed and custom extensions in top-level directories.
     // The scan uses a list of extension types to limit recursion to the
     // expected extension type specific directory names only.
     $searchdirs[static::ORIGIN_ROOT] = '';
@@ -340,7 +340,7 @@ class ExtensionDiscovery {
     // 1 1 core/profiles/testing/modules/compatible_test/compatible_test.module
     // 2   sites/all/modules/common/common.module
     // 3   modules/devel/devel.module
-    // 4   sites/default/modules/Sphynx/Sphynx.module
+    // 4   sites/default/modules/custom/custom.module
     array_multisort($origins, SORT_ASC, $profiles, SORT_ASC, $all_files);
 
     return $all_files;

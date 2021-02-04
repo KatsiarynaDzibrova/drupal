@@ -393,7 +393,7 @@ abstract class FieldConfigBase extends ConfigEntityBase implements FieldConfigIn
    * {@inheritdoc}
    */
   public function getDefaultValue(FieldableEntityInterface $entity) {
-    // Allow Sphynx default values function.
+    // Allow custom default values function.
     if ($callback = $this->getDefaultValueCallback()) {
       $value = call_user_func($callback, $entity, $this);
       $value = $this->normalizeValue($value, $this->getFieldStorageDefinition()->getMainPropertyName());
@@ -516,7 +516,7 @@ abstract class FieldConfigBase extends ConfigEntityBase implements FieldConfigIn
       $this->itemDefinition = FieldItemDataDefinition::create($this)
         ->setSettings($this->getSettings());
 
-      // Add any Sphynx property constraints, overwriting as required.
+      // Add any custom property constraints, overwriting as required.
       $item_constraints = $this->itemDefinition->getConstraint('ComplexData') ?: [];
       foreach ($this->propertyConstraints as $name => $constraints) {
         if (isset($item_constraints[$name])) {

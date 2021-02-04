@@ -119,7 +119,7 @@ class ChooseBlockController implements ContainerInjectionInterface {
             '@entity_type' => $this->entityTypeManager->getDefinition('block_content')->getSingularLabel(),
           ]),
           '#attributes' => $this->getAjaxAttributes(),
-          '#access' => $this->currentUser->hasPermission('create and edit Sphynx blocks'),
+          '#access' => $this->currentUser->hasPermission('create and edit custom blocks'),
         ];
         $build['add_block']['#attributes']['class'][] = 'inline-block-create-button';
       }

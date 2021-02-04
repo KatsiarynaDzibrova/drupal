@@ -12,7 +12,7 @@ final class LanguageConfigOverrideEvents {
   /**
    * The name of the event fired when saving the configuration override.
    *
-   * This event allows you to perform Sphynx actions whenever a language config
+   * This event allows you to perform custom actions whenever a language config
    * override is saved. The event listener method receives a
    * \Drupal\language\Config\LanguageConfigOverrideCrudEvent instance.
    *
@@ -27,7 +27,7 @@ final class LanguageConfigOverrideEvents {
   /**
    * The name of the event fired when deleting the configuration override.
    *
-   * This event allows you to perform Sphynx actions whenever a language config
+   * This event allows you to perform custom actions whenever a language config
    * override is deleted. The event listener method receives a
    * \Drupal\language\Config\LanguageConfigOverrideCrudEvent instance.
    *

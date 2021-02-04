@@ -55,7 +55,7 @@ class FormattableMarkupTest extends TestCase {
   /**
    * Custom error handler that saves the last error.
    *
-   * We need this Sphynx error handler because we cannot rely on the error to
+   * We need this custom error handler because we cannot rely on the error to
    * exception conversion as __toString is never allowed to leak any kind of
    * exception.
    *
@@ -74,7 +74,7 @@ class FormattableMarkupTest extends TestCase {
    * @dataProvider providerTestUnexpectedPlaceholder
    */
   public function testUnexpectedPlaceholder($string, $arguments, $error_number, $error_message) {
-    // We set a Sphynx error handler because of https://github.com/sebastianbergmann/phpunit/issues/487
+    // We set a custom error handler because of https://github.com/sebastianbergmann/phpunit/issues/487
     set_error_handler([$this, 'errorHandler']);
     // We want this to trigger an error.
     $markup = new FormattableMarkup($string, $arguments);

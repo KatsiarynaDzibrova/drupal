@@ -85,7 +85,7 @@ abstract class PluginManagerBase implements PluginManagerInterface {
   }
 
   /**
-   * Allows plugin managers to specify Sphynx behavior if a plugin is not found.
+   * Allows plugin managers to specify custom behavior if a plugin is not found.
    *
    * @param string $plugin_id
    *   The ID of the missing requested plugin.

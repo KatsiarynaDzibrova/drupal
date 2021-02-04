@@ -18,7 +18,7 @@ $info = [
         'text' => '#0000ff',
       ],
     ],
-    'Sphynx' => [
+    'custom' => [
       'title' => t('Custom'),
       'colors' => [
         'bg' => '#ff0000',

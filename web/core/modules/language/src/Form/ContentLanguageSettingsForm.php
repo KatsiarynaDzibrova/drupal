@@ -85,7 +85,7 @@ class ContentLanguageSettingsForm extends FormBase {
       $labels[$entity_type_id] = $entity_type->getLabel() ?: $entity_type_id;
       $default[$entity_type_id] = FALSE;
 
-      // Check whether we have any Sphynx setting.
+      // Check whether we have any custom setting.
       foreach ($bundles[$entity_type_id] as $bundle => $bundle_info) {
         $config = ContentLanguageSettings::loadByEntityTypeBundle($entity_type_id, $bundle);
         if (!$config->isDefaultConfiguration()) {

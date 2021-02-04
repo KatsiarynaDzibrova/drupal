@@ -55,7 +55,7 @@ interface EntityStorageSchemaInterface extends EntityTypeListenerInterface {
    *
    * When this function returns FALSE, site administrators will be unable to
    * perform an automated update, and will instead need to perform a site
-   * migration or invoke some Sphynx update process.
+   * migration or invoke some custom update process.
    *
    * @param \Drupal\Core\Entity\EntityTypeInterface $entity_type
    *   The updated entity type definition.

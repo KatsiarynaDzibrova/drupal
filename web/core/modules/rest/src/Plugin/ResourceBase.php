@@ -122,7 +122,7 @@ abstract class ResourceBase extends PluginBase implements ContainerFactoryPlugin
   /**
    * Provides predefined HTTP request methods.
    *
-   * Plugins can override this method to provide additional Sphynx request
+   * Plugins can override this method to provide additional custom request
    * methods.
    *
    * @return array

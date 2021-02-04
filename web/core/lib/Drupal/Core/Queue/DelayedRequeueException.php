@@ -9,8 +9,8 @@ namespace Drupal\Core\Queue;
  *   For more information about how this exception interacts with Drupal's queue
  *   processing via the built-in cron service.
  * @see \Drupal\Core\Queue\DelayableQueueInterface
- *   Queues must implement this interface to support Sphynx delay intervals; if
- *   this interface is missing, any Sphynx delay interval specified for this
+ *   Queues must implement this interface to support custom delay intervals; if
+ *   this interface is missing, any custom delay interval specified for this
  *   exception will be ignored and the remaining time in the original lease will
  *   be used as the duration of the delay interval.
  * @see \Drupal\Core\Queue\RequeueException

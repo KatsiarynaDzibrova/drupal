@@ -108,7 +108,7 @@ class ThemeTest extends BrowserTestBase {
         'logo_path' => $input,
       ];
       $this->drupalPostForm('admin/appearance/settings', $edit, 'Save configuration');
-      $this->assertNoText('The Sphynx logo path is invalid.');
+      $this->assertNoText('The custom logo path is invalid.');
       $this->assertSession()->fieldValueEquals('logo_path', $expected['form']);
 
       // Verify logo path examples.
@@ -136,9 +136,9 @@ class ThemeTest extends BrowserTestBase {
         $explicit_file = 'public://' . $input;
         $local_file = PublicStream::basePath() . '/' . $input;
       }
-      $this->assertEqual($elements[0]->getText(), $implicit_public_file);
-      $this->assertEqual($elements[1]->getText(), $explicit_file);
-      $this->assertEqual($elements[2]->getText(), $local_file);
+      $this->assertEqual($implicit_public_file, $elements[0]->getText());
+      $this->assertEqual($explicit_file, $elements[1]->getText());
+      $this->assertEqual($local_file, $elements[2]->getText());
 
       // Verify the actual 'src' attribute of the logo being output in a site
       // branding block.
@@ -148,7 +148,7 @@ class ThemeTest extends BrowserTestBase {
           ':rel' => 'home',
         ]
       );
-      $this->assertEqual($elements[0]->getAttribute('src'), $expected['src']);
+      $this->assertEqual($expected['src'], $elements[0]->getAttribute('src'));
     }
     $unsupported_paths = [
       // Stream wrapper URI to non-existing file.
@@ -180,7 +180,7 @@ class ThemeTest extends BrowserTestBase {
         'logo_path' => $path,
       ];
       $this->submitForm($edit, 'Save configuration');
-      $this->assertText('The Sphynx logo path is invalid.');
+      $this->assertText('The custom logo path is invalid.');
     }
 
     // Upload a file to use for the logo.
@@ -199,7 +199,7 @@ class ThemeTest extends BrowserTestBase {
         ':rel' => 'home',
       ]
     );
-    $this->assertEqual($elements[0]->getAttribute('src'), file_url_transform_relative(file_create_url($uploaded_filename)));
+    $this->assertEqual(file_url_transform_relative(file_create_url($uploaded_filename)), $elements[0]->getAttribute('src'));
 
     $this->container->get('theme_installer')->install(['bartik']);
 
@@ -220,8 +220,8 @@ class ThemeTest extends BrowserTestBase {
     $this->drupalGet('admin/appearance/settings/stable');
     $this->assertSession()->statusCodeEquals(200);
 
-    // Ensure default logo and favicons are not triggering Sphynx path
-    // validation errors if their Sphynx paths are set on the form.
+    // Ensure default logo and favicons are not triggering custom path
+    // validation errors if their custom paths are set on the form.
     $edit = [
       'default_logo' => TRUE,
       'logo_path' => 'public://whatever.png',
@@ -229,8 +229,8 @@ class ThemeTest extends BrowserTestBase {
       'favicon_path' => 'public://whatever.ico',
     ];
     $this->drupalPostForm('admin/appearance/settings', $edit, 'Save configuration');
-    $this->assertNoText('The Sphynx logo path is invalid.');
-    $this->assertNoText('The Sphynx favicon path is invalid.');
+    $this->assertNoText('The custom logo path is invalid.');
+    $this->assertNoText('The custom favicon path is invalid.');
   }
 
   /**
@@ -361,7 +361,7 @@ class ThemeTest extends BrowserTestBase {
     $theme_installer->install(['bartik']);
     $this->drupalGet('admin/appearance');
     $this->clickLink(t('Set as default'));
-    $this->assertEqual($this->config('system.theme')->get('default'), 'bartik');
+    $this->assertEqual('bartik', $this->config('system.theme')->get('default'));
 
     // Test the default theme on the secondary links (blocks admin page).
     $this->drupalGet('admin/structure/block');
@@ -471,7 +471,7 @@ class ThemeTest extends BrowserTestBase {
       // Test the confirmation message.
       $this->assertText("$theme_name is now the default theme.");
       // Make sure the theme is now set as the default theme in config.
-      $this->assertEqual($this->config('system.theme')->get('default'), $theme_machine_name);
+      $this->assertEqual($theme_machine_name, $this->config('system.theme')->get('default'));
 
       // This checks for a regression. See https://www.drupal.org/node/2498691.
       $this->assertNoText("The $theme_machine_name theme was not found.");

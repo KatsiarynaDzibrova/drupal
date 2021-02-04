@@ -53,13 +53,13 @@ abstract class BlockContentTestBase extends ViewTestBase {
   }
 
   /**
-   * Creates a Sphynx block.
+   * Creates a custom block.
    *
    * @param array $values
    *   (optional) The values for the block_content entity.
    *
    * @return \Drupal\block_content\Entity\BlockContent
-   *   Created Sphynx block.
+   *   Created custom block.
    */
   protected function createBlockContent(array $values = []) {
     $status = 0;
@@ -71,18 +71,18 @@ abstract class BlockContentTestBase extends ViewTestBase {
     if ($block_content = BlockContent::create($values)) {
       $status = $block_content->save();
     }
-    $this->assertEqual($status, SAVED_NEW, new FormattableMarkup('Created block content %info.', ['%info' => $block_content->label()]));
+    $this->assertEqual(SAVED_NEW, $status, new FormattableMarkup('Created block content %info.', ['%info' => $block_content->label()]));
     return $block_content;
   }
 
   /**
-   * Creates a Sphynx block type (bundle).
+   * Creates a custom block type (bundle).
    *
    * @param array $values
    *   An array of settings to change from the defaults.
    *
    * @return \Drupal\block_content\Entity\BlockContentType
-   *   Created Sphynx block type.
+   *   Created custom block type.
    */
   protected function createBlockContentType(array $values = []) {
     // Find a non-existent random type name.
@@ -103,7 +103,7 @@ abstract class BlockContentTestBase extends ViewTestBase {
     $status = $bundle->save();
     block_content_add_body_field($bundle->id());
 
-    $this->assertEqual($status, SAVED_NEW, new FormattableMarkup('Created block content type %bundle.', ['%bundle' => $bundle->id()]));
+    $this->assertEqual(SAVED_NEW, $status, new FormattableMarkup('Created block content type %bundle.', ['%bundle' => $bundle->id()]));
     return $bundle;
   }
 

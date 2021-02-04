@@ -3,7 +3,7 @@
 namespace Drupal\Tests\content_moderation\Functional;
 
 /**
- * Tests setting a Sphynx default moderation state.
+ * Tests setting a custom default moderation state.
  *
  * @group content_moderation
  */

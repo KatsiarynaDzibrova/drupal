@@ -330,12 +330,12 @@ class FormValidatorTest extends UnitTestCase {
         ['#title' => 'Test'],
         'Test field is required.',
       ],
-      // Use a Sphynx message.
+      // Use a custom message.
       [
         ['#required_error' => 'FAIL'],
         'FAIL',
       ],
-      // No title or Sphynx message.
+      // No title or custom message.
       [
         [],
         '',

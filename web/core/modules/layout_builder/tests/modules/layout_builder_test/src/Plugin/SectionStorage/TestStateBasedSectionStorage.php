@@ -22,7 +22,7 @@ class TestStateBasedSectionStorage extends SectionStorageBase {
    * {@inheritdoc}
    */
   public function getSections() {
-    // Return a Sphynx section.
+    // Return a custom section.
     $section = new Section('layout_onecol');
     $section->appendComponent(new SectionComponent('fake-uuid', 'content', [
       'id' => 'system_powered_by_block',

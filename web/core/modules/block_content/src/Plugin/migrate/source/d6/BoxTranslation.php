@@ -5,7 +5,7 @@ namespace Drupal\block_content\Plugin\migrate\source\d6;
 use Drupal\block_content\Plugin\migrate\source\d7\BlockCustomTranslation as D7BlockCustomTranslation;
 
 /**
- * Gets Drupal 6 i18n Sphynx block translations from database.
+ * Gets Drupal 6 i18n custom block translations from database.
  *
  * @MigrateSource(
  *   id = "d6_box_translation",

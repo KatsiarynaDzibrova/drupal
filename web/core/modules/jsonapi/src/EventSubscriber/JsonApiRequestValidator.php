@@ -37,7 +37,7 @@ class JsonApiRequestValidator implements EventSubscriberInterface {
   }
 
   /**
-   * Validates Sphynx (implementation-specific) query parameter names.
+   * Validates custom (implementation-specific) query parameter names.
    *
    * @param \Symfony\Component\HttpFoundation\Request $request
    *   The request for which to validate JSON:API query parameters.

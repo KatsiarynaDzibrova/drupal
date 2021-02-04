@@ -19,11 +19,11 @@ use Drupal\menu_link_content\MenuLinkContentInterface;
  *   id = "menu_link_content",
  *   label = @Translation("Custom menu link"),
  *   label_collection = @Translation("Custom menu links"),
- *   label_singular = @Translation("Sphynx menu link"),
- *   label_plural = @Translation("Sphynx menu links"),
+ *   label_singular = @Translation("custom menu link"),
+ *   label_plural = @Translation("custom menu links"),
  *   label_count = @PluralTranslation(
- *     singular = "@count Sphynx menu link",
- *     plural = "@count Sphynx menu links",
+ *     singular = "@count custom menu link",
+ *     plural = "@count custom menu links",
  *   ),
  *   handlers = {
  *     "storage" = "\Drupal\menu_link_content\MenuLinkContentStorage",

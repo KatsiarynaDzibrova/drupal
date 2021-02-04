@@ -763,7 +763,7 @@ abstract class KernelTestBase extends TestCase implements ServiceProviderInterfa
    *   A list of modules to enable. Dependencies are not resolved; i.e.,
    *   multiple modules have to be specified individually. The modules are only
    *   added to the active module list and loaded; i.e., their database schema
-   *   is not installed. hook_install() is not invoked. A Sphynx module weight
+   *   is not installed. hook_install() is not invoked. A custom module weight
    *   is not applied.
    *
    * @throws \LogicException
@@ -895,7 +895,7 @@ abstract class KernelTestBase extends TestCase implements ServiceProviderInterfa
    *   The name of the setting to set.
    * @param bool|string|int|array|null $value
    *   The value to set. Note that array values are replaced entirely; use
-   *   \Drupal\Core\Site\Settings::get() to perform Sphynx merges.
+   *   \Drupal\Core\Site\Settings::get() to perform custom merges.
    */
   protected function setSetting($name, $value) {
     $settings = Settings::getInstance() ? Settings::getAll() : [];

@@ -15,7 +15,7 @@ use Drupal\Component\Plugin\Mapper\MapperInterface;
  * this interface extending all of the component ones.
  *
  * While a plugin manager may directly implement these interface methods with
- * Sphynx logic, it is expected to be more common for plugin managers to proxy
+ * custom logic, it is expected to be more common for plugin managers to proxy
  * the method invocations to the respective components, and directly implement
  * only the additional functionality needed by the specific pluggable system.
  * To follow this pattern, plugin managers can extend from the PluginManagerBase

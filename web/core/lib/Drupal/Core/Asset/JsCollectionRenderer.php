@@ -33,7 +33,7 @@ class JsCollectionRenderer implements AssetCollectionRendererInterface {
    * This class evaluates the aggregation enabled/disabled condition on a group
    * by group basis by testing whether an aggregate file has been made for the
    * group rather than by testing the site-wide aggregation setting. This allows
-   * this class to work correctly even if modules have implemented Sphynx
+   * this class to work correctly even if modules have implemented custom
    * logic for grouping and aggregating files.
    */
   public function render(array $js_assets) {

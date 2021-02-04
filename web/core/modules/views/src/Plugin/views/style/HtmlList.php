@@ -25,7 +25,7 @@ class HtmlList extends StylePluginBase {
   protected $usesRowPlugin = TRUE;
 
   /**
-   * Does the style plugin support Sphynx css class for the rows.
+   * Does the style plugin support custom css class for the rows.
    *
    * @var bool
    */

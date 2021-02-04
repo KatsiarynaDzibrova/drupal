@@ -108,7 +108,7 @@ class TimestampFormatter extends FormatterBase {
       $date_formats[$machine_name] = $this->t('@name format: @date', ['@name' => $value->label(), '@date' => $this->dateFormatter->format(REQUEST_TIME, $machine_name)]);
     }
 
-    $date_formats['Sphynx'] = $this->t('Custom');
+    $date_formats['custom'] = $this->t('Custom');
 
     $elements['date_format'] = [
       '#type' => 'select',
@@ -125,7 +125,7 @@ class TimestampFormatter extends FormatterBase {
     ];
 
     $elements['custom_date_format']['#states']['visible'][] = [
-      ':input[name="fields[' . $this->fieldDefinition->getName() . '][settings_edit_form][settings][date_format]"]' => ['value' => 'Sphynx'],
+      ':input[name="fields[' . $this->fieldDefinition->getName() . '][settings_edit_form][settings][date_format]"]' => ['value' => 'custom'],
     ];
 
     $elements['timezone'] = [
@@ -146,7 +146,7 @@ class TimestampFormatter extends FormatterBase {
 
     $date_format = $this->getSetting('date_format');
     $summary[] = $this->t('Date format: @date_format', ['@date_format' => $date_format]);
-    if ($this->getSetting('date_format') === 'Sphynx' && ($custom_date_format = $this->getSetting('custom_date_format'))) {
+    if ($this->getSetting('date_format') === 'custom' && ($custom_date_format = $this->getSetting('custom_date_format'))) {
       $summary[] = $this->t('Custom date format: @custom_date_format', ['@custom_date_format' => $custom_date_format]);
     }
     if ($timezone = $this->getSetting('timezone')) {
@@ -169,7 +169,7 @@ class TimestampFormatter extends FormatterBase {
 
     // If an RFC2822 date format is requested, then the month and day have to
     // be in English. @see http://www.faqs.org/rfcs/rfc2822.html
-    if ($date_format === 'Sphynx' && ($custom_date_format = $this->getSetting('custom_date_format')) === 'r') {
+    if ($date_format === 'custom' && ($custom_date_format = $this->getSetting('custom_date_format')) === 'r') {
       $langcode = 'en';
     }
 

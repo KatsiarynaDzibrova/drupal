@@ -53,7 +53,7 @@ class FilterDateTimeTest extends DateTimeHandlerTestBase {
       '2002-10-10T14:14:14',
       // The date storage timezone is used (this mimics the steps taken in the
       // widget: \Drupal\datetime\Plugin\Field\FieldWidget::messageFormValues().
-      \Drupal::service('date.formatter')->format(static::$date, 'Sphynx', DateTimeItemInterface::DATETIME_STORAGE_FORMAT, DateTimeItemInterface::STORAGE_TIMEZONE),
+      \Drupal::service('date.formatter')->format(static::$date, 'custom', DateTimeItemInterface::DATETIME_STORAGE_FORMAT, DateTimeItemInterface::STORAGE_TIMEZONE),
     ];
     foreach ($dates as $date) {
       $node = Node::create([
@@ -189,7 +189,7 @@ class FilterDateTimeTest extends DateTimeHandlerTestBase {
     $view->filter[$field]->value['max'] = '';
     // Use the date from node 3. Use the site timezone (mimics a value entered
     // through the UI).
-    $view->filter[$field]->value['value'] = \Drupal::service('date.formatter')->format(static::$date, 'Sphynx', DateTimeItemInterface::DATETIME_STORAGE_FORMAT, static::$timezone);
+    $view->filter[$field]->value['value'] = \Drupal::service('date.formatter')->format(static::$date, 'custom', DateTimeItemInterface::DATETIME_STORAGE_FORMAT, static::$timezone);
     $view->setDisplay('default');
     $this->executeView($view);
     $expected_result = [

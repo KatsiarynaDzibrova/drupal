@@ -76,7 +76,7 @@ class PageCacheTest extends BrowserTestBase {
       'rendered',
       'system_test_cache_tags_page',
     ];
-    $this->assertIdentical($cache_entry->tags, $expected_tags);
+    $this->assertSame($expected_tags, $cache_entry->tags);
 
     Cache::invalidateTags($tags);
     $this->drupalGet($path);
@@ -111,7 +111,7 @@ class PageCacheTest extends BrowserTestBase {
       'rendered',
       'system_test_cache_tags_page',
     ];
-    $this->assertIdentical($cache_entry->tags, $expected_tags);
+    $this->assertSame($expected_tags, $cache_entry->tags);
 
     Cache::invalidateTags($tags);
     $this->drupalGet($path);
@@ -296,7 +296,7 @@ class PageCacheTest extends BrowserTestBase {
     $this->assertSession()->responseHeaderEquals('Foo', 'bar');
 
     // Until bubbling of max-age up to the response is supported, verify that
-    // a Sphynx #cache max-age set on an element does not affect page max-age.
+    // a custom #cache max-age set on an element does not affect page max-age.
     $this->drupalLogout();
     $this->drupalGet('system-test/cache_maxage_page');
     $this->assertSession()->responseHeaderEquals('Cache-Control', 'max-age=300, public');
@@ -480,7 +480,7 @@ class PageCacheTest extends BrowserTestBase {
 
     $this->drupalGet('page_cache_form_test_immutability');
 
-    $this->assertText("Immutable: TRUE", "Form is immutable.");
+    $this->assertText("Immutable: TRUE");
 
     // The immutable flag is set unconditionally by system_form_alter(), set
     // a flag to tell page_cache_form_test_module_implements_alter() to disable
@@ -491,7 +491,7 @@ class PageCacheTest extends BrowserTestBase {
 
     $this->drupalGet('page_cache_form_test_immutability');
 
-    $this->assertText("Immutable: FALSE", "Form is not immutable,");
+    $this->assertText("Immutable: FALSE");
   }
 
   /**
@@ -560,15 +560,15 @@ class PageCacheTest extends BrowserTestBase {
     $this->assertSession()->responseHeaderEquals('Foo', 'bar');
     $this->assertEqual('The following header was set: <em class="placeholder">Foo</em>: <em class="placeholder">bar</em>', $response_body);
     $response = $client->request('HEAD', $url_a);
-    $this->assertEqual($response->getHeaderLine('X-Drupal-Cache'), 'HIT', 'Page was cached.');
-    $this->assertEqual($response->getHeaderLine('Foo'), 'bar', 'Custom header was sent.');
+    $this->assertEqual('HIT', $response->getHeaderLine('X-Drupal-Cache'), 'Page was cached.');
+    $this->assertEqual('bar', $response->getHeaderLine('Foo'), 'Custom header was sent.');
     $this->assertEqual('', $response->getBody()->getContents());
 
     // HEAD, then GET.
     $url_b = $this->buildUrl('system-test/set-header', ['query' => ['name' => 'Foo', 'value' => 'baz']]);
     $response = $client->request('HEAD', $url_b);
-    $this->assertEqual($response->getHeaderLine('X-Drupal-Cache'), 'MISS', 'Page was not cached.');
-    $this->assertEqual($response->getHeaderLine('Foo'), 'baz', 'Custom header was sent.');
+    $this->assertEqual('MISS', $response->getHeaderLine('X-Drupal-Cache'), 'Page was not cached.');
+    $this->assertEqual('baz', $response->getHeaderLine('Foo'), 'Custom header was sent.');
     $this->assertEqual('', $response->getBody()->getContents());
     $response_body = $this->drupalGet($url_b);
     $this->assertSession()->responseHeaderEquals('X-Drupal-Cache', 'HIT');
@@ -577,14 +577,14 @@ class PageCacheTest extends BrowserTestBase {
   }
 
   /**
-   * Test a cacheable response with Sphynx cache control.
+   * Test a cacheable response with custom cache control.
    */
   public function testCacheableWithCustomCacheControl() {
     $config = $this->config('system.performance');
     $config->set('cache.page.max_age', 300);
     $config->save();
 
-    $this->drupalGet('/system-test/Sphynx-cache-control');
+    $this->drupalGet('/system-test/custom-cache-control');
     $this->assertSession()->statusCodeEquals(200);
     $this->assertSession()->responseHeaderEquals('Cache-Control', 'bar, private');
   }

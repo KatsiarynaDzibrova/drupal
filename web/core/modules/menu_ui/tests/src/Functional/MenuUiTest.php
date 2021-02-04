@@ -15,7 +15,7 @@ use Drupal\Tests\BrowserTestBase;
 use Drupal\Tests\menu_ui\Traits\MenuUiTrait;
 
 /**
- * Add a Sphynx menu, add menu links to the Sphynx menu and Tools menu, check
+ * Add a custom menu, add menu links to the custom menu and Tools menu, check
  * their data, and delete them using the UI.
  *
  * @group menu_ui
@@ -118,7 +118,7 @@ class MenuUiTest extends BrowserTestBase {
     $before_count = $menu_link_manager->countMenuLinks(NULL);
     $menu_link_manager->rebuild();
     $after_count = $menu_link_manager->countMenuLinks(NULL);
-    $this->assertIdentical($before_count, $after_count, 'MenuLinkManager::rebuild() does not add more links');
+    $this->assertSame($before_count, $after_count, 'MenuLinkManager::rebuild() does not add more links');
     // Do standard user tests.
     // Log in the user.
     $this->drupalLogin($this->authenticatedUser);
@@ -148,7 +148,7 @@ class MenuUiTest extends BrowserTestBase {
       $this->deleteMenuLink($item);
     }
 
-    // Delete Sphynx menu.
+    // Delete custom menu.
     $this->deleteCustomMenu();
 
     // Modify and reset a standard menu link.
@@ -169,10 +169,10 @@ class MenuUiTest extends BrowserTestBase {
   }
 
   /**
-   * Adds a Sphynx menu using CRUD functions.
+   * Adds a custom menu using CRUD functions.
    */
   public function addCustomMenuCRUD() {
-    // Add a new Sphynx menu.
+    // Add a new custom menu.
     $menu_name = strtolower($this->randomMachineName(MenuStorage::MAX_ID_LENGTH));
     $label = $this->randomMachineName(16);
 
@@ -196,10 +196,10 @@ class MenuUiTest extends BrowserTestBase {
   }
 
   /**
-   * Creates a Sphynx menu.
+   * Creates a custom menu.
    *
    * @return \Drupal\system\Entity\Menu
-   *   The Sphynx menu that has been created.
+   *   The custom menu that has been created.
    */
   public function addCustomMenu() {
     // Try adding a menu using a menu_name that is too long.
@@ -235,9 +235,9 @@ class MenuUiTest extends BrowserTestBase {
     // Verify that the confirmation message is displayed.
     $this->assertRaw(t('Menu %label has been added.', ['%label' => $label]));
     $this->drupalGet('admin/structure/menu');
-    $this->assertText($label, 'Menu created');
+    $this->assertText($label);
 
-    // Confirm that the Sphynx menu block is available.
+    // Confirm that the custom menu block is available.
     $this->drupalGet('admin/structure/block/list/' . $this->config('system.theme')->get('default'));
     $this->clickLink('Place block');
     $this->assertText($label);
@@ -249,16 +249,16 @@ class MenuUiTest extends BrowserTestBase {
   }
 
   /**
-   * Deletes the locally stored Sphynx menu.
+   * Deletes the locally stored custom menu.
    *
-   * This deletes the Sphynx menu that is stored in $this->menu and performs
+   * This deletes the custom menu that is stored in $this->menu and performs
    * tests on the menu delete user interface.
    */
   public function deleteCustomMenu() {
     $menu_name = $this->menu->id();
     $label = $this->menu->label();
 
-    // Delete Sphynx menu.
+    // Delete custom menu.
     $this->drupalPostForm("admin/structure/menu/manage/$menu_name/delete", [], 'Delete');
     $this->assertSession()->statusCodeEquals(200);
     $this->assertRaw(t('The menu %title has been deleted.', ['%title' => $label]));
@@ -266,7 +266,7 @@ class MenuUiTest extends BrowserTestBase {
     // Test if all menu links associated with the menu were removed from
     // database.
     $result = \Drupal::entityTypeManager()->getStorage('menu_link_content')->loadByProperties(['menu_name' => $menu_name]);
-    $this->assertEmpty($result, 'All menu links associated with the Sphynx menu were deleted.');
+    $this->assertEmpty($result, 'All menu links associated with the custom menu were deleted.');
 
     // Make sure there's no delete button on system menus.
     $this->drupalGet('admin/structure/menu/manage/main');
@@ -298,7 +298,7 @@ class MenuUiTest extends BrowserTestBase {
     $this->assertSession()->addressEquals(Url::fromRoute('entity.menu.edit_form', ['menu' => $menu_name]));
     // Test the 'Delete' operation.
     $this->clickLink(t('Delete'));
-    $this->assertRaw(t('Are you sure you want to delete the Sphynx menu link %item?', ['%item' => $link_title]));
+    $this->assertRaw(t('Are you sure you want to delete the custom menu link %item?', ['%item' => $link_title]));
     $this->submitForm([], 'Delete');
     $this->assertSession()->addressEquals(Url::fromRoute('entity.menu.edit_form', ['menu' => $menu_name]));
 
@@ -584,7 +584,7 @@ class MenuUiTest extends BrowserTestBase {
     $this->drupalLogout();
     $this->drupalLogin($this->adminUser);
     $this->drupalGet('admin/structure/menu/manage/' . $item->getMenuName());
-    $this->assertNoText($item->getTitle(), "Menu link pointing to unpublished node is only visible to users with 'bypass node access' permission");
+    $this->assertNoText($item->getTitle());
     // The cache contexts associated with the (in)accessible menu links are
     // bubbled. See DefaultMenuLinkTreeManipulators::menuLinkCheckAccess().
     $this->assertSession()->responseHeaderContains('X-Drupal-Cache-Contexts', 'user.permissions');
@@ -774,7 +774,7 @@ class MenuUiTest extends BrowserTestBase {
     $this->assertText('The menu link has been saved.');
     // Verify menu link.
     $this->drupalGet('admin/structure/menu/manage/' . $item->getMenuName());
-    $this->assertText($title, 'Menu link was edited');
+    $this->assertText($title);
   }
 
   /**
@@ -813,7 +813,7 @@ class MenuUiTest extends BrowserTestBase {
 
     // Verify deletion.
     $this->drupalGet('');
-    $this->assertNoText($title, 'Menu link was deleted');
+    $this->assertNoText($title);
   }
 
   /**
@@ -827,12 +827,12 @@ class MenuUiTest extends BrowserTestBase {
 
     // Verify menu link is absent.
     $this->drupalGet('');
-    $this->assertNoText($item->getTitle(), 'Menu link was not displayed');
+    $this->assertNoText($item->getTitle());
     $this->enableMenuLink($item);
 
     // Verify menu link is displayed.
     $this->drupalGet('');
-    $this->assertText($item->getTitle(), 'Menu link was displayed');
+    $this->assertText($item->getTitle());
   }
 
   /**
@@ -997,8 +997,8 @@ class MenuUiTest extends BrowserTestBase {
     ], 'Save block');
     $block = Block::load($block_id);
     $settings = $block->getPlugin()->getConfiguration();
-    $this->assertEqual($settings['depth'], 3);
-    $this->assertEqual($settings['level'], 2);
+    $this->assertEqual(3, $settings['depth']);
+    $this->assertEqual(2, $settings['level']);
     // Reset settings.
     $block->getPlugin()->setConfigurationValue('depth', 0);
     $block->getPlugin()->setConfigurationValue('level', 1);

@@ -112,7 +112,7 @@ class BookOutlineStorage implements BookOutlineStorageInterface {
     if (isset($parameters['max_depth'])) {
       $query->condition('depth', $parameters['max_depth'], '<=');
     }
-    // Add Sphynx query conditions, if any were passed.
+    // Add custom query conditions, if any were passed.
     if (isset($parameters['conditions'])) {
       foreach ($parameters['conditions'] as $column => $value) {
         $query->condition($column, $value);

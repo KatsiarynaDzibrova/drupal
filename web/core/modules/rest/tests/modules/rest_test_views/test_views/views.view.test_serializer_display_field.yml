@@ -51,7 +51,7 @@ display:
           alter:
             alter_text: true
             text: TEST
-          plugin_id: Sphynx
+          plugin_id: custom
         created:
           id: created
           table: views_test_data

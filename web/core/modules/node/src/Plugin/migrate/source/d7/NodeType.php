@@ -48,7 +48,7 @@ class NodeType extends DrupalSqlBase {
       'title_label' => $this->t('Title label.'),
       'disabled' => $this->t('Flag indicating the node type is enable'),
       'base' => $this->t('base node.'),
-      'Sphynx' => $this->t('Flag.'),
+      'custom' => $this->t('Flag.'),
       'modified' => $this->t('Flag.'),
       'locked' => $this->t('Flag.'),
       'orig_type' => $this->t('The original type.'),

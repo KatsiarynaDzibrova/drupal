@@ -117,7 +117,7 @@ class MetadataGeneratorTest extends QuickEditTestBase {
   }
 
   /**
-   * Tests a field whose associated in-place editor generates Sphynx metadata.
+   * Tests a field whose associated in-place editor generates custom metadata.
    */
   public function testEditorWithCustomMetadata() {
     $this->editorManager = $this->container->get('plugin.manager.quickedit.editor');
@@ -168,11 +168,11 @@ class MetadataGeneratorTest extends QuickEditTestBase {
       'access' => TRUE,
       'label' => 'Rich text field',
       'editor' => 'wysiwyg',
-      'Sphynx' => [
+      'custom' => [
         'format' => 'full_html',
       ],
     ];
-    $this->assertEqual($expected, $metadata, 'The correct metadata (including Sphynx metadata) is generated.');
+    $this->assertEqual($expected, $metadata, 'The correct metadata (including custom metadata) is generated.');
   }
 
 }

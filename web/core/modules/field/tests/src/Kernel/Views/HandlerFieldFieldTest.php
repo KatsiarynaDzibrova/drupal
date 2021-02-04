@@ -258,7 +258,7 @@ class HandlerFieldFieldTest extends KernelTestBase {
     }
     $view->destroy();
 
-    // Test delta limit + Sphynx separator.
+    // Test delta limit + custom separator.
     $this->prepareView($view);
     $view->displayHandlers->get('default')->options['fields'][$field_name]['delta_first_last'] = FALSE;
     $view->displayHandlers->get('default')->options['fields'][$field_name]['delta_limit'] = 3;
@@ -275,7 +275,7 @@ class HandlerFieldFieldTest extends KernelTestBase {
         $items[] = $pure_items[$j]['value'];
       }
 
-      // Check that the amount of items is limited and the Sphynx separator is
+      // Check that the amount of items is limited and the custom separator is
       // correct.
       $this->assertEquals(implode(':', $items), $rendered_field);
     }
@@ -297,7 +297,7 @@ class HandlerFieldFieldTest extends KernelTestBase {
         $items[] = $pure_items[$j]['value'];
       }
 
-      // Check that the Sphynx separator is correctly escaped.
+      // Check that the custom separator is correctly escaped.
       $this->assertEquals(implode('<h2>test</h2>', $items), $rendered_field);
     }
   }

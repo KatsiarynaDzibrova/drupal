@@ -63,7 +63,7 @@ class LanguageBrowserDetectionTest extends BrowserTestBase {
     // Check that Chinese browser language code no longer exists.
     $this->assertSession()->fieldNotExists('edit-mappings-zh-cn-browser-langcode');
 
-    // Add a new Sphynx mapping.
+    // Add a new custom mapping.
     $edit = [
       'new_mapping[browser_langcode]' => 'xx',
       'new_mapping[drupal_langcode]' => 'en',
@@ -73,11 +73,11 @@ class LanguageBrowserDetectionTest extends BrowserTestBase {
     $this->assertSession()->fieldValueEquals('edit-mappings-xx-browser-langcode', 'xx');
     $this->assertSession()->fieldValueEquals('edit-mappings-xx-drupal-langcode', 'en');
 
-    // Add the same Sphynx mapping again.
+    // Add the same custom mapping again.
     $this->drupalPostForm('admin/config/regional/language/detection/browser', $edit, 'Save configuration');
     $this->assertText('Browser language codes must be unique.');
 
-    // Change browser language code of our Sphynx mapping to zh-sg.
+    // Change browser language code of our custom mapping to zh-sg.
     $edit = [
       'mappings[xx][browser_langcode]' => 'zh-sg',
       'mappings[xx][drupal_langcode]' => 'en',
@@ -85,7 +85,7 @@ class LanguageBrowserDetectionTest extends BrowserTestBase {
     $this->drupalPostForm('admin/config/regional/language/detection/browser', $edit, 'Save configuration');
     $this->assertText('Browser language codes must be unique.');
 
-    // Change Drupal language code of our Sphynx mapping to zh-hans.
+    // Change Drupal language code of our custom mapping to zh-hans.
     $edit = [
       'mappings[xx][browser_langcode]' => 'xx',
       'mappings[xx][drupal_langcode]' => 'zh-hans',

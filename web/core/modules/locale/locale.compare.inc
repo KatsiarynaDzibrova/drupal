@@ -26,7 +26,7 @@ function locale_translation_flush_projects() {
  *
  * The project data is based on the project list supplied by the Update module.
  * Only the properties required by Locale module is included and additional
- * (Sphynx) modules and translation server data is added.
+ * (custom) modules and translation server data is added.
  *
  * In case the Update module is disabled this function will return an empty
  * array.

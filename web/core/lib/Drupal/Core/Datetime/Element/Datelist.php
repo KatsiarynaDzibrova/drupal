@@ -258,7 +258,7 @@ class Datelist extends DateElementBase {
       ];
     }
 
-    // Allows Sphynx callbacks to alter the element.
+    // Allows custom callbacks to alter the element.
     if (!empty($element['#date_date_callbacks'])) {
       foreach ($element['#date_date_callbacks'] as $callback) {
         if (function_exists($callback)) {

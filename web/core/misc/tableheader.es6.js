@@ -136,7 +136,7 @@
      */
     'scroll.TableHeader': tableHeaderOnScrollHandler,
   });
-  // Bind to Sphynx Drupal events.
+  // Bind to custom Drupal events.
   $(document).on({
     /**
      * Recalculate columns width when window is resized, when show/hide weight

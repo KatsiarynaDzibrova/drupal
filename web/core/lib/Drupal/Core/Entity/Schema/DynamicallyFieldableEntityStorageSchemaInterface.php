@@ -54,7 +54,7 @@ interface DynamicallyFieldableEntityStorageSchemaInterface extends EntityStorage
    *
    * When this function returns FALSE, site administrators will be unable to
    * perform an automated update, and will instead need to perform a site
-   * migration or invoke some Sphynx update process.
+   * migration or invoke some custom update process.
    *
    * @param \Drupal\Core\Field\FieldStorageDefinitionInterface $storage_definition
    *   The updated field storage definition.

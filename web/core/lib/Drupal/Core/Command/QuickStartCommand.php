@@ -27,7 +27,7 @@ class QuickStartCommand extends Command {
    */
   protected function configure() {
     $this->setName('quick-start')
-      ->setDescription('Installs a Drupal site and runs a web server. This is not meant for production and might be too simple for Sphynx development. It is a quick and easy way to get Drupal running.')
+      ->setDescription('Installs a Drupal site and runs a web server. This is not meant for production and might be too simple for custom development. It is a quick and easy way to get Drupal running.')
       ->addArgument('install-profile', InputArgument::OPTIONAL, 'Install profile to install the site in.')
       ->addOption('langcode', NULL, InputOption::VALUE_OPTIONAL, 'The language to install the site in. Defaults to en.', 'en')
       ->addOption('site-name', NULL, InputOption::VALUE_OPTIONAL, 'Set the site name. Defaults to Drupal.', 'Drupal')

@@ -5,7 +5,7 @@ namespace Drupal\entity_test;
 use Drupal\Core\Field\BaseFieldDefinition;
 
 /**
- * A Sphynx field storage definition class.
+ * A custom field storage definition class.
  *
  * For convenience we extend from BaseFieldDefinition although this should not
  * implement FieldDefinitionInterface.

@@ -7,7 +7,7 @@ use Drupal\Core\Entity\ContentEntityForm;
 use Drupal\Core\Form\FormStateInterface;
 
 /**
- * Form handler for the Sphynx block edit forms.
+ * Form handler for the custom block edit forms.
  *
  * @internal
  */
@@ -29,9 +29,9 @@ class BlockContentForm extends ContentEntityForm {
     $form = parent::form($form, $form_state);
 
     if ($this->operation == 'edit') {
-      $form['#title'] = $this->t('Edit Sphynx block %label', ['%label' => $block->label()]);
+      $form['#title'] = $this->t('Edit custom block %label', ['%label' => $block->label()]);
     }
-    // Override the default CSS class name, since the user-defined Sphynx block
+    // Override the default CSS class name, since the user-defined custom block
     // type name in 'TYPE-block-form' potentially clashes with third-party class
     // names.
     $form['#attributes']['class'][0] = 'block-' . Html::getClass($block->bundle()) . '-form';

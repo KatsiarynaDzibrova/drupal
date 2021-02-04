@@ -179,8 +179,8 @@ class CommentTranslationUITest extends ContentTranslationUITestBase {
       $date_formatter = $this->container->get('date.formatter');
       $edit = [
         'uid' => $user->getAccountName() . ' (' . $user->id() . ')',
-        'date[date]' => $date_formatter->format($values[$langcode]['created'], 'Sphynx', 'Y-m-d'),
-        'date[time]' => $date_formatter->format($values[$langcode]['created'], 'Sphynx', 'H:i:s'),
+        'date[date]' => $date_formatter->format($values[$langcode]['created'], 'custom', 'Y-m-d'),
+        'date[time]' => $date_formatter->format($values[$langcode]['created'], 'custom', 'H:i:s'),
       ];
       $this->drupalPostForm($url, $edit, $this->getFormSubmitAction($entity, $langcode));
     }
@@ -189,8 +189,8 @@ class CommentTranslationUITest extends ContentTranslationUITestBase {
     $entity = $storage->load($this->entityId);
     foreach ($this->langcodes as $langcode) {
       $metadata = $this->manager->getTranslationMetadata($entity->getTranslation($langcode));
-      $this->assertEqual($metadata->getAuthor()->id(), $values[$langcode]['uid'], 'Translation author correctly stored.');
-      $this->assertEqual($metadata->getCreatedTime(), $values[$langcode]['created'], 'Translation date correctly stored.');
+      $this->assertEqual($values[$langcode]['uid'], $metadata->getAuthor()->id(), 'Translation author correctly stored.');
+      $this->assertEqual($values[$langcode]['created'], $metadata->getCreatedTime(), 'Translation date correctly stored.');
     }
   }
 

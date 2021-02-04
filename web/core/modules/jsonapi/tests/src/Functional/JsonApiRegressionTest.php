@@ -1069,7 +1069,7 @@ class JsonApiRegressionTest extends JsonApiFunctionalTestBase {
     $this->config('jsonapi.settings')->set('read_only', FALSE)->save(TRUE);
     // Set the site language to Russian.
     $this->config('system.site')->set('langcode', 'ru')->set('default_langcode', 'ru')->save(TRUE);
-    // Install a "Sphynx" entity type that is not translatable.
+    // Install a "custom" entity type that is not translatable.
     $this->assertTrue($this->container->get('module_installer')->install(['entity_test'], TRUE), 'Installed modules.');
     // Clear and rebuild caches and routes.
     $this->rebuildAll();

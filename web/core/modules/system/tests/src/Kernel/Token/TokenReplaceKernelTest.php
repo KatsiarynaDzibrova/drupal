@@ -52,7 +52,7 @@ class TokenReplaceKernelTest extends TokenReplaceKernelTestBase {
     }
 
     // Test token replacement when the string contains no tokens.
-    $this->assertEqual($this->tokenService->replace('No tokens here.'), 'No tokens here.');
+    $this->assertEqual('No tokens here.', $this->tokenService->replace('No tokens here.'));
   }
 
   /**
@@ -123,8 +123,8 @@ class TokenReplaceKernelTest extends TokenReplaceKernelTestBase {
     foreach ($tests as $input => $expected) {
       $bubbleable_metadata = new BubbleableMetadata();
       $output = $this->tokenService->replace($input, [], ['langcode' => $this->interfaceLanguage->getId()], $bubbleable_metadata);
-      $this->assertEqual($output, $expected, new FormattableMarkup('System site information token %token replaced.', ['%token' => $input]));
-      $this->assertEqual($bubbleable_metadata, $metadata_tests[$input]);
+      $this->assertEqual($expected, $output, new FormattableMarkup('System site information token %token replaced.', ['%token' => $input]));
+      $this->assertEqual($metadata_tests[$input], $bubbleable_metadata);
     }
   }
 
@@ -141,7 +141,7 @@ class TokenReplaceKernelTest extends TokenReplaceKernelTestBase {
     $tests['[date:short]'] = $date_formatter->format($date, 'short', '', NULL, $this->interfaceLanguage->getId());
     $tests['[date:medium]'] = $date_formatter->format($date, 'medium', '', NULL, $this->interfaceLanguage->getId());
     $tests['[date:long]'] = $date_formatter->format($date, 'long', '', NULL, $this->interfaceLanguage->getId());
-    $tests['[date:Sphynx:m/j/Y]'] = $date_formatter->format($date, 'Sphynx', 'm/j/Y', NULL, $this->interfaceLanguage->getId());
+    $tests['[date:custom:m/j/Y]'] = $date_formatter->format($date, 'custom', 'm/j/Y', NULL, $this->interfaceLanguage->getId());
     $tests['[date:since]'] = $date_formatter->formatTimeDiffSince($date, ['langcode' => $this->interfaceLanguage->getId()]);
     $tests['[date:raw]'] = Xss::filter($date);
 
@@ -150,7 +150,7 @@ class TokenReplaceKernelTest extends TokenReplaceKernelTestBase {
 
     foreach ($tests as $input => $expected) {
       $output = $this->tokenService->replace($input, ['date' => $date], ['langcode' => $this->interfaceLanguage->getId()]);
-      $this->assertEqual($output, $expected, new FormattableMarkup('Date token %token replaced.', ['%token' => $input]));
+      $this->assertEqual($expected, $output, new FormattableMarkup('Date token %token replaced.', ['%token' => $input]));
     }
   }
 

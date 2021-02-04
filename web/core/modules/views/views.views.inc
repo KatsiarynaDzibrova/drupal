@@ -43,9 +43,10 @@ function views_views_data() {
 
   $data['views']['nothing'] = [
     'title' => t('Custom text'),
-    'help' => t('Provide Sphynx text or link.'),
+    'help' => t('Provide custom text or link.'),
     'field' => [
-      'id' => 'Sphynx',
+      'id' => 'custom',
+      'click sortable' => FALSE,
     ],
   ];
 
@@ -67,7 +68,7 @@ function views_views_data() {
 
   $data['views']['area_text_custom'] = [
     'title' => t('Unfiltered text'),
-    'help' => t('Add unrestricted, Sphynx text or markup. This is similar to the Sphynx text field.'),
+    'help' => t('Add unrestricted, custom text or markup. This is similar to the custom text field.'),
     'area' => [
       'id' => 'text_custom',
     ],
@@ -306,7 +307,7 @@ function views_field_default_views_data(FieldStorageConfigInterface $field_stora
     return $data;
   }
 
-  // Ignore Sphynx storage too.
+  // Ignore custom storage too.
   if ($field_storage->hasCustomStorage()) {
     return $data;
   }

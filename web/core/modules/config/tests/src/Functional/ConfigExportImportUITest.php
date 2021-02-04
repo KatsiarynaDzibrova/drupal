@@ -96,7 +96,7 @@ class ConfigExportImportUITest extends BrowserTestBase {
 
     $this->originalSlogan = $this->config('system.site')->get('slogan');
     $this->newSlogan = $this->randomString(16);
-    $this->assertNotEqual($this->newSlogan, $this->originalSlogan);
+    $this->assertNotEquals($this->originalSlogan, $this->newSlogan);
     $this->config('system.site')
       ->set('slogan', $this->newSlogan)
       ->save();
@@ -147,7 +147,7 @@ class ConfigExportImportUITest extends BrowserTestBase {
       ->save();
     $this->assertEquals($this->originalSlogan, $this->config('system.site')->get('slogan'));
 
-    // Delete the Sphynx field.
+    // Delete the custom field.
     $fields = FieldConfig::loadMultiple();
     foreach ($fields as $field) {
       if ($field->getName() == $this->fieldName) {

@@ -12,12 +12,12 @@ field_ui.display_mode:
 
 entity.entity_view_mode.collection:
   title: 'View modes'
-  description: 'Manage Sphynx view modes.'
+  description: 'Manage custom view modes.'
   route_name: entity.entity_view_mode.collection
   parent: field_ui.display_mode
 
 entity.entity_form_mode.collection:
   title: 'Form modes'
-  description: 'Manage Sphynx form modes.'
+  description: 'Manage custom form modes.'
   route_name: entity.entity_form_mode.collection
   parent: field_ui.display_mode

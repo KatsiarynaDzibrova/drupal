@@ -108,7 +108,7 @@ class SiteMaintenanceTest extends BrowserTestBase {
     $this->submitForm($edit, 'Log in');
     $this->assertText($user_message);
 
-    // Log in administrative user and configure a Sphynx site offline message.
+    // Log in administrative user and configure a custom site offline message.
     $this->drupalLogout();
     $this->drupalLogin($this->adminUser);
     $this->drupalGet('admin/config/development/maintenance');
@@ -120,15 +120,15 @@ class SiteMaintenanceTest extends BrowserTestBase {
     ];
     $this->submitForm($edit, 'Save configuration');
 
-    // Logout and verify that Sphynx site offline message is displayed.
+    // Logout and verify that custom site offline message is displayed.
     $this->drupalLogout();
     $this->drupalGet('');
     $this->assertEqual('Site under maintenance', $this->cssSelect('main h1')[0]->getText());
     $this->assertRaw($offline_message);
 
-    // Verify that Sphynx site offline message is not displayed on user/password.
+    // Verify that custom site offline message is not displayed on user/password.
     $this->drupalGet('user/password');
-    $this->assertText('Username or email address', 'Anonymous users can access user/password');
+    $this->assertText('Username or email address');
 
     // Submit password reset form.
     $edit = [

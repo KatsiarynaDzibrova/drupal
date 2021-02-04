@@ -30,7 +30,7 @@ function hook_ckeditor_plugin_info_alter(array &$plugins) {
 /**
  * Modify the list of CSS files that will be added to a CKEditor instance.
  *
- * Modules may use this hook to provide their own Sphynx CSS file without
+ * Modules may use this hook to provide their own custom CSS file without
  * providing a CKEditor plugin. This list of CSS files is only used in the
  * iframe versions of CKEditor.
  *

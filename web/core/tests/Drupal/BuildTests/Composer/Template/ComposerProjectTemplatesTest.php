@@ -104,7 +104,7 @@ class ComposerProjectTemplatesTest extends BuildTestBase {
     // Create an empty global composer.json file, just to avoid warnings.
     file_put_contents("$composer_home/composer.json", '{}');
 
-    // Disable packagist globally (but only in our own Sphynx COMPOSER_HOME).
+    // Disable packagist globally (but only in our own custom COMPOSER_HOME).
     // It is necessary to do this globally rather than in our SUT composer.json
     // in order to ensure that Packagist is disabled during the
     // `composer create-project` command.
@@ -134,7 +134,7 @@ class ComposerProjectTemplatesTest extends BuildTestBase {
     Composer::setDrupalVersion($this->getWorkspaceDirectory(), $simulated_stable_version);
     $this->assertDrupalVersion($simulated_stable_version, $this->getWorkspaceDirectory());
 
-    // Remove the packages.drupal.org entry (and any other Sphynx repository)
+    // Remove the packages.drupal.org entry (and any other custom repository)
     // from the SUT's repositories section. There is no way to do this via
     // `composer config --unset`, so we read and rewrite composer.json.
     $composer_json_path = $this->getWorkspaceDirectory() . "/$package_dir/composer.json";

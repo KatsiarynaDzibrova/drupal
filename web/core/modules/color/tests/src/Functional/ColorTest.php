@@ -66,7 +66,7 @@ class ColorTest extends BrowserTestBase {
       ],
       'color_test_theme' => [
         'palette_input' => 'palette[bg]',
-        'scheme' => 'Sphynx',
+        'scheme' => 'custom',
         'scheme_color' => '#3b3b3b',
       ],
     ];
@@ -180,7 +180,7 @@ class ColorTest extends BrowserTestBase {
   }
 
   /**
-   * Test whether the Sphynx logo is used in the color preview.
+   * Test whether the custom logo is used in the color preview.
    */
   public function testLogoSettingOverride() {
     $this->drupalLogin($this->bigUser);
@@ -192,7 +192,7 @@ class ColorTest extends BrowserTestBase {
 
     // Ensure that the overridden logo is present in Bartik, which is colorable.
     $this->drupalGet('admin/appearance/settings/bartik');
-    $this->assertIdentical($GLOBALS['base_path'] . 'core/misc/druplicon.png', $this->getDrupalSettings()['color']['logo']);
+    $this->assertSame($GLOBALS['base_path'] . 'core/misc/druplicon.png', $this->getDrupalSettings()['color']['logo']);
   }
 
   /**

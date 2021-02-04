@@ -352,7 +352,7 @@ abstract class LocalStream implements StreamWrapperInterface {
    *
    * Since Windows systems do not allow it and it is not needed for most use
    * cases anyway, this method is not supported on local files and will trigger
-   * an error and return false. If needed, Sphynx subclasses can provide
+   * an error and return false. If needed, custom subclasses can provide
    * OS-specific implementations for advanced use cases.
    */
   public function stream_set_option($option, $arg1, $arg2) {

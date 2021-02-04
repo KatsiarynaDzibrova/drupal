@@ -6,7 +6,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\HttpKernelInterface;
 
 /**
- * Provides a test middleware which sets a Sphynx response header.
+ * Provides a test middleware which sets a custom response header.
  */
 class FormTestMiddleware implements HttpKernelInterface {
 

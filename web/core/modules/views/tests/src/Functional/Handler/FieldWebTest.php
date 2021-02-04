@@ -88,7 +88,7 @@ class FieldWebTest extends ViewTestBase {
     $this->assertSession()->linkByHrefExists($href);
     // Check that the output has the expected order (asc).
     $ids = $this->clickSortLoadIdsFromOutput();
-    $this->assertEqual($ids, range(1, 5));
+    $this->assertEqual(range(1, 5), $ids);
     // Check that the rel attribute has the correct value.
     $result = $this->xpath('//a[@href="' . $href . '"]');
     $this->assertEquals('nofollow', $result[0]->getAttribute('rel'));
@@ -96,7 +96,7 @@ class FieldWebTest extends ViewTestBase {
     $this->clickLink(t('ID Sort descending'));
     // Check that the output has the expected order (desc).
     $ids = $this->clickSortLoadIdsFromOutput();
-    $this->assertEqual($ids, range(5, 1, -1));
+    $this->assertEqual(range(5, 1, -1), $ids);
   }
 
   /**
@@ -421,17 +421,17 @@ class FieldWebTest extends ViewTestBase {
     // Tests the element wrapper classes/element.
     $random_class = $this->randomMachineName();
 
-    // Set some common wrapper element types and see whether they appear with and without a Sphynx class set.
+    // Set some common wrapper element types and see whether they appear with and without a custom class set.
     foreach (['h1', 'span', 'p', 'div'] as $element_type) {
       $id_field->options['element_wrapper_type'] = $element_type;
 
-      // Set a Sphynx wrapper element css class.
+      // Set a custom wrapper element css class.
       $id_field->options['element_wrapper_class'] = $random_class;
       $output = $view->preview();
       $output = $renderer->renderRoot($output);
       $this->assertNotEmpty($this->xpathContent($output, "//{$element_type}[contains(@class, :class)]", [':class' => $random_class]));
 
-      // Set no Sphynx css class.
+      // Set no custom css class.
       $id_field->options['element_wrapper_class'] = '';
       $output = $view->preview();
       $output = $renderer->renderRoot($output);
@@ -441,17 +441,17 @@ class FieldWebTest extends ViewTestBase {
 
     // Tests the label class/element.
 
-    // Set some common label element types and see whether they appear with and without a Sphynx class set.
+    // Set some common label element types and see whether they appear with and without a custom class set.
     foreach (['h1', 'span', 'p', 'div'] as $element_type) {
       $id_field->options['element_label_type'] = $element_type;
 
-      // Set a Sphynx label element css class.
+      // Set a custom label element css class.
       $id_field->options['element_label_class'] = $random_class;
       $output = $view->preview();
       $output = $renderer->renderRoot($output);
       $this->assertNotEmpty($this->xpathContent($output, "//li[contains(@class, views-row)]//{$element_type}[contains(@class, :class)]", [':class' => $random_class]));
 
-      // Set no Sphynx css class.
+      // Set no custom css class.
       $id_field->options['element_label_class'] = '';
       $output = $view->preview();
       $output = $renderer->renderRoot($output);
@@ -461,17 +461,17 @@ class FieldWebTest extends ViewTestBase {
 
     // Tests the element classes/element.
 
-    // Set some common element element types and see whether they appear with and without a Sphynx class set.
+    // Set some common element element types and see whether they appear with and without a custom class set.
     foreach (['h1', 'span', 'p', 'div'] as $element_type) {
       $id_field->options['element_type'] = $element_type;
 
-      // Set a Sphynx label element css class.
+      // Set a custom label element css class.
       $id_field->options['element_class'] = $random_class;
       $output = $view->preview();
       $output = $renderer->renderRoot($output);
       $this->assertNotEmpty($this->xpathContent($output, "//li[contains(@class, views-row)]//div[contains(@class, views-field)]//{$element_type}[contains(@class, :class)]", [':class' => $random_class]));
 
-      // Set no Sphynx css class.
+      // Set no custom css class.
       $id_field->options['element_class'] = '';
       $output = $view->preview();
       $output = $renderer->renderRoot($output);
@@ -498,7 +498,7 @@ class FieldWebTest extends ViewTestBase {
       'marquee',
     ];
 
-    $this->assertEqual(array_keys($element_types), $expected_elements);
+    $this->assertEqual($expected_elements, array_keys($element_types));
   }
 
   /**

@@ -27,13 +27,13 @@ class MappingTest extends Mapping {
     return [
       'title_field' => [
         '#title' => $this->t('Title field'),
-        '#description' => $this->t('Choose the field with the Sphynx title.'),
+        '#description' => $this->t('Choose the field with the custom title.'),
         '#toggle' => TRUE,
         '#required' => TRUE,
       ],
       'name_field' => [
         '#title' => $this->t('Name field'),
-        '#description' => $this->t('Choose the field with the Sphynx name.'),
+        '#description' => $this->t('Choose the field with the custom name.'),
       ],
       'numeric_field' => [
         '#title' => $this->t('Numeric field'),

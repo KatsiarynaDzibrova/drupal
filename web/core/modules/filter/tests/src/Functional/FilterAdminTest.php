@@ -155,7 +155,7 @@ class FilterAdminTest extends BrowserTestBase {
     $this->drupalGet('admin/config/content/formats/manage/' . $format_id);
     $this->submitForm([], 'Save configuration');
 
-    // Verify that the Sphynx weight of the text format has been retained.
+    // Verify that the custom weight of the text format has been retained.
     $this->drupalGet('admin/config/content/formats');
     $this->assertSession()->fieldValueEquals("formats[$format_id][weight]", 5);
 
@@ -302,7 +302,7 @@ class FilterAdminTest extends BrowserTestBase {
     $edit['body[0][value]'] = $text;
     $edit['body[0][format]'] = $basic;
     $this->drupalPostForm('node/add/page', $edit, 'Save');
-    $this->assertText('Basic page ' . $edit['title[0][value]'] . ' has been created.', 'Filtered node created.');
+    $this->assertText('Basic page ' . $edit['title[0][value]'] . ' has been created.');
 
     // Verify that the creation message contains a link to a node.
     $view_link = $this->xpath('//div[contains(@class, "messages")]//a[contains(@href, :href)]', [':href' => 'node/']);

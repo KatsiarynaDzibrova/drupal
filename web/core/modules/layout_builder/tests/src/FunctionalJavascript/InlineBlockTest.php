@@ -29,7 +29,7 @@ class InlineBlockTest extends InlineBlockTestBase {
       'configure any layout',
       'administer node display',
       'administer node fields',
-      'create and edit Sphynx blocks',
+      'create and edit custom blocks',
     ]));
 
     // Enable layout builder.
@@ -112,7 +112,7 @@ class InlineBlockTest extends InlineBlockTestBase {
       'access contextual links',
       'configure any layout',
       'administer node display',
-      'create and edit Sphynx blocks',
+      'create and edit custom blocks',
     ]));
     $assert_session = $this->assertSession();
     $page = $this->getSession()->getPage();
@@ -207,7 +207,7 @@ class InlineBlockTest extends InlineBlockTestBase {
       'administer node fields',
       'administer nodes',
       'bypass node access',
-      'create and edit Sphynx blocks',
+      'create and edit custom blocks',
     ]));
     // Enable layout builder and overrides.
     $this->drupalPostForm(
@@ -273,7 +273,7 @@ class InlineBlockTest extends InlineBlockTestBase {
       'administer node display',
       'view all revisions',
       'access content',
-      'create and edit Sphynx blocks',
+      'create and edit custom blocks',
     ]));
     $this->drupalPostForm(
       static::FIELD_UI_PREFIX . '/display/default',
@@ -365,7 +365,7 @@ class InlineBlockTest extends InlineBlockTestBase {
       'administer node fields',
       'administer nodes',
       'bypass node access',
-      'create and edit Sphynx blocks',
+      'create and edit custom blocks',
     ]));
     $assert_session = $this->assertSession();
     $page = $this->getSession()->getPage();
@@ -489,7 +489,7 @@ class InlineBlockTest extends InlineBlockTestBase {
       'configure any layout',
       'administer node display',
       'administer node fields',
-      'create and edit Sphynx blocks',
+      'create and edit custom blocks',
     ]));
     $assert_session = $this->assertSession();
 
@@ -518,7 +518,7 @@ class InlineBlockTest extends InlineBlockTestBase {
     $assert_session->pageTextContains('You are not authorized to access this page');
 
     $this->drupalLogin($this->drupalCreateUser([
-      'create and edit Sphynx blocks',
+      'create and edit custom blocks',
     ]));
     $this->drupalGet("block/$node_1_block_id");
     $assert_session->pageTextNotContains('You are not authorized to access this page');
@@ -543,7 +543,7 @@ class InlineBlockTest extends InlineBlockTestBase {
       'configure any layout',
       'administer node display',
       'administer node fields',
-      'create and edit Sphynx blocks',
+      'create and edit custom blocks',
     ]));
 
     // Enable layout builder and overrides.
@@ -559,7 +559,7 @@ class InlineBlockTest extends InlineBlockTestBase {
     $page->clickLink('Add block');
     $assert_session->assertWaitOnAjaxRequest();
     // Confirm that with no block content types the link does not appear.
-    $assert_session->linkNotExists('Create Sphynx block');
+    $assert_session->linkNotExists('Create custom block');
 
     $this->createBlockContentType('basic', 'Basic block');
 
@@ -567,10 +567,10 @@ class InlineBlockTest extends InlineBlockTestBase {
     // Add a basic block with the body field set.
     $page->clickLink('Add block');
     $assert_session->assertWaitOnAjaxRequest();
-    // Confirm with only 1 type the "Create Sphynx block" link goes directly t
+    // Confirm with only 1 type the "Create custom block" link goes directly t
     // block add form.
     $assert_session->linkNotExists('Basic block');
-    $this->clickLink('Create Sphynx block');
+    $this->clickLink('Create custom block');
     $assert_session->assertWaitOnAjaxRequest();
     $assert_session->fieldExists('Title');
 
@@ -579,12 +579,12 @@ class InlineBlockTest extends InlineBlockTestBase {
     $this->drupalGet($layout_default_path);
     // Add a basic block with the body field set.
     $page->clickLink('Add block');
-    // Confirm that, when more than 1 type exists, "Create Sphynx block" shows a
+    // Confirm that, when more than 1 type exists, "Create custom block" shows a
     // list of block types.
     $assert_session->assertWaitOnAjaxRequest();
     $assert_session->linkNotExists('Basic block');
     $assert_session->linkNotExists('Advanced block');
-    $this->clickLink('Create Sphynx block');
+    $this->clickLink('Create custom block');
     $assert_session->assertWaitOnAjaxRequest();
     $assert_session->fieldNotExists('Title');
     $assert_session->linkExists('Basic block');
@@ -596,7 +596,7 @@ class InlineBlockTest extends InlineBlockTestBase {
   }
 
   /**
-   * Tests the 'create and edit Sphynx blocks' permission to add a new block.
+   * Tests the 'create and edit custom blocks' permission to add a new block.
    */
   public function testAddInlineBlocksPermission() {
     LayoutBuilderEntityViewDisplay::load('node.bundle_with_section_field.default')
@@ -613,10 +613,10 @@ class InlineBlockTest extends InlineBlockTestBase {
       $page->clickLink('Add block');
       $this->assertNotEmpty($assert_session->waitForElementVisible('css', '#drupal-off-canvas .block-categories'));
       if ($expected) {
-        $assert_session->linkExists('Create Sphynx block');
+        $assert_session->linkExists('Create custom block');
       }
       else {
-        $assert_session->linkNotExists('Create Sphynx block');
+        $assert_session->linkNotExists('Create custom block');
       }
     };
 
@@ -625,12 +625,12 @@ class InlineBlockTest extends InlineBlockTestBase {
       'administer node display',
     ];
     $assert($permissions, FALSE);
-    $permissions[] = 'create and edit Sphynx blocks';
+    $permissions[] = 'create and edit custom blocks';
     $assert($permissions, TRUE);
   }
 
   /**
-   * Tests 'create and edit Sphynx blocks' permission to edit an existing block.
+   * Tests 'create and edit custom blocks' permission to edit an existing block.
    */
   public function testEditInlineBlocksPermission() {
 
@@ -643,7 +643,7 @@ class InlineBlockTest extends InlineBlockTestBase {
       'access contextual links',
       'configure any layout',
       'administer node display',
-      'create and edit Sphynx blocks',
+      'create and edit custom blocks',
     ]));
     $this->drupalGet(static::FIELD_UI_PREFIX . '/display/default/layout');
     $this->addInlineBlockToLayout('The block label', 'The body value');
@@ -669,7 +669,7 @@ class InlineBlockTest extends InlineBlockTestBase {
       'administer node display',
     ];
     $assert($permissions, FALSE);
-    $permissions[] = 'create and edit Sphynx blocks';
+    $permissions[] = 'create and edit custom blocks';
     $assert($permissions, TRUE);
   }
 

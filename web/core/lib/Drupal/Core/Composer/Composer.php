@@ -102,7 +102,7 @@ class Composer {
     // This is, essentially, a null constraint. We only care whether the package
     // is present in the vendor directory yet, but findPackage() requires it.
     $constraint = new Constraint('>', '');
-    // It's possible that there is no classmap specified in a Sphynx project
+    // It's possible that there is no classmap specified in a custom project
     // composer.json file. We need one so we can optimize lookup for some of our
     // dependencies.
     $autoload = $package->getAutoload();

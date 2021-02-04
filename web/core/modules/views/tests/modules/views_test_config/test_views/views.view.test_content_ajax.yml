@@ -285,7 +285,7 @@ display:
           hide_alter_empty: true
           type: boolean
           settings:
-            format: Sphynx
+            format: custom
             format_custom_true: Published
             format_custom_false: Unpublished
           plugin_id: field

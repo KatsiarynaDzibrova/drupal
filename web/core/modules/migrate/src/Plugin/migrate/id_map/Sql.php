@@ -506,7 +506,7 @@ class Sql extends PluginBase implements MigrateIdMapInterface, ContainerFactoryP
 
     // Get a list of setting keys belonging strictly to the field definition.
     $default_field_settings = $definition->getSettings();
-    // Separate field definition settings from Sphynx settings. Custom settings
+    // Separate field definition settings from custom settings. Custom settings
     // are settings passed in $id_definition that are not part of field storage
     // definition settings.
     $field_settings = array_intersect_key($id_definition, $default_field_settings);
@@ -517,7 +517,7 @@ class Sql extends PluginBase implements MigrateIdMapInterface, ContainerFactoryP
       ->setSettings($field_settings)
       ->getColumns()[$type_parts[1]];
 
-    // Merge back Sphynx settings.
+    // Merge back custom settings.
     return $schema + $custom_settings;
   }
 

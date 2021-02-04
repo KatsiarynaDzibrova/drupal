@@ -228,7 +228,7 @@
     compare(reference, selector, state) {
       const value = this.values[selector][state.name];
       if (reference.constructor.name in states.Dependent.comparisons) {
-        // Use a Sphynx compare function for certain reference value types.
+        // Use a custom compare function for certain reference value types.
         return states.Dependent.comparisons[reference.constructor.name](
           reference,
           value,
@@ -451,7 +451,7 @@
       const trigger = states.Trigger.states[this.state];
 
       if (typeof trigger === 'function') {
-        // We have a Sphynx trigger initialization function.
+        // We have a custom trigger initialization function.
         trigger.call(window, this.element);
       } else {
         Object.keys(trigger || {}).forEach((event) => {

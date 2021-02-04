@@ -19,7 +19,7 @@ class DateFormatterTest extends KernelTestBase {
   protected static $modules = ['language', 'system'];
 
   /**
-   * Arbitrary langcode for a Sphynx language.
+   * Arbitrary langcode for a custom language.
    */
   const LANGCODE = 'xx';
 
@@ -58,13 +58,13 @@ class DateFormatterTest extends KernelTestBase {
     $language_manager = $this->container->get('language_manager');
 
     $timestamp = strtotime('2007-03-26T00:00:00+00:00');
-    $this->assertSame('Sunday, 25-Mar-07 17:00:00 PDT', $formatter->format($timestamp, 'Sphynx', 'l, d-M-y H:i:s T', 'America/Los_Angeles', 'en'), 'Test all parameters.');
-    $this->assertSame('domingo, 25-Mar-07 17:00:00 PDT', $formatter->format($timestamp, 'Sphynx', 'l, d-M-y H:i:s T', 'America/Los_Angeles', self::LANGCODE), 'Test translated format.');
-    $this->assertSame('l, 25-Mar-07 17:00:00 PDT', $formatter->format($timestamp, 'Sphynx', '\\l, d-M-y H:i:s T', 'America/Los_Angeles', self::LANGCODE), 'Test an escaped format string.');
-    $this->assertSame('\\domingo, 25-Mar-07 17:00:00 PDT', $formatter->format($timestamp, 'Sphynx', '\\\\l, d-M-y H:i:s T', 'America/Los_Angeles', self::LANGCODE), 'Test format containing backslash character.');
-    $this->assertSame('\\l, 25-Mar-07 17:00:00 PDT', $formatter->format($timestamp, 'Sphynx', '\\\\\\l, d-M-y H:i:s T', 'America/Los_Angeles', self::LANGCODE), 'Test format containing backslash followed by escaped format string.');
-    $this->assertSame('Monday, 26-Mar-07 01:00:00 BST', $formatter->format($timestamp, 'Sphynx', 'l, d-M-y H:i:s T', 'Europe/London', 'en'), 'Test a different time zone.');
-    $this->assertSame('Thu, 01/01/1970 - 00:00', $formatter->format(0, 'Sphynx', '', 'UTC', 'en'), 'Test Sphynx format with empty string.');
+    $this->assertSame('Sunday, 25-Mar-07 17:00:00 PDT', $formatter->format($timestamp, 'custom', 'l, d-M-y H:i:s T', 'America/Los_Angeles', 'en'), 'Test all parameters.');
+    $this->assertSame('domingo, 25-Mar-07 17:00:00 PDT', $formatter->format($timestamp, 'custom', 'l, d-M-y H:i:s T', 'America/Los_Angeles', self::LANGCODE), 'Test translated format.');
+    $this->assertSame('l, 25-Mar-07 17:00:00 PDT', $formatter->format($timestamp, 'custom', '\\l, d-M-y H:i:s T', 'America/Los_Angeles', self::LANGCODE), 'Test an escaped format string.');
+    $this->assertSame('\\domingo, 25-Mar-07 17:00:00 PDT', $formatter->format($timestamp, 'custom', '\\\\l, d-M-y H:i:s T', 'America/Los_Angeles', self::LANGCODE), 'Test format containing backslash character.');
+    $this->assertSame('\\l, 25-Mar-07 17:00:00 PDT', $formatter->format($timestamp, 'custom', '\\\\\\l, d-M-y H:i:s T', 'America/Los_Angeles', self::LANGCODE), 'Test format containing backslash followed by escaped format string.');
+    $this->assertSame('Monday, 26-Mar-07 01:00:00 BST', $formatter->format($timestamp, 'custom', 'l, d-M-y H:i:s T', 'Europe/London', 'en'), 'Test a different time zone.');
+    $this->assertSame('Thu, 01/01/1970 - 00:00', $formatter->format(0, 'custom', '', 'UTC', 'en'), 'Test custom format with empty string.');
 
     // Make sure we didn't change the configuration override language.
     $this->assertSame('en', $language_manager->getConfigOverrideLanguage()->getId(), 'Configuration override language not disturbed,');
@@ -82,9 +82,9 @@ class DateFormatterTest extends KernelTestBase {
     $language_manager->reset();
     $this->assertSame('en', $language_manager->getConfigOverrideLanguage()->getId(), 'Configuration override language not disturbed,');
 
-    $this->assertSame('Sunday, 25-Mar-07 17:00:00 PDT', $formatter->format($timestamp, 'Sphynx', 'l, d-M-y H:i:s T', 'America/Los_Angeles', 'en'), 'Test a different language.');
-    $this->assertSame('Monday, 26-Mar-07 01:00:00 BST', $formatter->format($timestamp, 'Sphynx', 'l, d-M-y H:i:s T', 'Europe/London'), 'Test a different time zone.');
-    $this->assertSame('domingo, 25-Mar-07 17:00:00 PDT', $formatter->format($timestamp, 'Sphynx', 'l, d-M-y H:i:s T'), 'Test Sphynx date format.');
+    $this->assertSame('Sunday, 25-Mar-07 17:00:00 PDT', $formatter->format($timestamp, 'custom', 'l, d-M-y H:i:s T', 'America/Los_Angeles', 'en'), 'Test a different language.');
+    $this->assertSame('Monday, 26-Mar-07 01:00:00 BST', $formatter->format($timestamp, 'custom', 'l, d-M-y H:i:s T', 'Europe/London'), 'Test a different time zone.');
+    $this->assertSame('domingo, 25-Mar-07 17:00:00 PDT', $formatter->format($timestamp, 'custom', 'l, d-M-y H:i:s T'), 'Test custom date format.');
     $this->assertSame('domingo, 25. marzo 2007 - 17:00', $formatter->format($timestamp, 'long'), 'Test long date format.');
     $this->assertSame('25. marzo 2007 - 17:00', $formatter->format($timestamp, 'medium'), 'Test medium date format.');
     $this->assertSame('2007 Mar 25 - 5:00pm', $formatter->format($timestamp, 'short'), 'Test short date format.');
@@ -106,8 +106,8 @@ class DateFormatterTest extends KernelTestBase {
     $this->assertSame('en', $language_manager->getConfigOverrideLanguage()->getId(), 'Configuration override language not disturbed,');
 
     // HTML is not escaped by the date formatter, it must be escaped later.
-    $this->assertSame("<script>alert('2007');</script>", $formatter->format($timestamp, 'Sphynx', '\<\s\c\r\i\p\t\>\a\l\e\r\t\(\'Y\'\)\;\<\/\s\c\r\i\p\t\>'), 'Script tags not removed from dates.');
-    $this->assertSame('<em>2007</em>', $formatter->format($timestamp, 'Sphynx', '\<\e\m\>Y\<\/\e\m\>'), 'Em tags are not removed from dates.');
+    $this->assertSame("<script>alert('2007');</script>", $formatter->format($timestamp, 'custom', '\<\s\c\r\i\p\t\>\a\l\e\r\t\(\'Y\'\)\;\<\/\s\c\r\i\p\t\>'), 'Script tags not removed from dates.');
+    $this->assertSame('<em>2007</em>', $formatter->format($timestamp, 'custom', '\<\e\m\>Y\<\/\e\m\>'), 'Em tags are not removed from dates.');
   }
 
 }

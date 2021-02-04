@@ -39,7 +39,7 @@ use Drupal\Component\Utility\Xss;
  * operation -- a record with node ID 0 corresponds to a "view all" grant for
  * the realm and grant ID of that record. If there are no node access modules
  * enabled, the core node module adds a node ID 0 record for realm 'all'. Node
- * access modules can also grant "view all" permission on their Sphynx realms;
+ * access modules can also grant "view all" permission on their custom realms;
  * for example, a module could create a record in {node_access} with:
  * @code
  * $record = array(
@@ -198,7 +198,7 @@ function hook_node_access_records(\Drupal\node\NodeInterface $node) {
  * are required to access a node. This hook is invoked after node access modules
  * returned their requirements via hook_node_access_records(); doing so allows
  * modules to modify the $grants array by reference before it is stored, so
- * Sphynx or advanced business logic can be applied.
+ * custom or advanced business logic can be applied.
  *
  * Upon viewing, editing or deleting a node, hook_node_grants() builds a
  * permissions array that is compared against the stored access records. The

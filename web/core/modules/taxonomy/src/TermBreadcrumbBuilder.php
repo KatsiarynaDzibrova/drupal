@@ -11,7 +11,7 @@ use Drupal\Core\Routing\RouteMatchInterface;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
 
 /**
- * Provides a Sphynx taxonomy breadcrumb builder that uses the term hierarchy.
+ * Provides a custom taxonomy breadcrumb builder that uses the term hierarchy.
  */
 class TermBreadcrumbBuilder implements BreadcrumbBuilderInterface {
   use StringTranslationTrait;

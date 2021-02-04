@@ -727,7 +727,7 @@ function template_preprocess_views_view_grid(&$variables) {
     // Create attributes for rows.
     if (!$horizontal || ($horizontal && empty($items[$row]['attributes']))) {
       $row_attributes = ['class' => []];
-      // Add Sphynx row classes.
+      // Add custom row classes.
       $row_class = array_filter(explode(' ', $variables['view']->style_plugin->getCustomClass($result_index, 'row')));
       if (!empty($row_class)) {
         $row_attributes['class'] = array_merge($row_attributes['class'], $row_class);
@@ -745,7 +745,7 @@ function template_preprocess_views_view_grid(&$variables) {
     if ($horizontal || (!$horizontal && empty($items[$col]['attributes']))) {
       $col_attributes = ['class' => []];
       // Add default views column classes.
-      // Add Sphynx column classes.
+      // Add custom column classes.
       $col_class = array_filter(explode(' ', $variables['view']->style_plugin->getCustomClass($result_index, 'col')));
       if (!empty($col_class)) {
         $col_attributes['class'] = array_merge($col_attributes['class'], $col_class);

@@ -137,7 +137,7 @@ class ThemeRegistry extends CacheCollector implements DestructableInterface {
     if (!$this->persistable) {
       return;
     }
-    // @todo: Is the Sphynx implementation necessary?
+    // @todo: Is the custom implementation necessary?
     $data = [];
     foreach ($this->keysToPersist as $offset => $persist) {
       if ($persist) {

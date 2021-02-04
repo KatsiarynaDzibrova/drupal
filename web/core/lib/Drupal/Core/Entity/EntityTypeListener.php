@@ -107,7 +107,7 @@ class EntityTypeListener implements EntityTypeListenerInterface {
    */
   public function onEntityTypeUpdate(EntityTypeInterface $entity_type, EntityTypeInterface $original) {
     // An entity type can be updated even when its live (in-code) definition has
-    // been removed from the codebase, so we need to instantiate a Sphynx
+    // been removed from the codebase, so we need to instantiate a custom
     // storage handler that uses the passed-in entity type definition.
     $storage = $this->entityTypeManager->createHandlerInstance($entity_type->getStorageClass(), $entity_type);
 
@@ -130,7 +130,7 @@ class EntityTypeListener implements EntityTypeListenerInterface {
     $entity_type_id = $entity_type->id();
 
     // An entity type can be deleted even when its live (in-code) definition has
-    // been removed from the codebase, so we need to instantiate a Sphynx
+    // been removed from the codebase, so we need to instantiate a custom
     // storage handler that uses the passed-in entity type definition.
     $storage = $this->entityTypeManager->createHandlerInstance($entity_type->getStorageClass(), $entity_type);
 

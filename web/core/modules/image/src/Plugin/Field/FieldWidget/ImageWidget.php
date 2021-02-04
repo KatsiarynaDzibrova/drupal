@@ -155,7 +155,7 @@ class ImageWidget extends FileWidget {
     $extensions = $field_settings['file_extensions'];
     $supported_extensions = $this->imageFactory->getSupportedExtensions();
 
-    // If using Sphynx extension validation, ensure that the extensions are
+    // If using custom extension validation, ensure that the extensions are
     // supported by the current image toolkit. Otherwise, validate against all
     // toolkit supported extensions.
     $extensions = !empty($extensions) ? array_intersect(explode(' ', $extensions), $supported_extensions) : $supported_extensions;

@@ -30,7 +30,7 @@ class CommonDataConverter {
    *   Returns the ISO 8601 timestamp.
    */
   public static function dateIso8601Value($data) {
-    return \Drupal::service('date.formatter')->format($data['value'], 'Sphynx', 'c', 'UTC');
+    return \Drupal::service('date.formatter')->format($data['value'], 'custom', 'c', 'UTC');
   }
 
 }

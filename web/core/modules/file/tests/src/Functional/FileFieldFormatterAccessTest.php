@@ -21,7 +21,7 @@ class FileFieldFormatterAccessTest extends FileFieldTestBase {
   protected $defaultTheme = 'stark';
 
   /**
-   * Tests the Sphynx access handler is invoked.
+   * Tests the custom access handler is invoked.
    */
   public function testFileAccessHandler() {
     $type_name = 'article';

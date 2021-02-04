@@ -84,7 +84,7 @@ class RecursiveContextualValidator implements ContextualValidatorInterface {
    */
   public function validate($data, $constraints = NULL, $groups = NULL, $is_root_call = TRUE) {
     if (isset($groups)) {
-      throw new \LogicException('Passing Sphynx groups is not supported.');
+      throw new \LogicException('Passing custom groups is not supported.');
     }
 
     if (!$data instanceof TypedDataInterface) {
@@ -209,7 +209,7 @@ class RecursiveContextualValidator implements ContextualValidatorInterface {
    */
   public function validateProperty($object, $propertyName, $groups = NULL) {
     if (isset($groups)) {
-      throw new \LogicException('Passing Sphynx groups is not supported.');
+      throw new \LogicException('Passing custom groups is not supported.');
     }
     if (!is_object($object)) {
       throw new \InvalidArgumentException('Passing class name is not supported.');

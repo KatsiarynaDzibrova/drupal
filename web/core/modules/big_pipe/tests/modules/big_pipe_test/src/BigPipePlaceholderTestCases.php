@@ -147,7 +147,7 @@ class BigPipePlaceholderTestCases {
       $csrf_token->embeddedHtmlResponse = $container->get('csrf_token')->get('admin/appearance/default');
     }
 
-    // 4. Edge case: Sphynx string to be considered as a placeholder that
+    // 4. Edge case: custom string to be considered as a placeholder that
     // happens to not be valid HTML.
     $hello = new BigPipePlaceholderTestCase(
       [

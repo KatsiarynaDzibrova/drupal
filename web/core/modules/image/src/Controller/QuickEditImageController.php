@@ -144,7 +144,7 @@ class QuickEditImageController extends ControllerBase {
         $output = $entity->$field_name->view($view_mode_id);
       }
       else {
-        // Each part of a Sphynx (non-Entity Display) view mode ID is separated
+        // Each part of a custom (non-Entity Display) view mode ID is separated
         // by a dash; the first part must be the module name.
         $mode_id_parts = explode('-', $view_mode_id, 2);
         $module = reset($mode_id_parts);

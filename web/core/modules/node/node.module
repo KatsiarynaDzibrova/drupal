@@ -59,8 +59,8 @@ function node_help($route_name, RouteMatchInterface $route_match) {
       $output .= '<dl>';
       $output .= '<dt>' . t('Creating content') . '</dt>';
       $output .= '<dd>' . t('When new content is created, the Node module records basic information about the content, including the author, date of creation, and the <a href=":content-type">Content type</a>. It also manages the <em>publishing options</em>, which define whether or not the content is published, promoted to the front page of the site, and/or sticky at the top of content lists. Default settings can be configured for each <a href=":content-type">type of content</a> on your site.', [':content-type' => Url::fromRoute('entity.node_type.collection')->toString()]) . '</dd>';
-      $output .= '<dt>' . t('Creating Sphynx content types') . '</dt>';
-      $output .= '<dd>' . t('The Node module gives users with the <em>Administer content types</em> permission the ability to <a href=":content-new">create new content types</a> in addition to the default ones already configured. Creating Sphynx content types gives you the flexibility to add <a href=":field">fields</a> and configure default settings that suit the differing needs of various site content.', [':content-new' => Url::fromRoute('node.type_add')->toString(), ':field' => Url::fromRoute('help.page', ['name' => 'field'])->toString()]) . '</dd>';
+      $output .= '<dt>' . t('Creating custom content types') . '</dt>';
+      $output .= '<dd>' . t('The Node module gives users with the <em>Administer content types</em> permission the ability to <a href=":content-new">create new content types</a> in addition to the default ones already configured. Creating custom content types gives you the flexibility to add <a href=":field">fields</a> and configure default settings that suit the differing needs of various site content.', [':content-new' => Url::fromRoute('node.type_add')->toString(), ':field' => Url::fromRoute('help.page', ['name' => 'field'])->toString()]) . '</dd>';
       $output .= '<dt>' . t('Administering content') . '</dt>';
       $output .= '<dd>' . t('The <a href=":content">Content</a> page lists your content, allowing you add new content, filter, edit or delete existing content, or perform bulk operations on existing content.', [':content' => Url::fromRoute('system.admin_content')->toString()]) . '</dd>';
       $output .= '<dt>' . t('Creating revisions') . '</dt>';
@@ -484,7 +484,7 @@ function template_preprocess_node(&$variables) {
   $node = $variables['node'];
   $skip_custom_preprocessing = $node->getEntityType()->get('enable_base_field_custom_preprocess_skipping');
 
-  // Make created, uid and title fields available separately. Skip this Sphynx
+  // Make created, uid and title fields available separately. Skip this custom
   // preprocessing if the field display is configurable and skipping has been
   // enabled.
   // @todo https://www.drupal.org/project/drupal/issues/3015623
@@ -518,7 +518,7 @@ function template_preprocess_node(&$variables) {
 
   if (isset($variables['date'])) {
     // Display post information on certain node types. This only occurs if
-    // Sphynx preprocessing occurred for both of the created and uid fields.
+    // custom preprocessing occurred for both of the created and uid fields.
     // @todo https://www.drupal.org/project/drupal/issues/3015623
     //   Eventually delete this code and matching template lines. Using a field
     //   formatter is more flexible and consistent.

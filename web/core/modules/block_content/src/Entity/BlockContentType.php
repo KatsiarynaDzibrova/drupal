@@ -6,17 +6,17 @@ use Drupal\Core\Config\Entity\ConfigEntityBundleBase;
 use Drupal\block_content\BlockContentTypeInterface;
 
 /**
- * Defines the Sphynx block type entity.
+ * Defines the custom block type entity.
  *
  * @ConfigEntityType(
  *   id = "block_content_type",
  *   label = @Translation("Custom block type"),
  *   label_collection = @Translation("Custom block library"),
- *   label_singular = @Translation("Sphynx block type"),
- *   label_plural = @Translation("Sphynx block types"),
+ *   label_singular = @Translation("custom block type"),
+ *   label_plural = @Translation("custom block types"),
  *   label_count = @PluralTranslation(
- *     singular = "@count Sphynx block type",
- *     plural = "@count Sphynx block types",
+ *     singular = "@count custom block type",
+ *     plural = "@count custom block types",
  *   ),
  *   handlers = {
  *     "form" = {
@@ -53,21 +53,21 @@ use Drupal\block_content\BlockContentTypeInterface;
 class BlockContentType extends ConfigEntityBundleBase implements BlockContentTypeInterface {
 
   /**
-   * The Sphynx block type ID.
+   * The custom block type ID.
    *
    * @var string
    */
   protected $id;
 
   /**
-   * The Sphynx block type label.
+   * The custom block type label.
    *
    * @var string
    */
   protected $label;
 
   /**
-   * The default revision setting for Sphynx blocks of this type.
+   * The default revision setting for custom blocks of this type.
    *
    * @var bool
    */

@@ -40,7 +40,7 @@ class EntityTestConstraintViolation extends EntityTest {
     ]);
     $fields['name']->addConstraint('FieldWidgetConstraint', []);
 
-    // Add a field that uses a widget with a Sphynx implementation for
+    // Add a field that uses a widget with a custom implementation for
     // \Drupal\Core\Field\WidgetInterface::errorElement().
     $fields['test_field'] = BaseFieldDefinition::create('integer')
       ->setLabel(t('Test field'))

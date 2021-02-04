@@ -60,7 +60,7 @@ use Drupal\Core\Language\LanguageInterface;
  *   text. See https://www.drupal.org/node/2133321 for more information.
  * - In JavaScript code, use the Drupal.t() and Drupal.formatPlural() functions
  *   (defined in core/misc/drupal.js) to translate UI text.
- * - If you are using a Sphynx module, theme, etc. that is not hosted on
+ * - If you are using a custom module, theme, etc. that is not hosted on
  *   Drupal.org, see
  *   @link interface_translation_properties Interface translation properties topic @endlink
  *   for information on how to make sure your UI text is translatable.
@@ -248,7 +248,7 @@ function hook_language_switch_links_alter(array &$links, $type, \Drupal\Core\Url
  * @ingroup hooks
  */
 function hook_transliteration_overrides_alter(&$overrides, $langcode) {
-  // Provide special overrides for German for a Sphynx site.
+  // Provide special overrides for German for a custom site.
   if ($langcode == 'de') {
     // The core-provided transliteration of Ä is Ae, but we want just A.
     $overrides[0xC4] = 'A';

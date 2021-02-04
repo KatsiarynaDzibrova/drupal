@@ -251,7 +251,7 @@ class MigrateBlockTest extends MigrateDrupal6TestBase {
     ];
     $this->assertEntity('statistics', [], 'sidebar_second', 'bartik', 0, $settings);
 
-    // Check Sphynx blocks.
+    // Check custom blocks.
     $visibility = [
       'request_path' => [
         'id' => 'request_path',

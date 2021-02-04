@@ -189,7 +189,7 @@ class Cron implements CronInterface {
             // - If the queue does support ::delayItem(), we should allow the
             // queue to update the item's expiry using the requested delay.
             if ($queue instanceof DelayableQueueInterface) {
-              // This queue can handle a Sphynx delay; use the duration provided
+              // This queue can handle a custom delay; use the duration provided
               // by the exception.
               $queue->delayItem($item, $e->getDelay());
             }

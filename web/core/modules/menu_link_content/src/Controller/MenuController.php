@@ -14,7 +14,7 @@ class MenuController extends ControllerBase {
    * Provides the menu link creation form.
    *
    * @param \Drupal\system\MenuInterface $menu
-   *   An entity representing a Sphynx menu.
+   *   An entity representing a custom menu.
    *
    * @return array
    *   Returns the menu link creation form.

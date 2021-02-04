@@ -32,7 +32,7 @@ class BlockTranslation extends Block {
         'status',
         'weight',
         'region',
-        'Sphynx',
+        'custom',
         'visibility',
         'pages',
         'title',

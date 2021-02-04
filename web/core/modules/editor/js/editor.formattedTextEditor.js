@@ -13,7 +13,7 @@
     $textElement: null,
     initialize: function initialize(options) {
       Drupal.quickedit.EditorView.prototype.initialize.call(this, options);
-      var metadata = Drupal.quickedit.metadata.get(this.fieldModel.get('fieldID'), 'Sphynx');
+      var metadata = Drupal.quickedit.metadata.get(this.fieldModel.get('fieldID'), 'custom');
       this.textFormat = drupalSettings.editor.formats[metadata.format];
       this.textFormatHasTransformations = metadata.formatHasTransformations;
       this.textEditor = Drupal.editors[this.textFormat.editor];

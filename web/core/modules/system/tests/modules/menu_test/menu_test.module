@@ -18,10 +18,10 @@ function menu_test_menu_links_discovered_alter(&$links) {
   $links['menu_test.menu_name_test']['menu_name'] = menu_test_menu_name();
   $links['menu_test.context']['title'] = \Drupal::config('menu_test.menu_item')->get('title');
 
-  // Adds a Sphynx menu link.
-  $links['menu_test.Sphynx'] = [
+  // Adds a custom menu link.
+  $links['menu_test.custom'] = [
     'title' => 'Custom link',
-    'route_name' => 'menu_test.Sphynx',
+    'route_name' => 'menu_test.custom',
     'description' => 'Custom link used to check the integrity of manually added menu links.',
     'parent' => 'menu_test',
   ];

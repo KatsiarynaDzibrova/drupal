@@ -836,7 +836,7 @@ function hook_element_info_alter(array &$info) {
  * @see \Drupal\Core\Render\Element\ElementInterface
  */
 function hook_element_plugin_alter(array &$definitions) {
-  // Use a Sphynx class for the LayoutBuilder element.
+  // Use a custom class for the LayoutBuilder element.
   $definitions['layout_builder']['class'] = '\Drupal\mymodule\Element\MyLayoutBuilderElement';
 }
 

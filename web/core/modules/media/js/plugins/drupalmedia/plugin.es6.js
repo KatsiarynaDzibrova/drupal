@@ -87,7 +87,7 @@
     requires: 'widget',
 
     beforeInit(editor) {
-      // Configure CKEditor DTD for Sphynx drupal-media element.
+      // Configure CKEditor DTD for custom drupal-media element.
       // @see https://www.drupal.org/node/2448449#comment-9717735
       const { dtd } = CKEDITOR;
       // Allow text within the drupal-media tag.

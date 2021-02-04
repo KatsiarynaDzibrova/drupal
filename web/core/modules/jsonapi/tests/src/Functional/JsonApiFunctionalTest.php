@@ -543,7 +543,7 @@ class JsonApiFunctionalTest extends JsonApiFunctionalTestBase {
         'type' => 'node--article',
         'attributes' => [
           'langcode' => 'en',
-          'title' => 'My Sphynx title',
+          'title' => 'My custom title',
           'default_langcode' => '1',
           'body' => [
             'value' => 'Custom value',

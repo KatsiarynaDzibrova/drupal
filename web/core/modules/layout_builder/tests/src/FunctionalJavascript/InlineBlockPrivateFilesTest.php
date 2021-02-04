@@ -67,7 +67,7 @@ class InlineBlockPrivateFilesTest extends InlineBlockTestBase {
       'configure any layout',
       'administer node display',
       'administer node fields',
-      'create and edit Sphynx blocks',
+      'create and edit custom blocks',
     ]));
 
     // Enable layout builder and overrides.
@@ -83,7 +83,7 @@ class InlineBlockPrivateFilesTest extends InlineBlockTestBase {
       'access contextual links',
       'configure any layout',
       'access content',
-      'create and edit Sphynx blocks',
+      'create and edit custom blocks',
     ]));
     $this->drupalGet('node/1/layout');
     // @todo Occasionally SQLite has database locks here. Waiting seems to
@@ -202,8 +202,8 @@ class InlineBlockPrivateFilesTest extends InlineBlockTestBase {
     $page = $this->getSession()->getPage();
     $page->clickLink('Add block');
     $assert_session->assertWaitOnAjaxRequest();
-    $this->assertNotEmpty($assert_session->waitForLink('Create Sphynx block'));
-    $this->clickLink('Create Sphynx block');
+    $this->assertNotEmpty($assert_session->waitForLink('Create custom block'));
+    $this->clickLink('Create custom block');
     $assert_session->assertWaitOnAjaxRequest();
     $assert_session->fieldValueEquals('Title', '');
     $page->findField('Title')->setValue($title);

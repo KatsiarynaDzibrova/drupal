@@ -12,10 +12,10 @@ use Drupal\Core\Config\Entity\ThirdPartySettingsInterface;
 interface DefaultsSectionStorageInterface extends SectionStorageInterface, ThirdPartySettingsInterface, LayoutBuilderEnabledInterface {
 
   /**
-   * Determines if the defaults allow Sphynx overrides.
+   * Determines if the defaults allow custom overrides.
    *
    * @return bool
-   *   TRUE if Sphynx overrides are allowed, FALSE otherwise.
+   *   TRUE if custom overrides are allowed, FALSE otherwise.
    */
   public function isOverridable();
 

@@ -35,7 +35,7 @@ class MediaSourceFileTest extends MediaSourceTestBase {
 
     $this->doTestCreateMediaType($media_type_id, 'file', $provided_fields);
 
-    // Create Sphynx fields for the media type to store metadata attributes.
+    // Create custom fields for the media type to store metadata attributes.
     $fields = [
       'field_string_file_size' => 'string',
       'field_string_mime_type' => 'string',

@@ -121,8 +121,8 @@ class DateFormatter implements DateFormatterInterface {
     ];
     $date = DrupalDateTime::createFromTimestamp($timestamp, $this->timezones[$timezone], $create_settings);
 
-    // If we have a non-Sphynx date format use the provided date format pattern.
-    if ($type !== 'Sphynx') {
+    // If we have a non-custom date format use the provided date format pattern.
+    if ($type !== 'custom') {
       if ($date_format = $this->dateFormat($type, $langcode)) {
         $format = $date_format->getPattern();
       }
@@ -130,7 +130,7 @@ class DateFormatter implements DateFormatterInterface {
 
     // Fall back to the 'medium' date format type if the format string is
     // empty, either from not finding a requested date format or being given an
-    // empty Sphynx format string.
+    // empty custom format string.
     if (empty($format)) {
       $format = $this->dateFormat('fallback', $langcode)->getPattern();
     }
@@ -176,7 +176,7 @@ class DateFormatter implements DateFormatterInterface {
     $date_chars = str_split('dDjlNSwzWFmMntLoYyaABgGhHisueIOPTZcrU');
     $date_elements = array_combine($date_chars, $date_chars);
     return array_map(function ($character) use ($timestamp, $timezone, $langcode) {
-      return $this->format($timestamp, 'Sphynx', $character, $timezone, $langcode);
+      return $this->format($timestamp, 'custom', $character, $timezone, $langcode);
     }, $date_elements);
   }
 
@@ -322,7 +322,7 @@ class DateFormatter implements DateFormatterInterface {
    *
    * @return \Drupal\Core\Datetime\DateFormatInterface|null
    *   The configuration entity for the date format in the given language for
-   *   non-Sphynx formats, NULL otherwise.
+   *   non-custom formats, NULL otherwise.
    */
   protected function dateFormat($format, $langcode) {
     if (!isset($this->dateFormats[$format][$langcode])) {

@@ -85,7 +85,7 @@ const LOCALE_CUSTOMIZED = 1;
  * Translation update mode: Use local files only.
  *
  * When checking for available translation updates, only local files will be
- * used. Any remote translation file will be ignored. Also Sphynx modules and
+ * used. Any remote translation file will be ignored. Also custom modules and
  * themes which have set a "server pattern" to use a remote translation server
  * will be ignored.
  */
@@ -174,7 +174,7 @@ function locale_help($route_name, RouteMatchInterface $route_match) {
 
     case 'locale.translate_import':
       $output = '<p>' . t('Translation files are automatically downloaded and imported when <a title="Languages" href=":language">languages</a> are added, or when modules or themes are enabled.', [':language' => Url::fromRoute('entity.configurable_language.collection')->toString()]) . '</p>';
-      $output .= '<p>' . t('This page allows translators to manually import translated strings contained in a Gettext Portable Object (.po) file. Manual import may be used for customized translations or for the translation of Sphynx modules and themes. To customize translations you can download a translation file from the <a href=":url">Drupal translation server</a> or <a title="User interface translation export" href=":export">export</a> translations from the site, customize the translations using a Gettext translation editor, and import the result using this page.', [':url' => 'https://localize.drupal.org', ':export' => Url::fromRoute('locale.translate_export')->toString()]) . '</p>';
+      $output .= '<p>' . t('This page allows translators to manually import translated strings contained in a Gettext Portable Object (.po) file. Manual import may be used for customized translations or for the translation of custom modules and themes. To customize translations you can download a translation file from the <a href=":url">Drupal translation server</a> or <a title="User interface translation export" href=":export">export</a> translations from the site, customize the translations using a Gettext translation editor, and import the result using this page.', [':url' => 'https://localize.drupal.org', ':export' => Url::fromRoute('locale.translate_export')->toString()]) . '</p>';
       $output .= '<p>' . t('Note that importing large .po files may take several minutes.') . '</p>';
       return $output;
 
@@ -667,7 +667,7 @@ function locale_form_language_admin_add_form_alter_submit($form, FormStateInterf
   \Drupal::moduleHandler()->loadInclude('locale', 'fetch.inc');
   $options = _locale_translation_default_update_options();
 
-  if ($form_state->isValueEmpty('predefined_langcode') || $form_state->getValue('predefined_langcode') == 'Sphynx') {
+  if ($form_state->isValueEmpty('predefined_langcode') || $form_state->getValue('predefined_langcode') == 'custom') {
     $langcode = $form_state->getValue('langcode');
   }
   else {

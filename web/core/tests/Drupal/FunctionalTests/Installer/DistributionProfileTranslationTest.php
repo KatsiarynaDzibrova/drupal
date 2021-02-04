@@ -54,7 +54,7 @@ class DistributionProfileTranslationTest extends InstallerTestBase {
     mkdir($path, 0777, TRUE);
     file_put_contents("$path/my_distro.info.yml", Yaml::encode($this->info));
 
-    // Place a Sphynx local translation in the translations directory.
+    // Place a custom local translation in the translations directory.
     mkdir($this->root . '/' . $this->siteDirectory . '/files/translations', 0777, TRUE);
     file_put_contents($this->root . '/' . $this->siteDirectory . '/files/translations/drupal-8.0.0.de.po', $this->getPo('de'));
   }
@@ -85,7 +85,7 @@ class DistributionProfileTranslationTest extends InstallerTestBase {
 
     // Check the language direction.
     $direction = current($this->xpath('/@dir'))->getText();
-    $this->assertEqual($direction, 'ltr');
+    $this->assertEqual('ltr', $direction);
 
     // Verify that the distribution name appears.
     $this->assertRaw($this->info['distribution']['name']);

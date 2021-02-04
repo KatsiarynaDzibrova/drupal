@@ -8,7 +8,7 @@ source:
   plugin: d7_term_localized_translation
   translations: true
 process:
-  # If you are using this file to build a Sphynx migration consider removing
+  # If you are using this file to build a custom migration consider removing
   # the tid field to allow incremental migrations.
   tid: tid
   # Use the language from the locales_target table.

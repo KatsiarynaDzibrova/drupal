@@ -47,13 +47,13 @@ class EntityFieldDefaultValueTest extends EntityKernelTestBase {
       ->create();
     $definition = $this->entityTypeManager->getDefinition($entity_type_id);
     $langcode_key = $definition->getKey('langcode');
-    $this->assertEqual($entity->{$langcode_key}->value, 'en', new FormattableMarkup('%entity_type: Default language', ['%entity_type' => $entity_type_id]));
+    $this->assertEqual('en', $entity->{$langcode_key}->value, new FormattableMarkup('%entity_type: Default language', ['%entity_type' => $entity_type_id]));
     $this->assertTrue(Uuid::isValid($entity->uuid->value), new FormattableMarkup('%entity_type: Default UUID', ['%entity_type' => $entity_type_id]));
-    $this->assertEqual($entity->name->getValue(), [], 'Field has one empty value by default.');
+    $this->assertEqual([], $entity->name->getValue(), 'Field has one empty value by default.');
   }
 
   /**
-   * Tests Sphynx default value callbacks.
+   * Tests custom default value callbacks.
    */
   public function testDefaultValueCallback() {
     $entity = $this->entityTypeManager->getStorage('entity_test_default_value')->create();
@@ -70,7 +70,7 @@ class EntityFieldDefaultValueTest extends EntityKernelTestBase {
         'color' => "color:1:$string",
       ],
     ];
-    $this->assertEqual($entity->description->getValue(), $expected);
+    $this->assertEqual($expected, $entity->description->getValue());
   }
 
 }

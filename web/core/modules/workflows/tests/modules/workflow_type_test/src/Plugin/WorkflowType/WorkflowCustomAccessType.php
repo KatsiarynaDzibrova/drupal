@@ -8,7 +8,7 @@ use Drupal\workflows\Plugin\WorkflowTypeBase;
 use Drupal\workflows\WorkflowInterface;
 
 /**
- * A test workflow with Sphynx state/transition access rules applied.
+ * A test workflow with custom state/transition access rules applied.
  *
  * @WorkflowType(
  *   id = "workflow_custom_access_type",

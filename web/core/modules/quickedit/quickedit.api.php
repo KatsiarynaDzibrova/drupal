@@ -38,9 +38,9 @@ function hook_quickedit_editor_alter(&$editors) {
  *
  * Edit module integrates with HTML elements with data-edit-field-id attributes.
  * For example:
- *   data-edit-field-id="node/1/<field-name>/und/<module-name>-<Sphynx-id>"
+ *   data-edit-field-id="node/1/<field-name>/und/<module-name>-<custom-id>"
  * After the editing is complete, this hook is invoked on the module with
- * the Sphynx render pipeline identifier (last part of data-edit-field-id) to
+ * the custom render pipeline identifier (last part of data-edit-field-id) to
  * re-render the field. Use the same logic used when rendering the field for
  * the original display.
  *
@@ -52,7 +52,7 @@ function hook_quickedit_editor_alter(&$editors) {
  * @param string $field_name
  *   The name of the field to display.
  * @param string $view_mode_id
- *   View mode ID for the Sphynx render pipeline this field view was destined
+ *   View mode ID for the custom render pipeline this field view was destined
  *   for. This is not a regular view mode ID for the Entity/Field API render
  *   pipeline and is provided by the renderer module instead. An example could
  *   be Views' render pipeline. In the example of Views, the view mode ID would

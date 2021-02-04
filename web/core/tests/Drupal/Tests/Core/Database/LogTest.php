@@ -19,7 +19,7 @@ use Drupal\Tests\UnitTestCase;
 class LogTest extends UnitTestCase {
 
   /**
-   * Tests that a log called by a Sphynx database driver returns proper caller.
+   * Tests that a log called by a custom database driver returns proper caller.
    *
    * @covers ::findCaller
    */

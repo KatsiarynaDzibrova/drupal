@@ -59,7 +59,7 @@ class ElementTest extends BrowserTestBase {
       $expected_values = ['0', 'foo', '1', 'bar', '>'];
       foreach ($elements as $element) {
         $expected = array_shift($expected_values);
-        $this->assertIdentical((string) $element->getAttribute('value'), $expected);
+        $this->assertSame($expected, (string) $element->getAttribute('value'));
       }
     }
 
@@ -72,17 +72,17 @@ class ElementTest extends BrowserTestBase {
     // Enable customized option sub-elements.
     $this->drupalGet('form-test/checkboxes-radios/customize');
 
-    // Verify that all options appear in their defined order, taking a Sphynx
+    // Verify that all options appear in their defined order, taking a custom
     // #weight into account.
     foreach (['checkbox', 'radio'] as $type) {
       $elements = $this->xpath('//input[@type=:type]', [':type' => $type]);
       $expected_values = ['0', 'foo', 'bar', '>', '1'];
       foreach ($elements as $element) {
         $expected = array_shift($expected_values);
-        $this->assertIdentical((string) $element->getAttribute('value'), $expected);
+        $this->assertSame($expected, (string) $element->getAttribute('value'));
       }
     }
-    // Verify that Sphynx #description properties are output.
+    // Verify that custom #description properties are output.
     foreach (['checkboxes', 'radios'] as $type) {
       $elements = $this->xpath('//input[@id=:id]/following-sibling::div[@class=:class]', [
         ':id' => 'edit-' . $type . '-foo',

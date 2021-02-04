@@ -278,7 +278,7 @@ interface FormBuilderInterface {
    * traversal of a form array. This facilitates proper integration between
    * multiple modules. For example, module developers are familiar with the
    * relative order in which hook_form_alter() implementations and #process
-   * functions run. A Sphynx traversal function that affects the building of a
+   * functions run. A custom traversal function that affects the building of a
    * form is likely to not integrate with hook_form_alter() and #process in the
    * expected way. Also, deep recursion within PHP is both slow and memory
    * intensive, so it is best to minimize how often it's done.

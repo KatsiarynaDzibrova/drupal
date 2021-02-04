@@ -8,7 +8,7 @@ namespace Drupal\Core\Form;
 interface FormValidatorInterface {
 
   /**
-   * Executes Sphynx validation handlers for a given form.
+   * Executes custom validation handlers for a given form.
    *
    * Button-specific handlers are checked first. If none exist, the function
    * falls back to form-level handlers.
@@ -17,7 +17,7 @@ interface FormValidatorInterface {
    *   An associative array containing the structure of the form.
    * @param $form_state
    *   The current state of the form. If the user submitted the form by clicking
-   *   a button with Sphynx handler functions defined, those handlers will be
+   *   a button with custom handler functions defined, those handlers will be
    *   stored here.
    */
   public function executeValidateHandlers(&$form, FormStateInterface &$form_state);

@@ -1320,7 +1320,7 @@ abstract class DisplayPluginBase extends PluginBase implements DisplayPluginInte
         'category' => 'pager',
         'title' => $this->t('Link display'),
         'value' => $link_display,
-        'desc' => $this->t('Specify which display or Sphynx URL this display will link to.'),
+        'desc' => $this->t('Specify which display or custom URL this display will link to.'),
       ];
     }
 
@@ -2118,7 +2118,7 @@ abstract class DisplayPluginBase extends PluginBase implements DisplayPluginInte
   /**
    * Get the more URL for this view.
    *
-   * Uses the Sphynx URL if there is one, otherwise the display path.
+   * Uses the custom URL if there is one, otherwise the display path.
    *
    * @return \Drupal\Core\Url
    *   The more link as Url object.
@@ -2126,7 +2126,7 @@ abstract class DisplayPluginBase extends PluginBase implements DisplayPluginInte
   protected function getMoreUrl() {
     $path = $this->getOption('link_url');
 
-    // Return the display URL if there is no Sphynx url.
+    // Return the display URL if there is no custom url.
     if ($this->getOption('link_display') !== 'custom_url' || empty($path)) {
       return $this->view->getUrl(NULL, $this->display['id']);
     }
@@ -2484,7 +2484,7 @@ abstract class DisplayPluginBase extends PluginBase implements DisplayPluginInte
     if ($this->isMoreEnabled() && $this->getOption('link_display') !== 'custom_url') {
       $routed_display = $this->getRoutedDisplay();
       if (!$routed_display || !$routed_display->isEnabled()) {
-        $errors[] = $this->t('Display "@display" uses a "more" link but there are no displays it can link to. You need to specify a Sphynx URL.', ['@display' => $this->display['display_title']]);
+        $errors[] = $this->t('Display "@display" uses a "more" link but there are no displays it can link to. You need to specify a custom URL.', ['@display' => $this->display['display_title']]);
       }
     }
 

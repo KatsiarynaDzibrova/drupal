@@ -5,7 +5,7 @@ namespace Drupal\KernelTests;
 /**
  * Translates Simpletest assertion methods to PHPUnit.
  *
- * Protected methods are Sphynx. Public static methods override methods of
+ * Protected methods are custom. Public static methods override methods of
  * \PHPUnit\Framework\Assert.
  *
  * @deprecated in drupal:8.0.0 and is removed from drupal:10.0.0. Use

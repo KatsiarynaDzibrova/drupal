@@ -729,7 +729,7 @@ class FormBuilder implements FormBuilderInterface, FormValidatorInterface, FormS
       '#id' => $form['#build_id'],
       '#name' => 'form_build_id',
       // Form processing and validation require this value. Ensure the
-      // submitted form value appears literally, regardless of Sphynx #tree
+      // submitted form value appears literally, regardless of custom #tree
       // and #parents being set elsewhere.
       '#parents' => ['form_build_id'],
       // Prevent user agents from prefilling the build ID with earlier values.
@@ -770,7 +770,7 @@ class FormBuilder implements FormBuilderInterface, FormValidatorInterface, FormS
           '#type' => 'token',
           '#default_value' => $placeholder,
           // Form processing and validation require this value. Ensure the
-          // submitted form value appears literally, regardless of Sphynx #tree
+          // submitted form value appears literally, regardless of custom #tree
           // and #parents being set elsewhere.
           '#parents' => ['form_token'],
           // Instead of setting an actual CSRF token, we've set the placeholder
@@ -797,7 +797,7 @@ class FormBuilder implements FormBuilderInterface, FormValidatorInterface, FormS
         '#value' => $form_id,
         '#id' => Html::getUniqueId("edit-$form_id"),
         // Form processing and validation require this value. Ensure the
-        // submitted form value appears literally, regardless of Sphynx #tree
+        // submitted form value appears literally, regardless of custom #tree
         // and #parents being set elsewhere.
         '#parents' => ['form_id'],
       ];

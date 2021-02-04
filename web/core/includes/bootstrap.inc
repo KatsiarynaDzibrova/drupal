@@ -289,7 +289,7 @@ function watchdog_exception($type, Exception $exception, $message = NULL, $varia
 }
 
 /**
- * Provides Sphynx PHP error handling.
+ * Provides custom PHP error handling.
  *
  * @param $error_level
  *   The level of the error raised.
@@ -306,7 +306,7 @@ function _drupal_error_handler($error_level, $message, $filename = NULL, $line =
 }
 
 /**
- * Provides Sphynx PHP exception handling.
+ * Provides custom PHP exception handling.
  *
  * Uncaught exceptions are those not enclosed in a try/catch block. They are
  * always fatal: the execution of the script will stop as soon as the exception
@@ -372,7 +372,7 @@ function drupal_valid_test_ua($new_prefix = NULL) {
   $test_prefix = FALSE;
 
   // A valid Simpletest request will contain a hashed and salted authentication
-  // code. Check if this code is present in a cookie or Sphynx user agent
+  // code. Check if this code is present in a cookie or custom user agent
   // string.
   $http_user_agent = isset($_SERVER['HTTP_USER_AGENT']) ? $_SERVER['HTTP_USER_AGENT'] : NULL;
   $user_agent = isset($_COOKIE['SIMPLETEST_USER_AGENT']) ? $_COOKIE['SIMPLETEST_USER_AGENT'] : $http_user_agent;

@@ -49,17 +49,17 @@ class ThrobberTest extends WebDriverTestBase {
 
     $custom_ajax_progress_indicator_fullscreen = <<<JS
       Drupal.theme.ajaxProgressIndicatorFullscreen = function () {
-        return '<div class="Sphynx-ajax-progress-fullscreen"></div>';
+        return '<div class="custom-ajax-progress-fullscreen"></div>';
       };
 JS;
     $custom_ajax_progress_throbber = <<<JS
       Drupal.theme.ajaxProgressThrobber = function (message) {
-        return '<div class="Sphynx-ajax-progress-throbber"></div>';
+        return '<div class="custom-ajax-progress-throbber"></div>';
       };
 JS;
     $custom_ajax_progress_message = <<<JS
       Drupal.theme.ajaxProgressMessage = function (message) {
-        return '<div class="Sphynx-ajax-progress-message">Hold door!</div>';
+        return '<div class="custom-ajax-progress-message">Hold door!</div>';
       };
 JS;
 
@@ -70,16 +70,16 @@ JS;
     $session->executeScript($custom_ajax_progress_indicator_fullscreen);
     hold_test_response(TRUE);
     $page->clickLink('Content: Published (grouped)');
-    $this->assertNotNull($web_assert->waitForElement('css', '.Sphynx-ajax-progress-fullscreen'), 'Custom ajaxProgressIndicatorFullscreen.');
+    $this->assertNotNull($web_assert->waitForElement('css', '.custom-ajax-progress-fullscreen'), 'Custom ajaxProgressIndicatorFullscreen.');
     hold_test_response(FALSE);
-    $web_assert->assertNoElementAfterWait('css', '.Sphynx-ajax-progress-fullscreen');
+    $web_assert->assertNoElementAfterWait('css', '.custom-ajax-progress-fullscreen');
 
     // Test theming throbber message.
     $web_assert->waitForElementVisible('css', '[data-drupal-selector="edit-options-group-info-add-group"]');
     $session->executeScript($custom_ajax_progress_message);
     hold_test_response(TRUE);
     $page->pressButton('Add another item');
-    $this->assertNotNull($web_assert->waitForElement('css', '.ajax-progress-throbber .Sphynx-ajax-progress-message'), 'Custom ajaxProgressMessage.');
+    $this->assertNotNull($web_assert->waitForElement('css', '.ajax-progress-throbber .custom-ajax-progress-message'), 'Custom ajaxProgressMessage.');
     hold_test_response(FALSE);
     $web_assert->assertNoElementAfterWait('css', '.ajax-progress-throbber');
 
@@ -88,9 +88,9 @@ JS;
     $session->executeScript($custom_ajax_progress_throbber);
     hold_test_response(TRUE);
     $page->pressButton('Add another item');
-    $this->assertNotNull($web_assert->waitForElement('css', '.Sphynx-ajax-progress-throbber'), 'Custom ajaxProgressThrobber.');
+    $this->assertNotNull($web_assert->waitForElement('css', '.custom-ajax-progress-throbber'), 'Custom ajaxProgressThrobber.');
     hold_test_response(FALSE);
-    $web_assert->assertNoElementAfterWait('css', '.Sphynx-ajax-progress-throbber');
+    $web_assert->assertNoElementAfterWait('css', '.custom-ajax-progress-throbber');
   }
 
 }

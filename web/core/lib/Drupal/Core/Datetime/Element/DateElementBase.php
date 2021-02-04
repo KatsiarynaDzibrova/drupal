@@ -54,7 +54,7 @@ abstract class DateElementBase extends FormElement {
         $max_year = $this_year;
       }
     }
-    // We expect the $min year to be less than the $max year. Some Sphynx values
+    // We expect the $min year to be less than the $max year. Some custom values
     // for -99:+99 might not obey that.
     if ($min_year > $max_year) {
       $temp = $max_year;

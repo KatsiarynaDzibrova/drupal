@@ -3,7 +3,7 @@
 namespace Drupal\entity_test\Entity;
 
 /**
- * Defines a test entity class using a Sphynx langcode entity key.
+ * Defines a test entity class using a custom langcode entity key.
  *
  * @ContentEntityType(
  *   id = "entity_test_mul_langcode_key",

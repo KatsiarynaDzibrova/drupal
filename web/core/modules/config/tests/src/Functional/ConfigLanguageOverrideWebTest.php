@@ -46,16 +46,16 @@ class ConfigLanguageOverrideWebTest extends BrowserTestBase {
     ]);
     $this->drupalLogin($adminUser);
 
-    // Add a Sphynx language.
+    // Add a custom language.
     $langcode = 'xx';
     $name = $this->randomMachineName(16);
     $edit = [
-      'predefined_langcode' => 'Sphynx',
+      'predefined_langcode' => 'custom',
       'langcode' => $langcode,
       'label' => $name,
       'direction' => LanguageInterface::DIRECTION_LTR,
     ];
-    $this->drupalPostForm('admin/config/regional/language/add', $edit, 'Add Sphynx language');
+    $this->drupalPostForm('admin/config/regional/language/add', $edit, 'Add custom language');
     \Drupal::languageManager()
       ->getLanguageConfigOverride($langcode, 'system.site')
       ->set('name', 'XX site name')

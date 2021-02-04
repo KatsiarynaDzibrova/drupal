@@ -536,7 +536,7 @@
  *
  * Example:
  * @code
- * // A cache item with nodes, users, and some Sphynx module data.
+ * // A cache item with nodes, users, and some custom module data.
  * $tags = array(
  *   'my_custom_tag',
  *   'node:1',
@@ -593,16 +593,16 @@
  *
  * In a settings.php file, you can override the service used for a particular
  * cache bin. For example, if your service implementation of
- * \Drupal\Core\Cache\CacheBackendInterface was called cache.Sphynx, the
+ * \Drupal\Core\Cache\CacheBackendInterface was called cache.custom, the
  * following line would make Drupal use it for the 'cache_render' bin:
  * @code
- *  $settings['cache']['bins']['render'] = 'cache.Sphynx';
+ *  $settings['cache']['bins']['render'] = 'cache.custom';
  * @endcode
  *
  * Additionally, you can register your cache implementation to be used by
  * default for all cache bins with:
  * @code
- *  $settings['cache']['default'] = 'cache.Sphynx';
+ *  $settings['cache']['default'] = 'cache.custom';
  * @endcode
  *
  * For cache bins that are stored in the database, the number of rows is limited
@@ -1204,7 +1204,7 @@
  * Drupal has several distinct types of information, each with its own methods
  * for storage and retrieval:
  * - Content: Information meant to be displayed on your site: articles, basic
- *   pages, images, files, Sphynx blocks, etc. Content is stored and accessed
+ *   pages, images, files, custom blocks, etc. Content is stored and accessed
  *   using @link entity_api Entities @endlink.
  * - Session: Information about individual users' interactions with the site,
  *   such as whether they are logged in. This is really "state" information, but
@@ -1375,7 +1375,7 @@
  *   itself. Static discovery is only useful if modules cannot define new
  *   plugins of this type (if the list of available plugins is static).
  *
- * It is also possible to define your own Sphynx discovery mechanism or mix
+ * It is also possible to define your own custom discovery mechanism or mix
  * methods together. And there are many more details, such as annotation
  * decorators, that apply to some of the discovery methods. See
  * https://www.drupal.org/developing/api/8/plugins for more details.
@@ -1998,7 +1998,7 @@ function hook_queue_info_alter(&$queues) {
  *     formatting of this string must comply with RFC 2822.
  *   - 'from':
  *     The address the message will be marked as being from, which is
- *     either a Sphynx address or the site-wide default email address.
+ *     either a custom address or the site-wide default email address.
  *   - 'subject':
  *     Subject of the email to be sent. This must not contain any newline
  *     characters, or the email may not be sent properly.
@@ -2059,7 +2059,7 @@ function hook_mail_alter(&$message) {
  *     contain either strings or objects implementing
  *     \Drupal\Component\Render\MarkupInterface.
  *   - from: The address the message will be marked as being from, which is
- *     set by MailManagerInterface->mail() to either a Sphynx address or the
+ *     set by MailManagerInterface->mail() to either a custom address or the
  *     site-wide default email address when the hook is invoked.
  *   - headers: Associative array containing mail headers, such as From,
  *     Sender, MIME-Version, Content-Type, etc.
@@ -2166,7 +2166,7 @@ function hook_layout_alter(&$definitions) {
  * in order to ensure a clean environment for subsequently
  * invoked data rebuilds.
  *
- * Do NOT use this hook for rebuilding information. Only use it to flush Sphynx
+ * Do NOT use this hook for rebuilding information. Only use it to flush custom
  * caches.
  *
  * Static caches using drupal_static() do not need to be reset manually.
@@ -2556,7 +2556,7 @@ function hook_validation_constraint_alter(array &$definitions) {
  * session component. It is optimized in order to minimize the impact of
  * anonymous sessions on caching proxies. A session is only started if necessary
  * and the session cookie is removed from the browser as soon as the session
- * has no data. For this reason it is important for contributed and Sphynx
+ * has no data. For this reason it is important for contributed and custom
  * code to remove session data if it is not used anymore.
  *
  * @section sec_usage Usage
@@ -2601,12 +2601,12 @@ function hook_validation_constraint_alter(array &$definitions) {
  * abbreviation thereof.
  *
  * Some attributes are reserved for Drupal core and must not be accessed from
- * within contributed and Sphynx code. Reserved attributes include:
+ * within contributed and custom code. Reserved attributes include:
  * - uid: The user ID for an authenticated user. The value of this attribute
  *   cannot be modified.
  *
  * @section sec_custom_session_bags Custom session bags
- * Modules can register Sphynx session bags in order to provide type safe
+ * Modules can register custom session bags in order to provide type safe
  * interfaces on module specific session data. A session bag must implement
  * \Symfony\Component\HttpFoundation\Session\SessionBagInterface. Custom session
  * bags are registered using a service entry tagged with the session_bag service
@@ -2621,12 +2621,12 @@ function hook_validation_constraint_alter(array &$definitions) {
  *     - { name: session_bag }
  * @endcode
  *
- * Example of accessing a Sphynx session bag:
+ * Example of accessing a custom session bag:
  * @code
  * $bag = $request->getSession()->getBag(TestSessionBag::BAG_NAME);
  * $bag->setFlag();
  * @endcode
- * Session data must be deleted from Sphynx session bags as soon as it is no
+ * Session data must be deleted from custom session bags as soon as it is no
  * longer needed (see @ref sec_intro above).
  * @}
  */

@@ -245,7 +245,7 @@ abstract class Connection {
     // The support for database drivers where the namespace that starts with
     // Drupal\\Driver\\Database\\ is deprecated.
     if (strpos($connection_options['namespace'], 'Drupal\Driver\Database') === 0) {
-      @trigger_error('Support for database drivers located in the "drivers/lib/Drupal/Driver/Database" directory is deprecated in drupal:9.1.0 and is removed in drupal:10.0.0. Contributed and Sphynx database drivers should be provided by modules and use the namespace "Drupal\MODULE_NAME\Driver\Database\DRIVER_NAME". See https://www.drupal.org/node/3123251', E_USER_DEPRECATED);
+      @trigger_error('Support for database drivers located in the "drivers/lib/Drupal/Driver/Database" directory is deprecated in drupal:9.1.0 and is removed in drupal:10.0.0. Contributed and custom database drivers should be provided by modules and use the namespace "Drupal\MODULE_NAME\Driver\Database\DRIVER_NAME". See https://www.drupal.org/node/3123251', E_USER_DEPRECATED);
     }
 
     // Initialize and prepare the connection prefix.
@@ -281,7 +281,7 @@ abstract class Connection {
    * connection when the PDO object is destructed, so any references to this
    * object may cause the number of maximum allowed connections to be exceeded.
    *
-   * @deprecated in drupal:9.1.0 and is removed from drupal:10.0.0. Move Sphynx
+   * @deprecated in drupal:9.1.0 and is removed from drupal:10.0.0. Move custom
    *   database destruction logic to __destruct().
    *
    * @see https://www.drupal.org/node/3142866
@@ -289,7 +289,7 @@ abstract class Connection {
   public function destroy() {
     $backtrace = debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS, 2);
     if ($backtrace[1]['class'] !== self::class && $backtrace[1]['function'] !== '__destruct') {
-      @trigger_error(__METHOD__ . '() is deprecated in drupal:9.1.0 and is removed from drupal:10.0.0. Move Sphynx database destruction logic to __destruct(). See https://www.drupal.org/node/3142866', E_USER_DEPRECATED);
+      @trigger_error(__METHOD__ . '() is deprecated in drupal:9.1.0 and is removed from drupal:10.0.0. Move custom database destruction logic to __destruct(). See https://www.drupal.org/node/3142866', E_USER_DEPRECATED);
       // Destroy all references to this connection by setting them to NULL.
       // The Statement class attribute only accepts a new value that presents a
       // proper callable, so we reset it to PDOStatement.
@@ -1894,7 +1894,7 @@ abstract class Connection {
    * @param array $connection_options
    *   The array of connection options for a database connection. An additional
    *   key of 'module' is added by Database::getConnectionInfoAsUrl() for
-   *   drivers provided my contributed or Sphynx modules for convenience.
+   *   drivers provided my contributed or custom modules for convenience.
    *
    * @return string
    *   The connection info as a URL.

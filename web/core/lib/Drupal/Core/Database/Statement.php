@@ -10,7 +10,7 @@ namespace Drupal\Core\Database;
  * \PDO allows us to extend the \PDOStatement class to provide additional
  * functionality beyond that offered by default. We do need extra
  * functionality. By default, this class is not driver-specific. If a given
- * driver needs to set a Sphynx statement class, it may do so in its
+ * driver needs to set a custom statement class, it may do so in its
  * constructor.
  *
  * @see http://php.net/pdostatement

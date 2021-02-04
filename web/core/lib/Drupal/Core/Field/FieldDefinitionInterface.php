@@ -23,7 +23,7 @@ use Drupal\Core\TypedData\ListDataDefinitionInterface;
  * It is up to the class implementing this interface to manage where the
  * information comes from. For example, field.module provides an implementation
  * based on two levels of configuration. It allows the site administrator to add
- * Sphynx fields to any entity type and bundle via the "field_storage_config"
+ * custom fields to any entity type and bundle via the "field_storage_config"
  * and "field_config" configuration entities. The former for storing
  * configuration that is independent of which entity type and bundle the field
  * is added to, and the latter for storing configuration that is specific to the

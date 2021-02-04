@@ -110,7 +110,7 @@ class UncaughtExceptionTest extends BrowserTestBase {
   }
 
   /**
-   * Tests uncaught exception handling with Sphynx exception handler.
+   * Tests uncaught exception handling with custom exception handler.
    */
   public function testUncaughtExceptionCustomExceptionHandler() {
     $settings_filename = $this->siteDirectory . '/settings.php';
@@ -151,7 +151,7 @@ class UncaughtExceptionTest extends BrowserTestBase {
   }
 
   /**
-   * Tests a missing dependency on a service with a Sphynx error handler.
+   * Tests a missing dependency on a service with a custom error handler.
    */
   public function testMissingDependencyCustomErrorHandler() {
     $settings_filename = $this->siteDirectory . '/settings.php';

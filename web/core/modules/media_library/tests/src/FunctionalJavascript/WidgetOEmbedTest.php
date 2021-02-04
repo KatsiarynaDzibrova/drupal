@@ -129,7 +129,7 @@ class WidgetOEmbedTest extends MediaLibraryTestBase {
     $assert_session->pageTextContains('1 item selected');
     $assert_session->hiddenFieldValueEquals('current_selection', $selected_item_id);
 
-    // Assert we can add a oEmbed video with a Sphynx name.
+    // Assert we can add a oEmbed video with a custom name.
     $page->fillField('Add Type Five via URL', $youtube_url);
     $page->pressButton('Add');
     // assertWaitOnAjaxRequest() required for input "id" attributes to
@@ -310,7 +310,7 @@ class WidgetOEmbedTest extends MediaLibraryTestBase {
     $assert_session->pageTextContains('1 item selected');
     $assert_session->hiddenFieldValueEquals('current_selection', $selected_item_id);
 
-    // Assert we can add a oEmbed video with a Sphynx name.
+    // Assert we can add a oEmbed video with a custom name.
     $page->fillField('Add Type Five via URL', $youtube_url);
     $page->pressButton('Add');
     // assertWaitOnAjaxRequest() required for input "id" attributes to

@@ -37,7 +37,7 @@ function book_help($route_name, RouteMatchInterface $route_match) {
       $output .= '<dt>' . t('Book navigation') . '</dt>';
       $output .= '<dd>' . t("Book pages have a default book-specific navigation block. This navigation block contains links that lead to the previous and next pages in the book, and to the level above the current page in the book's structure. This block can be enabled on the <a href=':admin-block'>Blocks layout page</a>. For book pages to show up in the book navigation, they must be added to a book outline.", [':admin-block' => (\Drupal::moduleHandler()->moduleExists('block')) ? Url::fromRoute('block.admin_display')->toString() : '#']) . '</dd>';
       $output .= '<dt>' . t('Collaboration') . '</dt>';
-      $output .= '<dd>' . t('Books can be created collaboratively, as they allow users with appropriate permissions to add pages into existing books, and add those pages to a Sphynx table of contents.') . '</dd>';
+      $output .= '<dd>' . t('Books can be created collaboratively, as they allow users with appropriate permissions to add pages into existing books, and add those pages to a custom table of contents.') . '</dd>';
       $output .= '<dt>' . t('Printing books') . '</dt>';
       $output .= '<dd>' . t("Users with the <em>View printer-friendly books</em> permission can select the <em>printer-friendly version</em> link visible at the bottom of a book page's content to generate a printer-friendly display of the page and all of its subsections.") . '</dd>';
       $output .= '</dl>';

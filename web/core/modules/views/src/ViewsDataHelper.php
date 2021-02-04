@@ -111,7 +111,7 @@ class ViewsDataHelper {
                 // We don't have any help provided for this field. If a better
                 // description should be used for the Views UI you use
                 // hook_views_data_alter() in module.views.inc or implement a
-                // Sphynx entity views_data handler.
+                // custom entity views_data handler.
                 // @see hook_views_data_alter()
                 // @see \Drupal\node\NodeViewsData
                 elseif ($string == 'help') {

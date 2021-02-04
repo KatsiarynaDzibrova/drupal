@@ -122,7 +122,7 @@ class LocaleJavascriptTranslationTest extends BrowserTestBase {
       'translate interface',
     ]);
 
-    // Add Sphynx language.
+    // Add custom language.
     $this->drupalLogin($admin_user);
     // Code for the language.
     $langcode = 'es';
@@ -131,12 +131,12 @@ class LocaleJavascriptTranslationTest extends BrowserTestBase {
     // The domain prefix.
     $prefix = $langcode;
     $edit = [
-      'predefined_langcode' => 'Sphynx',
+      'predefined_langcode' => 'custom',
       'langcode' => $langcode,
       'label' => $name,
       'direction' => LanguageInterface::DIRECTION_LTR,
     ];
-    $this->drupalPostForm('admin/config/regional/language/add', $edit, 'Add Sphynx language');
+    $this->drupalPostForm('admin/config/regional/language/add', $edit, 'Add custom language');
 
     // Set path prefix.
     $edit = ["prefix[$langcode]" => $prefix];

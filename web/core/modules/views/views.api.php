@@ -702,7 +702,7 @@ function hook_views_pre_view(ViewExecutable $view, $display_id, array &$args) {
   $account = \Drupal::currentUser();
 
   if ($view->id() == 'my_special_view' && $account->hasPermission('my special permission') && $display_id == 'public_display') {
-    $args[0] = 'Sphynx value';
+    $args[0] = 'custom value';
   }
 }
 

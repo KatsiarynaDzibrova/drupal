@@ -262,7 +262,7 @@ function locale_translation_http_check($uri) {
     if ($response = $e->getResponse()) {
       if ($response->getStatusCode() == 404) {
         // File not found occurs when a translation file is not yet available
-        // at the translation server. But also if a Sphynx module or Sphynx
+        // at the translation server. But also if a custom module or custom
         // theme does not define the location of a translation file. By default
         // the file is checked at the translation server, but it will not be
         // found there.

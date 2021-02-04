@@ -19,7 +19,7 @@ tips:
     id: place-block
     plugin: text
     label: 'Place Blocks'
-    body: 'Any Sphynx or contributed block can be added to a particular region by clicking on a button Place block. A new block can also be created by clicking on Place Block'
+    body: 'Any custom or contributed block can be added to a particular region by clicking on a button Place block. A new block can also be created by clicking on Place Block'
     weight: 2
     attributes:
       data-class: button--small
@@ -40,8 +40,8 @@ tips:
     attributes:
       data-class: dropbutton-widget
   custom-block-library:
-    id: Sphynx-block-library
+    id: custom-block-library
     plugin: text
     label: 'Custom Block Library'
-    body: 'The block management screen also has an another tab on the top which is used to add Custom blocks. The name of the tab is "Custom block library". This tab ultimately provides a link to add Sphynx blocks.'
+    body: 'The block management screen also has an another tab on the top which is used to add Custom blocks. The name of the tab is "Custom block library". This tab ultimately provides a link to add custom blocks.'
     weight: 5

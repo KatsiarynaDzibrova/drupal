@@ -28,7 +28,7 @@ class LocaleBuildTest extends KernelTestBase {
     /** @var \Drupal\Core\Extension\ExtensionList $module_list */
     $module_list = \Drupal::service('extension.list.module');
 
-    // Make the test modules look like a normal Sphynx module. I.e. make the
+    // Make the test modules look like a normal custom module. I.e. make the
     // modules not hidden. locale_test_system_info_alter() modifies the project
     // info of the locale_test and locale_test_translate modules.
     \Drupal::state()->set('locale.test_system_info_alter', TRUE);

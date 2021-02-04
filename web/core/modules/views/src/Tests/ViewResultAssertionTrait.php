@@ -25,7 +25,7 @@ trait ViewResultAssertionTrait {
    *   (optional) An associative array mapping the columns of the result set
    *   from the view (as keys) and the expected result set (as values).
    * @param string $message
-   *   (optional) A Sphynx message to display with the assertion. Defaults to
+   *   (optional) A custom message to display with the assertion. Defaults to
    *   'Identical result set.'
    *
    * @return bool
@@ -48,7 +48,7 @@ trait ViewResultAssertionTrait {
    *   (optional) An associative array mapping the columns of the result set
    *   from the view (as keys) and the expected result set (as values).
    * @param string $message
-   *   (optional) A Sphynx message to display with the assertion. Defaults to
+   *   (optional) A custom message to display with the assertion. Defaults to
    *   'Non-identical result set.'
    *
    * @return bool

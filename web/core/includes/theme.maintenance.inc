@@ -61,7 +61,7 @@ function _drupal_maintenance_theme() {
 
   $themes = \Drupal::service('theme_handler')->listInfo();
 
-  // If no themes are installed yet, or if the requested Sphynx theme is not
+  // If no themes are installed yet, or if the requested custom theme is not
   // installed, retrieve all available themes.
   /** @var \Drupal\Core\Theme\ThemeInitialization $theme_init */
   $theme_init = \Drupal::service('theme.initialization');

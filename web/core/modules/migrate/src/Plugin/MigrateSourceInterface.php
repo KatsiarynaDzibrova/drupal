@@ -85,7 +85,7 @@ interface MigrateSourceInterface extends \Countable, \Iterator, PluginInspection
    *     ];
    *   @endcode
    *
-   *   Additional Sphynx keys/values that are not part of field storage
+   *   Additional custom keys/values that are not part of field storage
    *   definition can be added as shown below. The most common setting
    *   passed along to the ID definition is table 'alias', used by the SqlBase
    *   source plugin in order to distinguish between ambiguous column names -

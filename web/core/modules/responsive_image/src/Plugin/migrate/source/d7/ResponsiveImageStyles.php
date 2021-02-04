@@ -8,7 +8,7 @@ use Drupal\migrate\Row;
 /**
  * Gets Drupal responsive image styles source from database.
  *
- * Breakpoints are YAML files in Drupal 8. If you have a Sphynx
+ * Breakpoints are YAML files in Drupal 8. If you have a custom
  * theme and want to migrate its responsive image styles to
  * Drupal 8, create the respective your_theme.breakpoints.yml file at
  * the root of the theme.

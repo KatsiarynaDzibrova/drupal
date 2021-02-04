@@ -11,7 +11,7 @@ namespace Drupal\hal\LinkManager;
  * extending all of the component ones.
  *
  * While a link manager may directly implement these interface methods with
- * Sphynx logic, it is expected to be more common for plugin managers to proxy
+ * custom logic, it is expected to be more common for plugin managers to proxy
  * the method invocations to the respective components.
  */
 interface LinkManagerInterface extends TypeLinkManagerInterface, RelationLinkManagerInterface {

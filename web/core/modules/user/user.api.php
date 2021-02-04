@@ -96,7 +96,7 @@ function hook_user_cancel_methods_alter(&$methods) {
   // Remove the content re-assigning method.
   unset($methods['user_cancel_reassign']);
 
-  // Add a Sphynx zero-out method.
+  // Add a custom zero-out method.
   $methods['mymodule_zero_out'] = [
     'title' => t('Delete the account and remove all content.'),
     'description' => t('All your content will be replaced by empty strings.'),

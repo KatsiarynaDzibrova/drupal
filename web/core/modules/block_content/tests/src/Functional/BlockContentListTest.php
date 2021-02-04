@@ -5,7 +5,7 @@ namespace Drupal\Tests\block_content\Functional;
 use Drupal\block_content\Entity\BlockContent;
 
 /**
- * Tests the listing of Sphynx blocks.
+ * Tests the listing of custom blocks.
  *
  * Tests the fallback block content list when Views is disabled.
  *
@@ -28,7 +28,7 @@ class BlockContentListTest extends BlockContentTestBase {
   protected $defaultTheme = 'classy';
 
   /**
-   * Tests the Sphynx block listing page.
+   * Tests the custom block listing page.
    */
   public function testListing() {
     $this->drupalLogin($this->drupalCreateUser([
@@ -51,13 +51,13 @@ class BlockContentListTest extends BlockContentTestBase {
     // Test the contents of each th cell.
     $expected_items = [t('Block description'), t('Operations')];
     foreach ($elements as $key => $element) {
-      $this->assertEqual($element->getText(), $expected_items[$key]);
+      $this->assertEqual($expected_items[$key], $element->getText());
     }
 
     $label = 'Antelope';
     $new_label = 'Albatross';
     // Add a new entity using the operations link.
-    $link_text = t('Add Sphynx block');
+    $link_text = t('Add custom block');
     $this->assertSession()->linkExists($link_text);
     $this->clickLink($link_text);
     $this->assertSession()->statusCodeEquals(200);
@@ -76,7 +76,7 @@ class BlockContentListTest extends BlockContentTestBase {
     // Check the contents of each row cell. The first cell contains the label,
     // the second contains the machine name, and the third contains the
     // operations list.
-    $this->assertIdentical($elements[0]->getText(), $label);
+    $this->assertSame($label, $elements[0]->getText());
 
     // Edit the entity using the operations link.
     $blocks = $this->container
@@ -88,7 +88,7 @@ class BlockContentListTest extends BlockContentTestBase {
       $this->assertSession()->linkByHrefExists('block/' . $block->id());
       $this->clickLink(t('Edit'));
       $this->assertSession()->statusCodeEquals(200);
-      $this->assertSession()->titleEquals("Edit Sphynx block $label | Drupal");
+      $this->assertSession()->titleEquals("Edit custom block $label | Drupal");
       $edit = ['info[0][value]' => $new_label];
       $this->submitForm($edit, 'Save');
     }
@@ -104,7 +104,7 @@ class BlockContentListTest extends BlockContentTestBase {
     $this->assertSession()->linkByHrefExists('block/' . $block->id() . '/delete');
     $this->clickLink('Delete');
     $this->assertSession()->statusCodeEquals(200);
-    $this->assertSession()->titleEquals("Are you sure you want to delete the Sphynx block $new_label? | Drupal");
+    $this->assertSession()->titleEquals("Are you sure you want to delete the custom block $new_label? | Drupal");
     $this->submitForm([], 'Delete');
 
     // Verify that the text of the label and machine name does not appear in
@@ -112,7 +112,7 @@ class BlockContentListTest extends BlockContentTestBase {
     $this->assertSession()->elementTextNotContains('xpath', '//td', $new_label);
 
     // Confirm that the empty text is displayed.
-    $this->assertText('There are no Sphynx blocks yet.');
+    $this->assertText('There are no custom blocks yet.');
 
     $block_content = BlockContent::create([
       'info' => 'Non-reusable block',
@@ -123,7 +123,7 @@ class BlockContentListTest extends BlockContentTestBase {
 
     $this->drupalGet('admin/structure/block/block-content');
     // Confirm that the empty text is displayed.
-    $this->assertSession()->pageTextContains('There are no Sphynx blocks yet.');
+    $this->assertSession()->pageTextContains('There are no custom blocks yet.');
     // Confirm the non-reusable block is not on the page.
     $this->assertSession()->pageTextNotContains('Non-reusable block');
   }

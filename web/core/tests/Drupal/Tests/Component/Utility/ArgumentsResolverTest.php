@@ -82,7 +82,7 @@ class ArgumentsResolverTest extends TestCase {
   }
 
   /**
-   * Tests getArgument() with a wildcard object for a parameter with a Sphynx name.
+   * Tests getArgument() with a wildcard object for a parameter with a custom name.
    */
   public function testGetWildcardArgument() {
     $callable = function (\stdClass $custom_name) {};

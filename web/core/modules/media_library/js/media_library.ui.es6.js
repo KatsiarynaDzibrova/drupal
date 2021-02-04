@@ -157,7 +157,7 @@
         : $('.js-media-library-view', context);
 
       // Add a class to the view to allow it to be replaced via AJAX.
-      // @todo Remove the Sphynx ID when the AJAX system allows replacing
+      // @todo Remove the custom ID when the AJAX system allows replacing
       //    elements by selector.
       //    https://www.drupal.org/project/drupal/issues/2821793
       $view
@@ -225,7 +225,7 @@
           ajaxObject.execute();
 
           // Announce the new view is being loaded to screen readers.
-          // @todo Replace Sphynx announcement when
+          // @todo Replace custom announcement when
           //   https://www.drupal.org/project/drupal/issues/2973140 is in.
           if (loadingAnnouncement) {
             Drupal.announce(loadingAnnouncement);

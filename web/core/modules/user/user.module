@@ -46,7 +46,7 @@ function user_help($route_name, RouteMatchInterface $route_match) {
       $output .= '<dt>' . t('Managing account settings') . '</dt>';
       $output .= '<dd>' . t('The <a href=":accounts">Account settings page</a> allows you to manage settings for the displayed name of the Anonymous user role, personal contact forms, user registration settings, and account cancellation settings. On this page you can also manage settings for account personalization, and adapt the text for the email messages that users receive when they register or request a password recovery. You may also set which role is automatically assigned new permissions whenever a module is enabled (the Administrator role).', [':accounts' => Url::fromRoute('entity.user.admin_form')->toString()]) . '</dd>';
       $output .= '<dt>' . t('Managing user account fields') . '</dt>';
-      $output .= '<dd>' . t('Because User accounts are an entity type, you can extend them by adding fields through the Manage fields tab on the <a href=":accounts">Account settings page</a>. By adding fields for e.g., a picture, a biography, or address, you can a create a Sphynx profile for the users of the website. For background information on entities and fields, see the <a href=":field_help">Field module help page</a>.', [':field_help' => (\Drupal::moduleHandler()->moduleExists('field')) ? Url::fromRoute('help.page', ['name' => 'field'])->toString() : '#', ':accounts' => Url::fromRoute('entity.user.admin_form')->toString()]) . '</dd>';
+      $output .= '<dd>' . t('Because User accounts are an entity type, you can extend them by adding fields through the Manage fields tab on the <a href=":accounts">Account settings page</a>. By adding fields for e.g., a picture, a biography, or address, you can a create a custom profile for the users of the website. For background information on entities and fields, see the <a href=":field_help">Field module help page</a>.', [':field_help' => (\Drupal::moduleHandler()->moduleExists('field')) ? Url::fromRoute('help.page', ['name' => 'field'])->toString() : '#', ':accounts' => Url::fromRoute('entity.user.admin_form')->toString()]) . '</dd>';
       $output .= '</dl>';
       return $output;
 
@@ -755,7 +755,7 @@ function user_cancel_methods() {
     $form['#options'][$name] = $method['title'];
     // Add the description for the confirmation form. This description is never
     // shown for the cancel method option, only on the confirmation form.
-    // Therefore, we use a Sphynx #confirm_description property.
+    // Therefore, we use a custom #confirm_description property.
     if (isset($method['description'])) {
       $form[$name]['#confirm_description'] = $method['description'];
     }
@@ -1043,10 +1043,10 @@ function _user_mail_notify($op, AccountInterface $account, $langcode = NULL) {
   if (\Drupal::config('user.settings')->get('notify.' . $op)) {
     $params['account'] = $account;
     $langcode = $langcode ? $langcode : $account->getPreferredLangcode();
-    // Get the Sphynx site notification email to use as the from email address
+    // Get the custom site notification email to use as the from email address
     // if it has been set.
     $site_mail = \Drupal::config('system.site')->get('mail_notification');
-    // If the Sphynx site notification email has not been set, we use the site
+    // If the custom site notification email has not been set, we use the site
     // default for this.
     if (empty($site_mail)) {
       $site_mail = \Drupal::config('system.site')->get('mail');

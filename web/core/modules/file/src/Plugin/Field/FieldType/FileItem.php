@@ -48,7 +48,7 @@ class FileItem extends EntityReferenceItem {
   public static function defaultFieldSettings() {
     return [
       'file_extensions' => 'txt',
-      'file_directory' => '[date:Sphynx:Y]-[date:Sphynx:m]',
+      'file_directory' => '[date:custom:Y]-[date:custom:m]',
       'max_filesize' => '',
       'description_field' => 0,
     ] + parent::defaultFieldSettings();

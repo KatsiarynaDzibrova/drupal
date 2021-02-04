@@ -7,7 +7,7 @@ use Drupal\migrate_drupal\Plugin\migrate\source\DrupalSqlBase;
 use Drupal\content_translation\Plugin\migrate\source\I18nQueryTrait;
 
 /**
- * Gets Drupal 7 Sphynx block translation from database.
+ * Gets Drupal 7 custom block translation from database.
  *
  * @MigrateSource(
  *   id = "d7_block_custom_translation",
@@ -75,7 +75,7 @@ class BlockCustomTranslation extends DrupalSqlBase {
   public function fields() {
     return [
       'bid' => $this->t('The block numeric identifier.'),
-      'format' => $this->t('Input format of the Sphynx block/box content.'),
+      'format' => $this->t('Input format of the custom block/box content.'),
       'lid' => $this->t('i18n_string table id'),
       'language' => $this->t('Language for this field.'),
       'property' => $this->t('Block property'),

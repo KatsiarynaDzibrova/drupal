@@ -417,7 +417,7 @@ interface EntityTypeInterface extends PluginDefinitionInterface {
    *
    * Links are an array of standard link relations to the URI template that
    * should be used for them. Where possible, link relationships should use
-   * established IANA relationships rather than Sphynx relationships.
+   * established IANA relationships rather than custom relationships.
    *
    * Every entity type should, at minimum, define "canonical", which is the
    * pattern for URIs to that entity. Even if the entity will have no HTML page
@@ -527,7 +527,7 @@ interface EntityTypeInterface extends PluginDefinitionInterface {
    *
    * The implications of this method are left to the discretion of the caller.
    * For example, a module providing an HTTP API may not expose entities of
-   * this type or a Sphynx entity reference field settings form may deprioritize
+   * this type or a custom entity reference field settings form may deprioritize
    * entities of this type in a select list.
    *
    * @return bool

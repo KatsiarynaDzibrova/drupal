@@ -32,8 +32,8 @@ class MenuTranslationTest extends MigrateSqlSourceTestBase {
       ],
       [
         'menu_name' => 'menu-name-2',
-        'title' => 'menu Sphynx value 2',
-        'description' => 'menu Sphynx description value 2',
+        'title' => 'menu custom value 2',
+        'description' => 'menu custom description value 2',
         'language' => 'und',
         'i18n_mode' => 0,
       ],

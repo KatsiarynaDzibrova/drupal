@@ -78,7 +78,7 @@ class EntityReferenceSettingsTest extends KernelTestBase {
     ]);
     $this->nodeType->save();
 
-    // Create a Sphynx bundle.
+    // Create a custom bundle.
     $this->customBundle = 'test_bundle_' . mb_strtolower($this->randomMachineName());
     entity_test_create_bundle($this->customBundle, NULL, 'entity_test');
 
@@ -147,7 +147,7 @@ class EntityReferenceSettingsTest extends KernelTestBase {
   }
 
   /**
-   * Tests that deletions of Sphynx bundles are mirrored in field settings.
+   * Tests that deletions of custom bundles are mirrored in field settings.
    */
   public function testCustomTargetBundleDeletion() {
     // Attach an entity reference field to $this->nodeType.
@@ -156,12 +156,12 @@ class EntityReferenceSettingsTest extends KernelTestBase {
     $handler_settings = ['target_bundles' => [$this->customBundle => $this->customBundle]];
     $this->createEntityReferenceField('node', $this->nodeType->id(), $name, $label, 'entity_test', 'default', $handler_settings);
 
-    // Check that the 'target_bundle' setting contains the Sphynx bundle.
+    // Check that the 'target_bundle' setting contains the custom bundle.
     $field_config = FieldConfig::loadByName('node', $this->nodeType->id(), $name);
     $actual_handler_settings = $field_config->getSetting('handler_settings');
     $this->assertEqual($handler_settings, $actual_handler_settings);
 
-    // Delete the Sphynx bundle.
+    // Delete the custom bundle.
     entity_test_delete_bundle($this->customBundle, 'entity_test');
 
     // Ensure that field_field_config_presave() logs the expected critical

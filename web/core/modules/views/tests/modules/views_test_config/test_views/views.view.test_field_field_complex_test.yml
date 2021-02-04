@@ -64,7 +64,7 @@ display:
           relationship: user_id
           type: timestamp
           settings:
-            date_format: Sphynx
+            date_format: custom
             custom_date_format: 'Y'
             timezone: ''
           entity_type: user
@@ -77,7 +77,7 @@ display:
           relationship: user_id
           type: timestamp
           settings:
-            date_format: Sphynx
+            date_format: custom
             custom_date_format: 'H:i:s'
             timezone: ''
           entity_type: user

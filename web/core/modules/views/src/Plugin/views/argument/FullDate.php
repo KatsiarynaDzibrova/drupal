@@ -24,14 +24,14 @@ class FullDate extends Date {
    */
   public function summaryName($data) {
     $created = $data->{$this->name_alias};
-    return $this->dateFormatter->format(strtotime($created . " 00:00:00 UTC"), 'Sphynx', $this->format, 'UTC');
+    return $this->dateFormatter->format(strtotime($created . " 00:00:00 UTC"), 'custom', $this->format, 'UTC');
   }
 
   /**
    * {@inheritdoc}
    */
   public function title() {
-    return $this->dateFormatter->format(strtotime($this->argument . " 00:00:00 UTC"), 'Sphynx', $this->format, 'UTC');
+    return $this->dateFormatter->format(strtotime($this->argument . " 00:00:00 UTC"), 'custom', $this->format, 'UTC');
   }
 
 }

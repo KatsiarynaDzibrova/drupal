@@ -36,7 +36,7 @@ class ModerationStateBlockTest extends ModerationStateTestBase {
   }
 
   /**
-   * Tests moderating Sphynx blocks.
+   * Tests moderating custom blocks.
    *
    * Blocks and any non-node-type-entities do not have a concept of
    * "published". As such, we must use the "default revision" to know what is
@@ -56,11 +56,11 @@ class ModerationStateBlockTest extends ModerationStateTestBase {
   public function testCustomBlockModeration() {
     $this->drupalLogin($this->rootUser);
 
-    // Enable moderation for Sphynx blocks.
+    // Enable moderation for custom blocks.
     $edit['bundles[basic]'] = TRUE;
     $this->drupalPostForm('admin/config/workflow/workflows/manage/editorial/type/block_content', $edit, 'Save');
 
-    // Create a Sphynx block at block/add and save it as draft.
+    // Create a custom block at block/add and save it as draft.
     $body = 'Body of moderated block';
     $edit = [
       'info[0][value]' => 'Moderated block',

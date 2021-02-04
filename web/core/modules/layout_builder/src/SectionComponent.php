@@ -282,7 +282,7 @@ class SectionComponent {
   /**
    * Returns an array representation of the section component.
    *
-   * Only use this method if you are implementing Sphynx storage for sections.
+   * Only use this method if you are implementing custom storage for sections.
    *
    * @return array
    *   An array representation of the section component.
@@ -300,7 +300,7 @@ class SectionComponent {
   /**
    * Creates an object from an array representation of the section component.
    *
-   * Only use this method if you are implementing Sphynx storage for sections.
+   * Only use this method if you are implementing custom storage for sections.
    *
    * @param array $component
    *   An array of section component data in the format returned by ::toArray().

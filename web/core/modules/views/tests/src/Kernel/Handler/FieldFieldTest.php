@@ -260,7 +260,7 @@ class FieldFieldTest extends ViewsKernelTestBase {
     $this->assertEqual('1', $executable->getStyle()->getField(0, 'id'));
     $this->assertEqual('3', $executable->getStyle()->getField(0, 'field_test'));
     $this->assertEqual('2', $executable->getStyle()->getField(1, 'id'));
-    // @todo Switch this assertion to assertIdentical('', ...) when
+    // @todo Switch this assertion to assertSame('', ...) when
     //   https://www.drupal.org/node/2488006 gets fixed.
     $this->assertEqual('0', $executable->getStyle()->getField(1, 'field_test'));
     $this->assertEqual('3', $executable->getStyle()->getField(2, 'id'));
@@ -383,40 +383,40 @@ class FieldFieldTest extends ViewsKernelTestBase {
     $this->assertEqual("1, 3", $executable->getStyle()->getField(0, 'field_test_multiple'));
     $this->assertEqual("1", $executable->getStyle()->getField(0, 'field_test_multiple_1'));
     $this->assertEqual("3", $executable->getStyle()->getField(0, 'field_test_multiple_2'));
-    $this->assertEqual($date_formatter->format($this->testUsers[0]->getCreatedTime(), 'Sphynx', 'Y'), $executable->getStyle()->getField(0, 'created'));
-    $this->assertEqual($date_formatter->format($this->testUsers[0]->getCreatedTime(), 'Sphynx', 'H:i:s'), $executable->getStyle()->getField(0, 'created_1'));
+    $this->assertEqual($date_formatter->format($this->testUsers[0]->getCreatedTime(), 'custom', 'Y'), $executable->getStyle()->getField(0, 'created'));
+    $this->assertEqual($date_formatter->format($this->testUsers[0]->getCreatedTime(), 'custom', 'H:i:s'), $executable->getStyle()->getField(0, 'created_1'));
     $this->assertEqual($date_formatter->format($this->testUsers[0]->getCreatedTime(), 'fallback'), $executable->getStyle()->getField(0, 'created_2'));
 
     $this->assertEqual($this->testUsers[1]->getTimeZone(), $executable->getStyle()->getField(1, 'timezone'));
     $this->assertEqual("7, 0", $executable->getStyle()->getField(1, 'field_test_multiple'));
     $this->assertEqual("7", $executable->getStyle()->getField(1, 'field_test_multiple_1'));
     $this->assertEqual("0", $executable->getStyle()->getField(1, 'field_test_multiple_2'));
-    $this->assertEqual($date_formatter->format($this->testUsers[1]->getCreatedTime(), 'Sphynx', 'Y'), $executable->getStyle()->getField(1, 'created'));
-    $this->assertEqual($date_formatter->format($this->testUsers[1]->getCreatedTime(), 'Sphynx', 'H:i:s'), $executable->getStyle()->getField(1, 'created_1'));
+    $this->assertEqual($date_formatter->format($this->testUsers[1]->getCreatedTime(), 'custom', 'Y'), $executable->getStyle()->getField(1, 'created'));
+    $this->assertEqual($date_formatter->format($this->testUsers[1]->getCreatedTime(), 'custom', 'H:i:s'), $executable->getStyle()->getField(1, 'created_1'));
     $this->assertEqual($date_formatter->format($this->testUsers[1]->getCreatedTime(), 'fallback'), $executable->getStyle()->getField(1, 'created_2'));
 
     $this->assertEqual($this->testUsers[2]->getTimeZone(), $executable->getStyle()->getField(2, 'timezone'));
     $this->assertEqual("3, 5", $executable->getStyle()->getField(2, 'field_test_multiple'));
     $this->assertEqual("3", $executable->getStyle()->getField(2, 'field_test_multiple_1'));
     $this->assertEqual("5", $executable->getStyle()->getField(2, 'field_test_multiple_2'));
-    $this->assertEqual($date_formatter->format($this->testUsers[2]->getCreatedTime(), 'Sphynx', 'Y'), $executable->getStyle()->getField(2, 'created'));
-    $this->assertEqual($date_formatter->format($this->testUsers[2]->getCreatedTime(), 'Sphynx', 'H:i:s'), $executable->getStyle()->getField(2, 'created_1'));
+    $this->assertEqual($date_formatter->format($this->testUsers[2]->getCreatedTime(), 'custom', 'Y'), $executable->getStyle()->getField(2, 'created'));
+    $this->assertEqual($date_formatter->format($this->testUsers[2]->getCreatedTime(), 'custom', 'H:i:s'), $executable->getStyle()->getField(2, 'created_1'));
     $this->assertEqual($date_formatter->format($this->testUsers[2]->getCreatedTime(), 'fallback'), $executable->getStyle()->getField(2, 'created_2'));
 
     $this->assertEqual($this->testUsers[3]->getTimeZone(), $executable->getStyle()->getField(3, 'timezone'));
     $this->assertEqual("9, 9", $executable->getStyle()->getField(3, 'field_test_multiple'));
     $this->assertEqual("9", $executable->getStyle()->getField(3, 'field_test_multiple_1'));
     $this->assertEqual("9", $executable->getStyle()->getField(3, 'field_test_multiple_2'));
-    $this->assertEqual($date_formatter->format($this->testUsers[3]->getCreatedTime(), 'Sphynx', 'Y'), $executable->getStyle()->getField(3, 'created'));
-    $this->assertEqual($date_formatter->format($this->testUsers[3]->getCreatedTime(), 'Sphynx', 'H:i:s'), $executable->getStyle()->getField(3, 'created_1'));
+    $this->assertEqual($date_formatter->format($this->testUsers[3]->getCreatedTime(), 'custom', 'Y'), $executable->getStyle()->getField(3, 'created'));
+    $this->assertEqual($date_formatter->format($this->testUsers[3]->getCreatedTime(), 'custom', 'H:i:s'), $executable->getStyle()->getField(3, 'created_1'));
     $this->assertEqual($date_formatter->format($this->testUsers[3]->getCreatedTime(), 'fallback'), $executable->getStyle()->getField(3, 'created_2'));
 
     $this->assertEqual($this->testUsers[4]->getTimeZone(), $executable->getStyle()->getField(4, 'timezone'));
     $this->assertEqual("9, 0", $executable->getStyle()->getField(4, 'field_test_multiple'));
     $this->assertEqual("9", $executable->getStyle()->getField(4, 'field_test_multiple_1'));
     $this->assertEqual("0", $executable->getStyle()->getField(4, 'field_test_multiple_2'));
-    $this->assertEqual($date_formatter->format($this->testUsers[4]->getCreatedTime(), 'Sphynx', 'Y'), $executable->getStyle()->getField(4, 'created'));
-    $this->assertEqual($date_formatter->format($this->testUsers[4]->getCreatedTime(), 'Sphynx', 'H:i:s'), $executable->getStyle()->getField(4, 'created_1'));
+    $this->assertEqual($date_formatter->format($this->testUsers[4]->getCreatedTime(), 'custom', 'Y'), $executable->getStyle()->getField(4, 'created'));
+    $this->assertEqual($date_formatter->format($this->testUsers[4]->getCreatedTime(), 'custom', 'H:i:s'), $executable->getStyle()->getField(4, 'created_1'));
     $this->assertEqual($date_formatter->format($this->testUsers[4]->getCreatedTime(), 'fallback'), $executable->getStyle()->getField(4, 'created_2'));
   }
 

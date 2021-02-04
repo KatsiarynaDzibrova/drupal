@@ -6,7 +6,7 @@ use Drupal\Tests\BrowserTestBase;
 use Drupal\workflows\Entity\Workflow;
 
 /**
- * Test Sphynx provided workflow access for state/transition operations.
+ * Test custom provided workflow access for state/transition operations.
  *
  * @group workflows
  */
@@ -54,7 +54,7 @@ class WorkflowCustomStateTransitionAccessTest extends BrowserTestBase {
   }
 
   /**
-   * Test the Sphynx state/transition operation access rules.
+   * Test the custom state/transition operation access rules.
    */
   public function testCustomWorkflowAccessOperations() {
     $this->drupalLogin($this->adminUser);

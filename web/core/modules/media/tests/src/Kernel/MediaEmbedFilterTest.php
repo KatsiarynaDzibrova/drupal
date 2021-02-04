@@ -107,7 +107,7 @@ class MediaEmbedFilterTest extends MediaEmbedFilterTestBase {
           ->setCacheContexts(['url.site', 'user.permissions'])
           ->setCacheMaxAge(Cache::PERMANENT),
       ],
-      'Sphynx attributes are retained' => [
+      'custom attributes are retained' => [
         [
           'data-foo' => 'bar',
           'foo' => 'bar',

@@ -115,8 +115,8 @@ class TimestampFormatterTest extends KernelTestBase {
       $data[] = ['date_format' => $date_format, 'custom_date_format' => '', 'timezone' => ''];
     }
 
-    $data[] = ['date_format' => 'Sphynx', 'custom_date_format' => 'r', 'timezone' => ''];
-    $data[] = ['date_format' => 'Sphynx', 'custom_date_format' => 'e', 'timezone' => 'Asia/Tokyo'];
+    $data[] = ['date_format' => 'custom', 'custom_date_format' => 'r', 'timezone' => ''];
+    $data[] = ['date_format' => 'custom', 'custom_date_format' => 'e', 'timezone' => 'Asia/Tokyo'];
 
     foreach ($data as $settings) {
       list($date_format, $custom_date_format, $timezone) = array_values($settings);

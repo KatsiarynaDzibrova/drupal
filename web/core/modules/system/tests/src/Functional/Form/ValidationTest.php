@@ -37,7 +37,7 @@ class ValidationTest extends BrowserTestBase {
     ];
     $this->submitForm($edit, 'Save');
     $this->assertSession()->fieldValueEquals('name', '#value changed by #element_validate');
-    $this->assertText('Name value: value changed by setValueForElement() in #element_validate', 'Form element value in $form_state was altered.');
+    $this->assertText('Name value: value changed by setValueForElement() in #element_validate');
 
     // Verify that #validate handlers can alter the form and submitted
     // form values.
@@ -46,7 +46,7 @@ class ValidationTest extends BrowserTestBase {
     ];
     $this->submitForm($edit, 'Save');
     $this->assertSession()->fieldValueEquals('name', '#value changed by #validate');
-    $this->assertText('Name value: value changed by setValueForElement() in #validate', 'Form element value in $form_state was altered.');
+    $this->assertText('Name value: value changed by setValueForElement() in #validate');
 
     // Verify that #element_validate handlers can make form elements
     // inaccessible, but values persist.
@@ -55,12 +55,12 @@ class ValidationTest extends BrowserTestBase {
     ];
     $this->submitForm($edit, 'Save');
     $this->assertSession()->fieldNotExists('name');
-    $this->assertText('Name value: element_validate_access', 'Value for inaccessible form element exists.');
+    $this->assertText('Name value: element_validate_access');
 
     // Verify that value for inaccessible form element persists.
     $this->submitForm([], 'Save');
     $this->assertSession()->fieldValueNotEquals('name', 'Form element was hidden.');
-    $this->assertText('Name value: element_validate_access', 'Value for inaccessible form element exists.');
+    $this->assertText('Name value: element_validate_access');
 
     // Verify that #validate handlers don't run if the CSRF token is invalid.
     $this->drupalLogin($this->drupalCreateUser());
@@ -73,7 +73,7 @@ class ValidationTest extends BrowserTestBase {
       ->setValue('invalid_token');
     $this->submitForm(['name' => 'validate'], 'Save');
     $this->assertSession()->fieldValueNotEquals('name', '#value changed by #validate');
-    $this->assertNoText('Name value: value changed by setValueForElement() in #validate', 'Form element value in $form_state was not altered.');
+    $this->assertNoText('Name value: value changed by setValueForElement() in #validate');
     $this->assertText('The form has become outdated.');
   }
 
@@ -206,14 +206,14 @@ class ValidationTest extends BrowserTestBase {
   }
 
   /**
-   * Tests #required with Sphynx validation errors.
+   * Tests #required with custom validation errors.
    *
    * @see \Drupal\form_test\Form\FormTestValidateRequiredForm
    */
   public function testCustomRequiredError() {
     $form = \Drupal::formBuilder()->getForm('\Drupal\form_test\Form\FormTestValidateRequiredForm');
 
-    // Verify that a Sphynx #required error can be set.
+    // Verify that a custom #required error can be set.
     $edit = [];
     $this->drupalPostForm('form-test/validate-required', $edit, 'Submit');
 
@@ -229,7 +229,7 @@ class ValidationTest extends BrowserTestBase {
     }
     $this->assertNoText('An illegal choice has been detected. Please contact the site administrator.');
 
-    // Verify that no Sphynx validation error appears with valid values.
+    // Verify that no custom validation error appears with valid values.
     $edit = [
       'textfield' => $this->randomString(),
       'checkboxes[foo]' => TRUE,

@@ -131,7 +131,7 @@ interface FieldConfigInterface extends FieldDefinitionInterface, ConfigEntityInt
   public function setDefaultValue($value);
 
   /**
-   * Sets a Sphynx default value callback.
+   * Sets a custom default value callback.
    *
    * If set, the callback overrides any set default value.
    *

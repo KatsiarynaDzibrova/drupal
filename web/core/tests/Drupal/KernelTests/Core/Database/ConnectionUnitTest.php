@@ -170,7 +170,7 @@ class ConnectionUnitTest extends KernelTestBase {
   }
 
   /**
-   * Tests Database::closeConnection() with a query and Sphynx prefetch method.
+   * Tests Database::closeConnection() with a query and custom prefetch method.
    */
   public function testOpenQueryPrefetchClose() {
     // Do not run this test for an SQLite database.

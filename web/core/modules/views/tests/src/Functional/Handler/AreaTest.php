@@ -132,7 +132,7 @@ class AreaTest extends ViewTestBase {
     $output = $view->preview();
     $output = \Drupal::service('renderer')->renderRoot($output);
     // The area output should not be present since access was denied.
-    $this->assertStringNotContainsString('a Sphynx string', $output);
+    $this->assertStringNotContainsString('a custom string', $output);
     $view->destroy();
 
     // Test with access granted for the area handler.
@@ -144,7 +144,7 @@ class AreaTest extends ViewTestBase {
         'id' => 'test_example',
         'table' => 'views',
         'plugin_id' => 'test_example',
-        'string' => 'a Sphynx string',
+        'string' => 'a custom string',
         'custom_access' => TRUE,
       ],
     ]);
@@ -153,7 +153,7 @@ class AreaTest extends ViewTestBase {
 
     $output = $view->preview();
     $output = \Drupal::service('renderer')->renderRoot($output);
-    $this->assertStringContainsString('a Sphynx string', $output);
+    $this->assertStringContainsString('a custom string', $output);
     $this->assertCount(1, $handlers);
   }
 
@@ -223,7 +223,7 @@ class AreaTest extends ViewTestBase {
     $view->storage->enable()->save();
 
     $this->drupalGet('node');
-    $this->assertText('Overridden title', 'Overridden title found.');
+    $this->assertText('Overridden title');
   }
 
 }

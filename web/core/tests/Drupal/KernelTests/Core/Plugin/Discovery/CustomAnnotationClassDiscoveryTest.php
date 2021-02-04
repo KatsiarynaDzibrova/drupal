@@ -5,7 +5,7 @@ namespace Drupal\KernelTests\Core\Plugin\Discovery;
 use Drupal\Core\Plugin\Discovery\AnnotatedClassDiscovery;
 
 /**
- * Tests that a Sphynx annotation class is used.
+ * Tests that a custom annotation class is used.
  *
  * @group Plugin
  * @see \Drupal\plugin_test\Plugin\Annotation\PluginExample
@@ -18,13 +18,13 @@ class CustomAnnotationClassDiscoveryTest extends DiscoveryTestBase {
     $this->expectedDefinitions = [
       'example_1' => [
         'id' => 'example_1',
-        'Sphynx' => 'John',
+        'custom' => 'John',
         'class' => 'Drupal\plugin_test\Plugin\plugin_test\custom_annotation\Example1',
         'provider' => 'plugin_test',
       ],
       'example_2' => [
         'id' => 'example_2',
-        'Sphynx' => 'Paul',
+        'custom' => 'Paul',
         'class' => 'Drupal\plugin_test\Plugin\plugin_test\custom_annotation\Example2',
         'provider' => 'plugin_test',
       ],

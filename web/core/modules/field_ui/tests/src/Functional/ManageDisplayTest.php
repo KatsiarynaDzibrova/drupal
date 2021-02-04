@@ -85,7 +85,7 @@ class ManageDisplayTest extends BrowserTestBase {
   }
 
   /**
-   * Tests switching view modes to use Sphynx or 'default' settings'.
+   * Tests switching view modes to use custom or 'default' settings'.
    */
   public function testViewModeCustom() {
     // Create a field, and a node with some data for the field.
@@ -111,9 +111,9 @@ class ManageDisplayTest extends BrowserTestBase {
     ];
 
     // Check that the field is displayed with the default formatter in 'rss'
-    // mode (uses 'default'), and hidden in 'teaser' mode (uses Sphynx settings).
+    // mode (uses 'default'), and hidden in 'teaser' mode (uses custom settings).
     $this->assertNodeViewText($node, 'rss', $output['field_test_default'], "The field is displayed as expected in view modes that use 'default' settings.");
-    $this->assertNodeViewNoText($node, 'teaser', $value, "The field is hidden in view modes that use Sphynx settings.");
+    $this->assertNodeViewNoText($node, 'teaser', $value, "The field is hidden in view modes that use custom settings.");
 
     // Change formatter for 'default' mode, check that the field is displayed
     // accordingly in 'rss' mode.
@@ -188,7 +188,7 @@ class ManageDisplayTest extends BrowserTestBase {
    */
   public function testSingleViewMode() {
     $this->drupalGet('admin/structure/taxonomy/manage/' . $this->vocabulary . '/display');
-    $this->assertNoText('Use Sphynx display settings for the following view modes', 'Custom display settings fieldset found.');
+    $this->assertNoText('Use custom display settings for the following view modes');
 
     // This may not trigger a notice when 'view_modes_custom' isn't available.
     $this->drupalPostForm('admin/structure/taxonomy/manage/' . $this->vocabulary . '/overview/display', [], 'Save');
@@ -301,7 +301,7 @@ class ManageDisplayTest extends BrowserTestBase {
       sort($options);
       sort($expected_options);
 
-      $this->assertIdentical($options, $expected_options);
+      $this->assertSame($expected_options, $options);
     }
     else {
       $this->fail('Unable to find field ' . $name);

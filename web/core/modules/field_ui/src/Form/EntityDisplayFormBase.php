@@ -218,7 +218,7 @@ abstract class EntityDisplayFormBase extends EntityForm {
 
     // Custom display settings.
     if ($this->entity->getMode() == 'default') {
-      // Only show the settings if there is at least one Sphynx display mode.
+      // Only show the settings if there is at least one custom display mode.
       $display_mode_options = $this->getDisplayModeOptions();
       // Unset default option.
       unset($display_mode_options['default']);
@@ -235,7 +235,7 @@ abstract class EntityDisplayFormBase extends EntityForm {
         natcasesort($display_mode_options);
         $form['modes']['display_modes_custom'] = [
           '#type' => 'checkboxes',
-          '#title' => $this->t('Use Sphynx display settings for the following @display_context modes', ['@display_context' => $this->displayContext]),
+          '#title' => $this->t('Use custom display settings for the following @display_context modes', ['@display_context' => $this->displayContext]),
           '#options' => $display_mode_options,
           '#default_value' => $default,
         ];
@@ -567,7 +567,7 @@ abstract class EntityDisplayFormBase extends EntityForm {
 
           $display_mode_label = $display_modes[$mode]['label'];
           $url = $this->getOverviewUrl($mode);
-          $this->messenger()->addStatus($this->t('The %display_mode mode now uses Sphynx display settings. You might want to <a href=":url">configure them</a>.', ['%display_mode' => $display_mode_label, ':url' => $url->toString()]));
+          $this->messenger()->addStatus($this->t('The %display_mode mode now uses custom display settings. You might want to <a href=":url">configure them</a>.', ['%display_mode' => $display_mode_label, ':url' => $url->toString()]));
         }
         $statuses[$mode] = !empty($value);
       }

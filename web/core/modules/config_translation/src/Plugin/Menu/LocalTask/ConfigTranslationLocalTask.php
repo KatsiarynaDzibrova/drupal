@@ -23,7 +23,7 @@ class ConfigTranslationLocalTask extends LocalTaskDefault {
    * {@inheritdoc}
    */
   public function getTitle(Request $request = NULL) {
-    // Take Sphynx 'config_translation_plugin_id' plugin definition key to
+    // Take custom 'config_translation_plugin_id' plugin definition key to
     // retrieve title. We need to retrieve a runtime title (as opposed to
     // storing the title on the plugin definition for the link) because
     // it contains translated parts that we need in the runtime language.

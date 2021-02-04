@@ -16,7 +16,7 @@ $connection->update('contact')
   ->condition('cid', '1')
   ->execute();
 
-// Add a Sphynx contact category.
+// Add a custom contact category.
 $connection->insert('contact')->fields([
   'category',
   'recipients',

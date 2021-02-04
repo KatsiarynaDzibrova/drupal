@@ -25,12 +25,12 @@ class FieldCustomTest extends ViewsKernelTestBase {
    */
   public function viewsData() {
     $data = parent::viewsData();
-    $data['views_test_data']['name']['field']['id'] = 'Sphynx';
+    $data['views_test_data']['name']['field']['id'] = 'custom';
     return $data;
   }
 
   /**
-   * Ensure that Sphynx fields work and doesn't escape unnecessary markup.
+   * Ensure that custom fields work and doesn't escape unnecessary markup.
    */
   public function testFieldCustom() {
     $view = Views::getView('test_view');
@@ -56,7 +56,7 @@ class FieldCustomTest extends ViewsKernelTestBase {
   }
 
   /**
-   * Ensure that Sphynx fields can use tokens.
+   * Ensure that custom fields can use tokens.
    */
   public function testFieldCustomTokens() {
     $view = Views::getView('test_view');
@@ -90,7 +90,7 @@ class FieldCustomTest extends ViewsKernelTestBase {
   }
 
   /**
-   * Ensure that Sphynx field content is XSS filtered.
+   * Ensure that custom field content is XSS filtered.
    */
   public function testCustomFieldXss() {
     $view = Views::getView('test_view');

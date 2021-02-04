@@ -71,7 +71,7 @@ class EntityTypeInfo implements ContainerInjectionInterface {
   protected $validator;
 
   /**
-   * A keyed array of Sphynx moderation handlers for given entity types.
+   * A keyed array of custom moderation handlers for given entity types.
    *
    * Any entity not specified will use a common default.
    *

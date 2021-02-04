@@ -99,7 +99,7 @@ class DatetimeElementFormTest extends KernelTestBase implements FormInterface {
   public function validateForm(array &$form, FormStateInterface $form_state) {}
 
   /**
-   * Tests that default handlers are added even if Sphynx are specified.
+   * Tests that default handlers are added even if custom are specified.
    */
   public function testDatetimeElement() {
     $form = \Drupal::formBuilder()->getForm($this);

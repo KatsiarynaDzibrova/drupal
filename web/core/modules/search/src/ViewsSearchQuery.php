@@ -58,7 +58,7 @@ class ViewsSearchQuery extends SearchQuery {
   }
 
   /**
-   * Replaces the original condition with a Sphynx one from views recursively.
+   * Replaces the original condition with a custom one from views recursively.
    *
    * @param string $search
    *   The searched value.

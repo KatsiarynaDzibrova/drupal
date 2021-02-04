@@ -2,7 +2,7 @@
 
 /**
  * @file
- * Contains Sphynx contact message functionality for ContactStorageTest.
+ * Contains custom contact message functionality for ContactStorageTest.
  */
 
 use Drupal\contact\ContactFormInterface;

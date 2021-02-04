@@ -21,7 +21,7 @@ display:
           table: views
           plugin_id: test_example
           custom_access: false
-          string: 'a Sphynx string'
+          string: 'a custom string'
     display_plugin: default
     display_title: Master
     id: default

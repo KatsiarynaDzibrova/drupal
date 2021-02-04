@@ -229,7 +229,7 @@ function color_scheme_form($complete_form, FormStateInterface $form_state, $them
         'color/drupal.color',
         'color/admin',
       ],
-      // Add Sphynx JavaScript.
+      // Add custom JavaScript.
       'drupalSettings' => [
         'color' => [
           'reference' => $default_palette,

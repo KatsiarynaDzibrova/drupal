@@ -84,7 +84,7 @@ class NegotiationUrlForm extends ConfigFormBase {
       '#tree' => TRUE,
       '#title' => $this->t('Path prefix configuration'),
       '#open' => TRUE,
-      '#description' => $this->t('Language codes or other Sphynx text to use as a path prefix for URL language detection. For the selected fallback language, this value may be left blank. <strong>Modifying this value may break existing URLs. Use with caution in a production environment.</strong> Example: Specifying "deutsch" as the path prefix code for German results in URLs like "example.com/deutsch/contact".'),
+      '#description' => $this->t('Language codes or other custom text to use as a path prefix for URL language detection. For the selected fallback language, this value may be left blank. <strong>Modifying this value may break existing URLs. Use with caution in a production environment.</strong> Example: Specifying "deutsch" as the path prefix code for German results in URLs like "example.com/deutsch/contact".'),
       '#states' => [
         'visible' => [
           ':input[name="language_negotiation_url_part"]' => [

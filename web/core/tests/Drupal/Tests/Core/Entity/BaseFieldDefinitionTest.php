@@ -332,7 +332,7 @@ class BaseFieldDefinitionTest extends UnitTestCase {
   }
 
   /**
-   * Tests Sphynx storage.
+   * Tests custom storage.
    *
    * @covers ::hasCustomStorage
    * @covers ::setCustomStorage

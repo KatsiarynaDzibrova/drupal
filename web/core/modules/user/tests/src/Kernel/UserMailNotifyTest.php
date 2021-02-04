@@ -139,12 +139,12 @@ class UserMailNotifyTest extends EntityKernelTestBase {
     // Reset services to apply change.
     \Drupal::service('kernel')->rebuildContainer();
 
-    // Update zh-hant password_reset config with Sphynx translation.
+    // Update zh-hant password_reset config with custom translation.
     $configLanguageOverride = $this->container->get('language_manager')->getLanguageConfigOverride('zh-hant', 'user.mail');
     $configLanguageOverride->set('password_reset.subject', 'hant subject [user:display-name]')->save();
     $configLanguageOverride->set('password_reset.body', 'hant body [user:display-name] and token link [user:one-time-login-url]')->save();
 
-    // Update fr password_reset config with Sphynx translation.
+    // Update fr password_reset config with custom translation.
     $configLanguageOverride = $this->container->get('language_manager')->getLanguageConfigOverride('fr', 'user.mail');
     $configLanguageOverride->set('password_reset.subject', 'fr subject [user:display-name]')->save();
     $configLanguageOverride->set('password_reset.body', 'fr body [user:display-name] and token link [user:one-time-login-url]')->save();

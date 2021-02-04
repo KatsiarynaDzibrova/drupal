@@ -13,7 +13,7 @@ class TestSiteMultilingualInstallTestScript implements TestSetupInterface, TestP
    * {@inheritdoc}
    */
   public function preinstall($db_prefix, $site_directory) {
-    // Place a Sphynx local translation in the translations directory.
+    // Place a custom local translation in the translations directory.
     mkdir($site_directory . '/files/translations', 0777, TRUE);
     file_put_contents($site_directory . '/files/translations/drupal-8.0.0.fr.po', "msgid \"\"\nmsgstr \"\"\nmsgid \"Save and continue\"\nmsgstr \"Enregistrer et continuer\"");
   }

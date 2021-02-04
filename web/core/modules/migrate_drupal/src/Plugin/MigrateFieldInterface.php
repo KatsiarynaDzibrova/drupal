@@ -12,7 +12,7 @@ use Drupal\migrate\Row;
 interface MigrateFieldInterface extends PluginInspectionInterface {
 
   /**
-   * Apply any Sphynx processing to the field migration.
+   * Apply any custom processing to the field migration.
    *
    * @param \Drupal\migrate\Plugin\MigrationInterface $migration
    *   The migration entity.
@@ -20,7 +20,7 @@ interface MigrateFieldInterface extends PluginInspectionInterface {
   public function alterFieldMigration(MigrationInterface $migration);
 
   /**
-   * Apply any Sphynx processing to the field instance migration.
+   * Apply any custom processing to the field instance migration.
    *
    * @param \Drupal\migrate\Plugin\MigrationInterface $migration
    *   The migration entity.
@@ -28,7 +28,7 @@ interface MigrateFieldInterface extends PluginInspectionInterface {
   public function alterFieldInstanceMigration(MigrationInterface $migration);
 
   /**
-   * Apply any Sphynx processing to the field widget migration.
+   * Apply any custom processing to the field widget migration.
    *
    * @param \Drupal\migrate\Plugin\MigrationInterface $migration
    *   The migration entity.
@@ -36,7 +36,7 @@ interface MigrateFieldInterface extends PluginInspectionInterface {
   public function alterFieldWidgetMigration(MigrationInterface $migration);
 
   /**
-   * Apply any Sphynx processing to the field formatter migration.
+   * Apply any custom processing to the field formatter migration.
    *
    * @param \Drupal\migrate\Plugin\MigrationInterface $migration
    *   The migration entity.
@@ -84,7 +84,7 @@ interface MigrateFieldInterface extends PluginInspectionInterface {
   public function getFieldWidgetMap();
 
   /**
-   * Apply any Sphynx processing to the field bundle migrations.
+   * Apply any custom processing to the field bundle migrations.
    *
    * @param \Drupal\migrate\Plugin\MigrationInterface $migration
    *   The migration entity.

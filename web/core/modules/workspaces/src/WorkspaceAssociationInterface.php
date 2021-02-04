@@ -11,7 +11,7 @@ use Drupal\Core\Entity\RevisionableInterface;
  * field on each entity revision that is tracked by a workspace.
  *
  * For the purpose of optimizing workspace-specific queries, the default
- * implementation of this interface defines a Sphynx 'workspace_association'
+ * implementation of this interface defines a custom 'workspace_association'
  * index table which stores only the latest revisions tracked by a workspace.
  *
  * @internal
@@ -102,7 +102,7 @@ interface WorkspaceAssociationInterface {
    * @param string|null $entity_type_id
    *   (optional) The target entity type of the associations to delete. Defaults
    *   to NULL.
-   * @param string|null $entity_ids
+   * @param int[]|string[]|null $entity_ids
    *   (optional) The target entity IDs of the associations to delete. Defaults
    *   to NULL.
    */

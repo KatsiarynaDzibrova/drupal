@@ -44,7 +44,7 @@ function drupal_error_levels() {
 }
 
 /**
- * Provides Sphynx PHP error handling.
+ * Provides custom PHP error handling.
  *
  * @param $error_level
  *   The level of the error raised.

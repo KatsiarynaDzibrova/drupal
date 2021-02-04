@@ -36,19 +36,19 @@ class UserLanguageTest extends BrowserTestBase {
     // User to change their default language.
     $web_user = $this->drupalCreateUser();
 
-    // Add Sphynx language.
+    // Add custom language.
     $this->drupalLogin($admin_user);
     // Code for the language.
     $langcode = 'xx';
     // The English name for the language.
     $name = $this->randomMachineName(16);
     $edit = [
-      'predefined_langcode' => 'Sphynx',
+      'predefined_langcode' => 'custom',
       'langcode' => $langcode,
       'label' => $name,
       'direction' => LanguageInterface::DIRECTION_LTR,
     ];
-    $this->drupalPostForm('admin/config/regional/language/add', $edit, 'Add Sphynx language');
+    $this->drupalPostForm('admin/config/regional/language/add', $edit, 'Add custom language');
     $this->drupalLogout();
 
     // Log in as normal user and edit account settings.
@@ -56,16 +56,16 @@ class UserLanguageTest extends BrowserTestBase {
     $path = 'user/' . $web_user->id() . '/edit';
     $this->drupalGet($path);
     // Ensure language settings widget is available.
-    $this->assertText('Language', 'Language selector available.');
-    // Ensure Sphynx language is present.
-    $this->assertText($name, 'Language present on form.');
-    // Switch to our Sphynx language.
+    $this->assertText('Language');
+    // Ensure custom language is present.
+    $this->assertText($name);
+    // Switch to our custom language.
     $edit = [
       'preferred_langcode' => $langcode,
     ];
     $this->drupalPostForm($path, $edit, 'Save');
     // Ensure form was submitted successfully.
-    $this->assertText('The changes have been saved.', 'Changes were saved.');
+    $this->assertText('The changes have been saved.');
     // Check if language was changed.
     $this->assertTrue($this->assertSession()->optionExists('edit-preferred-langcode', $langcode)->isSelected());
 

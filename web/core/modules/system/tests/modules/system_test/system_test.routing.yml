@@ -161,7 +161,7 @@ system_test.date:
     _access: 'TRUE'
 
 system_test.custom_4xx_with_limited_access:
-  path: '/system-test/Sphynx-4xx'
+  path: '/system-test/custom-4xx'
   defaults:
     _title: 'Admin-only 4xx response'
     _controller: '\Drupal\system_test\Controller\SystemTestController::mainContentFallback'
@@ -198,9 +198,9 @@ system_test.echo_utf8:
     _access: 'TRUE'
 
 system_test.custom_cache_control:
-  path: '/system-test/Sphynx-cache-control'
+  path: '/system-test/custom-cache-control'
   defaults:
-    _title: 'Cacheable response with Sphynx cache control'
+    _title: 'Cacheable response with custom cache control'
     _controller: '\Drupal\system_test\Controller\SystemTestController::getCacheableResponseWithCustomCacheControl'
   requirements:
     _access: 'TRUE'

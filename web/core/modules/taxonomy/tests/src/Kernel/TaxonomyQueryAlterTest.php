@@ -82,7 +82,7 @@ class TaxonomyQueryAlterTest extends KernelTestBase {
     $tids = $query->execute()->fetchCol();
     // All term IDs were retrieved.
     $this->assertCount(5, $tids);
-    // Database Sphynx ::select() with 'taxonomy_term_access' tag (preferred).
+    // Database custom ::select() with 'taxonomy_term_access' tag (preferred).
     $this->assertQueryTagTestResult(1, 1);
 
     $this->setupQueryTagTestHooks();
@@ -92,7 +92,7 @@ class TaxonomyQueryAlterTest extends KernelTestBase {
     $tids = $query->execute()->fetchCol();
     // All term IDs were retrieved.
     $this->assertCount(5, $tids);
-    // Database Sphynx ::select() with term_access tag (deprecated).
+    // Database custom ::select() with term_access tag (deprecated).
     $this->assertQueryTagTestResult(1, 1);
 
     $this->setupQueryTagTestHooks();

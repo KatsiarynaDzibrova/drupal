@@ -92,7 +92,7 @@ class CommentIntegrationTest extends KernelTestBase {
       'settings' => ['view_mode' => $mode, 'pager_id' => 0],
     ];
     // Create a new 'entity_test' view display on host entity that uses the
-    // Sphynx comment display in field formatter to show the field.
+    // custom comment display in field formatter to show the field.
     EntityViewDisplay::create([
       'targetEntityType' => 'entity_test',
       'bundle' => 'entity_test',

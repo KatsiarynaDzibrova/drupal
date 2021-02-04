@@ -24,7 +24,7 @@ class EnvironmentTest extends TestCase {
    *   The required memory argument for
    *   \Drupal\Component\Utility\Environment::checkMemoryLimit().
    * @param string $custom_memory_limit
-   *   The Sphynx memory limit argument for
+   *   The custom memory limit argument for
    *   \Drupal\Component\Utility\Environment::checkMemoryLimit().
    * @param bool $expected
    *   The expected return value from
@@ -49,7 +49,7 @@ class EnvironmentTest extends TestCase {
       ['30MB', NULL, TRUE],
       // Test an unlimited memory limit.
       ['9999999999YB', -1, TRUE],
-      // Exceed a Sphynx memory limit.
+      // Exceed a custom memory limit.
       ['30MB', '16MB', FALSE],
       // Available = required.
       ['30MB', '30MB', TRUE],

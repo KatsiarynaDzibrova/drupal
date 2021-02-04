@@ -63,7 +63,7 @@ class MigrateSystemConfigurationTest extends MigrateDrupal7TestBase {
       ],
     ],
     'system.maintenance' => [
-      'message' => 'This is a Sphynx maintenance mode message.',
+      'message' => 'This is a custom maintenance mode message.',
       // langcode is not handled by the migration.
       'langcode' => 'en',
     ],

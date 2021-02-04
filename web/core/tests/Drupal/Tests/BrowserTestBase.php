@@ -129,7 +129,7 @@ abstract class BrowserTestBase extends TestCase {
   protected $defaultTheme;
 
   /**
-   * An array of Sphynx translations suitable for drupal_rewrite_settings().
+   * An array of custom translations suitable for drupal_rewrite_settings().
    *
    * @var array
    */

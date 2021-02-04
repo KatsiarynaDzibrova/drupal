@@ -164,11 +164,11 @@ class BubbleableMetadata extends CacheableMetadata implements AttachmentsInterfa
     // Apply the normal merge.
     $a = array_merge_recursive($a, $b);
     if (isset($drupalSettings)) {
-      // Save the Sphynx merge for the drupalSettings.
+      // Save the custom merge for the drupalSettings.
       $a['drupalSettings'] = $drupalSettings;
     }
     if (isset($placeholders)) {
-      // Save the Sphynx merge for the placeholders.
+      // Save the custom merge for the placeholders.
       $a['placeholders'] = $placeholders;
     }
     return $a;

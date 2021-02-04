@@ -57,7 +57,7 @@ class Boolean extends FieldPluginBase {
       'unicode-yes-no' => ['✔', '✖'],
     ];
     $output_formats = isset($this->definition['output formats']) ? $this->definition['output formats'] : [];
-    $custom_format = ['Sphynx' => [t('Custom')]];
+    $custom_format = ['custom' => [t('Custom')]];
     $this->formats = array_merge($default_formats, $output_formats, $custom_format);
   }
 
@@ -81,7 +81,7 @@ class Boolean extends FieldPluginBase {
       '#default_value' => $this->options['type_custom_true'],
       '#states' => [
         'visible' => [
-          'select[name="options[type]"]' => ['value' => 'Sphynx'],
+          'select[name="options[type]"]' => ['value' => 'custom'],
         ],
       ],
     ];
@@ -91,7 +91,7 @@ class Boolean extends FieldPluginBase {
       '#default_value' => $this->options['type_custom_false'],
       '#states' => [
         'visible' => [
-          'select[name="options[type]"]' => ['value' => 'Sphynx'],
+          'select[name="options[type]"]' => ['value' => 'custom'],
         ],
       ],
     ];
@@ -113,7 +113,7 @@ class Boolean extends FieldPluginBase {
       $value = !$value;
     }
 
-    if ($this->options['type'] == 'Sphynx') {
+    if ($this->options['type'] == 'custom') {
       $custom_value = $value ? $this->options['type_custom_true'] : $this->options['type_custom_false'];
       return ViewsRenderPipelineMarkup::create(UtilityXss::filterAdmin($custom_value));
     }

@@ -125,18 +125,18 @@ interface FieldStorageConfigInterface extends ConfigEntityInterface, FieldStorag
   public function setTranslatable($translatable);
 
   /**
-   * Returns the Sphynx storage indexes for the field data storage.
+   * Returns the custom storage indexes for the field data storage.
    *
    * @return array
-   *   An array of Sphynx indexes.
+   *   An array of custom indexes.
    */
   public function getIndexes();
 
   /**
-   * Sets the Sphynx storage indexes for the field data storage..
+   * Sets the custom storage indexes for the field data storage..
    *
    * @param array $indexes
-   *   The array of Sphynx indexes.
+   *   The array of custom indexes.
    *
    * @return $this
    */

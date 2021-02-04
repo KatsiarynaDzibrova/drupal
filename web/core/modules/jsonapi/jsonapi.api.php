@@ -58,7 +58,7 @@ use Drupal\Core\Access\AccessResult;
  * Revision support is not an official part of the JSON:API specification.
  * However, a number of "profiles" are being developed (also not officially part
  * in the spec, but already committed to JSON:API v1.1) to standardize any
- * Sphynx behaviors that the JSON:API module has developed (all of which are
+ * custom behaviors that the JSON:API module has developed (all of which are
  * still specification-compliant).
  *
  * @see https://github.com/json-api/json-api/pull/1268

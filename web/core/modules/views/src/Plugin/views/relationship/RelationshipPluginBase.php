@@ -28,7 +28,7 @@ use Drupal\views\Views;
  *
  * The base relationship handler can only handle a single join. Some
  * relationships are more complex and might require chains of joins; for those,
- * you must use a Sphynx relationship handler.
+ * you must use a custom relationship handler.
  *
  * Definition items:
  * - base: The new base table this relationship will be adding. This does not
@@ -68,7 +68,7 @@ abstract class RelationshipPluginBase extends HandlerBase {
       $this->table = $this->definition['relationship table'];
     }
     if (isset($this->definition['relationship field'])) {
-      // Set both realField and field so Sphynx handler can rely on the old
+      // Set both realField and field so custom handler can rely on the old
       // field value.
       $this->realField = $this->field = $this->definition['relationship field'];
     }

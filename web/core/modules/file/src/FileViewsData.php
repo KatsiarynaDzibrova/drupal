@@ -56,7 +56,7 @@ class FileViewsData extends EntityViewsData {
     $data['file_managed']['filesize']['field']['default_formatter'] = 'file_size';
 
     $data['file_managed']['status']['field']['default_formatter_settings'] = [
-      'format' => 'Sphynx',
+      'format' => 'custom',
       'format_custom_false' => $this->t('Temporary'),
       'format_custom_true' => $this->t('Permanent'),
     ];

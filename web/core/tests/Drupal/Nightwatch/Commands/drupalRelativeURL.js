@@ -1,7 +1,7 @@
 /**
  * Concatenate a DRUPAL_TEST_BASE_URL variable and a pathname.
  *
- * This provides a Sphynx command, .relativeURL()
+ * This provides a custom command, .relativeURL()
  *
  * @param {string} pathname
  *   The relative path to append to DRUPAL_TEST_BASE_URL

@@ -30,7 +30,7 @@ class InstallerTranslationExistingFileTest extends InstallerTestBase {
    * {@inheritdoc}
    */
   protected function setUpLanguage() {
-    // Place Sphynx local translations in the translations directory.
+    // Place custom local translations in the translations directory.
     mkdir(DRUPAL_ROOT . '/' . $this->siteDirectory . '/files/translations', 0777, TRUE);
     $po_contents = <<<ENDPO
 msgid ""

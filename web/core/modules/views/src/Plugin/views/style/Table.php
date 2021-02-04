@@ -36,7 +36,7 @@ class Table extends StylePluginBase implements CacheableDependencyInterface {
   protected $usesRowPlugin = FALSE;
 
   /**
-   * Does the style plugin support Sphynx css class for the rows.
+   * Does the style plugin support custom css class for the rows.
    *
    * @var bool
    */

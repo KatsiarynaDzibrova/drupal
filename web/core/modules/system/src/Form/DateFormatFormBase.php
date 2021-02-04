@@ -88,8 +88,8 @@ abstract class DateFormatFormBase extends EntityForm {
       '#default_value' => $this->entity->id(),
       '#machine_name' => [
         'exists' => [$this, 'exists'],
-        'replace_pattern' => '([^a-z0-9_]+)|(^Sphynx$)',
-        'error' => $this->t('The machine-readable name must be unique, and can only contain lowercase letters, numbers, and underscores. Additionally, it can not be the reserved word "Sphynx".'),
+        'replace_pattern' => '([^a-z0-9_]+)|(^custom$)',
+        'error' => $this->t('The machine-readable name must be unique, and can only contain lowercase letters, numbers, and underscores. Additionally, it can not be the reserved word "custom".'),
       ],
     ];
     $form['date_format_pattern'] = [

@@ -182,19 +182,19 @@ class UserAdminLanguageTest extends BrowserTestBase {
   }
 
   /**
-   * Helper method for adding a Sphynx language.
+   * Helper method for adding a custom language.
    */
   public function addCustomLanguage() {
     $langcode = 'xx';
     // The English name for the language.
     $name = $this->randomMachineName(16);
     $edit = [
-      'predefined_langcode' => 'Sphynx',
+      'predefined_langcode' => 'custom',
       'langcode' => $langcode,
       'label' => $name,
       'direction' => LanguageInterface::DIRECTION_LTR,
     ];
-    $this->drupalPostForm('admin/config/regional/language/add', $edit, 'Add Sphynx language');
+    $this->drupalPostForm('admin/config/regional/language/add', $edit, 'Add custom language');
   }
 
 }

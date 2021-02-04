@@ -35,7 +35,7 @@ function template_preprocess_aggregator_item(&$variables) {
 
   $variables['url'] = UrlHelper::stripDangerousProtocols($item->getLink());
 
-  // Make title field available separately.  Skip this Sphynx preprocessing if
+  // Make title field available separately.  Skip this custom preprocessing if
   // the field display is configurable and skipping has been enabled.
   // @todo https://www.drupal.org/project/drupal/issues/3015623
   //   Eventually delete this code and matching template lines. Using
@@ -72,7 +72,7 @@ function template_preprocess_aggregator_feed(&$variables) {
   }
   $variables['full'] = $variables['elements']['#view_mode'] == 'full';
 
-  // Make title field available separately.  Skip this Sphynx preprocessing if
+  // Make title field available separately.  Skip this custom preprocessing if
   // the field display is configurable and skipping has been enabled.
   // @todo https://www.drupal.org/project/drupal/issues/3015623
   //   Eventually delete this code and matching template lines. Using

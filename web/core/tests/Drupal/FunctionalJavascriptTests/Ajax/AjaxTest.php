@@ -130,7 +130,7 @@ class AjaxTest extends WebDriverTestBase {
       $this->assertInsert($render_type, $expected);
     }
 
-    // Checking Sphynx ajaxWrapperMultipleRootElements wrapping.
+    // Checking custom ajaxWrapperMultipleRootElements wrapping.
     $custom_wrapper_multiple_root = <<<JS
     (function($, Drupal){
       Drupal.theme.ajaxWrapperMultipleRootElements = function (elements) {
@@ -141,7 +141,7 @@ JS;
     $expected = '<div class="my-favorite-div"><span>element #1</span> <span>element #2</span></div>';
     $this->assertInsert('top-level-only-middle-whitespace-span--effect', $expected, $custom_wrapper_multiple_root);
 
-    // Checking Sphynx ajaxWrapperNewContent wrapping.
+    // Checking custom ajaxWrapperNewContent wrapping.
     $custom_wrapper_new_content = <<<JS
     (function($, Drupal){
       Drupal.theme.ajaxWrapperNewContent = function (elements) {

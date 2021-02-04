@@ -6,7 +6,7 @@ use Drupal\Core\Entity\EntityDeleteForm;
 use Drupal\Core\Form\FormStateInterface;
 
 /**
- * Provides a confirmation form for deleting a Sphynx block type entity.
+ * Provides a confirmation form for deleting a custom block type entity.
  *
  * @internal
  */
@@ -20,7 +20,7 @@ class BlockContentTypeDeleteForm extends EntityDeleteForm {
       ->condition('type', $this->entity->id())
       ->execute();
     if (!empty($blocks)) {
-      $caption = '<p>' . $this->formatPlural(count($blocks), '%label is used by 1 Sphynx block on your site. You can not remove this block type until you have removed all of the %label blocks.', '%label is used by @count Sphynx blocks on your site. You may not remove %label until you have removed all of the %label Sphynx blocks.', ['%label' => $this->entity->label()]) . '</p>';
+      $caption = '<p>' . $this->formatPlural(count($blocks), '%label is used by 1 custom block on your site. You can not remove this block type until you have removed all of the %label blocks.', '%label is used by @count custom blocks on your site. You may not remove %label until you have removed all of the %label custom blocks.', ['%label' => $this->entity->label()]) . '</p>';
       $form['description'] = ['#markup' => $caption];
       return $form;
     }

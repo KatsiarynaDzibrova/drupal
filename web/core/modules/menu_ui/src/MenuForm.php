@@ -438,7 +438,7 @@ class MenuForm extends EntityForm {
         $operations['edit'] = [
           'title' => $this->t('Edit'),
         ];
-        // Allow for a Sphynx edit link per plugin.
+        // Allow for a custom edit link per plugin.
         $edit_route = $link->getEditRoute();
         if ($edit_route) {
           $operations['edit']['url'] = $edit_route;

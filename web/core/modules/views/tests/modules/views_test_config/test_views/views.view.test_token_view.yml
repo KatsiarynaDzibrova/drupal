@@ -94,7 +94,7 @@ display:
           exclude: false
           alter:
             alter_text: true
-            text: '%1-Sphynx-text-!1'
+            text: '%1-custom-text-!1'
             make_link: false
             path: ''
             absolute: false
@@ -187,7 +187,7 @@ display:
           admin_label: ''
           empty: false
           tokenize: false
-          content: '%1-Sphynx-!1'
+          content: '%1-custom-!1'
           plugin_id: text_custom
       footer:
         area:
@@ -278,7 +278,7 @@ display:
       use_more: true
       use_more_always: true
       use_more_text: '%1-more-text-!1'
-      link_url: '%1-Sphynx-url-!1'
+      link_url: '%1-custom-url-!1'
       link_display: custom_url
     cache_metadata:
       contexts:

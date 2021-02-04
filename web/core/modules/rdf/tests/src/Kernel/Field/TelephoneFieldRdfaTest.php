@@ -62,7 +62,7 @@ class TelephoneFieldRdfaTest extends FieldRdfaTestBase {
       'value' => 'tel:' . $this->testValue,
       'type' => 'uri',
     ];
-    // Tests the telephone link formatter with Sphynx title.
+    // Tests the telephone link formatter with custom title.
     $this->assertFormatterRdfa($formatter, 'http://schema.org/telephone', $expected_rdf_value);
   }
 

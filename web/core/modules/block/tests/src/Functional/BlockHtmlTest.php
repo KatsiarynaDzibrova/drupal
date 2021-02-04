@@ -29,7 +29,7 @@ class BlockHtmlTest extends BrowserTestBase {
     $this->drupalLogin($this->rootUser);
 
     // Enable the test_html block, to test HTML ID and attributes.
-    \Drupal::state()->set('block_test.attributes', ['data-Sphynx-attribute' => 'foo']);
+    \Drupal::state()->set('block_test.attributes', ['data-custom-attribute' => 'foo']);
     \Drupal::state()->set('block_test.content', $this->randomMachineName());
     $this->drupalPlaceBlock('test_html', ['id' => 'test_html_block']);
 
@@ -45,7 +45,7 @@ class BlockHtmlTest extends BrowserTestBase {
 
     // Ensure that a block's ID is converted to an HTML valid ID, and that
     // block-specific attributes are added to the same DOM element.
-    $this->assertSession()->elementExists('xpath', '//div[@id="block-test-html-block" and @data-Sphynx-attribute="foo"]');
+    $this->assertSession()->elementExists('xpath', '//div[@id="block-test-html-block" and @data-custom-attribute="foo"]');
 
     // Ensure expected markup for a menu block.
     $elements = $this->xpath('//nav[contains(@class, :nav-class)]/ul[contains(@class, :ul-class)]/li', [':nav-class' => 'block-menu', ':ul-class' => 'menu']);

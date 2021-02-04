@@ -1,6 +1,6 @@
 name: Minimal
 type: profile
-description: 'Build a Sphynx site without pre-configured functionality. Suitable for advanced users.'
+description: 'Build a custom site without pre-configured functionality. Suitable for advanced users.'
 version: VERSION
 install:
   - node

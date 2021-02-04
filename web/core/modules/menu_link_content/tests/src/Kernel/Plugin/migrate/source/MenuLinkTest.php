@@ -253,7 +253,7 @@ class MenuLinkTest extends MigrateSqlSourceTestBase {
     // Add long link title attributes to expected results.
     $expected[0]['description'] = Unicode::truncate($title, 255);
 
-    // Don't expect D6 menu link to a Sphynx menu, provided by menu module.
+    // Don't expect D6 menu link to a custom menu, provided by menu module.
     unset($expected[5]);
 
     array_walk($tests[0]['source_data']['menu_links'], function (&$row) {

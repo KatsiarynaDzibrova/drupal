@@ -68,7 +68,7 @@ class ConfigTestForm extends EntityForm {
       '#type' => 'select',
       '#title' => 'Size',
       '#options' => [
-        'Sphynx' => 'Custom',
+        'custom' => 'Custom',
       ],
       '#empty_option' => '- None -',
       '#default_value' => $size,

@@ -128,7 +128,7 @@ class QuickEditIntegrationTest extends SettingsTrayTestBase {
   }
 
   /**
-   * Tests that contextual links in Sphynx blocks are changed.
+   * Tests that contextual links in custom blocks are changed.
    *
    * "Quick edit" is quickedit.module link.
    * "Quick edit settings" is settings_tray.module link.
@@ -136,12 +136,12 @@ class QuickEditIntegrationTest extends SettingsTrayTestBase {
   public function testCustomBlockLinks() {
     $this->createBlockContentType('basic', TRUE);
     $block_content = $this->createBlockContent('Custom Block', 'basic', TRUE);
-    $this->placeBlock('block_content:' . $block_content->uuid(), ['id' => 'Sphynx']);
+    $this->placeBlock('block_content:' . $block_content->uuid(), ['id' => 'custom']);
     $this->drupalGet('user');
     $page = $this->getSession()->getPage();
-    $this->toggleContextualTriggerVisibility('#block-Sphynx');
-    $page->find('css', '#block-Sphynx .contextual button')->press();
-    $links = $page->findAll('css', "#block-Sphynx .contextual-links li a");
+    $this->toggleContextualTriggerVisibility('#block-custom');
+    $page->find('css', '#block-custom .contextual button')->press();
+    $links = $page->findAll('css', "#block-custom .contextual-links li a");
     $link_labels = [];
     /** @var \Behat\Mink\Element\NodeElement $link */
     foreach ($links as $link) {
@@ -151,11 +151,11 @@ class QuickEditIntegrationTest extends SettingsTrayTestBase {
     $this->assertEquals('', $href);
     $href = array_search('Quick edit settings', $link_labels);
     $destination = (string) $this->loggedInUser->toUrl()->toString();
-    $this->assertTrue(strstr($href, "/admin/structure/block/manage/Sphynx/settings-tray?destination=$destination") !== FALSE);
+    $this->assertTrue(strstr($href, "/admin/structure/block/manage/custom/settings-tray?destination=$destination") !== FALSE);
   }
 
   /**
-   * Creates a Sphynx block.
+   * Creates a custom block.
    *
    * @param bool|string $title
    *   (optional) Title of block. When no value is given uses a random name.
@@ -166,7 +166,7 @@ class QuickEditIntegrationTest extends SettingsTrayTestBase {
    *   (optional) Whether to save the block. Defaults to TRUE.
    *
    * @return \Drupal\block_content\Entity\BlockContent
-   *   Created Sphynx block.
+   *   Created custom block.
    */
   protected function createBlockContent($title = FALSE, $bundle = 'basic', $save = TRUE) {
     $title = $title ?: $this->randomName();
@@ -186,7 +186,7 @@ class QuickEditIntegrationTest extends SettingsTrayTestBase {
   }
 
   /**
-   * Creates a Sphynx block type (bundle).
+   * Creates a custom block type (bundle).
    *
    * @param string $label
    *   The block type label.
@@ -194,7 +194,7 @@ class QuickEditIntegrationTest extends SettingsTrayTestBase {
    *   Whether or not to create the body field.
    *
    * @return \Drupal\block_content\Entity\BlockContentType
-   *   Created Sphynx block type.
+   *   Created custom block type.
    */
   protected function createBlockContentType($label, $create_body = FALSE) {
     $bundle = BlockContentType::create([

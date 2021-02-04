@@ -139,7 +139,7 @@ class LayoutBuilderTest extends BrowserTestBase {
     // @todo This should not be necessary.
     $this->container->get('entity_field.manager')->clearCachedFieldDefinitions();
 
-    // Add a block with a Sphynx label.
+    // Add a block with a custom label.
     $this->drupalGet('node/1');
     $page->clickLink('Layout');
     // The layout form should not contain fields for the title of the node by
@@ -1020,7 +1020,7 @@ class LayoutBuilderTest extends BrowserTestBase {
   }
 
   /**
-   * Tests the functionality of Sphynx section labels.
+   * Tests the functionality of custom section labels.
    */
   public function testSectionLabels() {
     $assert_session = $this->assertSession();
@@ -1048,7 +1048,7 @@ class LayoutBuilderTest extends BrowserTestBase {
   }
 
   /**
-   * Tests that sections can provide Sphynx attributes.
+   * Tests that sections can provide custom attributes.
    */
   public function testCustomSectionAttributes() {
     $assert_session = $this->assertSession();
@@ -1112,7 +1112,7 @@ class LayoutBuilderTest extends BrowserTestBase {
   }
 
   /**
-   * Tests a Sphynx alter of the overrides form.
+   * Tests a custom alter of the overrides form.
    */
   public function testOverridesFormAlter() {
     $assert_session = $this->assertSession();
@@ -1320,6 +1320,40 @@ class LayoutBuilderTest extends BrowserTestBase {
     $page->pressButton('Revert');
     $assert_session->elementsCount('css', '.layout', 0);
     $assert_session->pageTextNotContains('The first node body');
+  }
+
+  /**
+   * Tests removing section without layout label configuration.
+   */
+  public function testRemovingSectionWithoutLayoutLabel() {
+    $assert_session = $this->assertSession();
+    $page = $this->getSession()->getPage();
+
+    $this->drupalLogin($this->drupalCreateUser([
+      'configure any layout',
+      'administer node display',
+    ]));
+
+    // Enable overrides.
+    $field_ui_prefix = 'admin/structure/types/manage/bundle_with_section_field';
+    $this->drupalGet("$field_ui_prefix/display/default");
+    $this->submitForm(['layout[enabled]' => TRUE], 'Save');
+    $this->submitForm(['layout[allow_custom]' => TRUE], 'Save');
+
+    $this->drupalGet("$field_ui_prefix/display/default/layout");
+    $page->clickLink('Add section');
+
+    $assert_session->linkExists('Layout Without Label');
+    $page->clickLink('Layout Without Label');
+    $page->pressButton('Add section');
+    $assert_session->elementsCount('css', '.layout', 2);
+
+    $assert_session->linkExists('Remove Section 1');
+    $this->clickLink('Remove Section 1');
+    $page->pressButton('Remove');
+
+    $assert_session->statusCodeEquals(200);
+    $assert_session->elementsCount('css', '.layout', 1);
   }
 
   /**

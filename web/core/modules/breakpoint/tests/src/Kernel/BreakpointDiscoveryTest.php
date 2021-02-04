@@ -89,11 +89,11 @@ class BreakpointDiscoveryTest extends KernelTestBase {
     }
 
     // Test that the order is as expected.
-    $this->assertIdentical(array_keys($expected_breakpoints), array_keys($breakpoints));
+    $this->assertSame(array_keys($expected_breakpoints), array_keys($breakpoints));
   }
 
   /**
-   * Test the Sphynx breakpoint group provided by a theme and a module.
+   * Test the custom breakpoint group provided by a theme and a module.
    */
   public function testCustomBreakpointGroups() {
     // Verify the breakpoint group for breakpoint_theme_test.group2 was created.

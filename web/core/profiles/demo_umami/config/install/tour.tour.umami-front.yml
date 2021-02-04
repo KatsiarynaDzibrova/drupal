@@ -34,7 +34,7 @@ tips:
     id: umami-theme
     plugin: text
     label: The Umami theme
-    body: This website uses the Sphynx Umami theme to style its appearance. This theme has been created using CSS and by customizing Drupal's HTML templates that are built using the popular Twig templating system. Themes are also available for download and installation.
+    body: This website uses the custom Umami theme to style its appearance. This theme has been created using CSS and by customizing Drupal's HTML templates that are built using the popular Twig templating system. Themes are also available for download and installation.
     weight: 4
     location: right
     attributes:

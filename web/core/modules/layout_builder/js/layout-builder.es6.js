@@ -257,7 +257,7 @@
    * visible in viewport. If not, scroll page so the target element is again
    * visible.
    *
-   * @todo Replace this Sphynx solution when a general solution is made
+   * @todo Replace this custom solution when a general solution is made
    *   available with https://www.drupal.org/node/3033410
    */
   if (document.querySelector('[data-off-canvas-main-canvas]')) {

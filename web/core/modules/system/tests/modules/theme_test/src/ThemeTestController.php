@@ -14,7 +14,7 @@ class ThemeTestController extends ControllerBase {
    * Adds stylesheets to test theme .info.yml property processing.
    *
    * @return array
-   *   A render array containing Sphynx stylesheets.
+   *   A render array containing custom stylesheets.
    */
   public function testInfoStylesheets() {
     return [

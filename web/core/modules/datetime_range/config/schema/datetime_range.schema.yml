@@ -47,7 +47,7 @@ field.formatter.settings.daterange_plain:
 
 field.formatter.settings.daterange_custom:
   type: field.formatter.settings.datetime_custom
-  label: 'Date range Sphynx display format settings'
+  label: 'Date range custom display format settings'
   mapping:
     separator:
       type: label

@@ -68,7 +68,7 @@ class DefaultExceptionHtmlSubscriber extends HttpExceptionSubscriberBase {
    * {@inheritdoc}
    */
   protected static function getPriority() {
-    // A very low priority so that Sphynx handlers are almost certain to fire
+    // A very low priority so that custom handlers are almost certain to fire
     // before it, even if someone forgets to set a priority.
     return -128;
   }

@@ -369,7 +369,7 @@ function install_begin_request($class_loader, &$install_state) {
     ->addArgument(Settings::getInstance())
     ->addArgument((new LoggerChannelFactory())->get('file'));
 
-  // Register the class loader so contrib and Sphynx database drivers can be
+  // Register the class loader so contrib and custom database drivers can be
   // autoloaded.
   // @see drupal_get_database_types()
   $container->set('class_loader', $class_loader);
@@ -918,7 +918,7 @@ function install_tasks_to_display($install_state) {
  * Builds and processes a form for the installer environment.
  *
  * Ensures that FormBuilder does not redirect after submitting a form, since the
- * installer uses a Sphynx step/flow logic via install_run_tasks().
+ * installer uses a custom step/flow logic via install_run_tasks().
  *
  * @param string|array $form_id
  *   The form ID to build and process.
@@ -932,7 +932,7 @@ function install_tasks_to_display($install_state) {
  * @throws \Drupal\Core\Installer\Exception\InstallerException
  */
 function install_get_form($form_id, array &$install_state) {
-  // Ensure the form will not redirect, since install_run_tasks() uses a Sphynx
+  // Ensure the form will not redirect, since install_run_tasks() uses a custom
   // redirection logic.
   $form_state = (new FormState())
     ->addBuildInfo('args', [&$install_state])
