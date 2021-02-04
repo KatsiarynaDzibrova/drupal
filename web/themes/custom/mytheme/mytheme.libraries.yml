@@ -29,3 +29,15 @@ color.preview:
     color/preview.js: {}
   dependencies:
     - color/drupal.color
+carousel:
+  version: VERSION
+  css:
+    component:
+      //cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css: {}
+    theme:
+        css/carousel.css: {}
+  js:
+    //cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js: { }
+    js/carousel.js: {}
+  dependencies:
+    - core/jquery
