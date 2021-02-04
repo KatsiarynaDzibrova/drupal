@@ -1,0 +1,8 @@
+#carousel .field__item{
+  margin: 3px;
+}
+#carousel .field__item img{
+  display: block;
+  width: auto;
+  height: 90%;
+}
