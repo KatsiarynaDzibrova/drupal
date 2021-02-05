@@ -1,9 +1,9 @@
 name: My theme
 type: theme
-description: 'Basic structure for a Bootstrap Barrio SubTheme.'
+description: 'Basic structure for a Bootstrap SubTheme.'
 core: 8.x
 core_version_requirement: ^8 || ^9
-base theme: bootstrap_barrio
+base theme: bootstrap
 
 libraries:
   - mytheme/bootstrap_cdn
