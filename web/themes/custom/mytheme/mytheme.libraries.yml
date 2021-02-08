@@ -32,4 +32,5 @@ color.preview:
 node:
   version: VERSION
   css:
-    css/node.css: {}
+    theme:
+      css/node.css: {}
