@@ -8,6 +8,7 @@ dependencies:
     - field.field.node.custom_node.field_boolean
     - field.field.node.custom_node.field_number_decimal
     - field.field.node.custom_node.field_tags
+    - field.field.node.custom_node.field_taxonomy
     - node.type.custom_node
   module:
     - comment
@@ -56,6 +57,16 @@ content:
     region: content
   field_tags:
     weight: 126
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+  field_taxonomy:
+    weight: 127
     settings:
       match_operator: CONTAINS
       match_limit: 10

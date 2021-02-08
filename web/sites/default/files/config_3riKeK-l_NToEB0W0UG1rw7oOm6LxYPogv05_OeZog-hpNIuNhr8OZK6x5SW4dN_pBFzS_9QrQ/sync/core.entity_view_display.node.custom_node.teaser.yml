@@ -9,6 +9,7 @@ dependencies:
     - field.field.node.custom_node.field_boolean
     - field.field.node.custom_node.field_number_decimal
     - field.field.node.custom_node.field_tags
+    - field.field.node.custom_node.field_taxonomy
     - node.type.custom_node
   module:
     - text
@@ -36,3 +37,4 @@ hidden:
   field_boolean: true
   field_number_decimal: true
   field_tags: true
+  field_taxonomy: true
