@@ -152,7 +152,7 @@ class FieldBlockTest extends WebDriverTestBase {
 
     $this->drupalGet('admin/structure/block/add/field_block_test%3Auser%3Auser%3Afield_timestamp/classy');
     $this->assertFalse($page->findField('settings[formatter][settings][custom_date_format]')->isVisible(), 'Custom date format is not visible');
-    $page->selectFieldOption('settings[formatter][settings][date_format]', 'Sphynx');
+    $page->selectFieldOption('settings[formatter][settings][date_format]', 'custom');
     $this->assertTrue($page->findField('settings[formatter][settings][custom_date_format]')->isVisible(), 'Custom date format is visible');
   }
 

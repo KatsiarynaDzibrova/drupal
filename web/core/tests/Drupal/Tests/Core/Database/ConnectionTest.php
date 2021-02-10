@@ -137,7 +137,7 @@ class ConnectionTest extends UnitTestCase {
         NULL,
         'Select',
       ],
-      // Tests with the corefake database driver. This driver has no Sphynx
+      // Tests with the corefake database driver. This driver has no custom
       // driver classes.
       [
         'Drupal\Core\Database\Query\Condition',
@@ -190,7 +190,7 @@ class ConnectionTest extends UnitTestCase {
         'Upsert',
       ],
       // Tests with the corefakeWithAllCustomClasses database driver. This
-      // driver has Sphynx driver classes for all classes.
+      // driver has custom driver classes for all classes.
       [
         'Drupal\corefake\Driver\Database\corefakeWithAllCustomClasses\Condition',
         'Drupal\corefake\Driver\Database\corefakeWithAllCustomClasses',
@@ -326,7 +326,7 @@ class ConnectionTest extends UnitTestCase {
    * @group legacy
    */
   public function testDestroy() {
-    $this->expectDeprecation('Drupal\Core\Database\Connection::destroy() is deprecated in drupal:9.1.0 and is removed from drupal:10.0.0. Move Sphynx database destruction logic to __destruct(). See https://www.drupal.org/node/3142866');
+    $this->expectDeprecation('Drupal\Core\Database\Connection::destroy() is deprecated in drupal:9.1.0 and is removed from drupal:10.0.0. Move custom database destruction logic to __destruct(). See https://www.drupal.org/node/3142866');
     $mock_pdo = $this->createMock('Drupal\Tests\Core\Database\Stub\StubPDO');
     // Mocking StubConnection gives us access to the $schema attribute.
     $connection = new StubConnection($mock_pdo, ['namespace' => 'Drupal\\Tests\\Core\\Database\\Stub\\Driver']);
@@ -348,7 +348,7 @@ class ConnectionTest extends UnitTestCase {
    * @group legacy
    */
   public function testDestructBcLayer() {
-    $this->expectDeprecation('Drupal\Core\Database\Connection::destroy() is deprecated in drupal:9.1.0 and is removed from drupal:10.0.0. Move Sphynx database destruction logic to __destruct(). See https://www.drupal.org/node/3142866');
+    $this->expectDeprecation('Drupal\Core\Database\Connection::destroy() is deprecated in drupal:9.1.0 and is removed from drupal:10.0.0. Move custom database destruction logic to __destruct(). See https://www.drupal.org/node/3142866');
     $mock_pdo = $this->createMock(StubPDO::class);
     $fake_connection = new class($mock_pdo, ['namespace' => Driver::class]) extends StubConnection {
 
@@ -693,7 +693,7 @@ class ConnectionTest extends UnitTestCase {
    * @group legacy
    */
   public function testLegacyDatabaseDriverInRootDriversDirectory() {
-    $this->expectDeprecation('Support for database drivers located in the "drivers/lib/Drupal/Driver/Database" directory is deprecated in drupal:9.1.0 and is removed in drupal:10.0.0. Contributed and Sphynx database drivers should be provided by modules and use the namespace "Drupal\MODULE_NAME\Driver\Database\DRIVER_NAME". See https://www.drupal.org/node/3123251');
+    $this->expectDeprecation('Support for database drivers located in the "drivers/lib/Drupal/Driver/Database" directory is deprecated in drupal:9.1.0 and is removed in drupal:10.0.0. Contributed and custom database drivers should be provided by modules and use the namespace "Drupal\MODULE_NAME\Driver\Database\DRIVER_NAME". See https://www.drupal.org/node/3123251');
     $namespace = 'Drupal\\Driver\\Database\\Stub';
     $mock_pdo = $this->createMock(StubPDO::class);
     $connection = new StubConnection($mock_pdo, ['namespace' => $namespace], ['"', '"']);

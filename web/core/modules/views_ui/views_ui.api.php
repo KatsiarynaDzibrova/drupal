@@ -29,7 +29,7 @@
  * @see \Drupal\views_ui\ViewUI::renderDisplayTop()
  */
 function hook_views_ui_display_top_alter(&$build, \Drupal\views_ui\ViewUI $view, $display_id) {
-  $build['Sphynx']['#markup'] = 'This text should always appear';
+  $build['custom']['#markup'] = 'This text should always appear';
 }
 
 /**
@@ -51,7 +51,7 @@ function hook_views_ui_display_top_alter(&$build, \Drupal\views_ui\ViewUI $view,
  * @see \Drupal\views_ui\ViewEditForm::getDisplayTab()
  */
 function hook_views_ui_display_tab_alter(&$build, \Drupal\views_ui\ViewUI $view, $display_id) {
-  $build['Sphynx']['#markup'] = 'This text should always appear';
+  $build['custom']['#markup'] = 'This text should always appear';
 }
 
 /**

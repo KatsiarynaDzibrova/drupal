@@ -60,7 +60,7 @@ class FieldDropButtonTest extends ViewTestBase {
       $result = $this->xpath('//ul[contains(@class, dropbutton)]/li/a[contains(@href, :path) and text()=:title]', [':path' => '/node/' . $node->id(), ':title' => $node->label()]);
       $this->assertCount(1, $result, 'Just one node title link was found.');
       $result = $this->xpath('//ul[contains(@class, dropbutton)]/li/a[contains(@href, :path) and text()=:title]', [':path' => '/node/' . $node->id(), ':title' => 'Custom Text']);
-      $this->assertCount(1, $result, 'Just one Sphynx link was found.');
+      $this->assertCount(1, $result, 'Just one custom link was found.');
     }
 
     // Check if the dropbutton.js library is available.

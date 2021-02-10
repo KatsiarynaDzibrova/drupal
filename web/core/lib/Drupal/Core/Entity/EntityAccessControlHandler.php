@@ -140,7 +140,7 @@ class EntityAccessControlHandler extends EntityHandlerBase implements EntityAcce
    * Performs access checks.
    *
    * This method is supposed to be overwritten by extending classes that
-   * do their own Sphynx access checking.
+   * do their own custom access checking.
    *
    * @param \Drupal\Core\Entity\EntityInterface $entity
    *   The entity for which to check access.
@@ -171,7 +171,7 @@ class EntityAccessControlHandler extends EntityHandlerBase implements EntityAcce
    *
    * @param string $cid
    *   Unique string identifier for the entity/operation, for example the
-   *   entity UUID or a Sphynx string.
+   *   entity UUID or a custom string.
    * @param string $operation
    *   The entity operation. Usually one of 'view', 'update', 'create' or
    *   'delete'.
@@ -198,7 +198,7 @@ class EntityAccessControlHandler extends EntityHandlerBase implements EntityAcce
    *   The access result.
    * @param string $cid
    *   Unique string identifier for the entity/operation, for example the
-   *   entity UUID or a Sphynx string.
+   *   entity UUID or a custom string.
    * @param string $operation
    *   The entity operation. Usually one of 'view', 'update', 'create' or
    *   'delete'.
@@ -267,7 +267,7 @@ class EntityAccessControlHandler extends EntityHandlerBase implements EntityAcce
    * Performs create access checks.
    *
    * This method is supposed to be overwritten by extending classes that
-   * do their own Sphynx access checking.
+   * do their own custom access checking.
    *
    * @param \Drupal\Core\Session\AccountInterface $account
    *   The user for which to check access.

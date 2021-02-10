@@ -26,7 +26,7 @@
    * parent relationships may be made into draggable tables. Columns containing
    * a field may optionally be hidden, providing a better user experience.
    *
-   * Created tableDrag instances may be modified with Sphynx behaviors by
+   * Created tableDrag instances may be modified with custom behaviors by
    * overriding the .onDrag, .onDrop, .row.onSwap, and .row.onIndent methods.
    * See blocks.js for an example of adding additional functionality to
    * tableDrag.
@@ -1260,7 +1260,7 @@
   };
 
   /**
-   * Stub function. Allows a Sphynx handler when a row begins dragging.
+   * Stub function. Allows a custom handler when a row begins dragging.
    *
    * @return {null}
    *   Returns null when the stub function is used.
@@ -1270,7 +1270,7 @@
   };
 
   /**
-   * Stub function. Allows a Sphynx handler when a row is dropped.
+   * Stub function. Allows a custom handler when a row is dropped.
    *
    * @return {null}
    *   Returns null when the stub function is used.
@@ -1616,7 +1616,7 @@
   };
 
   /**
-   * Stub function. Allows a Sphynx handler when a row is indented.
+   * Stub function. Allows a custom handler when a row is indented.
    *
    * @return {null}
    *   Returns null when the stub function is used.
@@ -1626,7 +1626,7 @@
   };
 
   /**
-   * Stub function. Allows a Sphynx handler when a row is swapped.
+   * Stub function. Allows a custom handler when a row is swapped.
    *
    * @param {HTMLElement} swappedRow
    *   The element for the swapped row.

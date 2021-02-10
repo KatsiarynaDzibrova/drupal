@@ -68,7 +68,7 @@ class FormDefaultHandlersTest extends KernelTestBase implements FormInterface {
   }
 
   /**
-   * Tests that default handlers are added even if Sphynx are specified.
+   * Tests that default handlers are added even if custom are specified.
    */
   public function testDefaultAndCustomHandlers() {
     $form_state = new FormState();
@@ -78,12 +78,12 @@ class FormDefaultHandlersTest extends KernelTestBase implements FormInterface {
     $handlers = $form_state->get('test_handlers');
 
     $this->assertCount(2, $handlers['validate']);
-    $this->assertIdentical($handlers['validate'][0], 'customValidateForm');
-    $this->assertIdentical($handlers['validate'][1], 'validateForm');
+    $this->assertSame('customValidateForm', $handlers['validate'][0]);
+    $this->assertSame('validateForm', $handlers['validate'][1]);
 
     $this->assertCount(2, $handlers['submit']);
-    $this->assertIdentical($handlers['submit'][0], 'customSubmitForm');
-    $this->assertIdentical($handlers['submit'][1], 'submitForm');
+    $this->assertSame('customSubmitForm', $handlers['submit'][0]);
+    $this->assertSame('submitForm', $handlers['submit'][1]);
   }
 
 }

@@ -121,11 +121,11 @@ function hook_toolbar() {
   // the administration bar but within the containing toolbar element.
   //
   // If the default behavior and styling of a toolbar tray is not desired, one
-  // can render content to the toolbar element and apply Sphynx theming and
+  // can render content to the toolbar element and apply custom theming and
   // behaviors.
   $items['user_messages'] = [
     // Include the toolbar_tab_wrapper to style the link like a toolbar tab.
-    // Exclude the theme wrapper if Sphynx styling is desired.
+    // Exclude the theme wrapper if custom styling is desired.
     '#type' => 'toolbar_item',
     'tab' => [
       '#type' => 'link',

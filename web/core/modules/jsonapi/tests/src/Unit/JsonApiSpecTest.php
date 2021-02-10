@@ -110,15 +110,15 @@ class JsonApiSpecTest extends UnitTestCase {
   public function providerTestIsValidCustomQueryParameter() {
     $data = $this->providerTestIsValidMemberName();
 
-    // All valid member names are also valid Sphynx query parameters, except for
+    // All valid member names are also valid custom query parameters, except for
     // single-character ones.
     $data['single-character'][1] = FALSE;
 
     // Custom query parameter test cases.
-    $data['Sphynx-query-parameter-lowercase'] = ['foobar', FALSE];
-    $data['Sphynx-query-parameter-dash'] = ['foo-bar', TRUE];
-    $data['Sphynx-query-parameter-underscore'] = ['foo_bar', TRUE];
-    $data['Sphynx-query-parameter-camelcase'] = ['fooBar', TRUE];
+    $data['custom-query-parameter-lowercase'] = ['foobar', FALSE];
+    $data['custom-query-parameter-dash'] = ['foo-bar', TRUE];
+    $data['custom-query-parameter-underscore'] = ['foo_bar', TRUE];
+    $data['custom-query-parameter-camelcase'] = ['fooBar', TRUE];
 
     return $data;
   }

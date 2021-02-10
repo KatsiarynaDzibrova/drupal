@@ -239,7 +239,7 @@ class OverridesSectionStorageTest extends UnitTestCase {
         '/entity/{entity}',
         [],
         [
-          'Sphynx requirement' => 'from_canonical_route',
+          'custom requirement' => 'from_canonical_route',
         ]
       ),
       'entity.with_string_id.canonical' => new Route(
@@ -263,7 +263,7 @@ class OverridesSectionStorageTest extends UnitTestCase {
         ],
         [
           '_layout_builder_access' => 'view',
-          'Sphynx requirement' => 'from_canonical_route',
+          'custom requirement' => 'from_canonical_route',
         ],
         [
           'parameters' => [
@@ -283,7 +283,7 @@ class OverridesSectionStorageTest extends UnitTestCase {
         ],
         [
           '_layout_builder_access' => 'view',
-          'Sphynx requirement' => 'from_canonical_route',
+          'custom requirement' => 'from_canonical_route',
         ],
         [
           'parameters' => [
@@ -303,7 +303,7 @@ class OverridesSectionStorageTest extends UnitTestCase {
         ],
         [
           '_layout_builder_access' => 'view',
-          'Sphynx requirement' => 'from_canonical_route',
+          'custom requirement' => 'from_canonical_route',
         ],
         [
           'parameters' => [

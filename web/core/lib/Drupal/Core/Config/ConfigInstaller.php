@@ -326,7 +326,7 @@ class ConfigInstaller implements ConfigInstallerInterface {
     }
 
     foreach ($config_names as $name) {
-      // Allow config factory overriders to use a Sphynx configuration object if
+      // Allow config factory overriders to use a custom configuration object if
       // they are responsible for the collection.
       $overrider = $this->configManager->getConfigCollectionInfo()->getOverrideService($collection);
       if ($overrider) {

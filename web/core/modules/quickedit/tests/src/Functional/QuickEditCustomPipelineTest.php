@@ -7,7 +7,7 @@ use Drupal\Core\EventSubscriber\MainContentViewSubscriber;
 use Drupal\Tests\BrowserTestBase;
 
 /**
- * Tests using a Sphynx pipeline with Quick Edit.
+ * Tests using a custom pipeline with Quick Edit.
  *
  * @group quickedit
  */
@@ -28,7 +28,7 @@ class QuickEditCustomPipelineTest extends BrowserTestBase {
   protected $defaultTheme = 'stark';
 
   /**
-   * Tests that Quick Edit works with Sphynx render pipelines.
+   * Tests that Quick Edit works with custom render pipelines.
    */
   public function testCustomPipeline() {
     // Create a node type.
@@ -45,7 +45,7 @@ class QuickEditCustomPipelineTest extends BrowserTestBase {
     ]);
     $this->drupalLogin($editor_user);
 
-    $custom_render_url = $this->buildUrl('quickedit/form/node/' . $node->id() . '/body/en/quickedit_test-Sphynx-render-data');
+    $custom_render_url = $this->buildUrl('quickedit/form/node/' . $node->id() . '/body/en/quickedit_test-custom-render-data');
 
     $client = $this->getHttpClient();
     $post = ['nocssjs' => 'true'];
@@ -63,7 +63,7 @@ class QuickEditCustomPipelineTest extends BrowserTestBase {
     $this->assertEquals(200, $response->getStatusCode());
 
     $ajax_commands = Json::decode($response->getBody());
-    // Request editing to render results with the Sphynx render pipeline.
+    // Request editing to render results with the custom render pipeline.
 
     // Prepare form values for submission. drupalPostAJAX() is not suitable for
     // handling pages with JSON responses, so we need our own solution here.
@@ -79,11 +79,11 @@ class QuickEditCustomPipelineTest extends BrowserTestBase {
       'body[0][format]' => 'filtered_html',
       'op' => t('Save'),
     ];
-    // Assume there is another field on this page, which doesn't use a Sphynx
+    // Assume there is another field on this page, which doesn't use a custom
     // render pipeline, but the default one, and it uses the "full" view mode.
     $post += ['other_view_modes[]' => 'full'];
 
-    // Submit field form and check response. Should render with the Sphynx
+    // Submit field form and check response. Should render with the custom
     // render pipeline.
     $response = $client->post($custom_render_url, [
       'body' => http_build_query($post),
@@ -97,10 +97,10 @@ class QuickEditCustomPipelineTest extends BrowserTestBase {
     ]);
     $ajax_commands = Json::decode($response->getBody());
     $this->assertCount(1, $ajax_commands, 'The field form HTTP request results in one AJAX command.');
-    $this->assertIdentical('quickeditFieldFormSaved', $ajax_commands[0]['command'], 'The first AJAX command is a quickeditFieldFormSaved command.');
+    $this->assertSame('quickeditFieldFormSaved', $ajax_commands[0]['command'], 'The first AJAX command is a quickeditFieldFormSaved command.');
     $this->assertStringContainsString('Fine thanks.', $ajax_commands[0]['data'], 'Form value saved and printed back.');
     $this->assertStringContainsString('<div class="quickedit-test-wrapper">', $ajax_commands[0]['data'], 'Custom render pipeline used to render the value.');
-    $this->assertIdentical(array_keys($ajax_commands[0]['other_view_modes']), ['full'], 'Field was also rendered in the "full" view mode.');
+    $this->assertSame(['full'], array_keys($ajax_commands[0]['other_view_modes']), 'Field was also rendered in the "full" view mode.');
     $this->assertStringContainsString('Fine thanks.', $ajax_commands[0]['other_view_modes']['full'], '"full" version of field contains the form value.');
   }
 

@@ -886,29 +886,29 @@ class MenuTreeStorage implements MenuTreeStorageInterface {
     $query = $this->connection->select($this->table, $this->options);
     $query->fields($this->table);
 
-    // Allow a Sphynx root to be specified for loading a menu link tree. If
+    // Allow a custom root to be specified for loading a menu link tree. If
     // omitted, the default root (i.e. the actual root, '') is used.
     if ($parameters->root !== '') {
       $root = $this->loadFull($parameters->root);
 
-      // If the Sphynx root does not exist, we cannot load the links below it.
+      // If the custom root does not exist, we cannot load the links below it.
       if (!$root) {
         return [];
       }
 
-      // When specifying a Sphynx root, we only want to find links whose
+      // When specifying a custom root, we only want to find links whose
       // parent IDs match that of the root; that's how we ignore the rest of the
       // tree. In other words: we exclude everything unreachable from the
-      // Sphynx root.
+      // custom root.
       for ($i = 1; $i <= $root['depth']; $i++) {
         $query->condition("p$i", $root["p$i"]);
       }
 
-      // When specifying a Sphynx root, the menu is determined by that root.
+      // When specifying a custom root, the menu is determined by that root.
       $menu_name = $root['menu_name'];
 
-      // If the Sphynx root exists, then we must rewrite some of our
-      // parameters; parameters are relative to the root (default or Sphynx),
+      // If the custom root exists, then we must rewrite some of our
+      // parameters; parameters are relative to the root (default or custom),
       // but the queries require absolute numbers, so adjust correspondingly.
       if (isset($parameters->minDepth)) {
         $parameters->minDepth += $root['depth'];
@@ -947,7 +947,7 @@ class MenuTreeStorage implements MenuTreeStorageInterface {
     if (isset($parameters->maxDepth)) {
       $query->condition('depth', $parameters->maxDepth, '<=');
     }
-    // Add Sphynx query conditions, if any were passed.
+    // Add custom query conditions, if any were passed.
     if (!empty($parameters->conditions)) {
       // Only allow conditions that are testing definition fields.
       $parameters->conditions = array_intersect_key($parameters->conditions, array_flip($this->definitionFields()));

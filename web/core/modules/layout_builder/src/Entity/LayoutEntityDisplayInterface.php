@@ -14,10 +14,10 @@ use Drupal\layout_builder\SectionListInterface;
 interface LayoutEntityDisplayInterface extends EntityDisplayInterface, SectionListInterface, LayoutBuilderEnabledInterface {
 
   /**
-   * Determines if the display allows Sphynx overrides.
+   * Determines if the display allows custom overrides.
    *
    * @return bool
-   *   TRUE if Sphynx overrides are allowed, FALSE otherwise.
+   *   TRUE if custom overrides are allowed, FALSE otherwise.
    */
   public function isOverridable();
 

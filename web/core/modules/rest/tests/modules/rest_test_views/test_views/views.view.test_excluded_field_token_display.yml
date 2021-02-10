@@ -187,7 +187,7 @@ display:
           hide_empty: false
           empty_zero: false
           hide_alter_empty: false
-          plugin_id: Sphynx
+          plugin_id: custom
       filters:
         status:
           value: '1'

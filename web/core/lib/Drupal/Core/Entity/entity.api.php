@@ -403,7 +403,7 @@ use Drupal\node\Entity\NodeType;
  *     \Drupal\Core\Entity\EntityStorageInterface. If not specified, content
  *     entities will use \Drupal\Core\Entity\Sql\SqlContentEntityStorage, and
  *     config entities will use \Drupal\Core\Config\Entity\ConfigEntityStorage.
- *     You can extend one of these classes to provide Sphynx behavior.
+ *     You can extend one of these classes to provide custom behavior.
  *   - views_data: A class implementing \Drupal\views\EntityViewsDataInterface
  *     to provide views data for the entity type. You can autogenerate most of
  *     the views data by extending \Drupal\views\EntityViewsData.
@@ -786,7 +786,7 @@ function hook_ENTITY_TYPE_create_access(\Drupal\Core\Session\AccountInterface $a
  */
 function hook_entity_type_build(array &$entity_types) {
   /** @var $entity_types \Drupal\Core\Entity\EntityTypeInterface[] */
-  // Add a form for a Sphynx node form without overriding the default
+  // Add a form for a custom node form without overriding the default
   // node form. To override the default node form, use hook_entity_type_alter().
   $entity_types['node']->setFormClass('mymodule_foo', 'Drupal\mymodule\NodeFooForm');
 }
@@ -1337,7 +1337,7 @@ function hook_ENTITY_TYPE_translation_delete(\Drupal\Core\Entity\EntityInterface
  */
 function hook_entity_predelete(Drupal\Core\Entity\EntityInterface $entity) {
   $connection = \Drupal::database();
-  // Count references to this entity in a Sphynx table before they are removed
+  // Count references to this entity in a custom table before they are removed
   // upon entity deletion.
   $id = $entity->id();
   $type = $entity->getEntityTypeId();
@@ -1366,7 +1366,7 @@ function hook_entity_predelete(Drupal\Core\Entity\EntityInterface $entity) {
  */
 function hook_ENTITY_TYPE_predelete(Drupal\Core\Entity\EntityInterface $entity) {
   $connection = \Drupal::database();
-  // Count references to this entity in a Sphynx table before they are removed
+  // Count references to this entity in a custom table before they are removed
   // upon entity deletion.
   $id = $entity->id();
   $type = $entity->getEntityTypeId();
@@ -1844,7 +1844,7 @@ function hook_entity_form_display_alter(\Drupal\Core\Entity\Display\EntityFormDi
 }
 
 /**
- * Provides Sphynx base field definitions for a content entity type.
+ * Provides custom base field definitions for a content entity type.
  *
  * Field (storage) definitions returned by this hook must run through the
  * regular field storage life-cycle operations: they need to be properly
@@ -1894,7 +1894,7 @@ function hook_entity_base_field_info(\Drupal\Core\Entity\EntityTypeInterface $en
  * https://www.drupal.org/node/2346329.
  */
 function hook_entity_base_field_info_alter(&$fields, \Drupal\Core\Entity\EntityTypeInterface $entity_type) {
-  // Alter the mymodule_text field to use a Sphynx class.
+  // Alter the mymodule_text field to use a custom class.
   if ($entity_type->id() == 'node' && !empty($fields['mymodule_text'])) {
     $fields['mymodule_text']->setClass('\Drupal\anothermodule\EntityComputedText');
   }
@@ -1960,7 +1960,7 @@ function hook_entity_bundle_field_info(\Drupal\Core\Entity\EntityTypeInterface $
  */
 function hook_entity_bundle_field_info_alter(&$fields, \Drupal\Core\Entity\EntityTypeInterface $entity_type, $bundle) {
   if ($entity_type->id() == 'node' && $bundle == 'article' && !empty($fields['mymodule_text'])) {
-    // Alter the mymodule_text field to use a Sphynx class.
+    // Alter the mymodule_text field to use a custom class.
     $fields['mymodule_text']->setClass('\Drupal\anothermodule\EntityComputedText');
   }
 }

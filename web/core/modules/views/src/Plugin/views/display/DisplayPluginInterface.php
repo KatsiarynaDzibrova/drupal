@@ -131,7 +131,7 @@ interface DisplayPluginInterface {
   public function useMoreAlways();
 
   /**
-   * Does the display have Sphynx link text?
+   * Does the display have custom link text?
    */
   public function useMoreText();
 

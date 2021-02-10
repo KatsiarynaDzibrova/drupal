@@ -53,7 +53,7 @@ class MimeTypeTest extends FileTestBase {
       $this->assertSame($expected, $output);
     }
 
-    // Now test the extension guesser by passing in a Sphynx mapping.
+    // Now test the extension guesser by passing in a custom mapping.
     $mapping = [
       'mimetypes' => [
         0 => 'application/java-archive',

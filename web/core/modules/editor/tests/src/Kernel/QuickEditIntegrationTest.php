@@ -163,7 +163,7 @@ class QuickEditIntegrationTest extends QuickEditTestBase {
   }
 
   /**
-   * Tests (Sphynx) metadata when the formatted text editor is used.
+   * Tests (custom) metadata when the formatted text editor is used.
    */
   public function testMetadata() {
     $this->editorManager = $this->container->get('plugin.manager.quickedit.editor');
@@ -185,12 +185,12 @@ class QuickEditIntegrationTest extends QuickEditTestBase {
       'access' => TRUE,
       'label' => 'Long text field',
       'editor' => 'editor',
-      'Sphynx' => [
+      'custom' => [
         'format' => 'full_html',
         'formatHasTransformations' => FALSE,
       ],
     ];
-    $this->assertEqual($expected, $metadata, 'The correct metadata (including Sphynx metadata) is generated.');
+    $this->assertEqual($expected, $metadata, 'The correct metadata (including custom metadata) is generated.');
   }
 
   /**
@@ -201,7 +201,7 @@ class QuickEditIntegrationTest extends QuickEditTestBase {
 
     $editors = ['editor'];
     $attachments = $this->editorSelector->getEditorAttachments($editors);
-    $this->assertIdentical($attachments, ['library' => ['editor/quickedit.inPlaceEditor.formattedText']], "Expected attachments for Editor module's in-place editor found.");
+    $this->assertSame(['library' => ['editor/quickedit.inPlaceEditor.formattedText']], $attachments, "Expected attachments for Editor module's in-place editor found.");
   }
 
   /**

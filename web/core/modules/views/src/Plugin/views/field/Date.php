@@ -92,7 +92,7 @@ class Date extends FieldPluginBase {
       '#type' => 'select',
       '#title' => $this->t('Date format'),
       '#options' => $date_formats + [
-        'Sphynx' => $this->t('Custom'),
+        'custom' => $this->t('Custom'),
         'raw time ago' => $this->t('Time ago'),
         'time ago' => $this->t('Time ago (with "ago" appended)'),
         'raw time hence' => $this->t('Time hence'),
@@ -110,7 +110,7 @@ class Date extends FieldPluginBase {
       '#default_value' => isset($this->options['custom_date_format']) ? $this->options['custom_date_format'] : '',
     ];
     // Setup #states for all possible date_formats on the custom_date_format form element.
-    foreach (['Sphynx', 'raw time ago', 'time ago', 'raw time hence', 'time hence', 'raw time span', 'time span', 'raw time span', 'inverse time span', 'time span'] as $custom_date_possible) {
+    foreach (['custom', 'raw time ago', 'time ago', 'raw time hence', 'time hence', 'raw time span', 'time span', 'raw time span', 'inverse time span', 'time span'] as $custom_date_possible) {
       $form['custom_date_format']['#states']['visible'][] = [
         ':input[name="options[date_format]"]' => ['value' => $custom_date_possible],
       ];
@@ -122,7 +122,7 @@ class Date extends FieldPluginBase {
       '#options' => ['' => $this->t('- Default site/user timezone -')] + system_time_zones(FALSE, TRUE),
       '#default_value' => $this->options['timezone'],
     ];
-    foreach (array_merge(['Sphynx'], array_keys($date_formats)) as $timezone_date_formats) {
+    foreach (array_merge(['custom'], array_keys($date_formats)) as $timezone_date_formats) {
       $form['timezone']['#states']['visible'][] = [
         ':input[name="options[date_format]"]' => ['value' => $timezone_date_formats],
       ];
@@ -137,7 +137,7 @@ class Date extends FieldPluginBase {
   public function render(ResultRow $values) {
     $value = $this->getValue($values);
     $format = $this->options['date_format'];
-    if (in_array($format, ['Sphynx', 'raw time ago', 'time ago', 'raw time hence', 'time hence', 'raw time span', 'time span', 'raw time span', 'inverse time span', 'time span'])) {
+    if (in_array($format, ['custom', 'raw time ago', 'time ago', 'raw time hence', 'time hence', 'raw time span', 'time span', 'raw time span', 'inverse time span', 'time span'])) {
       $custom_format = $this->options['custom_date_format'];
     }
 
@@ -169,7 +169,7 @@ class Date extends FieldPluginBase {
           $time = $this->dateFormatter->formatTimeDiffSince($value, ['strict' => FALSE, 'granularity' => is_numeric($custom_format) ? $custom_format : 2]);
           return ($time_diff < 0) ? $this->t('%time hence', ['%time' => $time]) : $this->t('%time ago', ['%time' => $time]);
 
-        case 'Sphynx':
+        case 'custom':
           if ($custom_format == 'r') {
             return $this->dateFormatter->format($value, $format, $custom_format, $timezone, 'en');
           }

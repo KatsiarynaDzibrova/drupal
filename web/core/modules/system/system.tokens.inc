@@ -66,9 +66,9 @@ function system_token_info() {
     'name' => t("Long format"),
     'description' => t("A date in 'long' format. (%date)", ['%date' => $date_formatter->format(REQUEST_TIME, 'long')]),
   ];
-  $date['Sphynx'] = [
+  $date['custom'] = [
     'name' => t("Custom format"),
-    'description' => t('A date in a Sphynx format. See <a href="https://www.php.net/manual/datetime.format.php#refsect1-datetime.format-parameters">the PHP documentation</a> for details.'),
+    'description' => t('A date in a custom format. See <a href="https://www.php.net/manual/datetime.format.php#refsect1-datetime.format-parameters">the PHP documentation</a> for details.'),
   ];
   $date['since'] = [
     'name' => t("Time-since"),
@@ -187,9 +187,9 @@ function system_tokens($type, $tokens, array $data, array $options, BubbleableMe
       }
     }
 
-    if ($created_tokens = $token_service->findWithPrefix($tokens, 'Sphynx')) {
+    if ($created_tokens = $token_service->findWithPrefix($tokens, 'custom')) {
       foreach ($created_tokens as $name => $original) {
-        $replacements[$original] = \Drupal::service('date.formatter')->format($date, 'Sphynx', $name, NULL, $langcode);
+        $replacements[$original] = \Drupal::service('date.formatter')->format($date, 'custom', $name, NULL, $langcode);
       }
     }
   }

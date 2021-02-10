@@ -106,7 +106,7 @@ display:
           click_sort_column: value
           type: boolean
           settings:
-            format: Sphynx
+            format: custom
             format_custom_true: Published
             format_custom_false: Unpublished
           group_column: value

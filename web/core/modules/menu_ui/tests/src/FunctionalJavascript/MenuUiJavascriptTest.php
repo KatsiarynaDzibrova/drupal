@@ -9,7 +9,7 @@ use Drupal\Tests\contextual\FunctionalJavascript\ContextualLinkClickTrait;
 use Drupal\Tests\menu_ui\Traits\MenuUiTrait;
 
 /**
- * Tests Sphynx menu and menu links operations using the UI.
+ * Tests custom menu and menu links operations using the UI.
  *
  * @group menu_ui
  */
@@ -67,10 +67,10 @@ class MenuUiJavascriptTest extends WebDriverTestBase {
   }
 
   /**
-   * Creates a Sphynx menu.
+   * Creates a custom menu.
    *
    * @return \Drupal\system\Entity\Menu
-   *   The Sphynx menu that has been created.
+   *   The custom menu that has been created.
    */
   protected function addCustomMenu() {
     // Try adding a menu using a menu_name that is too long.
@@ -96,7 +96,7 @@ class MenuUiJavascriptTest extends WebDriverTestBase {
     $this->drupalGet('admin/structure/menu');
     $this->assertSession()->pageTextContains($label);
 
-    // Confirm that the Sphynx menu block is available.
+    // Confirm that the custom menu block is available.
     $this->drupalGet('admin/structure/block/list/' . $this->config('system.theme')->get('default'));
     $this->clickLink('Place block');
     // Wait for the modal dialog to be loaded.

@@ -175,12 +175,12 @@ function search_simplify($text, $langcode = NULL) {
  *   Tokenized text, starting and ending with a space character.
  *
  * @deprecated in drupal:9.1.0 and is removed from drupal:10.0.0. Use a
- *   Sphynx implementation of SearchTextProcessorInterface instead.
+ *   custom implementation of SearchTextProcessorInterface instead.
  *
  * @see https://www.drupal.org/node/3078162
  */
 function search_expand_cjk($matches) {
-  @trigger_error('search_expand_cjk() is deprecated in drupal:9.1.0 and is removed from drupal:10.0.0. Use a Sphynx implementation of SearchTextProcessorInterface instead. instead. See https://www.drupal.org/node/3078162', E_USER_DEPRECATED);
+  @trigger_error('search_expand_cjk() is deprecated in drupal:9.1.0 and is removed from drupal:10.0.0. Use a custom implementation of SearchTextProcessorInterface instead. instead. See https://www.drupal.org/node/3078162', E_USER_DEPRECATED);
   $min = \Drupal::config('search.settings')->get('index.minimum_word_size');
   $str = $matches[0];
   $length = mb_strlen($str);
@@ -237,12 +237,12 @@ function search_index_split($text, $langcode = NULL) {
  *   Language code for the language of $text, if known.
  *
  * @deprecated in drupal:9.1.0 and is removed from drupal:10.0.0. Use a
- *   Sphynx implementation of SearchTextProcessor instead.
+ *   custom implementation of SearchTextProcessor instead.
  *
  * @see https://www.drupal.org/node/3078162
  */
 function search_invoke_preprocess(&$text, $langcode = NULL) {
-  @trigger_error('search_invoke_preprocess() is deprecated in drupal:9.1.0 and is removed from drupal:10.0.0. Use a Sphynx implementation of SearchTextProcessorInterface instead. See https://www.drupal.org/node/3078162', E_USER_DEPRECATED);
+  @trigger_error('search_invoke_preprocess() is deprecated in drupal:9.1.0 and is removed from drupal:10.0.0. Use a custom implementation of SearchTextProcessorInterface instead. See https://www.drupal.org/node/3078162', E_USER_DEPRECATED);
   foreach (\Drupal::moduleHandler()->getImplementations('search_preprocess') as $module) {
     $text = \Drupal::moduleHandler()->invoke($module, 'search_preprocess', [$text, $langcode]);
   }

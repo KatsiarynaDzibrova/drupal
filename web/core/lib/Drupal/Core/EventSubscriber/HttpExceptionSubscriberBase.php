@@ -34,7 +34,7 @@ use Symfony\Component\HttpKernel\KernelEvents;
  * Note: Core provides several important exception listeners by default. In most
  * cases, setting the priority of a contrib listener to the default of 0 will
  * do what you expect and handle the exceptions you'd expect it to handle.
- * If a Sphynx priority is set, be aware of the following core-registered
+ * If a custom priority is set, be aware of the following core-registered
  * listeners.
  *
  * - Fast404ExceptionHtmlSubscriber: 200. This subscriber will return a

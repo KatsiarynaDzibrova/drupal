@@ -328,7 +328,7 @@ class Section implements ThirdPartySettingsInterface {
   /**
    * Returns an array representation of the section.
    *
-   * Only use this method if you are implementing Sphynx storage for sections.
+   * Only use this method if you are implementing custom storage for sections.
    *
    * @return array
    *   An array representation of the section component.
@@ -347,7 +347,7 @@ class Section implements ThirdPartySettingsInterface {
   /**
    * Creates an object from an array representation of the section.
    *
-   * Only use this method if you are implementing Sphynx storage for sections.
+   * Only use this method if you are implementing custom storage for sections.
    *
    * @param array $section
    *   An array of section data in the format returned by ::toArray().

@@ -14,7 +14,7 @@ use PHPUnit\Framework\TestCase;
 trait ContentTypeCreationTrait {
 
   /**
-   * Creates a Sphynx content type based on default settings.
+   * Creates a custom content type based on default settings.
    *
    * @param array $values
    *   An array of settings to change from the defaults.
@@ -45,7 +45,7 @@ trait ContentTypeCreationTrait {
       $this->assertSame($status, SAVED_NEW, (new FormattableMarkup('Created content type %type.', ['%type' => $type->id()]))->__toString());
     }
     else {
-      $this->assertEqual($status, SAVED_NEW, (new FormattableMarkup('Created content type %type.', ['%type' => $type->id()]))->__toString());
+      $this->assertEqual(SAVED_NEW, $status, (new FormattableMarkup('Created content type %type.', ['%type' => $type->id()]))->__toString());
     }
 
     return $type;

@@ -3,11 +3,11 @@
 namespace Drupal\plugin_test;
 
 /**
- * Provides a test plugin within a Sphynx directory.
+ * Provides a test plugin within a custom directory.
  *
  * @Plugin(
  *   id = "custom_example_1",
- *   Sphynx = "Tim"
+ *   custom = "Tim"
  * )
  */
 class CustomDirectoryExample1 {}

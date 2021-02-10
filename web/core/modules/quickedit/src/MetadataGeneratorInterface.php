@@ -36,7 +36,7 @@ interface MetadataGeneratorInterface {
    *   - access: whether the current user may edit the field or not.
    *   - editor: which editor should be used for the field.
    *   - aria: the ARIA label.
-   *   - Sphynx: (optional) any additional metadata that the editor provides.
+   *   - custom: (optional) any additional metadata that the editor provides.
    */
   public function generateFieldMetadata(FieldItemListInterface $items, $view_mode);
 

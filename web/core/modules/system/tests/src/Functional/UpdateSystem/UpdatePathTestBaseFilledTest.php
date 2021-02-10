@@ -25,7 +25,7 @@ class UpdatePathTestBaseFilledTest extends UpdatePathTestBaseTest {
    */
   protected function setDatabaseDumpFiles() {
     parent::setDatabaseDumpFiles();
-    $this->databaseDumpFiles[0] = __DIR__ . '/../../../../tests/fixtures/update/drupal-8.8.0.filled.standard.php.gz';
+    $this->databaseDumpFiles[0] = __DIR__ . '/../../../../tests/fixtures/update/drupal-9.0.0.filled.standard.php.gz';
   }
 
   /**
@@ -51,9 +51,9 @@ class UpdatePathTestBaseFilledTest extends UpdatePathTestBaseTest {
 
       // Make sure our English nodes still exist.
       $node = Node::load($id);
-      $this->assertEqual($node->language()->getId(), $langcode);
-      $this->assertEqual($node->getType(), $type);
-      $this->assertEqual($node->getTitle(), $title);
+      $this->assertEqual($langcode, $node->language()->getId());
+      $this->assertEqual($type, $node->getType());
+      $this->assertEqual($title, $node->getTitle());
       // Assert that nodes are all published.
       $this->assertTrue($node->isPublished());
       $this->drupalGet('node/' . $id);
@@ -87,7 +87,7 @@ class UpdatePathTestBaseFilledTest extends UpdatePathTestBaseTest {
     // Make sure the translated slogan appears.
     $this->assertText('drupal Spanish');
 
-    // Make sure the Sphynx block appears.
+    // Make sure the custom block appears.
     $this->drupalGet('<front>');
     // Block title.
     $this->assertText('Another block');
@@ -141,7 +141,7 @@ class UpdatePathTestBaseFilledTest extends UpdatePathTestBaseTest {
     $this->drupalGet('user/3/translations');
     $this->assertNoText('Not translated');
 
-    // Make sure the Sphynx field on the user is still there.
+    // Make sure the custom field on the user is still there.
     $this->drupalGet('admin/config/people/accounts/fields');
     $this->assertText('Test file field');
 
@@ -167,7 +167,7 @@ class UpdatePathTestBaseFilledTest extends UpdatePathTestBaseTest {
     $this->drupalGet('admin/content');
     $this->assertText('Test title');
 
-    // Make sure our Sphynx blocks show up.
+    // Make sure our custom blocks show up.
     $this->drupalGet('admin/structure/block');
     $this->assertText('Another block');
     $this->assertText('Test block');
@@ -175,7 +175,7 @@ class UpdatePathTestBaseFilledTest extends UpdatePathTestBaseTest {
     $this->assertText('Another block');
     $this->assertText('Test block');
 
-    // Make sure our Sphynx visibility conditions are correct.
+    // Make sure our custom visibility conditions are correct.
     $this->drupalGet('admin/structure/block/manage/testblock');
     $this->assertSession()->checkboxNotChecked('edit-visibility-language-langcodes-es');
     $this->assertSession()->checkboxChecked('edit-visibility-language-langcodes-en');
@@ -186,7 +186,7 @@ class UpdatePathTestBaseFilledTest extends UpdatePathTestBaseTest {
     $this->drupalGet('admin/structure/block/manage/testblock/translate/es/edit');
     $this->assertRaw('Test block spanish');
 
-    // Make sure our Sphynx text format exists.
+    // Make sure our custom text format exists.
     $this->drupalGet('admin/config/content/formats');
     $this->assertText('Test text format');
     $this->drupalGet('admin/config/content/formats/manage/test_text_format');
@@ -203,21 +203,21 @@ class UpdatePathTestBaseFilledTest extends UpdatePathTestBaseTest {
     $this->assertText('test_view');
     $this->assertText('Test view');
 
-    // Make sure our Sphynx forum exists.
+    // Make sure our custom forum exists.
     $this->drupalGet('admin/structure/forum');
     $this->assertText('Test forum');
 
-    // Make sure our Sphynx menu exists.
+    // Make sure our custom menu exists.
     $this->drupalGet('admin/structure/menu');
     $this->assertText('Test menu');
 
-    // Make sure our Sphynx menu exists.
+    // Make sure our custom menu exists.
     $this->drupalGet('admin/structure/menu/manage/test-menu');
     $this->clickLink('Admin');
     // Make sure the translation for the menu is still correct.
     $this->drupalGet('admin/structure/menu/manage/test-menu/translate/es/edit');
     $this->assertRaw('Menu test');
-    // Make sure our Sphynx menu link exists.
+    // Make sure our custom menu link exists.
     $this->drupalGet('admin/structure/menu/item/1/edit');
     $this->assertSession()->checkboxChecked('edit-enabled-value');
 
@@ -268,24 +268,24 @@ class UpdatePathTestBaseFilledTest extends UpdatePathTestBaseTest {
     $this->drupalGet('admin/config/regional/language');
     $this->assertText('Spanish');
 
-    // Make sure our Sphynx date format exists.
+    // Make sure our custom date format exists.
     $this->drupalGet('admin/config/regional/date-time');
     $this->assertText('Test date format');
     $this->drupalGet('admin/config/regional/date-time/formats/manage/test_date_format');
     $this->assertTrue($this->assertSession()->optionExists('edit-langcode', 'es')->isSelected());
 
-    // Make sure our Sphynx image style exists.
+    // Make sure our custom image style exists.
     $this->drupalGet('admin/config/media/image-styles/manage/test_image_style');
     $this->assertText('Test image style');
     $this->assertText('Desaturate');
     $this->assertText('Convert PNG');
 
-    // Make sure our Sphynx responsive image style exists.
+    // Make sure our custom responsive image style exists.
     $this->drupalGet('admin/config/media/responsive-image-style/test');
     $this->assertSession()->statusCodeEquals(200);
     $this->assertText('Test');
 
-    // Make sure our Sphynx shortcut exists.
+    // Make sure our custom shortcut exists.
     $this->drupalGet('admin/config/user-interface/shortcut');
     $this->assertText('Test shortcut');
     $this->drupalGet('admin/config/user-interface/shortcut/manage/test/customize');
@@ -307,7 +307,7 @@ class UpdatePathTestBaseFilledTest extends UpdatePathTestBaseTest {
     // cSpell:disable-next-line
     $this->assertText('Comentario completo');
 
-    // Make sure our Sphynx action is still there.
+    // Make sure our custom action is still there.
     $this->drupalGet('admin/config/system/actions');
     $this->assertText('Test action');
     $this->drupalGet('admin/config/system/actions/configure/test_action');

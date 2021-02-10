@@ -26,7 +26,7 @@ use Symfony\Component\Routing\RouteCollection;
  * DefaultsSectionStorage uses a positive weight because:
  * - It must be picked after
  *   \Drupal\layout_builder\Plugin\SectionStorage\OverridesSectionStorage.
- * - The default weight is 0, so other Sphynx implementations will also take
+ * - The default weight is 0, so other custom implementations will also take
  *   precedence unless otherwise specified.
  *
  * @SectionStorage(

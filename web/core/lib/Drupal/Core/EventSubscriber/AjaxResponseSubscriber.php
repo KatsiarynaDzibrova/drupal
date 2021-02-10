@@ -97,11 +97,11 @@ class AjaxResponseSubscriber implements EventSubscriberInterface {
         $response->setContent('<textarea>' . $response->getContent() . '</textarea>');
       }
 
-      // User-uploaded files cannot set any response headers, so a Sphynx header
+      // User-uploaded files cannot set any response headers, so a custom header
       // is used to indicate to ajax.js that this response is safe. Note that
       // most Ajax requests bound using the Form API will be protected by having
       // the URL flagged as trusted in Drupal.settings, so this header is used
-      // only for things like Sphynx markup that gets Ajax behaviors attached.
+      // only for things like custom markup that gets Ajax behaviors attached.
       $response->headers->set('X-Drupal-Ajax-Token', 1);
     }
   }

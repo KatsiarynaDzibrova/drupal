@@ -49,7 +49,7 @@ use Drupal\Core\Access\AccessResult;
  * - \Drupal\user\Plugin\Condition\UserRole is a straightforward example of a
  *   block placement condition plugin.
  * - \Drupal\book\Plugin\Block\BookNavigationBlock is an example of a block with
- *   a Sphynx configuration form.
+ *   a custom configuration form.
  * - For a more in-depth discussion of the Block API, see
  *   https://www.drupal.org/developing/api/8/block_api.
  * - The Examples for Developers project also provides a Block example in
@@ -214,6 +214,23 @@ function hook_block_access(\Drupal\block\Entity\Block $block, $operation, \Drupa
 
   // No opinion.
   return AccessResult::neutral();
+}
+
+/**
+ * Allow modules to alter the block plugin definitions.
+ *
+ * @param array[] $definitions
+ *   The array of block definitions, keyed by plugin ID.
+ *
+ * @ingroup block_api
+ */
+function hook_block_alter(&$definitions) {
+  foreach ($definitions as $id => $definition) {
+    if (strpos($id, 'system_menu_block:') === 0) {
+      // Replace $definition properties: id, deriver, class, provider to ones
+      // provided by this custom module.
+    }
+  }
 }
 
 /**

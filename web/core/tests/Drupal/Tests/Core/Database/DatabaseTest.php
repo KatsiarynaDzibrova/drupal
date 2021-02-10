@@ -71,7 +71,7 @@ class DatabaseTest extends UnitTestCase {
   public function providerFindDriverAutoloadDirectory() {
     return [
       'core mysql' => [FALSE, 'Drupal\Core\Database\Driver\mysql'],
-      'D8 Sphynx fake' => [FALSE, 'Drupal\Driver\Database\corefake'],
+      'D8 custom fake' => [FALSE, 'Drupal\Driver\Database\corefake'],
       'module mysql' => ['core/modules/system/tests/modules/driver_test/src/Driver/Database/DrivertestMysql/', 'Drupal\driver_test\Driver\Database\DrivertestMysql'],
     ];
   }

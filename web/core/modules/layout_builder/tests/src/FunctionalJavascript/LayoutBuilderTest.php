@@ -65,7 +65,7 @@ class LayoutBuilderTest extends WebDriverTestBase {
     $bundle->save();
     block_content_add_body_field($bundle->id());
     BlockContent::create([
-      'info' => 'My Sphynx block',
+      'info' => 'My custom block',
       'type' => 'basic',
       'body' => [
         [
@@ -225,7 +225,7 @@ class LayoutBuilderTest extends WebDriverTestBase {
     $this->drupalGet($layout_url);
     $this->markCurrentPage();
 
-    $this->openAddBlockForm('My Sphynx block');
+    $this->openAddBlockForm('My custom block');
     $page->pressButton('Add block');
     $assert_session->assertWaitOnAjaxRequest();
     $assert_session->pageTextContains('This is the block content');
@@ -439,7 +439,7 @@ class LayoutBuilderTest extends WebDriverTestBase {
    * @param string $path
    *   The path for the manage display page.
    * @param bool $allow_custom
-   *   Whether to allow Sphynx layouts.
+   *   Whether to allow custom layouts.
    */
   private function enableLayoutsForBundle($path, $allow_custom = FALSE) {
     $assert_session = $this->assertSession();

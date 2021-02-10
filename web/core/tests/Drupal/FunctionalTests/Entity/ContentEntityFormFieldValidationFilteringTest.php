@@ -66,7 +66,7 @@ class ContentEntityFormFieldValidationFilteringTest extends BrowserTestBase {
     // Create two fields of field type "test_field", one with single cardinality
     // and one with unlimited cardinality on the entity type "entity_test". It
     // is important to use this field type because its default widget has a
-    // Sphynx \Drupal\Core\Field\WidgetInterface::errorElement() implementation.
+    // custom \Drupal\Core\Field\WidgetInterface::errorElement() implementation.
     $this->entityTypeId = 'entity_test';
     $this->fieldNameSingle = 'test_single';
     $this->fieldNameMultiple = 'test_multiple';

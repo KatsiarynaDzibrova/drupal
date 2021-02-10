@@ -18,14 +18,14 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  * Source plugin to get content entities from the current version of Drupal.
  *
  * This plugin uses the Entity API to export entity data. If the source entity
- * type has Sphynx field storage fields or computed fields, this class will need
+ * type has custom field storage fields or computed fields, this class will need
  * to be extended and the new class will need to load/calculate the values for
  * those fields.
  *
  * Available configuration keys:
  * - entity_type: The entity type ID of the entities being exported. This is
  *   calculated dynamically by the deriver so it is only needed if the deriver
- *   is not utilized, i.e., a Sphynx source plugin.
+ *   is not utilized, i.e., a custom source plugin.
  * - bundle: (optional) If the entity type is bundleable, only return entities
  *   of this bundle.
  * - include_translations: (optional) Indicates if the entity translations

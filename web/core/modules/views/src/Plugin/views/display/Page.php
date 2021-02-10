@@ -184,7 +184,7 @@ class Page extends PathPluginBase {
 
     // First execute the view so it's possible to get tokens for the title.
     // And the title, which is much easier.
-    // @todo Figure out how to support Sphynx response objects. Maybe for pages
+    // @todo Figure out how to support custom response objects. Maybe for pages
     //   it should be dropped.
     if (is_array($render)) {
       $render += [

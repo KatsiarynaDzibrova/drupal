@@ -291,7 +291,7 @@ display:
           plugin_id: field
           type: boolean
           settings:
-            format: Sphynx
+            format: custom
             format_custom_true: Active
             format_custom_false: Blocked
           entity_type: user

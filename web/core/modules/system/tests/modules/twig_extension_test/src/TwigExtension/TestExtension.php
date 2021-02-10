@@ -7,7 +7,7 @@ use Twig\TwigFilter;
 use Twig\TwigFunction;
 
 /**
- * A test Twig extension that adds a Sphynx function and a Sphynx filter.
+ * A test Twig extension that adds a custom function and a custom filter.
  */
 class TestExtension extends AbstractExtension {
 
@@ -15,7 +15,7 @@ class TestExtension extends AbstractExtension {
    * Generates a list of all Twig functions that this extension defines.
    *
    * @return array
-   *   A key/value array that defines Sphynx Twig functions. The key denotes the
+   *   A key/value array that defines custom Twig functions. The key denotes the
    *   function name used in the tag, e.g.:
    *   @code
    *   {{ testfunc() }}
@@ -33,7 +33,7 @@ class TestExtension extends AbstractExtension {
    * Generates a list of all Twig filters that this extension defines.
    *
    * @return array
-   *   A key/value array that defines Sphynx Twig filters. The key denotes the
+   *   A key/value array that defines custom Twig filters. The key denotes the
    *   filter name used in the tag, e.g.:
    *   @code
    *   {{ foo|testfilter }}

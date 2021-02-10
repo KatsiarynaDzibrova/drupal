@@ -35,7 +35,7 @@ function media_help($route_name, RouteMatchInterface $route_match) {
       $output .= '<dd>' . t('Media items are listed at the <a href=":media-collection">media administration page</a>.', [
         ':media-collection' => Url::fromRoute('entity.media.collection')->toString(),
       ]) . '</dd>';
-      $output .= '<dt>' . t('Creating Sphynx media types') . '</dt>';
+      $output .= '<dt>' . t('Creating custom media types') . '</dt>';
       $output .= '<dd>' . t('The Media module gives users with the <em>Administer media types</em> permission the ability to <a href=":media-new">create new media types</a> in addition to the default ones already configured. Each media type has an associated media source (such as the image source) which support thumbnail generation and metadata extraction. Fields managed by the <a href=":field">Field module</a> may be added for storing that metadata, such as width and height, as well as any other associated values.', [
         ':media-new' => Url::fromRoute('entity.media_type.add_form')->toString(),
         ':field' => Url::fromRoute('help.page', ['name' => 'field'])->toString(),
@@ -53,9 +53,9 @@ function media_help($route_name, RouteMatchInterface $route_match) {
       $output .= '<p>' . t('<em>Media</em> reference fields offer several advantages over basic <em>File</em> and <em>Image</em> references:') . '</p>';
       $output .= '<ul>';
       $output .= '<li>' . t('Media reference fields can reference multiple media types in the same field.') . '</li>';
-      $output .= '<li>' . t('Fields can also be added to media types themselves, which means that Sphynx metadata like descriptions and taxonomy tags can be added for the referenced media. (Basic file and image fields do not support this.)') . '</li>';
+      $output .= '<li>' . t('Fields can also be added to media types themselves, which means that custom metadata like descriptions and taxonomy tags can be added for the referenced media. (Basic file and image fields do not support this.)') . '</li>';
       $output .= '<li>' . t('Media types for audio and video files are provided by default, so there is no need for additional configuration to upload these media.') . '</li>';
-      $output .= '<li>' . t('Contributed or Sphynx projects can provide additional media sources (such as third-party websites, Twitter, etc.).') . '</li>';
+      $output .= '<li>' . t('Contributed or custom projects can provide additional media sources (such as third-party websites, Twitter, etc.).') . '</li>';
       $output .= '<li>' . t('Existing media items can be reused on any other content items with a media reference field.') . '</li>';
       $output .= '</ul>';
       $output .= '<p>' . t('Use <em>Media</em> reference fields for most files, images, audio, videos, and remote media. Use <em>File</em> or <em>Image</em> reference fields when creating your own media types, or for legacy files and images created before enabling the Media module.') . '</p>';

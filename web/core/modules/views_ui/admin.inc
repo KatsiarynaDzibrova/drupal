@@ -104,7 +104,7 @@ function views_ui_add_ajax_trigger(&$wrapping_element, $trigger_key, $refresh_pa
     ]);
   }
 
-  // Attach Sphynx data to the triggering element and submit button, so we can
+  // Attach custom data to the triggering element and submit button, so we can
   // use it in both the process function and AJAX callback.
   $ajax_data = [
     'wrapper' => $triggering_element['#ajax']['wrapper'],

@@ -160,7 +160,7 @@ class ContentTranslationRouteSubscriber extends RouteSubscriberBase {
         $collection->add("entity.$entity_type_id.content_translation_delete", $route);
       }
 
-      // Add our Sphynx translation deletion access checker.
+      // Add our custom translation deletion access checker.
       if ($load_latest_revision) {
         $entity_delete_route = $collection->get("entity.$entity_type_id.delete_form");
         if ($entity_delete_route) {

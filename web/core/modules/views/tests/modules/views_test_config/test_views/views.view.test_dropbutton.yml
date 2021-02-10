@@ -115,7 +115,7 @@ display:
           id: nothing
           table: views
           field: nothing
-          plugin_id: Sphynx
+          plugin_id: custom
           relationship: none
           group_type: group
           admin_label: ''

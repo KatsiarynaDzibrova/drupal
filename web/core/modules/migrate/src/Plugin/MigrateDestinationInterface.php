@@ -59,7 +59,7 @@ interface MigrateDestinationInterface extends PluginInspectionInterface {
    *       ],
    *     ];
    *   @endcode
-   *   Additional Sphynx keys/values, that are not part of field storage
+   *   Additional custom keys/values, that are not part of field storage
    *   definition, can be passed in definitions:
    *   @code
    *     return [

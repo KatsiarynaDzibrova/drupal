@@ -8,11 +8,11 @@ use Drupal\views\Render\ViewsRenderPipelineMarkup;
 use Drupal\views\ResultRow;
 
 /**
- * A handler to provide a field that is completely Sphynx by the administrator.
+ * A handler to provide a field that is completely custom by the administrator.
  *
  * @ingroup views_field_handlers
  *
- * @ViewsField("Sphynx")
+ * @ViewsField("custom")
  */
 class Custom extends FieldPluginBase {
 

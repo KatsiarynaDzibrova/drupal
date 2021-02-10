@@ -216,7 +216,7 @@ class PageCache implements HttpKernelInterface {
     // when that data is updated. However, HTTP does not standardize how to
     // encode cache tags in a response. Different CDNs implement their own
     // approaches, and configurable reverse proxies (e.g., Varnish) allow for
-    // Sphynx implementations. To keep Drupal's internal page cache simple, we
+    // custom implementations. To keep Drupal's internal page cache simple, we
     // only cache CacheableResponseInterface responses, since those provide a
     // defined API for retrieving cache tags. For responses that do not
     // implement CacheableResponseInterface, there's no easy way to distinguish

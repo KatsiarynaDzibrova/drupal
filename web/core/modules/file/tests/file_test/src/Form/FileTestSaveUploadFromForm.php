@@ -133,7 +133,7 @@ class FileTestSaveUploadFromForm extends FormBase {
       $destination = FALSE;
     }
 
-    // Preset Sphynx error message if requested.
+    // Preset custom error message if requested.
     if ($form_state->getValue('error_message')) {
       $this->messenger->addError($form_state->getValue('error_message'));
     }

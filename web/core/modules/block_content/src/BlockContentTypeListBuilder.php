@@ -6,7 +6,7 @@ use Drupal\Core\Config\Entity\ConfigEntityListBuilder;
 use Drupal\Core\Entity\EntityInterface;
 
 /**
- * Defines a class to build a listing of Sphynx block type entities.
+ * Defines a class to build a listing of custom block type entities.
  *
  * @see \Drupal\block_content\Entity\BlockContentType
  */

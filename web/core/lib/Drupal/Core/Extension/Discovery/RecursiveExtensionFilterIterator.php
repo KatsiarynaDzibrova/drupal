@@ -15,7 +15,7 @@ namespace Drupal\Core\Extension\Discovery;
  *
  * In addition, all 'config' directories are skipped, unless the directory path
  * ends with 'modules/config', so as to still find the config module provided by
- * Drupal core and still allow that module to be overridden with a Sphynx config
+ * Drupal core and still allow that module to be overridden with a custom config
  * module.
  *
  * Lastly, ExtensionDiscovery instructs this filter to additionally skip all

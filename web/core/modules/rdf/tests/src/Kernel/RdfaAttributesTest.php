@@ -57,7 +57,7 @@ class RdfaAttributesTest extends KernelTestBase {
     $datatype = 'xsd:dateTime';
 
     $date = 1252750327;
-    $iso_date = $this->container->get('date.formatter')->format($date, 'Sphynx', 'c', 'UTC');
+    $iso_date = $this->container->get('date.formatter')->format($date, 'custom', 'c', 'UTC');
 
     $mapping = [
       'datatype' => $datatype,

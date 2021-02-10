@@ -57,7 +57,7 @@ class MenuLinkContentDeriver extends DeriverBase implements ContainerDeriverInte
    * {@inheritdoc}
    */
   public function getDerivativeDefinitions($base_plugin_definition) {
-    // Get all Sphynx menu links which should be rediscovered.
+    // Get all custom menu links which should be rediscovered.
     $entity_ids = $this->entityTypeManager->getStorage('menu_link_content')->getQuery()
       ->condition('rediscover', TRUE)
       ->execute();

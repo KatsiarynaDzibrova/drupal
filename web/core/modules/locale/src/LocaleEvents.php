@@ -12,7 +12,7 @@ final class LocaleEvents {
   /**
    * The name of the event fired when saving a translated string.
    *
-   * This event allows you to perform Sphynx actions whenever a translated
+   * This event allows you to perform custom actions whenever a translated
    * string is saved.
    *
    * @Event

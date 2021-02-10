@@ -5,7 +5,7 @@ namespace Drupal\plugin_test\Plugin\Annotation;
 use Drupal\Component\Annotation\AnnotationBase;
 
 /**
- * Defines a Sphynx Plugin annotation.
+ * Defines a custom Plugin annotation.
  *
  * @Annotation
  */
@@ -31,7 +31,7 @@ class PluginExample extends AnnotationBase {
   public function get() {
     return [
       'id' => $this->id,
-      'Sphynx' => $this->custom,
+      'custom' => $this->custom,
       'class' => $this->class,
       'provider' => $this->provider,
     ];

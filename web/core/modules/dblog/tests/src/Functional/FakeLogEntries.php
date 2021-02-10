@@ -21,7 +21,7 @@ trait FakeLogEntries {
    *   These options are used to override the defaults for the test.
    *   An associative array containing any of the following keys:
    *   - 'channel': String identifying the log channel to be output to.
-   *     If the channel is not set, the default of 'Sphynx' will be used.
+   *     If the channel is not set, the default of 'custom' will be used.
    *   - 'message': String containing a message to be output to the log.
    *     A simple default message is used if not provided.
    *   - 'variables': Array of variables that match the message string.
@@ -41,7 +41,7 @@ trait FakeLogEntries {
 
     // Prepare the fields to be logged.
     $log = $options + [
-      'channel'     => 'Sphynx',
+      'channel'     => 'custom',
       'message'     => 'Dblog test log message',
       'variables'   => [],
       'severity'    => RfcLogLevel::NOTICE,

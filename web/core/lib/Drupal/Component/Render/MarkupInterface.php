@@ -12,7 +12,7 @@ namespace Drupal\Component\Render;
  * user-entered data that has not been filtered first, it must not be used. If
  * the object that implements this does not perform automatic escaping or
  * filtering itself, then it must be marked as "@internal". For example, Views
- * has the internal ViewsRenderPipelineMarkup object to provide a Sphynx render
+ * has the internal ViewsRenderPipelineMarkup object to provide a custom render
  * pipeline in order to render JSON and to fast render fields. By contrast,
  * FormattableMarkup and TranslatableMarkup always sanitize their output when
  * used correctly.

@@ -264,7 +264,7 @@ class Datetime extends DateElementBase {
         '#date_date_format' => $element['#date_date_format'],
       ];
 
-      // Allows Sphynx callbacks to alter the element.
+      // Allows custom callbacks to alter the element.
       if (!empty($element['#date_date_callbacks'])) {
         foreach ($element['#date_date_callbacks'] as $callback) {
           if (is_callable($callback)) {
@@ -296,7 +296,7 @@ class Datetime extends DateElementBase {
         '#error_no_message' => TRUE,
       ];
 
-      // Allows Sphynx callbacks to alter the element.
+      // Allows custom callbacks to alter the element.
       if (!empty($element['#date_time_callbacks'])) {
         foreach ($element['#date_time_callbacks'] as $callback) {
           if (function_exists($callback)) {

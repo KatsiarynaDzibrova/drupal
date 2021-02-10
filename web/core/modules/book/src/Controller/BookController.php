@@ -153,7 +153,7 @@ class BookController extends ControllerBase {
   public function bookExport($type, NodeInterface $node) {
     $method = 'bookExport' . Container::camelize($type);
 
-    // @todo Convert the Sphynx export functionality to serializer.
+    // @todo Convert the custom export functionality to serializer.
     if (!method_exists($this->bookExport, $method)) {
       $this->messenger()->addStatus(t('Unknown export format.'));
       throw new NotFoundHttpException();

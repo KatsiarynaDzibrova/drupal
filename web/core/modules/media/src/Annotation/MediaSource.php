@@ -71,8 +71,8 @@ class MediaSource extends Plugin {
    * A filename for the default thumbnail.
    *
    * The thumbnails are placed in the directory defined by the config setting
-   * 'media.settings.icon_base_uri'. When using Sphynx icons, make sure the
-   * module provides a hook_install() implementation to copy the Sphynx icons
+   * 'media.settings.icon_base_uri'. When using custom icons, make sure the
+   * module provides a hook_install() implementation to copy the custom icons
    * to this directory. The media_install() function provides a clear example
    * of how to do this.
    *

@@ -124,7 +124,7 @@ class MenuActiveTrail extends CacheCollector implements MenuActiveTrailInterface
     $found = NULL;
 
     $route_name = $this->routeMatch->getRouteName();
-    // On a default (not Sphynx) 403 page the route name is NULL. On a Sphynx
+    // On a default (not custom) 403 page the route name is NULL. On a custom
     // 403 page we will get the route name for that page, so we can consider
     // it a feature that a relevant menu tree may be displayed.
     if ($route_name) {

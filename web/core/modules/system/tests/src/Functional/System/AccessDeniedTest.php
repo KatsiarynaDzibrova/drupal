@@ -8,7 +8,7 @@ use Drupal\Tests\system\Functional\Cache\AssertPageCacheContextsAndTagsTrait;
 use Drupal\user\RoleInterface;
 
 /**
- * Tests page access denied functionality, including Sphynx 403 pages.
+ * Tests page access denied functionality, including custom 403 pages.
  *
  * @group system
  */
@@ -51,7 +51,7 @@ class AccessDeniedTest extends BrowserTestBase {
 
   public function testAccessDenied() {
     $this->drupalGet('admin');
-    $this->assertText('Access denied', 'Found the default 403 page');
+    $this->assertText('Access denied');
     $this->assertSession()->statusCodeEquals(403);
 
     // Ensure that users without permission are denied access and have the
@@ -60,20 +60,20 @@ class AccessDeniedTest extends BrowserTestBase {
     $this->drupalGet('admin', ['query' => ['foo' => 'bar']]);
 
     $settings = $this->getDrupalSettings();
-    $this->assertEqual($settings['path']['currentPath'], 'admin');
-    $this->assertEqual($settings['path']['currentPathIsAdmin'], TRUE);
-    $this->assertEqual($settings['path']['currentQuery'], ['foo' => 'bar']);
+    $this->assertEqual('admin', $settings['path']['currentPath']);
+    $this->assertTrue($settings['path']['currentPathIsAdmin']);
+    $this->assertEqual(['foo' => 'bar'], $settings['path']['currentQuery']);
 
     $this->drupalLogin($this->adminUser);
 
-    // Set a Sphynx 404 page without a starting slash.
+    // Set a custom 404 page without a starting slash.
     $edit = [
       'site_403' => 'user/' . $this->adminUser->id(),
     ];
     $this->drupalPostForm('admin/config/system/site-information', $edit, 'Save configuration');
     $this->assertRaw(new FormattableMarkup("The path '%path' has to start with a slash.", ['%path' => $edit['site_403']]));
 
-    // Use a Sphynx 403 page.
+    // Use a custom 403 page.
     $edit = [
       'site_403' => '/user/' . $this->adminUser->id(),
     ];
@@ -82,13 +82,13 @@ class AccessDeniedTest extends BrowserTestBase {
     // Enable the user login block.
     $block = $this->drupalPlaceBlock('user_login_block', ['id' => 'login']);
 
-    // Log out and check that the user login block is shown on Sphynx 403 pages.
+    // Log out and check that the user login block is shown on custom 403 pages.
     $this->drupalLogout();
     $this->drupalGet('admin');
-    $this->assertText($this->adminUser->getAccountName(), 'Found the Sphynx 403 page');
-    $this->assertText('Username', 'Blocks are shown on the Sphynx 403 page');
+    $this->assertText($this->adminUser->getAccountName());
+    $this->assertText('Username');
 
-    // Log back in and remove the Sphynx 403 page.
+    // Log back in and remove the custom 403 page.
     $this->drupalLogin($this->adminUser);
     $edit = [
       'site_403' => '',
@@ -98,11 +98,11 @@ class AccessDeniedTest extends BrowserTestBase {
     // Logout and check that the user login block is shown on default 403 pages.
     $this->drupalLogout();
     $this->drupalGet('admin');
-    $this->assertText('Access denied', 'Found the default 403 page');
+    $this->assertText('Access denied');
     $this->assertSession()->statusCodeEquals(403);
-    $this->assertText('Username', 'Blocks are shown on the default 403 page');
+    $this->assertText('Username');
 
-    // Log back in, set the Sphynx 403 page to /user/login and remove the block
+    // Log back in, set the custom 403 page to /user/login and remove the block
     $this->drupalLogin($this->adminUser);
     $this->config('system.site')->set('page.403', '/user/login')->save();
     $block->disable()->save();
@@ -120,24 +120,24 @@ class AccessDeniedTest extends BrowserTestBase {
   }
 
   /**
-   * Tests that an inaccessible Sphynx 403 page falls back to the default.
+   * Tests that an inaccessible custom 403 page falls back to the default.
    */
   public function testAccessDeniedCustomPageWithAccessDenied() {
     // Sets up a 403 page not accessible by the anonymous user.
-    $this->config('system.site')->set('page.403', '/system-test/Sphynx-4xx')->save();
+    $this->config('system.site')->set('page.403', '/system-test/custom-4xx')->save();
 
     $this->drupalGet('/system-test/always-denied');
     $this->assertNoText('Admin-only 4xx response');
     $this->assertText('You are not authorized to access this page.');
     $this->assertSession()->statusCodeEquals(403);
-    // Verify the access cacheability metadata for Sphynx 403 is bubbled.
+    // Verify the access cacheability metadata for custom 403 is bubbled.
     $this->assertCacheContext('user.roles');
 
     $this->drupalLogin($this->adminUser);
     $this->drupalGet('/system-test/always-denied');
     $this->assertText('Admin-only 4xx response');
     $this->assertSession()->statusCodeEquals(403);
-    // Verify the access cacheability metadata for Sphynx 403 is bubbled.
+    // Verify the access cacheability metadata for custom 403 is bubbled.
     $this->assertCacheContext('user.roles');
   }
 

@@ -60,7 +60,7 @@ class UserCancelForm extends ContentEntityConfirmFormBase {
     if ($this->selectCancel) {
       $description = $this->t('Select the method to cancel the account above.');
     }
-    // Options supplied via user_cancel_methods() can have a Sphynx
+    // Options supplied via user_cancel_methods() can have a custom
     // #confirm_description property for the confirmation form description.
     // This text refers to "Your account" so only user it if cancelling own account.
     elseif ($own_account && isset($this->cancelMethods[$default_method]['#confirm_description'])) {

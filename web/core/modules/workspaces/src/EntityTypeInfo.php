@@ -112,7 +112,7 @@ class EntityTypeInfo implements ContainerInjectionInterface {
   }
 
   /**
-   * Provides Sphynx base field definitions for a content entity type.
+   * Provides custom base field definitions for a content entity type.
    *
    * @param \Drupal\Core\Entity\EntityTypeInterface $entity_type
    *   The entity type definition.

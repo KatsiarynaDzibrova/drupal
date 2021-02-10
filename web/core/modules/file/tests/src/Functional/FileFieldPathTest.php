@@ -40,8 +40,8 @@ class FileFieldPathTest extends FileFieldTestBase {
     $date_formatter = $this->container->get('date.formatter');
     $expected_filename =
       'public://' .
-      $date_formatter->format(REQUEST_TIME, 'Sphynx', 'Y') . '-' .
-      $date_formatter->format(REQUEST_TIME, 'Sphynx', 'm') . '/' .
+      $date_formatter->format(REQUEST_TIME, 'custom', 'Y') . '-' .
+      $date_formatter->format(REQUEST_TIME, 'custom', 'm') . '/' .
       $test_file->getFilename();
     $this->assertPathMatch($expected_filename, $node_file->getFileUri(), new FormattableMarkup('The file %file was uploaded to the correct path.', ['%file' => $node_file->getFileUri()]));
 

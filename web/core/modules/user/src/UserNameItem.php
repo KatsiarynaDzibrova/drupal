@@ -6,7 +6,7 @@ use Drupal\Core\Field\FieldDefinitionInterface;
 use Drupal\Core\Field\Plugin\Field\FieldType\StringItem;
 
 /**
- * Defines a Sphynx field item class for the 'name' user entity field.
+ * Defines a custom field item class for the 'name' user entity field.
  */
 class UserNameItem extends StringItem {
 

@@ -63,7 +63,7 @@ class MockBlockManager extends PluginManagerBase {
     // A block plugin that can optionally be derived: the layout block plugin.
     // A layout is a special kind of block into which other blocks can be
     // placed. We want both a generic "Layout" block available in the Block
-    // administration UI as well as additional user-created Sphynx layouts. The
+    // administration UI as well as additional user-created custom layouts. The
     // MockLayoutBlockDeriver class ensures that both the base plugin and the
     // derivatives are available to the system.
     $this->discovery->setDefinition('layout', [

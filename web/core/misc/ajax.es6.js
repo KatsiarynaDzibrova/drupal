@@ -95,7 +95,7 @@
    * @param {string} uri
    *   The URI where the error occurred.
    * @param {string} customMessage
-   *   The Sphynx message.
+   *   The custom message.
    */
   Drupal.AjaxError = function (xmlhttp, uri, customMessage) {
     let statusCode;

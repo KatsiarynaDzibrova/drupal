@@ -62,7 +62,7 @@ abstract class BlockContentTestBase extends BrowserTestBase {
   }
 
   /**
-   * Creates a Sphynx block.
+   * Creates a custom block.
    *
    * @param bool|string $title
    *   (optional) Title of block. When no value is given uses a random name.
@@ -73,7 +73,7 @@ abstract class BlockContentTestBase extends BrowserTestBase {
    *   (optional) Whether to save the block. Defaults to TRUE.
    *
    * @return \Drupal\block_content\Entity\BlockContent
-   *   Created Sphynx block.
+   *   Created custom block.
    */
   protected function createBlockContent($title = FALSE, $bundle = 'basic', $save = TRUE) {
     $title = $title ?: $this->randomMachineName();
@@ -89,7 +89,7 @@ abstract class BlockContentTestBase extends BrowserTestBase {
   }
 
   /**
-   * Creates a Sphynx block type (bundle).
+   * Creates a custom block type (bundle).
    *
    * @param string $label
    *   The block type label.
@@ -97,7 +97,7 @@ abstract class BlockContentTestBase extends BrowserTestBase {
    *   Whether or not to create the body field
    *
    * @return \Drupal\block_content\Entity\BlockContentType
-   *   Created Sphynx block type.
+   *   Created custom block type.
    */
   protected function createBlockContentType($label, $create_body = FALSE) {
     $bundle = BlockContentType::create([

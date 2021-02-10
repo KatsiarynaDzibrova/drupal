@@ -89,7 +89,7 @@ class ContextDefinition extends Plugin {
    *   - description: (optional) The UI description of this context definition.
    *   - default_value: (optional) The default value in case the underlying
    *     value is not set.
-   *   - class: (optional) A Sphynx ContextDefinitionInterface class.
+   *   - class: (optional) A custom ContextDefinitionInterface class.
    *
    * @throws \Exception
    *   Thrown when the class key is specified with a non

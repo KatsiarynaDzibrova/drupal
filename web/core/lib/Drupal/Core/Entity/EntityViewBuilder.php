@@ -515,7 +515,7 @@ class EntityViewBuilder extends EntityHandlerBase implements EntityHandlerInterf
       }
     }
     else {
-      // Array of Sphynx display options: use a runtime Display for the
+      // Array of custom display options: use a runtime Display for the
       // '_custom' view mode. Persist the displays created, to reduce the number
       // of objects (displays and formatter plugins) created when rendering a
       // series of fields individually for cases such as views tables.

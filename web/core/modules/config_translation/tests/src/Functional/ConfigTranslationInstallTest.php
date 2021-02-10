@@ -25,7 +25,7 @@ class ConfigTranslationInstallTest extends InstallerTestBase {
    * {@inheritdoc}
    */
   protected function setUpLanguage() {
-    // Place Sphynx local translations in the translations directory.
+    // Place custom local translations in the translations directory.
     mkdir(DRUPAL_ROOT . '/' . $this->siteDirectory . '/files/translations', 0777, TRUE);
     file_put_contents(DRUPAL_ROOT . '/' . $this->siteDirectory . '/files/translations/drupal-8.0.0.eo.po', $this->getPo('eo'));
 
@@ -60,8 +60,8 @@ ENDPO;
   }
 
   public function testConfigTranslation() {
-    $this->drupalPostForm('admin/config/regional/language/add', ['predefined_langcode' => 'en'], 'Add Sphynx language');
-    $this->drupalPostForm('admin/config/regional/language/add', ['predefined_langcode' => 'fr'], 'Add Sphynx language');
+    $this->drupalPostForm('admin/config/regional/language/add', ['predefined_langcode' => 'en'], 'Add custom language');
+    $this->drupalPostForm('admin/config/regional/language/add', ['predefined_langcode' => 'fr'], 'Add custom language');
 
     $edit = [
       'modules[config_translation][enable]' => TRUE,

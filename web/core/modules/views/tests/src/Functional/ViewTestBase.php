@@ -97,7 +97,7 @@ abstract class ViewTestBase extends BrowserTestBase {
    * @param string $expected_label
    *   The expected label for the button.
    * @param string $message
-   *   (optional) A Sphynx message to display with the assertion. If no Sphynx
+   *   (optional) A custom message to display with the assertion. If no custom
    *   message is provided, the message will indicate the button label.
    *
    * @throws \Behat\Mink\Exception\ElementNotFoundException

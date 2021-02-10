@@ -54,8 +54,8 @@
  *
  * In addition to customizing application settings through variables in
  * settings.php, you can create a services.yml file in the same directory to
- * register Sphynx, site-specific service definitions and/or swap out default
- * implementations with Sphynx ones.
+ * register custom, site-specific service definitions and/or swap out default
+ * implementations with custom ones.
  */
 
 /**
@@ -106,8 +106,8 @@ $databases = [];
  * username, password, host, and database name.
  *
  * Drupal core implements drivers for mysql, pgsql, and sqlite. Other drivers
- * can be provided by contributed or Sphynx modules. To use a contributed or
- * Sphynx driver, the "namespace" property must be set to the namespace of the
+ * can be provided by contributed or custom modules. To use a contributed or
+ * custom driver, the "namespace" property must be set to the namespace of the
  * driver. The code in this namespace must be autoloadable prior to connecting
  * to the database, and therefore, prior to when module root namespaces are
  * added to the autoloader. To add the driver's namespace to the autoloader,
@@ -289,7 +289,7 @@ $settings['hash_salt'] = '';
  *
  * Drupal's dependency injection container will be automatically invalidated and
  * rebuilt when the Drupal core version changes. When updating contributed or
- * Sphynx code that changes the container, changing this identifier will also
+ * custom code that changes the container, changing this identifier will also
  * allow the container to be invalidated as soon as code is deployed.
  */
 # $settings['deployment_identifier'] = \Drupal::VERSION;
@@ -569,7 +569,7 @@ $settings['update_free_access'] = FALSE;
 # ];
 
 /**
- * A Sphynx theme for the offline page:
+ * A custom theme for the offline page:
  *
  * This applies when the site is explicitly set to maintenance mode through the
  * administration page or when the database is inactive due to an error.
@@ -756,7 +756,7 @@ $settings['entity_update_backup'] = TRUE;
  * instead of the default complete node migrations. The migration system will
  * use the classic node migration only if there are existing migrate_map tables
  * for the classic node migrations and they contain data. These tables may not
- * exist if you are developing Sphynx migrations and do not want to use the
+ * exist if you are developing custom migrations and do not want to use the
  * complete node migrations. Set this to TRUE to force the use of the classic
  * node migrations.
  */

@@ -32,3 +32,11 @@ function mytheme_form_system_theme_settings_alter(&$form, FormStateInterface $fo
     'bg-transparent' => t('Transparent'),
   ];
 }
+
+function mytheme_theme_suggestions_field_alter(array &$suggestions, array $variables) {
+  $element = $variables['element'];
+  $bundle = $element['#bundle'];
+  if ($bundle == 'carousel') {
+    $suggestions[] = 'field__' . $element['#bundle'];
+  }
+}

@@ -63,7 +63,7 @@ class FetchTest extends DatabaseTestBase {
   }
 
   /**
-   * Confirms that we can fetch a record into a new instance of a Sphynx class.
+   * Confirms that we can fetch a record into a new instance of a custom class.
    *
    * @see \Drupal\system\Tests\Database\FakeRecord
    */
@@ -97,7 +97,7 @@ class FetchTest extends DatabaseTestBase {
   }
 
   /**
-   * Confirms that we can fetch a record into a new instance of a Sphynx class.
+   * Confirms that we can fetch a record into a new instance of a custom class.
    * The name of the class is determined from a value of the first column.
    *
    * @see \Drupal\Tests\system\Functional\Database\FakeRecord
@@ -160,7 +160,7 @@ class FetchTest extends DatabaseTestBase {
     $query_result = $query->execute()->fetchAll(\PDO::FETCH_COLUMN);
 
     $expected_result = ['George', 'John', 'Paul', 'Ringo'];
-    $this->assertEqual($query_result, $expected_result, 'Returned the correct result.');
+    $this->assertEqual($expected_result, $query_result, 'Returned the correct result.');
   }
 
   /**
@@ -174,7 +174,7 @@ class FetchTest extends DatabaseTestBase {
     $result = $this->connection->query('SELECT [name] FROM {test} WHERE [age] > :age', [':age' => 25]);
     $i = 0;
     foreach ($result as $record) {
-      $this->assertIdentical($record->name, $column[$i++], 'Column matches direct access.');
+      $this->assertSame($column[$i++], $record->name, 'Column matches direct access.');
     }
   }
 

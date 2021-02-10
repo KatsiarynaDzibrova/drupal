@@ -54,7 +54,7 @@ class RestExportTest extends ViewsKernelTestBase {
     $display['display_options']['style']['options']['formats'] = ['json', 'xml'];
     $view->save();
 
-    // No Sphynx header should be set yet.
+    // No custom header should be set yet.
     $response = RestExport::buildResponse('test_serializer_display_entity', 'rest_export_1', []);
     $this->assertEmpty($response->headers->get('Custom-Header'));
 
@@ -63,7 +63,7 @@ class RestExportTest extends ViewsKernelTestBase {
     $render_cache = $this->container->get('cache_factory')->get('render');
     $render_cache->deleteAll();
 
-    // A Sphynx header should now be added.
+    // A custom header should now be added.
     // @see rest_test_views_views_post_execute()
     $header = $this->randomString();
     $this->container->get('state')->set('rest_test_views_set_header', $header);

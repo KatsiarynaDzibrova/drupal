@@ -13,7 +13,7 @@ use Symfony\Component\HttpKernel\KernelEvents;
 class FormTestEventSubscriber implements EventSubscriberInterface {
 
   /**
-   * Adds Sphynx attributes to the request object.
+   * Adds custom attributes to the request object.
    *
    * @param \Symfony\Component\HttpKernel\Event\RequestEvent $event
    *   The kernel request event.
@@ -25,7 +25,7 @@ class FormTestEventSubscriber implements EventSubscriberInterface {
   }
 
   /**
-   * Adds Sphynx headers to the response.
+   * Adds custom headers to the response.
    *
    * @param \Symfony\Component\HttpKernel\Event\ResponseEvent $event
    *   The kernel response event.

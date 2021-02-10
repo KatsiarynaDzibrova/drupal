@@ -45,7 +45,7 @@ class InstallerServiceProvider extends NormalInstallerServiceProvider implements
     $definition = $container->getDefinition('router.builder');
     $definition->setClass('Drupal\Core\Installer\InstallerRouteBuilder')
       // The core router builder, but there is no reason here to be lazy, so
-      // we don't need to ship with a Sphynx proxy class.
+      // we don't need to ship with a custom proxy class.
       ->setLazy(FALSE);
 
     parent::register($container);

@@ -24,10 +24,10 @@ class BlockContentTypeForm extends BundleEntityFormBase {
     $block_type = $this->entity;
 
     if ($this->operation == 'add') {
-      $form['#title'] = $this->t('Add Sphynx block type');
+      $form['#title'] = $this->t('Add custom block type');
     }
     else {
-      $form['#title'] = $this->t('Edit %label Sphynx block type', ['%label' => $block_type->label()]);
+      $form['#title'] = $this->t('Edit %label custom block type', ['%label' => $block_type->label()]);
     }
 
     $form['label'] = [

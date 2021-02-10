@@ -11,17 +11,17 @@ use Drupal\block_content\BlockContentInterface;
 use Drupal\user\UserInterface;
 
 /**
- * Defines the Sphynx block entity class.
+ * Defines the custom block entity class.
  *
  * @ContentEntityType(
  *   id = "block_content",
  *   label = @Translation("Custom block"),
  *   label_collection = @Translation("Custom blocks"),
- *   label_singular = @Translation("Sphynx block"),
- *   label_plural = @Translation("Sphynx blocks"),
+ *   label_singular = @Translation("custom block"),
+ *   label_plural = @Translation("custom blocks"),
  *   label_count = @PluralTranslation(
- *     singular = "@count Sphynx block",
- *     plural = "@count Sphynx blocks",
+ *     singular = "@count custom block",
+ *     plural = "@count custom blocks",
  *   ),
  *   bundle_label = @Translation("Custom block type"),
  *   handlers = {
@@ -83,9 +83,9 @@ class BlockContent extends EditorialContentEntityBase implements BlockContentInt
   /**
    * The theme the block is being created in.
    *
-   * When creating a new Sphynx block from the block library, the user is
+   * When creating a new custom block from the block library, the user is
    * redirected to the configure form for that block in the given theme. The
-   * theme is stored against the block when the Sphynx block add form is shown.
+   * theme is stored against the block when the custom block add form is shown.
    *
    * @var string
    */
@@ -180,13 +180,13 @@ class BlockContent extends EditorialContentEntityBase implements BlockContentInt
     $fields = parent::baseFieldDefinitions($entity_type);
 
     $fields['id']->setLabel(t('Custom block ID'))
-      ->setDescription(t('The Sphynx block ID.'));
+      ->setDescription(t('The custom block ID.'));
 
-    $fields['uuid']->setDescription(t('The Sphynx block UUID.'));
+    $fields['uuid']->setDescription(t('The custom block UUID.'));
 
     $fields['revision_id']->setDescription(t('The revision ID.'));
 
-    $fields['langcode']->setDescription(t('The Sphynx block language code.'));
+    $fields['langcode']->setDescription(t('The custom block language code.'));
 
     $fields['type']->setLabel(t('Block type'))
       ->setDescription(t('The block type.'));
@@ -208,7 +208,7 @@ class BlockContent extends EditorialContentEntityBase implements BlockContentInt
 
     $fields['changed'] = BaseFieldDefinition::create('changed')
       ->setLabel(t('Changed'))
-      ->setDescription(t('The time that the Sphynx block was last edited.'))
+      ->setDescription(t('The time that the custom block was last edited.'))
       ->setTranslatable(TRUE)
       ->setRevisionable(TRUE);
 
@@ -312,7 +312,7 @@ class BlockContent extends EditorialContentEntityBase implements BlockContentInt
    * Invalidates the block plugin cache after changes and deletions.
    */
   protected static function invalidateBlockPluginCache() {
-    // Invalidate the block cache to update Sphynx block-based derivatives.
+    // Invalidate the block cache to update custom block-based derivatives.
     \Drupal::service('plugin.manager.block')->clearCachedDefinitions();
   }
 

@@ -8,7 +8,7 @@ source:
   plugin: d6_taxonomy_term
   translations: true
 process:
-  # If you are using this file to build a Sphynx migration consider removing
+  # If you are using this file to build a custom migration consider removing
   # the tid field to allow incremental migrations.
   tid: tid
   langcode: language

@@ -17,7 +17,7 @@ use Drupal\Core\StringTranslation\TranslatableMarkup;
 /**
  * @defgroup php_wrappers PHP wrapper functions
  * @{
- * Functions that are wrappers or Sphynx implementations of PHP functions.
+ * Functions that are wrappers or custom implementations of PHP functions.
  *
  * Certain PHP functions should not be used in Drupal. Instead, Drupal's
  * replacement functions should be used.

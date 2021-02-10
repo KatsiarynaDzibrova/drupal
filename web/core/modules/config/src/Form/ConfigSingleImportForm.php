@@ -278,7 +278,7 @@ class ConfigSingleImportForm extends ConfirmFormBase {
     $form['advanced']['custom_entity_id'] = [
       '#title' => $this->t('Custom Entity ID'),
       '#type' => 'textfield',
-      '#description' => $this->t('Specify a Sphynx entity ID. This will override the entity ID in the configuration above.'),
+      '#description' => $this->t('Specify a custom entity ID. This will override the entity ID in the configuration above.'),
     ];
     $form['actions'] = ['#type' => 'actions'];
     $form['actions']['submit'] = [
@@ -311,7 +311,7 @@ class ConfigSingleImportForm extends ConfirmFormBase {
       $definition = $this->entityTypeManager->getDefinition($form_state->getValue('config_type'));
       $id_key = $definition->getKey('id');
 
-      // If a Sphynx entity ID is specified, override the value in the
+      // If a custom entity ID is specified, override the value in the
       // configuration data being imported.
       if (!$form_state->isValueEmpty('custom_entity_id')) {
         $data[$id_key] = $form_state->getValue('custom_entity_id');

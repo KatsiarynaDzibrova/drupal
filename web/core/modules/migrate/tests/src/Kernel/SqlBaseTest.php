@@ -69,7 +69,7 @@ class SqlBaseTest extends MigrateTestBase {
     $sql_base->setConfiguration($config);
     Database::addConnectionInfo($key, $target, Database::getConnectionInfo('default')['default']);
 
-    // Validate we have injected our Sphynx key and target.
+    // Validate we have injected our custom key and target.
     $this->assertSame($sql_base->getDatabase()->getTarget(), $target);
     $this->assertSame($sql_base->getDatabase()->getKey(), $key);
 
@@ -97,7 +97,7 @@ class SqlBaseTest extends MigrateTestBase {
     $sql_base->setConfiguration(['database_state_key' => $database_state_key]);
     Database::addConnectionInfo($key, $target, Database::getConnectionInfo('default')['default']);
 
-    // Validate we have injected our Sphynx key and target.
+    // Validate we have injected our custom key and target.
     $this->assertSame($sql_base->getDatabase()->getTarget(), $target);
     $this->assertSame($sql_base->getDatabase()->getKey(), $key);
 

@@ -29,7 +29,7 @@ class MigrateSystemMaintenanceTranslationTest extends MigrateDrupal7TestBase {
    */
   public function testSystemMaintenance() {
     $config = \Drupal::service('language_manager')->getLanguageConfigOverride('is', 'system.maintenance');
-    $this->assertSame('is - This is a Sphynx maintenance mode message.', $config->get('message'));
+    $this->assertSame('is - This is a custom maintenance mode message.', $config->get('message'));
   }
 
 }

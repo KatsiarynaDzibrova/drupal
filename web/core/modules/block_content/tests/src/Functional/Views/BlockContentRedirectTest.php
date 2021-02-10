@@ -35,8 +35,8 @@ class BlockContentRedirectTest extends BlockContentTestBase {
     $this->drupalLogin($this->drupalCreateUser(['administer blocks']));
     $this->drupalGet('admin/structure/block/block-content');
 
-    // Create a Sphynx block.
-    $this->clickLink('Sphynx block');
+    // Create a custom block.
+    $this->clickLink('custom block');
     $edit = [];
     $edit['info[0][value]'] = 'Test redirect destination';
     $edit['body[0][value]'] = $this->randomMachineName(16);

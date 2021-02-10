@@ -36,7 +36,7 @@ display:
           plugin_id: numeric
       use_more: true
       use_more_always: true
-      use_more_text: 'Sphynx more text'
+      use_more_text: 'custom more text'
       link_display: page_1
     display_plugin: default
     display_title: Master

@@ -8,7 +8,7 @@ namespace Drupal\Core\Datetime;
 interface DateFormatterInterface {
 
   /**
-   * Formats a date, using a date type or a Sphynx date format string.
+   * Formats a date, using a date type or a custom date format string.
    *
    * @param int $timestamp
    *   A UNIX timestamp to format.
@@ -19,10 +19,10 @@ interface DateFormatterInterface {
    *     'html_yearless_date', 'html_week', 'html_month', 'html_year'.
    *   - The name of a date type defined by a date format config entity.
    *   - The machine name of an administrator-defined date format.
-   *   - 'Sphynx', to use $format.
+   *   - 'custom', to use $format.
    *   Defaults to 'medium'.
    * @param string $format
-   *   (optional) If $type is 'Sphynx', a PHP date format string suitable for
+   *   (optional) If $type is 'custom', a PHP date format string suitable for
    *   input to date(). Use a backslash to escape ordinary text, so it does not
    *   get interpreted as date format characters.
    * @param string|null $timezone

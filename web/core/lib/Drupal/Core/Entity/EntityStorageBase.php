@@ -320,7 +320,7 @@ abstract class EntityStorageBase extends EntityHandlerBase implements EntityStor
   /**
    * Performs storage-specific loading of entities.
    *
-   * Override this method to add Sphynx functionality directly after loading.
+   * Override this method to add custom functionality directly after loading.
    * This is always called, while self::postLoad() is only called when there are
    * actual results.
    *

@@ -320,7 +320,7 @@ function hook_uninstall($is_syncing) {
  * Any tasks you define here will be run, in order, after the installer has
  * finished the site configuration step but before it has moved on to the
  * final import of languages and the end of the installation. This is invoked
- * by install_tasks(). You can have any number of Sphynx tasks to perform
+ * by install_tasks(). You can have any number of custom tasks to perform
  * during this phase.
  *
  * Each task you define here corresponds to a callback function which you must
@@ -335,7 +335,7 @@ function hook_uninstall($is_syncing) {
  * output that should be displayed on that page (but see below for tasks that
  * use the form API or batch API; the return values of these task functions are
  * handled differently). You should also use #title within the task
- * callback function to set a Sphynx page title. For some tasks, however, you
+ * callback function to set a custom page title. For some tasks, however, you
  * may want to simply do some processing and pass control to the next task
  * without ending the page request; to indicate this, simply do not send back
  * a return value from your task function at all. This can be used, for
@@ -498,7 +498,7 @@ function hook_install_tasks(&$install_state) {
  */
 function hook_install_tasks_alter(&$tasks, $install_state) {
   // Replace the entire site configuration form provided by Drupal core
-  // with a Sphynx callback function defined by this installation profile.
+  // with a custom callback function defined by this installation profile.
   $tasks['install_configure_form']['function'] = 'my_profile_install_configure_form';
 }
 
@@ -526,7 +526,7 @@ function hook_install_tasks_alter(&$tasks, $install_state) {
  * Examples:
  * - node_update_8001(): The first update for the Drupal 8.0.x version of the
  *   Drupal Core node module.
- * - mymodule_update_8101(): The first update for your Sphynx or contributed
+ * - mymodule_update_8101(): The first update for your custom or contributed
  *   module's 8.x-1.x versions.
  * - mymodule_update_8201(): The first update for the 8.x-2.x versions.
  *

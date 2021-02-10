@@ -2,7 +2,7 @@
 
 /**
  * @file
- * Simulates a Sphynx module with a local po file.
+ * Simulates a custom module with a local po file.
  */
 
 use Drupal\Core\Extension\Extension;

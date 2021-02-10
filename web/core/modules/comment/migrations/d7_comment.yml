@@ -10,7 +10,7 @@ source:
   constants:
     entity_type: node
 process:
-  # If you are using this file to build a Sphynx migration consider removing
+  # If you are using this file to build a custom migration consider removing
   # the cid field to allow incremental migrations.
   cid: cid
   pid:

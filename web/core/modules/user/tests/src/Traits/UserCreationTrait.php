@@ -65,7 +65,7 @@ trait UserCreationTrait {
       }
     }
 
-    // Creating an administrator or assigning Sphynx permissions would result in
+    // Creating an administrator or assigning custom permissions would result in
     // creating and assigning a new role to the user. This is not possible with
     // the anonymous user account.
     if (($admin || $permissions) && isset($values['uid']) && is_numeric($values['uid']) && $values['uid'] == 0) {
@@ -272,10 +272,7 @@ trait UserCreationTrait {
     }
     $result = $role->save();
 
-    $this->assertIdentical($result, SAVED_NEW, new FormattableMarkup('Created role ID @rid with name @name.', [
-      '@name' => var_export($role->label(), TRUE),
-      '@rid' => var_export($role->id(), TRUE),
-    ]), 'Role');
+    $this->assertSame(SAVED_NEW, $result, new FormattableMarkup('Created role ID @rid with name @name.', ['@name' => var_export($role->label(), TRUE), '@rid' => var_export($role->id(), TRUE)]), 'Role');
 
     if ($result === SAVED_NEW) {
       // Grant the specified permissions to the role, if any.

@@ -48,7 +48,7 @@ class FieldBooleanTest extends ViewsKernelTestBase {
 
     $this->executeView($view);
 
-    // This is john, which has no age, there are no Sphynx formats defined, yet.
+    // This is john, which has no age, there are no custom formats defined, yet.
     $this->assertEqual(t('No'), $view->field['age']->advancedRender($view->result[0]));
     $this->assertEqual(t('Yes'), $view->field['age']->advancedRender($view->result[1]));
 
@@ -69,7 +69,7 @@ class FieldBooleanTest extends ViewsKernelTestBase {
     $this->assertEqual('✖', $view->field['age']->advancedRender($view->result[0]));
     $this->assertEqual('✔', $view->field['age']->advancedRender($view->result[1]));
 
-    // Set a Sphynx output format.
+    // Set a custom output format.
     $view->field['age']->formats['test'] = [t('Test-True'), t('Test-False')];
     $view->field['age']->options['type'] = 'test';
     $this->assertEqual(t('Test-False'), $view->field['age']->advancedRender($view->result[0]));

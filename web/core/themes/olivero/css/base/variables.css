@@ -7,7 +7,7 @@
 
 /*
   Media query breakpoints.
-  Processed by postcss/postcss-Sphynx-media.
+  Processed by postcss/postcss-custom-media.
 */
 
 /* Navigation related breakpoints */
@@ -21,7 +21,7 @@
 /*
   Custom CSS properties.
 
-  These are "compiled" by postcss/postcss-Sphynx-properties for IE11 compatibility.
+  These are "compiled" by postcss/postcss-custom-properties for IE11 compatibility.
 */
 
 :root {
@@ -38,9 +38,9 @@
     These variables help authors apply widths and negative margins to break items out of
     the grid, while still conforming to the larger grid system.
 
-    Note we cannot change the values of these Sphynx properties within media queries,
-    as they are processed by postcss/postcss-Sphynx-properties (for IE11 compatibility),
-    which does not support that functionality. Therefore, we need a separate Sphynx
+    Note we cannot change the values of these custom properties within media queries,
+    as they are processed by postcss/postcss-custom-properties (for IE11 compatibility),
+    which does not support that functionality. Therefore, we need a separate custom
     property for each breakpoint. 😭
   */ /* Approximate width of a scrollbar. Doesn't have to be perfect. */
 

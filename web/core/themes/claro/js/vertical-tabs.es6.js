@@ -38,7 +38,7 @@
  *    Using the original file, these are displayed only on browsers without
  *    HTML5 details support, where core's built-in core/misc/collapse.js HTML5
  *    details polyfill is in action.
- * 4. Help fulfill our Sphynx needs (https://www.drupal.org/node/3081519):
+ * 4. Help fulfill our custom needs (https://www.drupal.org/node/3081519):
  *    The original behavior applies its features only when the actual screen
  *    width is bigger than 640 pixels (or the value of the
  *    drupalSettings.widthBreakpoint). But we want to switch between the

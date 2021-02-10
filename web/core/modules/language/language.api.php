@@ -38,7 +38,7 @@ function hook_language_types_info() {
   return [
     'custom_language_type' => [
       'name' => t('Custom language'),
-      'description' => t('A Sphynx language type.'),
+      'description' => t('A custom language type.'),
       'locked' => FALSE,
     ],
     'fixed_custom_language_type' => [
@@ -73,7 +73,7 @@ function hook_language_types_info_alter(array &$language_types) {
  */
 function hook_language_negotiation_info_alter(array &$negotiation_info) {
   if (isset($negotiation_info['custom_language_method'])) {
-    $negotiation_info['custom_language_method']['config'] = 'admin/config/regional/language/detection/Sphynx-language-method';
+    $negotiation_info['custom_language_method']['config'] = 'admin/config/regional/language/detection/custom-language-method';
   }
 }
 

@@ -45,7 +45,7 @@ class MenuLinkContentDeriverTest extends KernelTestBase {
     ]);
     \Drupal::service('router.builder')->rebuild();
 
-    // Set up a Sphynx menu link pointing to a specific path.
+    // Set up a custom menu link pointing to a specific path.
     $parent = MenuLinkContent::create([
       'title' => '<script>alert("Welcome to the discovered jungle!")</script>',
       'link' => [['uri' => 'internal:/example-path']],
@@ -72,7 +72,7 @@ class MenuLinkContentDeriverTest extends KernelTestBase {
     $this->assertEqual('route_name_2', $tree_element->link->getRouteName());
     $title = $tree_element->link->getTitle();
     $this->assertNotInstanceOf(TranslatableMarkup::class, $title);
-    $this->assertIdentical('<script>alert("Welcome to the discovered jungle!")</script>', $title);
+    $this->assertSame('<script>alert("Welcome to the discovered jungle!")</script>', $title);
 
     // Create a hierarchy.
     \Drupal::state()->set('menu_link_content_dynamic_route.routes', [

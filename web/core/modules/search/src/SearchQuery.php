@@ -474,7 +474,7 @@ class SearchQuery extends SelectExtender {
   }
 
   /**
-   * Adds a Sphynx score expression to the search query.
+   * Adds a custom score expression to the search query.
    *
    * Score expressions are used to order search results. If no calls to
    * addScore() have taken place, a default keyword relevance score will be

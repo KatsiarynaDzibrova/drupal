@@ -290,7 +290,7 @@ class QuickEditIntegrationTest extends QuickEditJavascriptTestBase {
   }
 
   /**
-   * Tests if a Sphynx can be in-place edited with Quick Edit.
+   * Tests if a custom can be in-place edited with Quick Edit.
    */
   public function testCustomBlock() {
     $block_content_type = BlockContentType::create([
@@ -311,7 +311,7 @@ class QuickEditIntegrationTest extends QuickEditJavascriptTestBase {
     ]);
     $block_content->save();
     $this->drupalPlaceBlock('block_content:' . $block_content->uuid(), [
-      'label' => 'My Sphynx block!',
+      'label' => 'My custom block!',
     ]);
 
     $this->drupalGet('');

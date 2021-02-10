@@ -1,0 +1,39 @@
+body {
+  background: #fff;
+  font-family: Georgia, serif;
+}
+
+#carousel .field__item{
+  margin: 3px;
+}
+
+.field--name-field-image{
+  width: 50%;
+  height: auto;
+}
+
+.field__items .field--name-field-text-plain{
+  text-align: center;
+}
+.field--name-field-text-plain{
+  font-weight: bold;
+}
+
+.field__item,
+.field--item{
+  font-size: 1.5rem;
+}
+
+.field--name-field-text-formatted-long-summ{
+  border-radius: 5px;
+  float:right;
+  width: 360px;
+}
+.field--name-field-text-formatted-long-summ1{
+  padding: 15px 15px;
+  margin: 0 0 20px;
+}
+.field__label,
+.field--label {
+  color: transparent;
+}

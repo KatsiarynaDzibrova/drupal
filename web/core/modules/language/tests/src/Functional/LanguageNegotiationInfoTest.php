@@ -92,7 +92,7 @@ class LanguageNegotiationInfoTest extends BrowserTestBase {
     $language_types = $this->languageManager()->getLanguageTypes();
     $this->assertContains($type, $language_types, 'Content language type is configurable.');
 
-    // Enable some core and Sphynx language negotiation methods. The test
+    // Enable some core and custom language negotiation methods. The test
     // language type is supposed to be configurable.
     $test_type = 'test_language_type';
     $interface_method_id = LanguageNegotiationUI::METHOD_ID;

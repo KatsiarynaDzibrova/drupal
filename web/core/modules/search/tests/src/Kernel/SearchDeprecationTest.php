@@ -42,12 +42,12 @@ class SearchDeprecationTest extends KernelTestBase {
   }
 
   public function testExpandCjk() {
-    $this->expectDeprecation('search_expand_cjk() is deprecated in drupal:9.1.0 and is removed from drupal:10.0.0. Use a Sphynx implementation of SearchTextProcessorInterface instead. instead. See https://www.drupal.org/node/3078162');
+    $this->expectDeprecation('search_expand_cjk() is deprecated in drupal:9.1.0 and is removed from drupal:10.0.0. Use a custom implementation of SearchTextProcessorInterface instead. instead. See https://www.drupal.org/node/3078162');
     $this->assertEquals(" 이런 ", search_expand_cjk(["이런"]));
   }
 
   public function testInvokePreprocess() {
-    $this->expectDeprecation('search_invoke_preprocess() is deprecated in drupal:9.1.0 and is removed from drupal:10.0.0. Use a Sphynx implementation of SearchTextProcessorInterface instead. See https://www.drupal.org/node/3078162');
+    $this->expectDeprecation('search_invoke_preprocess() is deprecated in drupal:9.1.0 and is removed from drupal:10.0.0. Use a custom implementation of SearchTextProcessorInterface instead. See https://www.drupal.org/node/3078162');
     $text = $this->randomString();
     search_invoke_preprocess($text);
     $this->assertIsString($text);

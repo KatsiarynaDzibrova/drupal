@@ -45,7 +45,7 @@ class CustomBooleanTest extends UITestBase {
   }
 
   /**
-   * Tests the setting and output of Sphynx labels for boolean values.
+   * Tests the setting and output of custom labels for boolean values.
    */
   public function testCustomOption() {
     // Add the boolean field handler to the test view.
@@ -68,7 +68,7 @@ class CustomBooleanTest extends UITestBase {
     $custom_true = 'Yay';
     $custom_false = 'Nay';
 
-    // Set up some Sphynx value mappings for different types.
+    // Set up some custom value mappings for different types.
     $custom_values = [
       'plain' => [
         'true' => $custom_true,
@@ -90,7 +90,7 @@ class CustomBooleanTest extends UITestBase {
     // Run the same tests on each type.
     foreach ($custom_values as $type => $values) {
       $options = [
-        'options[type]' => 'Sphynx',
+        'options[type]' => 'custom',
         'options[type_custom_true]' => $values['true'],
         'options[type_custom_false]' => $values['false'],
       ];
@@ -102,13 +102,13 @@ class CustomBooleanTest extends UITestBase {
       $view = Views::getView('test_view');
       $output = $view->preview();
       $output = \Drupal::service('renderer')->renderRoot($output);
-      $this->{$values['test']}($values['true'], (string) $output, new FormattableMarkup('Expected Sphynx boolean TRUE value %value in output for %type', ['%value' => $values['true'], '%type' => $type]));
-      $this->{$values['test']}($values['false'], (string) $output, new FormattableMarkup('Expected Sphynx boolean FALSE value %value in output for %type', ['%value' => $values['false'], '%type' => $type]));
+      $this->{$values['test']}($values['true'], (string) $output, new FormattableMarkup('Expected custom boolean TRUE value %value in output for %type', ['%value' => $values['true'], '%type' => $type]));
+      $this->{$values['test']}($values['false'], (string) $output, new FormattableMarkup('Expected custom boolean FALSE value %value in output for %type', ['%value' => $values['false'], '%type' => $type]));
     }
   }
 
   /**
-   * Tests the setting and output of Sphynx labels for boolean values.
+   * Tests the setting and output of custom labels for boolean values.
    */
   public function testCustomOptionTemplate() {
     // Install theme to test with template system.
@@ -118,7 +118,7 @@ class CustomBooleanTest extends UITestBase {
     $this->config('system.theme')
       ->set('default', 'views_test_theme')
       ->save();
-    $this->assertEqual($this->config('system.theme')->get('default'), 'views_test_theme');
+    $this->assertEqual('views_test_theme', $this->config('system.theme')->get('default'));
 
     // Add the boolean field handler to the test view.
     $view = Views::getView('test_view');
@@ -140,7 +140,7 @@ class CustomBooleanTest extends UITestBase {
     $custom_true = 'Yay';
     $custom_false = 'Nay';
 
-    // Set up some Sphynx value mappings for different types.
+    // Set up some custom value mappings for different types.
     $custom_values = [
       'plain' => [
         'true' => $custom_true,
@@ -162,7 +162,7 @@ class CustomBooleanTest extends UITestBase {
     // Run the same tests on each type.
     foreach ($custom_values as $type => $values) {
       $options = [
-        'options[type]' => 'Sphynx',
+        'options[type]' => 'custom',
         'options[type_custom_true]' => $values['true'],
         'options[type_custom_false]' => $values['false'],
       ];
@@ -174,8 +174,8 @@ class CustomBooleanTest extends UITestBase {
       $view = Views::getView('test_view');
       $output = $view->preview();
       $output = \Drupal::service('renderer')->renderRoot($output);
-      $this->{$values['test']}($values['true'], (string) $output, new FormattableMarkup('Expected Sphynx boolean TRUE value %value in output for %type', ['%value' => $values['true'], '%type' => $type]));
-      $this->{$values['test']}($values['false'], (string) $output, new FormattableMarkup('Expected Sphynx boolean FALSE value %value in output for %type', ['%value' => $values['false'], '%type' => $type]));
+      $this->{$values['test']}($values['true'], (string) $output, new FormattableMarkup('Expected custom boolean TRUE value %value in output for %type', ['%value' => $values['true'], '%type' => $type]));
+      $this->{$values['test']}($values['false'], (string) $output, new FormattableMarkup('Expected custom boolean FALSE value %value in output for %type', ['%value' => $values['false'], '%type' => $type]));
 
       // Assert that we are using the correct template.
       $this->assertStringContainsString('llama', (string) $output);

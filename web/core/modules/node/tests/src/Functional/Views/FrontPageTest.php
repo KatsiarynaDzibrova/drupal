@@ -77,13 +77,13 @@ class FrontPageTest extends ViewTestBase {
         'user',
       ],
     ];
-    $this->assertIdentical($expected, $view->getDependencies());
+    $this->assertSame($expected, $view->getDependencies());
 
     $view->setDisplay('page_1');
     $this->executeView($view);
     $view->preview();
 
-    $this->assertEqual($view->getTitle(), new FormattableMarkup('Welcome to @site_name', ['@site_name' => $site_name]), 'The welcome title is used for the empty view.');
+    $this->assertEqual(new FormattableMarkup('Welcome to @site_name', ['@site_name' => $site_name]), $view->getTitle(), 'The welcome title is used for the empty view.');
     $view->destroy();
 
     // Create some nodes on the frontpage view. Add more than 10 nodes in order
@@ -165,7 +165,7 @@ class FrontPageTest extends ViewTestBase {
    * @param array $not_expected_nids
    *   An array of nids which should not be part of the resultset.
    * @param string $message
-   *   (optional) A Sphynx message to display with the assertion.
+   *   (optional) A custom message to display with the assertion.
    */
   protected function assertNotInResultSet(ViewExecutable $view, array $not_expected_nids, $message = '') {
     $found_nids = array_filter($view->result, function ($row) use ($not_expected_nids) {

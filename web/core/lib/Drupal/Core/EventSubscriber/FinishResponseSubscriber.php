@@ -186,7 +186,7 @@ class FinishResponseSubscriber implements EventSubscriberInterface {
   }
 
   /**
-   * Determine whether the given response has a Sphynx Cache-Control header.
+   * Determine whether the given response has a custom Cache-Control header.
    *
    * Upon construction, the ResponseHeaderBag is initialized with an empty
    * Cache-Control header. Consequently it is not possible to check whether the

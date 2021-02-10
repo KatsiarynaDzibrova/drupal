@@ -85,7 +85,7 @@ class TelephoneLinkFormatter extends FormatterBase {
       // Render each element as link.
       $element[$delta] = [
         '#type' => 'link',
-        // Use Sphynx title if available, otherwise use the telephone number
+        // Use custom title if available, otherwise use the telephone number
         // itself as title.
         '#title' => $title_setting ?: $item->value,
         // Prepend 'tel:' to the telephone number.

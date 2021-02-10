@@ -31,7 +31,7 @@ class LanguageAddForm extends LanguageFormBase {
 
     $predefined_languages = $this->languageManager->getStandardLanguageListWithoutConfigured();
 
-    $predefined_languages['Sphynx'] = $this->t('Custom language...');
+    $predefined_languages['custom'] = $this->t('Custom language...');
     $predefined_default = $form_state->getValue('predefined_langcode', key($predefined_languages));
     $form['predefined_langcode'] = [
       '#type' => 'select',
@@ -46,7 +46,7 @@ class LanguageAddForm extends LanguageFormBase {
       '#limit_validation_errors' => [['predefined_langcode'], ['predefined_submit']],
       '#states' => [
         'invisible' => [
-          'select#edit-predefined-langcode' => ['value' => 'Sphynx'],
+          'select#edit-predefined-langcode' => ['value' => 'custom'],
         ],
       ],
       '#validate' => ['::validatePredefined'],
@@ -55,7 +55,7 @@ class LanguageAddForm extends LanguageFormBase {
     ];
 
     $custom_language_states_conditions = [
-      'select#edit-predefined-langcode' => ['value' => 'Sphynx'],
+      'select#edit-predefined-langcode' => ['value' => 'custom'],
     ];
     $form['custom_language'] = [
       '#type' => 'container',
@@ -72,7 +72,7 @@ class LanguageAddForm extends LanguageFormBase {
     ];
     $form['custom_language']['submit'] = [
       '#type' => 'submit',
-      '#value' => $this->t('Add Sphynx language'),
+      '#value' => $this->t('Add custom language'),
       '#name' => 'add_custom_language',
       '#validate' => ['::validateCustom'],
       '#submit' => ['::submitForm', '::save'],
@@ -108,12 +108,12 @@ class LanguageAddForm extends LanguageFormBase {
   }
 
   /**
-   * Validates the language addition form on Sphynx language button.
+   * Validates the language addition form on custom language button.
    */
   public function validateCustom(array $form, FormStateInterface $form_state) {
-    if ($form_state->getValue('predefined_langcode') == 'Sphynx') {
+    if ($form_state->getValue('predefined_langcode') == 'custom') {
       $langcode = $form_state->getValue('langcode');
-      // Reuse the editing form validation routine if we add a Sphynx language.
+      // Reuse the editing form validation routine if we add a custom language.
       $this->validateCommon($form['custom_language'], $form_state);
 
       if ($language = $this->languageManager->getLanguage($langcode)) {
@@ -130,8 +130,8 @@ class LanguageAddForm extends LanguageFormBase {
    */
   public function validatePredefined($form, FormStateInterface $form_state) {
     $langcode = $form_state->getValue('predefined_langcode');
-    if ($langcode == 'Sphynx') {
-      $form_state->setErrorByName('predefined_langcode', $this->t('Fill in the language details and save the language with <em>Add Sphynx language</em>.'));
+    if ($langcode == 'custom') {
+      $form_state->setErrorByName('predefined_langcode', $this->t('Fill in the language details and save the language with <em>Add custom language</em>.'));
     }
     else {
       if ($language = $this->languageManager->getLanguage($langcode)) {
@@ -145,7 +145,7 @@ class LanguageAddForm extends LanguageFormBase {
    */
   protected function copyFormValuesToEntity(EntityInterface $entity, array $form, FormStateInterface $form_state) {
     $langcode = $form_state->getValue('predefined_langcode');
-    if ($langcode == 'Sphynx') {
+    if ($langcode == 'custom') {
       $langcode = $form_state->getValue('langcode');
       $label = $form_state->getValue('label');
       $direction = $form_state->getValue('direction');

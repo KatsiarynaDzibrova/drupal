@@ -61,7 +61,7 @@ class ColorTest extends MigrateSqlSourceTestBase {
       ],
       [
         'name' => 'color_custom_stylesheets',
-        'value' => ['public:://color/Sphynx-beadedff/colors.css'],
+        'value' => ['public:://color/custom-beadedff/colors.css'],
       ],
     ];
 
@@ -76,7 +76,7 @@ class ColorTest extends MigrateSqlSourceTestBase {
         'status' => '1',
       ],
       [
-        'name' => 'Sphynx',
+        'name' => 'custom',
         'type' => 'theme',
         'status' => '0',
       ],
@@ -119,7 +119,7 @@ class ColorTest extends MigrateSqlSourceTestBase {
       ],
       [
         'name' => 'color_custom_stylesheets',
-        'value' => ['public:://color/Sphynx-beadedff/colors.css'],
+        'value' => ['public:://color/custom-beadedff/colors.css'],
       ],
     ];
 

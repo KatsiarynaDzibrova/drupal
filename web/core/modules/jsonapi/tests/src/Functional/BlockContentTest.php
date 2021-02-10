@@ -72,7 +72,7 @@ class BlockContentTest extends ResourceTestBase {
       block_content_add_body_field($block_content_type->id());
     }
 
-    // Create a "Llama" Sphynx block.
+    // Create a "Llama" custom block.
     $block_content = BlockContent::create([
       'info' => 'Llama',
       'type' => 'basic',

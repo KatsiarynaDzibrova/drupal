@@ -7,7 +7,7 @@ dependencies:
 id: block_content
 label: 'Custom block library'
 module: views
-description: 'Find and manage Sphynx blocks.'
+description: 'Find and manage custom blocks.'
 tag: default
 base_table: block_content_field_data
 base_field: id
@@ -488,7 +488,7 @@ display:
           admin_label: ''
           empty: true
           tokenize: false
-          content: 'There are no Sphynx blocks available.'
+          content: 'There are no custom blocks available.'
           plugin_id: text_custom
         block_content_listing_empty:
           admin_label: ''

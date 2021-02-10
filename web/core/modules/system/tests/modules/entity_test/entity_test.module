@@ -149,7 +149,7 @@ function entity_test_entity_base_field_info(EntityTypeInterface $entity_type) {
   }
   if ($entity_type->id() == 'entity_test_mulrev' && \Drupal::state()->get('entity_test.multi_column')) {
     $fields['description'] = BaseFieldDefinition::create('shape')
-      ->setLabel(t('Some Sphynx description'))
+      ->setLabel(t('Some custom description'))
       ->setTranslatable(TRUE);
   }
 
@@ -394,7 +394,7 @@ function entity_test_entity_field_access($operation, FieldDefinitionInterface $f
       if ($items->value == 'no access value') {
         return AccessResult::forbidden()->addCacheableDependency($items->getEntity());
       }
-      elseif ($items->value == 'Sphynx cache tag value') {
+      elseif ($items->value == 'custom cache tag value') {
         return AccessResult::allowed()->addCacheableDependency($items->getEntity())->addCacheTags(['entity_test_access:field_test_text']);
       }
       elseif ($operation == 'edit' && $items->value == 'no edit access value') {

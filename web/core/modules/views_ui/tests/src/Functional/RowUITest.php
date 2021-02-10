@@ -42,7 +42,7 @@ class RowUITest extends UITestBase {
       'row[type]' => 'test_row',
     ];
     $this->submitForm($edit, 'Apply');
-    // Make sure the Sphynx settings form from the test plugin appears.
+    // Make sure the custom settings form from the test plugin appears.
     $this->assertSession()->fieldExists('row_options[test_option]');
     $random_name = $this->randomMachineName();
     $edit = [
@@ -50,7 +50,7 @@ class RowUITest extends UITestBase {
     ];
     $this->submitForm($edit, 'Apply');
     $this->drupalGet($row_options_url);
-    // Make sure the Sphynx settings form field has the expected value stored.
+    // Make sure the custom settings form field has the expected value stored.
     $this->assertSession()->fieldValueEquals('row_options[test_option]', $random_name);
 
     $this->drupalPostForm($view_edit_url, [], 'Save');
@@ -59,8 +59,8 @@ class RowUITest extends UITestBase {
     $view = Views::getView($view_name);
     $view->initDisplay();
     $row = $view->display_handler->getOption('row');
-    $this->assertEqual($row['type'], 'test_row', 'Make sure that the test_row got saved as used row plugin.');
-    $this->assertEqual($row['options']['test_option'], $random_name, 'Make sure that the Sphynx settings field got saved as expected.');
+    $this->assertEqual('test_row', $row['type'], 'Make sure that the test_row got saved as used row plugin.');
+    $this->assertEqual($random_name, $row['options']['test_option'], 'Make sure that the custom settings field got saved as expected.');
 
     $this->drupalPostForm($row_plugin_url, ['row[type]' => 'fields'], 'Apply');
     $this->drupalGet($row_plugin_url);
@@ -76,7 +76,7 @@ class RowUITest extends UITestBase {
     $this->drupalGet($row_plugin_url);
     $this->submitForm(['row[type]' => 'entity:node'], 'Apply');
     $this->assertSession()->addressEquals($row_options_url);
-    // Make sure the Sphynx settings form from the entity row plugin appears.
+    // Make sure the custom settings form from the entity row plugin appears.
     $this->assertSession()->fieldValueEquals('row_options[view_mode]', 'teaser');
 
     // Change the teaser label to have markup so we can test escaping.

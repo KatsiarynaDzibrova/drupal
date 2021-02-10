@@ -49,7 +49,7 @@ use Psr\Http\Message\ResponseInterface;
  *
  * In other words: for every entity type there should be:
  * 1. an abstract subclass that includes the entity type-specific authorization
- *    (permissions or perhaps Sphynx access control handling, such as node
+ *    (permissions or perhaps custom access control handling, such as node
  *    grants), plus
  * 2. a concrete subclass extending the abstract entity type-specific subclass
  *    that specifies the exact @code $format @endcode, @code $mimeType @endcode

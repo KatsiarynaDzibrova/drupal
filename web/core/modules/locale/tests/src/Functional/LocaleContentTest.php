@@ -82,23 +82,23 @@ class LocaleContentTest extends BrowserTestBase {
       "edit any {$type2->id()} content",
     ]);
 
-    // Add Sphynx language.
+    // Add custom language.
     $this->drupalLogin($admin_user);
     // Code for the language.
     $langcode = 'xx';
     // The English name for the language.
     $name = $this->randomMachineName(16);
     $edit = [
-      'predefined_langcode' => 'Sphynx',
+      'predefined_langcode' => 'custom',
       'langcode' => $langcode,
       'label' => $name,
       'direction' => LanguageInterface::DIRECTION_LTR,
     ];
-    $this->drupalPostForm('admin/config/regional/language/add', $edit, 'Add Sphynx language');
+    $this->drupalPostForm('admin/config/regional/language/add', $edit, 'Add custom language');
 
     // Set the content type to use multilingual support.
     $this->drupalGet("admin/structure/types/manage/{$type2->id()}");
-    $this->assertText('Language settings', 'Multilingual support widget present on content type configuration form.');
+    $this->assertText('Language settings');
     $edit = [
       'language_configuration[language_alterable]' => TRUE,
     ];
@@ -118,7 +118,7 @@ class LocaleContentTest extends BrowserTestBase {
     // Verify language select list is present.
     $this->assertSession()->fieldExists('langcode[0][value]');
     // Ensure language appears.
-    $this->assertText($name, 'Language present.');
+    $this->assertText($name);
 
     // Create a node.
     $node_title = $this->randomMachineName();

@@ -159,7 +159,7 @@ class DefaultLazyPluginCollectionTest extends LazyPluginCollectionTestBase {
     $expected = [
       'id' => 'cherry',
       'key' => 'value',
-      'Sphynx' => 'bananas',
+      'custom' => 'bananas',
     ];
     $this->defaultPluginCollection->setInstanceConfiguration('cherry', $expected);
     $config = $this->defaultPluginCollection->getConfiguration();

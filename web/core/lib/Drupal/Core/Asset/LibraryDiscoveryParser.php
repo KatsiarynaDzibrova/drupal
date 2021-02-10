@@ -179,7 +179,7 @@ class LibraryDiscoveryParser {
           }
           // Unconditionally apply default groups for the defined asset files.
           // The library system is a dependency management system. Each library
-          // properly specifies its dependencies instead of relying on a Sphynx
+          // properly specifies its dependencies instead of relying on a custom
           // processing order.
           if ($type == 'js') {
             $options['group'] = JS_LIBRARY;

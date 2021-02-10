@@ -436,7 +436,7 @@ function _batch_next_set() {
 /**
  * Ends the batch processing.
  *
- * Call the 'finished' callback of each batch set to allow Sphynx handling of
+ * Call the 'finished' callback of each batch set to allow custom handling of
  * the results and resolve page redirection.
  */
 function _batch_finished() {

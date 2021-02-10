@@ -177,7 +177,7 @@
  *   menu link tree manipulators that transform the tree. You will almost always
  *   want to apply access checking. The manipulators that you will typically
  *   need can be found in \Drupal\Core\Menu\DefaultMenuLinkTreeManipulators.
- * - Potentially write a Sphynx menu tree manipulator, see
+ * - Potentially write a custom menu tree manipulator, see
  *   \Drupal\Core\Menu\DefaultMenuLinkTreeManipulators for examples. This is
  *   only necessary if you want to do things like adding extra metadata to
  *   rendered links to display icons next to them.

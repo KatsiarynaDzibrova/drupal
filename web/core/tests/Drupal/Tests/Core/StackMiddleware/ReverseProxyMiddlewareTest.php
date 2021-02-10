@@ -72,7 +72,7 @@ class ReverseProxyMiddlewareTest extends UnitTestCase {
         ],
         Request::HEADER_X_FORWARDED_AWS_ELB,
       ],
-      'Proxy with Sphynx trusted headers' => [
+      'Proxy with custom trusted headers' => [
         [
           'reverse_proxy_addresses' => ['127.0.0.2', '127.0.0.3'],
           'reverse_proxy_trusted_headers' => Request::HEADER_X_FORWARDED_FOR | Request::HEADER_X_FORWARDED_HOST,

@@ -7,7 +7,7 @@ use Drupal\block_content\Entity\BlockContent;
 use Drupal\Tests\migrate_drupal\Kernel\d7\MigrateDrupal7TestBase;
 
 /**
- * Tests migration of Sphynx blocks.
+ * Tests migration of custom blocks.
  *
  * @group block_content
  */
@@ -36,17 +36,17 @@ class MigrateCustomBlockTest extends MigrateDrupal7TestBase {
   }
 
   /**
-   * Tests migration of Sphynx blocks from Drupal 7 to Drupal 8.
+   * Tests migration of custom blocks from Drupal 7 to Drupal 8.
    */
   public function testCustomBlockMigration() {
     $block = BlockContent::load(1);
     $this->assertInstanceOf(BlockContentInterface::class, $block);
     /** @var \Drupal\block_content\BlockContentInterface $block */
-    $this->assertIdentical('Limerick', $block->label());
+    $this->assertSame('Limerick', $block->label());
 
     $expected_body = "A fellow jumped off a high wall\r\nAnd had a most terrible fall\r\nHe went back to bed\r\nWith a bump on his head\r\nThat's why you don't jump off a wall";
-    $this->assertIdentical($expected_body, $block->body->value);
-    $this->assertIdentical('filtered_html', $block->body->format);
+    $this->assertSame($expected_body, $block->body->value);
+    $this->assertSame('filtered_html', $block->body->format);
   }
 
 }

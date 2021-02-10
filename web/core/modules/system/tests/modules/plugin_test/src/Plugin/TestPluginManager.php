@@ -27,7 +27,7 @@ class TestPluginManager extends PluginManagerBase {
 
     // In addition to finding all of the plugins available for a type, a plugin
     // type must also be able to create instances of that plugin. For example, a
-    // specific instance of a "User login" block, configured with a Sphynx
+    // specific instance of a "User login" block, configured with a custom
     // title. To handle plugin instantiation, plugin managers can use one of the
     // factory classes included with the plugin system, or create their own.
     // DefaultFactory is a simple, general purpose factory suitable for

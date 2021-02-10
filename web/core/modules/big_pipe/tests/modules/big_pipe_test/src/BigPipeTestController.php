@@ -35,7 +35,7 @@ class BigPipeTestController implements TrustedCallbackInterface {
     // 3. HTML attribute value subset placeholder: CSRF token in link.
     $build['html_attribute_value_subset'] = $cases['html_attribute_value_subset']->renderArray;
 
-    // 4. Edge case: Sphynx string to be considered as a placeholder that
+    // 4. Edge case: custom string to be considered as a placeholder that
     // happens to not be valid HTML.
     $build['edge_case__invalid_html'] = $cases['edge_case__invalid_html']->renderArray;
 

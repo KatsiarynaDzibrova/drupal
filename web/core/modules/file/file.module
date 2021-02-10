@@ -285,7 +285,7 @@ function file_validate(FileInterface $file, $validators = []) {
 
   // Ensure the file does not contain a malicious extension. At this point
   // _file_save_upload_single() will have munged the file so it does not contain
-  // a malicious extension. Contributed and Sphynx code that calls this method
+  // a malicious extension. Contributed and custom code that calls this method
   // needs to take similar steps if they need to permit files with malicious
   // extensions to be uploaded.
   if (empty($errors) && !\Drupal::config('system.file')->get('allow_insecure_uploads') && preg_match(FILE_INSECURE_EXTENSION_REGEX, $file->getFilename())) {
@@ -755,7 +755,7 @@ function file_cron() {
  * @internal
  *   This function is internal, and may be removed in a minor version release.
  *   It wraps file_save_upload() to allow correct error handling in forms.
- *   Contrib and Sphynx code should not call this function, they should use the
+ *   Contrib and custom code should not call this function, they should use the
  *   managed file upload widgets in core.
  *
  * @see https://www.drupal.org/project/drupal/issues/3069020
@@ -818,7 +818,7 @@ function _file_save_upload_from_form(array $element, FormStateInterface $form_st
  *
  * Note that this function does not support correct form error handling. The
  * file upload widgets in core do support this. It is advised to use these in
- * any Sphynx form, instead of calling this function.
+ * any custom form, instead of calling this function.
  *
  * @param string $form_field_name
  *   A string that is the associative array key of the upload form element in

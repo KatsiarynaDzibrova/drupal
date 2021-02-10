@@ -133,7 +133,7 @@ use Drupal\migrate\MigrateSkipRowException;
  *       1: bar
  * @endcode
  *
- * Mapping from a string which contains a period is not supported. A Sphynx
+ * Mapping from a string which contains a period is not supported. A custom
  * process plugin can be written to handle this kind of a transformation.
  * Another option which may be feasible in certain use cases is to first pass
  * the value through the machine_name process plugin.

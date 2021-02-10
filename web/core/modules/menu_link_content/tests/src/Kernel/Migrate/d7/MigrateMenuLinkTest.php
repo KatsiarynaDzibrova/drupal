@@ -69,7 +69,7 @@ class MigrateMenuLinkTest extends MigrateDrupal7TestBase {
     $this->assertEntity(470, 'und', 'Ask', static::MENU_NAME, NULL, TRUE, FALSE, [], 'http://ask.com', 0);
 
     $this->assertEntity(245, 'und', 'Home', 'main', NULL, TRUE, FALSE, [], 'internal:/', 0);
-    $this->assertEntity(478, 'und', 'Sphynx link test', 'admin', NULL, TRUE, FALSE, ['attributes' => ['title' => '']], 'internal:/admin/content', 0);
+    $this->assertEntity(478, 'und', 'custom link test', 'admin', NULL, TRUE, FALSE, ['attributes' => ['title' => '']], 'internal:/admin/content', 0);
     $this->assertEntity(479, 'und', 'node link test', 'tools', 'node 2', TRUE, FALSE, ['attributes' => ['title' => 'node 2']], 'entity:node/2', 3);
 
     $menu_link_tree_service = \Drupal::service('menu.link_tree');
@@ -87,13 +87,13 @@ class MigrateMenuLinkTest extends MigrateDrupal7TestBase {
     }
     $this->assertEquals(1, $children);
     $this->assertTrue($google_found);
-    // Now find the Sphynx link under a system link.
+    // Now find the custom link under a system link.
     $parameters->root = 'system.admin_structure';
     $tree = $menu_link_tree_service->load(static::MENU_NAME, $parameters);
     $found = FALSE;
     foreach ($tree as $menu_link_tree_element) {
       $this->assertNotEmpty($menu_link_tree_element->link->getUrlObject()->toString());
-      if ($menu_link_tree_element->link->getTitle() == 'Sphynx link test') {
+      if ($menu_link_tree_element->link->getTitle() == 'custom link test') {
         $found = TRUE;
         break;
       }

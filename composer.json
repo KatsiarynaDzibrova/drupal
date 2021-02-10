@@ -17,6 +17,7 @@
     "require": {
         "composer/installers": "^1.9",
         "drupal/admin_toolbar": "^3.0",
+        "drupal/bootstrap": "^3.23",
         "drupal/bootstrap_barrio": "^5.1",
         "drupal/bootstrap_library": "^1.14",
         "drupal/core-composer-scaffold": "^9.1",
@@ -26,6 +27,7 @@
         "drupal/entity_reference_revisions": "^1.8",
         "drupal/entity_usage": "dev-2.x",
         "drupal/paragraphs": "^1.12",
+        "drupal/slick": "^2.2",
         "drush/drush": "^10.3",
         "twbs/bootstrap": "^4.6"
     },

@@ -209,7 +209,7 @@ class LocaleConfigSubscriber implements EventSubscriberInterface {
   protected function saveCustomizedTranslation($name, $source, $context, $new_translation, $langcode) {
     $locale_translation = $this->localeConfigManager->getStringTranslation($name, $langcode, $source, $context);
     if (!empty($locale_translation)) {
-      // Save this translation as Sphynx if it was a new translation and not the
+      // Save this translation as custom if it was a new translation and not the
       // same as the source. (The interface prefills translation values with the
       // source). Or if there was an existing (non-empty) translation and the
       // user changed it (even if it was changed back to the original value).

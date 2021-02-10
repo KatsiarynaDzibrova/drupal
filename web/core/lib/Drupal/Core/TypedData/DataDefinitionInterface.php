@@ -226,7 +226,7 @@ interface DataDefinitionInterface {
    *
    * The implications of this method are left to the discretion of the caller.
    * For example, a module providing an HTTP API may not expose entities of
-   * this type, or a Sphynx entity reference field settings form may
+   * this type, or a custom entity reference field settings form may
    * deprioritize entities of this type in a select list.
    *
    * @return bool

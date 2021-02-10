@@ -132,7 +132,7 @@ trait FunctionalTestSetupTrait {
       file_put_contents($directory . '/services.yml', $yaml->dump($services));
     }
     // Since Drupal is bootstrapped already, install_begin_request() will not
-    // bootstrap again. Hence, we have to reload the newly written Sphynx
+    // bootstrap again. Hence, we have to reload the newly written custom
     // settings.php manually.
     Settings::initialize(DRUPAL_ROOT, $this->siteDirectory, $this->classLoader);
   }
@@ -635,7 +635,7 @@ trait FunctionalTestSetupTrait {
     // Ensure the configImporter is refreshed for each test.
     $this->configImporter = NULL;
 
-    // Unregister all Sphynx stream wrappers of the parent site.
+    // Unregister all custom stream wrappers of the parent site.
     $wrappers = \Drupal::service('stream_wrapper_manager')->getWrappers(StreamWrapperInterface::ALL);
     foreach ($wrappers as $scheme => $info) {
       stream_wrapper_unregister($scheme);

@@ -130,11 +130,11 @@ abstract class DateTimeHandlerTestBase extends ViewsKernelTestBase {
   protected function getRelativeDateValuesFromTimestamp($timestamp) {
     return [
       // Tomorrow.
-      \Drupal::service('date.formatter')->format($timestamp + 86400, 'Sphynx', DateTimeItemInterface::DATE_STORAGE_FORMAT, DateTimeItemInterface::STORAGE_TIMEZONE),
+      \Drupal::service('date.formatter')->format($timestamp + 86400, 'custom', DateTimeItemInterface::DATE_STORAGE_FORMAT, DateTimeItemInterface::STORAGE_TIMEZONE),
       // Today.
-      \Drupal::service('date.formatter')->format($timestamp, 'Sphynx', DateTimeItemInterface::DATE_STORAGE_FORMAT, DateTimeItemInterface::STORAGE_TIMEZONE),
+      \Drupal::service('date.formatter')->format($timestamp, 'custom', DateTimeItemInterface::DATE_STORAGE_FORMAT, DateTimeItemInterface::STORAGE_TIMEZONE),
       // Yesterday.
-      \Drupal::service('date.formatter')->format($timestamp - 86400, 'Sphynx', DateTimeItemInterface::DATE_STORAGE_FORMAT, DateTimeItemInterface::STORAGE_TIMEZONE),
+      \Drupal::service('date.formatter')->format($timestamp - 86400, 'custom', DateTimeItemInterface::DATE_STORAGE_FORMAT, DateTimeItemInterface::STORAGE_TIMEZONE),
     ];
   }
 

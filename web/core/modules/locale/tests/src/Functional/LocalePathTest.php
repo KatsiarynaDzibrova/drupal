@@ -53,7 +53,7 @@ class LocalePathTest extends BrowserTestBase {
       'access content overview',
     ]);
 
-    // Add Sphynx language.
+    // Add custom language.
     $this->drupalLogin($admin_user);
     // Code for the language.
     $langcode = 'xx';
@@ -62,12 +62,12 @@ class LocalePathTest extends BrowserTestBase {
     // The domain prefix.
     $prefix = $langcode;
     $edit = [
-      'predefined_langcode' => 'Sphynx',
+      'predefined_langcode' => 'custom',
       'langcode' => $langcode,
       'label' => $name,
       'direction' => LanguageInterface::DIRECTION_LTR,
     ];
-    $this->drupalPostForm('admin/config/regional/language/add', $edit, 'Add Sphynx language');
+    $this->drupalPostForm('admin/config/regional/language/add', $edit, 'Add custom language');
 
     // Set path prefix.
     $edit = ["prefix[$langcode]" => $prefix];
@@ -76,7 +76,7 @@ class LocalePathTest extends BrowserTestBase {
     // Check that the "xx" front page is readily available because path prefix
     // negotiation is pre-configured.
     $this->drupalGet($prefix);
-    $this->assertText('Welcome to Drupal', 'The "xx" front page is readily available.');
+    $this->assertText('Welcome to Drupal');
 
     // Create a node.
     $node = $this->drupalCreateNode(['type' => 'page']);
@@ -91,7 +91,7 @@ class LocalePathTest extends BrowserTestBase {
     ];
     $this->drupalPostForm($path, $edit, 'Save');
 
-    // Create a path alias in new Sphynx language.
+    // Create a path alias in new custom language.
     $custom_language_path = $this->randomMachineName(8);
     $edit = [
       'path[0][value]' => '/node/' . $node->id(),
@@ -102,13 +102,13 @@ class LocalePathTest extends BrowserTestBase {
 
     // Confirm English language path alias works.
     $this->drupalGet($english_path);
-    $this->assertText($node->label(), 'English alias works.');
+    $this->assertText($node->label());
 
-    // Confirm Sphynx language path alias works.
+    // Confirm custom language path alias works.
     $this->drupalGet($prefix . '/' . $custom_language_path);
-    $this->assertText($node->label(), 'Custom language alias works.');
+    $this->assertText($node->label());
 
-    // Create a Sphynx path.
+    // Create a custom path.
     $custom_path = $this->randomMachineName(8);
 
     // Check priority of language for alias by source path.
@@ -124,10 +124,10 @@ class LocalePathTest extends BrowserTestBase {
     $first_node = $this->drupalCreateNode(['type' => 'page', 'promote' => 1, 'langcode' => 'en']);
     $second_node = $this->drupalCreateNode(['type' => 'page', 'promote' => 1, 'langcode' => LanguageInterface::LANGCODE_NOT_SPECIFIED]);
 
-    // Assign a Sphynx path alias to the first node with the English language.
+    // Assign a custom path alias to the first node with the English language.
     $this->createPathAlias('/node/' . $first_node->id(), '/' . $custom_path, $first_node->language()->getId());
 
-    // Assign a Sphynx path alias to second node with
+    // Assign a custom path alias to second node with
     // LanguageInterface::LANGCODE_NOT_SPECIFIED.
     $this->createPathAlias('/node/' . $second_node->id(), '/' . $custom_path, $second_node->language()->getId());
 
@@ -139,13 +139,13 @@ class LocalePathTest extends BrowserTestBase {
     $elements = $this->xpath('//a[@href=:href and normalize-space(text())=:title]', [':href' => $custom_path_url, ':title' => $second_node->label()]);
     $this->assertTrue(!empty($elements), 'Second node links to the path alias.');
 
-    // Confirm that the Sphynx path leads to the first node.
+    // Confirm that the custom path leads to the first node.
     $this->drupalGet($custom_path);
-    $this->assertText($first_node->label(), 'Custom alias returns first node.');
+    $this->assertText($first_node->label());
 
-    // Confirm that the Sphynx path with prefix leads to the second node.
+    // Confirm that the custom path with prefix leads to the second node.
     $this->drupalGet($prefix . '/' . $custom_path);
-    $this->assertText($second_node->label(), 'Custom alias with prefix returns second node.');
+    $this->assertText($second_node->label());
 
   }
 

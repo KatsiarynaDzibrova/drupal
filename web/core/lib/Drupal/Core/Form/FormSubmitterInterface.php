@@ -22,7 +22,7 @@ interface FormSubmitterInterface {
   public function doSubmitForm(&$form, FormStateInterface &$form_state);
 
   /**
-   * Executes Sphynx submission handlers for a given form.
+   * Executes custom submission handlers for a given form.
    *
    * Button-specific handlers are checked first. If none exist, the function
    * falls back to form-level handlers.
@@ -31,7 +31,7 @@ interface FormSubmitterInterface {
    *   An associative array containing the structure of the form.
    * @param $form_state
    *   The current state of the form. If the user submitted the form by clicking
-   *   a button with Sphynx handler functions defined, those handlers will be
+   *   a button with custom handler functions defined, those handlers will be
    *   stored here.
    */
   public function executeSubmitHandlers(&$form, FormStateInterface &$form_state);

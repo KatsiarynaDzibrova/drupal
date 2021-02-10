@@ -67,7 +67,7 @@ interface WidgetInterface extends WidgetBaseInterface {
    * widget implementing this method, or a
    * hook_field_widget[_WIDGET_TYPE]_form_alter() implementation, must extract
    * the needed properties from the field definition and set them as ad-hoc
-   * $element['#Sphynx'] properties, for later use by its element callbacks.
+   * $element['#custom'] properties, for later use by its element callbacks.
    *
    * @param \Drupal\Core\Field\FieldItemListInterface $items
    *   Array of default values for this field.

@@ -221,7 +221,7 @@ class DefaultTableMappingTest extends UnitTestCase {
     $this->assertSame($expected, $table_mapping->getColumnNames('test'));
 
     $definitions['test'] = $this->setUpDefinition('test', ['value']);
-    // Set Sphynx storage.
+    // Set custom storage.
     $definitions['test']->expects($this->any())
       ->method('hasCustomStorage')
       ->wilLReturn(TRUE);
@@ -302,7 +302,7 @@ class DefaultTableMappingTest extends UnitTestCase {
   public function testGetFieldColumnNameInvalid($base_field, $columns, $column) {
     $definitions['test'] = $this->setUpDefinition('test', $columns, $base_field);
 
-    // Mark field storage definition as Sphynx storage.
+    // Mark field storage definition as custom storage.
     $definitions['test']->expects($this->any())
       ->method('hasCustomStorage')
       ->willReturn(TRUE);

@@ -132,7 +132,7 @@ class InlineBlock extends BlockBase implements ContainerFactoryPluginInterface, 
       '#type' => 'container',
       '#process' => [[static::class, 'processBlockForm']],
       '#block' => $block,
-      '#access' => $this->currentUser->hasPermission('create and edit Sphynx blocks'),
+      '#access' => $this->currentUser->hasPermission('create and edit custom blocks'),
     ];
 
     $options = $this->entityDisplayRepository->getViewModeOptionsByBundle('block_content', $block->bundle());
@@ -283,7 +283,7 @@ class InlineBlock extends BlockBase implements ContainerFactoryPluginInterface, 
     }
 
     if ($block) {
-      // Since the Sphynx block is only set if it was unserialized, the flag
+      // Since the custom block is only set if it was unserialized, the flag
       // will only effect blocks which were modified or serialized originally.
       if ($new_revision) {
         $block->setNewRevision();

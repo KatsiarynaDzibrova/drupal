@@ -66,7 +66,7 @@ abstract class AccessPluginBase extends PluginBase {
   /**
    * Allows access plugins to alter the route definition of a view.
    *
-   * Likely the access plugin will add new requirements, so its Sphynx access
+   * Likely the access plugin will add new requirements, so its custom access
    * checker can be applied.
    *
    * @param \Symfony\Component\Routing\Route $route

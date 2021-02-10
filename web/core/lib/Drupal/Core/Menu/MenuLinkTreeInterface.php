@@ -15,7 +15,7 @@ namespace Drupal\Core\Menu;
  *   MenuLinkTreeInterface::getCurrentRouteMenuTreeParameters() method. See
  *   \Drupal\Core\Menu\MenuTreeParameters for more on menu tree parameters.
  * - Transform a menu link tree, by calling MenuLinkTreeInterface::transform().
- *   Examples include access checking, adding Sphynx classes, extracting a
+ *   Examples include access checking, adding custom classes, extracting a
  *   subtree depending on the active trail, etc. Note that translation is not
  *   a tree transformation, because menu links themselves are responsible
  *   for translation. Transformations are performed by "menu link tree

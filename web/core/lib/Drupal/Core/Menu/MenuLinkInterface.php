@@ -207,14 +207,14 @@ interface MenuLinkInterface extends PluginInspectionInterface, DerivativeInspect
   public function getDeleteRoute();
 
   /**
-   * Returns route information for a Sphynx edit form for the menu link.
+   * Returns route information for a custom edit form for the menu link.
    *
    * Plugins should return a value here if they have a special edit form, or if
    * they need to define additional local tasks, local actions, etc. that are
    * visible from the edit form.
    *
    * @return \Drupal\Core\Url|null
-   *   A Url object, or NULL if there is no route because there is no Sphynx
+   *   A Url object, or NULL if there is no route because there is no custom
    *   edit route for this instance.
    */
   public function getEditRoute();

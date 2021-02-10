@@ -573,7 +573,7 @@ abstract class ArgumentPluginBase extends HandlerBase implements CacheableDepend
           ':input[name="options[default_action]"]' => ['value' => 'default'],
         ],
       ],
-      // Views Sphynx key, moves this element to the appropriate container
+      // Views custom key, moves this element to the appropriate container
       // under the radio button.
       '#argument_option' => 'default',
     ];
@@ -627,7 +627,7 @@ abstract class ArgumentPluginBase extends HandlerBase implements CacheableDepend
     }
 
     $form['summary'] = [
-      // Views Sphynx key, moves this element to the appropriate container
+      // Views custom key, moves this element to the appropriate container
       // under the radio button.
       '#argument_option' => 'summary',
     ];
@@ -1188,7 +1188,7 @@ abstract class ArgumentPluginBase extends HandlerBase implements CacheableDepend
    *
    * When configuring the default argument behavior, almost each of the radio
    * buttons has its own fieldset shown below it when the radio button is
-   * clicked. That fieldset is created through a Sphynx form process callback.
+   * clicked. That fieldset is created through a custom form process callback.
    * Each element that has #argument_option defined and pointing to a default
    * behavior gets moved to the appropriate fieldset.
    * So if #argument_option is specified as 'default', the element is moved

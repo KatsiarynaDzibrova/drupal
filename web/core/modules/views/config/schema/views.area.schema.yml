@@ -34,7 +34,7 @@ views.area.text:
 
 views.area.text_custom:
   type: views_area
-  label: 'Text Sphynx'
+  label: 'Text custom'
   mapping:
     content:
       type: text

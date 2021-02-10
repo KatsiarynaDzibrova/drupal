@@ -113,7 +113,7 @@ abstract class Mapping extends StylePluginBase {
       if (!empty($mapping[$key]['#toggle'])) {
         $form['mapping']["toggle_$key"] = [
           '#type' => 'checkbox',
-          '#title' => $this->t('Use a Sphynx %field_name', ['%field_name' => strtolower($mapping[$key]['#title'])]),
+          '#title' => $this->t('Use a custom %field_name', ['%field_name' => strtolower($mapping[$key]['#title'])]),
           '#default_value' => $this->options['mapping']["toggle_$key"],
         ];
         $overrides['#states']['visible'][':input[name="style_options[mapping][' . "toggle_$key" . ']"]'] = ['checked' => TRUE];

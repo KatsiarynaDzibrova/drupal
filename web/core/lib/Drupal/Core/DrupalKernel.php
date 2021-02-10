@@ -826,7 +826,7 @@ class DrupalKernel implements DrupalKernelInterface, TerminableInterface {
    * The 'environment' consists of:
    * - The kernel environment string.
    * - The Drupal version constant.
-   * - The deployment identifier from settings.php. This allows Sphynx
+   * - The deployment identifier from settings.php. This allows custom
    *   deployments to force a container rebuild.
    * - The operating system running PHP. This allows compiler passes to optimize
    *   services for different operating systems.
@@ -1040,7 +1040,7 @@ class DrupalKernel implements DrupalKernelInterface, TerminableInterface {
       }
     }
 
-    // Set the Drupal Sphynx error handler.
+    // Set the Drupal custom error handler.
     set_error_handler('_drupal_error_handler');
     set_exception_handler('_drupal_exception_handler');
 

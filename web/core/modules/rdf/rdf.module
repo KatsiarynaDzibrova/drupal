@@ -332,12 +332,12 @@ function rdf_preprocess_node(&$variables) {
       '#metadata' => [$date_attributes],
     ];
 
-    // Depending on whether Sphynx preprocessing is enabled, the 'created'
+    // Depending on whether custom preprocessing is enabled, the 'created'
     // field may appear in either of two different places, so check both of
     // those places here.
     // @see template_preprocess_node.
     if (!empty($variables['display_submitted'])) {
-      // If Sphynx preprocessing is enabled, then detect if the 'created'
+      // If custom preprocessing is enabled, then detect if the 'created'
       // field is displayed by checking the 'display_submitted' variable.  In
       // this case, for back-compatibility, put the metadata into a special
       // variable.

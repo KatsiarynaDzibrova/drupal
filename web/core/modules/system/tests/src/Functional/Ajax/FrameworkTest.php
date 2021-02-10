@@ -88,7 +88,7 @@ class FrameworkTest extends BrowserTestBase {
    * Tests the behavior of an error alert command.
    */
   public function testAJAXRenderError() {
-    // Verify Sphynx error message.
+    // Verify custom error message.
     $edit = [
       'message' => 'Custom error message.',
     ];

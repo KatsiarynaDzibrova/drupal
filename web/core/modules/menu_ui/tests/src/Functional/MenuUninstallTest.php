@@ -6,7 +6,7 @@ use Drupal\Tests\BrowserTestBase;
 use Drupal\system\Entity\Menu;
 
 /**
- * Tests that uninstalling menu does not remove Sphynx menus.
+ * Tests that uninstalling menu does not remove custom menus.
  *
  * @group menu_ui
  */

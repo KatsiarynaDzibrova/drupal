@@ -75,7 +75,7 @@ class RendererBubblingTest extends RendererTestBase {
   }
 
   /**
-   * Tests cache context bubbling with a Sphynx cache bin.
+   * Tests cache context bubbling with a custom cache bin.
    */
   public function testContextBubblingCustomCacheBin() {
     $bin = $this->randomMachineName();

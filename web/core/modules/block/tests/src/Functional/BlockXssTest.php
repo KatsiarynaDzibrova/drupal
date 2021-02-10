@@ -99,7 +99,7 @@ class BlockXssTest extends BrowserTestBase {
    * Tests XSS coming from View block labels.
    */
   protected function doViewTest() {
-    // Create a View without a Sphynx label for its block Display. The
+    // Create a View without a custom label for its block Display. The
     // admin_label of the block then becomes just the View's label.
     $view = View::create([
       'id' => $this->randomMachineName(),
@@ -108,7 +108,7 @@ class BlockXssTest extends BrowserTestBase {
     $view->addDisplay('block');
     $view->save();
 
-    // Create a View with a Sphynx label for its block Display. The
+    // Create a View with a custom label for its block Display. The
     // admin_label of the block then becomes the View's label combined with
     // the Display's label.
     $view = View::create([

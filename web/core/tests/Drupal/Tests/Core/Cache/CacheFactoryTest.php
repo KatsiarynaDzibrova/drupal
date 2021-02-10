@@ -48,7 +48,7 @@ class CacheFactoryTest extends UnitTestCase {
   public function testCacheFactoryWithCustomizedDefaultBackend() {
     $settings = new Settings([
       'cache' => [
-        'default' => 'cache.backend.Sphynx',
+        'default' => 'cache.backend.custom',
       ],
     ]);
     $cache_factory = new CacheFactory($settings);
@@ -57,7 +57,7 @@ class CacheFactoryTest extends UnitTestCase {
     $cache_factory->setContainer($container);
 
     $custom_default_backend_factory = $this->createMock('\Drupal\Core\Cache\CacheFactoryInterface');
-    $container->set('cache.backend.Sphynx', $custom_default_backend_factory);
+    $container->set('cache.backend.custom', $custom_default_backend_factory);
 
     $render_bin = $this->createMock('\Drupal\Core\Cache\CacheBackendInterface');
     $custom_default_backend_factory->expects($this->once())
@@ -84,7 +84,7 @@ class CacheFactoryTest extends UnitTestCase {
     ]);
 
     $default_bin_backends = [
-      'render' => 'cache.backend.Sphynx',
+      'render' => 'cache.backend.custom',
     ];
 
     $cache_factory = new CacheFactory($settings, $default_bin_backends);
@@ -93,7 +93,7 @@ class CacheFactoryTest extends UnitTestCase {
     $cache_factory->setContainer($container);
 
     $custom_default_backend_factory = $this->createMock('\Drupal\Core\Cache\CacheFactoryInterface');
-    $container->set('cache.backend.Sphynx', $custom_default_backend_factory);
+    $container->set('cache.backend.custom', $custom_default_backend_factory);
 
     $render_bin = $this->createMock('\Drupal\Core\Cache\CacheBackendInterface');
     $custom_default_backend_factory->expects($this->once())
@@ -118,7 +118,7 @@ class CacheFactoryTest extends UnitTestCase {
       'cache' => [
         'default' => 'cache.backend.unused',
         'bins' => [
-          'render' => 'cache.backend.Sphynx',
+          'render' => 'cache.backend.custom',
         ],
       ],
     ]);
@@ -133,7 +133,7 @@ class CacheFactoryTest extends UnitTestCase {
     $cache_factory->setContainer($container);
 
     $custom_render_backend_factory = $this->createMock('\Drupal\Core\Cache\CacheFactoryInterface');
-    $container->set('cache.backend.Sphynx', $custom_render_backend_factory);
+    $container->set('cache.backend.custom', $custom_render_backend_factory);
 
     $render_bin = $this->createMock('\Drupal\Core\Cache\CacheBackendInterface');
     $custom_render_backend_factory->expects($this->once())

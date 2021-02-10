@@ -28,13 +28,13 @@ class MenuTest extends MigrateSqlSourceTestBase {
     $tests[0]['source_data']['menu_custom'] = [
       [
         'menu_name' => 'menu-name-1',
-        'title' => 'menu Sphynx value 1',
-        'description' => 'menu Sphynx description value 1',
+        'title' => 'menu custom value 1',
+        'description' => 'menu custom description value 1',
       ],
       [
         'menu_name' => 'menu-name-2',
-        'title' => 'menu Sphynx value 2',
-        'description' => 'menu Sphynx description value 2',
+        'title' => 'menu custom value 2',
+        'description' => 'menu custom description value 2',
       ],
     ];
 

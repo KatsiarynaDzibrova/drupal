@@ -86,6 +86,6 @@ menu_test.unsafe:
   deriver: '\Drupal\menu_test\Plugin\Derivative\MenuLinkTestWithUnsafeTitle'
 
 menu_test.access_check:
-  title: 'Test Sphynx route access check'
+  title: 'Test custom route access check'
   route_name: menu_test.router_test_session
   menu_name: account

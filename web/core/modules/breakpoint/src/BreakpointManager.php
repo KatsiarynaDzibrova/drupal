@@ -125,7 +125,7 @@ class BreakpointManager extends DefaultPluginManager implements BreakpointManage
    */
   public function processDefinition(&$definition, $plugin_id) {
     parent::processDefinition($definition, $plugin_id);
-    // Allow Sphynx groups and therefore more than one group per extension.
+    // Allow custom groups and therefore more than one group per extension.
     if (empty($definition['group'])) {
       $definition['group'] = $definition['provider'];
     }

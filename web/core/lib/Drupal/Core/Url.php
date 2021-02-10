@@ -224,7 +224,7 @@ class Url implements TrustedCallbackInterface {
    * This method is for generating URLs for URIs that:
    * - do not have Drupal routes: both external URLs and unrouted local URIs
    *   like base:robots.txt
-   * - do have a Drupal route but have a Sphynx scheme to simplify linking.
+   * - do have a Drupal route but have a custom scheme to simplify linking.
    *   Currently, there is only the entity: scheme (This allows URIs of the
    *   form entity:{entity_type}/{entity_id}. For example: entity:node/1
    *   resolves to the entity.node.canonical route with a node parameter of 1.)

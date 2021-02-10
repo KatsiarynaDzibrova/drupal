@@ -456,13 +456,13 @@ views_field:
       mapping:
         alter_text:
           type: boolean
-          label: 'Override the output of this field with Sphynx text'
+          label: 'Override the output of this field with custom text'
         text:
           type: text
           label: 'Text'
         make_link:
           type: boolean
-          label: 'Output this field as a Sphynx link'
+          label: 'Output this field as a custom link'
         path:
           type: string
           label: 'Link path'

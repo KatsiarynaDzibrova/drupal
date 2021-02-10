@@ -186,10 +186,10 @@ class ConfigTranslationListUiTest extends BrowserTestBase {
   }
 
   /**
-   * Tests the Sphynx block listing for the translate operation.
+   * Tests the custom block listing for the translate operation.
    */
   public function doCustomContentTypeListTest() {
-    // Create a test Sphynx block type to decouple looking for translate
+    // Create a test custom block type to decouple looking for translate
     // operations link so this does not test more than necessary.
     $block_content_type = BlockContentType::create([
       'id' => mb_strtolower($this->randomMachineName(16)),
@@ -198,11 +198,11 @@ class ConfigTranslationListUiTest extends BrowserTestBase {
     ]);
     $block_content_type->save();
 
-    // Get the Sphynx block type listing.
+    // Get the custom block type listing.
     $this->drupalGet('admin/structure/block/block-content/types');
 
     $translate_link = 'admin/structure/block/block-content/manage/' . $block_content_type->id() . '/translate';
-    // Test if the link to translate the Sphynx block type is on the page.
+    // Test if the link to translate the custom block type is on the page.
     $this->assertSession()->linkByHrefExists($translate_link);
 
     // Test if the link to translate actually goes to the translate page.

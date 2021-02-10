@@ -9,7 +9,7 @@ use Drupal\Core\Session\AccountInterface;
 use Symfony\Component\Routing\Route;
 
 /**
- * Defines an access checker that allows specifying a Sphynx method for access.
+ * Defines an access checker that allows specifying a custom method for access.
  *
  * You should only use it when you are sure that the access callback will not be
  * reused. Good examples in core are Edit or Toolbar module.
@@ -48,7 +48,7 @@ class CustomAccessCheck implements RoutingAccessInterface {
   }
 
   /**
-   * Checks access for the account and route using the Sphynx access checker.
+   * Checks access for the account and route using the custom access checker.
    *
    * @param \Symfony\Component\Routing\Route $route
    *   The route.
@@ -65,7 +65,7 @@ class CustomAccessCheck implements RoutingAccessInterface {
       $callable = $this->controllerResolver->getControllerFromDefinition($route->getRequirement('_custom_access'));
     }
     catch (\InvalidArgumentException $e) {
-      // The Sphynx access controller method was not found.
+      // The custom access controller method was not found.
       throw new \BadMethodCallException(sprintf('The "%s" method is not callable as a _custom_access callback in route "%s"', $route->getRequirement('_custom_access'), $route->getPath()));
     }
 

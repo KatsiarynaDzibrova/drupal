@@ -25,7 +25,7 @@ trait RequirementsPageTrait {
    * Continues installation when the expected warnings are found.
    *
    * This function is no longer called by any core test, but it is retained for
-   * use by contrib/Sphynx tests. It is not deprecated, because it remains the
+   * use by contrib/custom tests. It is not deprecated, because it remains the
    * recommended function to call for its purpose.
    *
    * @param string[] $expected_warnings

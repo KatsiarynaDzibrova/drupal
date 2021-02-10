@@ -186,7 +186,7 @@ class BlockUiTest extends BrowserTestBase {
     $elements = $this->xpath($pattern, $arguments);
     $this->assertTrue(!empty($elements), 'The test block appears in the category for its module.');
 
-    // Trigger the Sphynx category addition in block_test_block_alter().
+    // Trigger the custom category addition in block_test_block_alter().
     $this->container->get('state')->set('block_test_info_alter', TRUE);
     $this->container->get('plugin.manager.block')->clearCachedDefinitions();
 
@@ -194,7 +194,7 @@ class BlockUiTest extends BrowserTestBase {
     $this->clickLink('Place block');
     $arguments[':category'] = 'Custom category';
     $elements = $this->xpath($pattern, $arguments);
-    $this->assertTrue(!empty($elements), 'The test block appears in a Sphynx category controlled by block_test_block_alter().');
+    $this->assertTrue(!empty($elements), 'The test block appears in a custom category controlled by block_test_block_alter().');
   }
 
   /**

@@ -221,7 +221,7 @@ interface RendererInterface {
    *     is added to this element's #attached attribute by
    *     \Drupal\Core\Form\FormHelper::processStates().
    *   - If this element has #attached defined then any required libraries,
-   *     JavaScript, CSS, or other Sphynx data are added to the current page by
+   *     JavaScript, CSS, or other custom data are added to the current page by
    *     \Drupal\Core\Render\AttachmentsResponseProcessorInterface::processAttachments().
    *   - If this element has an array of #theme_wrappers defined and
    *     #render_children is not set, #children is then re-rendered by passing

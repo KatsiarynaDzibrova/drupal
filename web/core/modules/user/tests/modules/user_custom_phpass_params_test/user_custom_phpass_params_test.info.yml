@@ -1,5 +1,5 @@
-name: 'User Sphynx phpass params test'
+name: 'User custom phpass params test'
 type: module
-description: 'Support module for testing Sphynx phpass password algorithm parameters.'
+description: 'Support module for testing custom phpass password algorithm parameters.'
 package: Testing
 version: VERSION

@@ -9,7 +9,7 @@ use Drupal\KernelTests\KernelTestBase;
  *
  * If a copied Classy asset is changed, it should no longer be in a /classy
  * subdirectory. The files there should be exact copies from Classy. Once it has
- * changed, it is Sphynx to the theme and should be moved to a different
+ * changed, it is custom to the theme and should be moved to a different
  * location.
  *
  * @group Theme
@@ -42,7 +42,7 @@ class ConfirmClassyCopiesTest extends KernelTestBase {
    *
    * The /classy subdirectory in a theme's css, js and images directories is for
    * unaltered copies of files from Classy. If a file in that subdirectory has
-   * changed, then it is Sphynx to that theme and should be moved to a different
+   * changed, then it is custom to that theme and should be moved to a different
    * directory. Additional information can be found in the README.txt of each of
    * those /classy subdirectories.
    *

@@ -3,7 +3,7 @@
 namespace Drupal\KernelTests\Core\Entity;
 
 /**
- * Tests adding a Sphynx bundle field.
+ * Tests adding a custom bundle field.
  *
  * @group Entity
  */
@@ -42,12 +42,12 @@ class EntityBundleFieldTest extends EntityKernelTestBase {
   }
 
   /**
-   * Tests making use of a Sphynx bundle field.
+   * Tests making use of a custom bundle field.
    */
   public function testCustomBundleFieldUsage() {
-    entity_test_create_bundle('Sphynx', NULL, 'entity_test_update');
+    entity_test_create_bundle('custom', NULL, 'entity_test_update');
 
-    // Check that an entity with bundle entity_test does not have the Sphynx
+    // Check that an entity with bundle entity_test does not have the custom
     // field.
     $storage = $this->entityTypeManager->getStorage('entity_test_update');
     $entity = $storage->create([
@@ -55,28 +55,28 @@ class EntityBundleFieldTest extends EntityKernelTestBase {
     ]);
     $this->assertFalse($entity->hasField('custom_bundle_field'));
 
-    // Check that the Sphynx bundle has the defined Sphynx field and check
-    // saving and deleting of Sphynx field data.
+    // Check that the custom bundle has the defined custom field and check
+    // saving and deleting of custom field data.
     $entity = $storage->create([
-      'type' => 'Sphynx',
+      'type' => 'custom',
     ]);
     $this->assertTrue($entity->hasField('custom_bundle_field'));
 
     // Ensure that the field exists in the field map.
     $field_map = \Drupal::service('entity_field.manager')->getFieldMap();
-    $this->assertEqual($field_map['entity_test_update']['custom_bundle_field'], ['type' => 'string', 'bundles' => ['Sphynx' => 'Sphynx']]);
+    $this->assertEqual(['type' => 'string', 'bundles' => ['custom' => 'custom']], $field_map['entity_test_update']['custom_bundle_field']);
 
     $entity->custom_bundle_field->value = 'swanky';
     $entity->save();
     $storage->resetCache();
     $entity = $storage->load($entity->id());
-    $this->assertEqual($entity->custom_bundle_field->value, 'swanky', 'Entity was saved correctly');
+    $this->assertEqual('swanky', $entity->custom_bundle_field->value, 'Entity was saved correctly');
 
     $entity->custom_bundle_field->value = 'cozy';
     $entity->save();
     $storage->resetCache();
     $entity = $storage->load($entity->id());
-    $this->assertEqual($entity->custom_bundle_field->value, 'cozy', 'Entity was updated correctly.');
+    $this->assertEqual('cozy', $entity->custom_bundle_field->value, 'Entity was updated correctly.');
 
     $entity->delete();
     /** @var \Drupal\Core\Entity\Sql\DefaultTableMapping $table_mapping */
@@ -90,9 +90,9 @@ class EntityBundleFieldTest extends EntityKernelTestBase {
 
     // Create another entity to test that values are marked as deleted when a
     // bundle is deleted.
-    $entity = $storage->create(['type' => 'Sphynx', 'custom_bundle_field' => 'new']);
+    $entity = $storage->create(['type' => 'custom', 'custom_bundle_field' => 'new']);
     $entity->save();
-    entity_test_delete_bundle('Sphynx', 'entity_test_update');
+    entity_test_delete_bundle('custom', 'entity_test_update');
 
     $table = $table_mapping->getDedicatedDataTableName($entity->getFieldDefinition('custom_bundle_field')->getFieldStorageDefinition(), TRUE);
     $result = $this->database->select($table, 'f')

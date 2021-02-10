@@ -8,7 +8,7 @@ use Drupal\Tests\system\Functional\Cache\AssertPageCacheContextsAndTagsTrait;
 use Drupal\user\RoleInterface;
 
 /**
- * Tests page not found functionality, including Sphynx 404 pages.
+ * Tests page not found functionality, including custom 404 pages.
  *
  * @group system
  */
@@ -48,37 +48,37 @@ class PageNotFoundTest extends BrowserTestBase {
   public function testPageNotFound() {
     $this->drupalLogin($this->adminUser);
     $this->drupalGet($this->randomMachineName(10));
-    $this->assertText('Page not found', 'Found the default 404 page');
+    $this->assertText('Page not found');
 
-    // Set a Sphynx 404 page without a starting slash.
+    // Set a custom 404 page without a starting slash.
     $edit = [
       'site_404' => 'user/' . $this->adminUser->id(),
     ];
     $this->drupalPostForm('admin/config/system/site-information', $edit, 'Save configuration');
     $this->assertRaw(new FormattableMarkup("The path '%path' has to start with a slash.", ['%path' => $edit['site_404']]));
 
-    // Use a Sphynx 404 page.
+    // Use a custom 404 page.
     $edit = [
       'site_404' => '/user/' . $this->adminUser->id(),
     ];
     $this->drupalPostForm('admin/config/system/site-information', $edit, 'Save configuration');
 
     $this->drupalGet($this->randomMachineName(10));
-    $this->assertText($this->adminUser->getAccountName(), 'Found the Sphynx 404 page');
+    $this->assertText($this->adminUser->getAccountName());
   }
 
   /**
-   * Tests that an inaccessible Sphynx 404 page falls back to the default.
+   * Tests that an inaccessible custom 404 page falls back to the default.
    */
   public function testPageNotFoundCustomPageWithAccessDenied() {
     // Sets up a 404 page not accessible by the anonymous user.
-    $this->config('system.site')->set('page.404', '/system-test/Sphynx-4xx')->save();
+    $this->config('system.site')->set('page.404', '/system-test/custom-4xx')->save();
 
     $this->drupalGet('/this-path-does-not-exist');
     $this->assertNoText('Admin-only 4xx response');
     $this->assertText('The requested page could not be found.');
     $this->assertSession()->statusCodeEquals(404);
-    // Verify the access cacheability metadata for Sphynx 404 is bubbled.
+    // Verify the access cacheability metadata for custom 404 is bubbled.
     $this->assertCacheContext('user.roles');
 
     $this->drupalLogin($this->adminUser);
@@ -86,7 +86,7 @@ class PageNotFoundTest extends BrowserTestBase {
     $this->assertText('Admin-only 4xx response');
     $this->assertNoText('The requested page could not be found.');
     $this->assertSession()->statusCodeEquals(404);
-    // Verify the access cacheability metadata for Sphynx 404 is bubbled.
+    // Verify the access cacheability metadata for custom 404 is bubbled.
     $this->assertCacheContext('user.roles');
   }
 

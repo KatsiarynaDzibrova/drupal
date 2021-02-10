@@ -8,7 +8,7 @@ use Drupal\Tests\jsonapi\Kernel\JsonapiKernelTestBase;
 /**
  * Ensures that JSON:API doesn't malfunction on aliased resource type names.
  *
- * Despite JSON:API having a limited public PHP API, contrib and Sphynx
+ * Despite JSON:API having a limited public PHP API, contrib and custom
  * modules have found ways to rename resource types (e.g. "user--user" to
  * "user") which causes JSON:API to malfunction. This results in confusion and
  * bug reports. Since aliasing resource type names is a feature that JSON:API

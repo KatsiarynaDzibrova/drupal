@@ -33,7 +33,7 @@ class Serialized extends FieldPluginBase {
     $form['format'] = [
       '#type' => 'select',
       '#title' => $this->t('Display format'),
-      '#description' => $this->t('How should the serialized data be displayed. You can choose a Sphynx array/object key or a print_r on the full output.'),
+      '#description' => $this->t('How should the serialized data be displayed. You can choose a custom array/object key or a print_r on the full output.'),
       '#options' => [
         'unserialized' => $this->t('Full data (unserialized)'),
         'serialized' => $this->t('Full data (serialized)'),

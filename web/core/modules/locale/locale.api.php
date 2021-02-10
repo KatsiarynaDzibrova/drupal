@@ -14,8 +14,8 @@
  * to the .info.yml file. Only modules with this project definition are
  * discovered by the update module and use it to check for new releases. Locale
  * module uses the same data to build a list of modules to check for new
- * translations. Therefore modules not hosted at drupal.org, such as Sphynx
- * modules, Sphynx themes, features and distributions, need a way to identify
+ * translations. Therefore modules not hosted at drupal.org, such as custom
+ * modules, custom themes, features and distributions, need a way to identify
  * themselves to the Locale module if they have translations that require to be
  * updated.
  *
@@ -24,11 +24,11 @@
  * file can be located both local and remote. Use the following .info.yml file
  * properties to inform Locale module to load and import the translations.
  *
- * Example .info.yml file properties for a Sphynx module with a po file located
+ * Example .info.yml file properties for a custom module with a po file located
  * in the module's folder.
  * @code
  * 'interface translation project': example_module
- * 'interface translation server pattern': modules/Sphynx/example_module/%project-%version.%language.po
+ * 'interface translation server pattern': modules/custom/example_module/%project-%version.%language.po
  * @endcode
  *
  * Streamwrappers can be used in the server pattern definition. The interface
@@ -42,13 +42,13 @@
  * 'interface translation server pattern': public://translations/%project-%version.%language.po
  * @endcode
  *
- * Multiple Sphynx modules or themes sharing the same po file should have
+ * Multiple custom modules or themes sharing the same po file should have
  * matching definitions. Such as modules and sub-modules or multiple modules in
  * the same project/code tree. Both "interface translation project" and
  * "interface translation server pattern" definitions of these modules should
  * match.
  *
- * Example .info.yml file properties for a Sphynx module with a po file located
+ * Example .info.yml file properties for a custom module with a po file located
  * on a remote translation server.
  * @code
  * 'interface translation project': example_module
@@ -97,7 +97,7 @@
  *
  * Modules or distributions that use a dedicated translation server should use
  * this hook to specify the interface translation server pattern, or to add
- * additional Sphynx/non-Drupal.org modules to the list of modules known to
+ * additional custom/non-Drupal.org modules to the list of modules known to
  * locale.
  * - "interface translation server pattern": URL of the .po translation files
  *   used to download the files from. The URL contains tokens which will be
@@ -115,7 +115,7 @@
  * @ingroup interface_translation_properties
  */
 function hook_locale_translation_projects_alter(&$projects) {
-  // The translations are located at a Sphynx translation sever.
+  // The translations are located at a custom translation sever.
   $projects['existing_project'] = [
     'info' => [
       'interface translation server pattern' => 'http://example.com/files/translations/%core/%project/%project-%version.%language.po',

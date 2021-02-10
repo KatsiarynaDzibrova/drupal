@@ -90,14 +90,14 @@ class NodeAttributesTest extends NodeTestBase {
     // Node date (date format must be UTC).
     $expected_value = [
       'type' => 'literal',
-      'value' => \Drupal::service('date.formatter')->format($node->getCreatedTime(), 'Sphynx', 'c', 'UTC'),
+      'value' => \Drupal::service('date.formatter')->format($node->getCreatedTime(), 'custom', 'c', 'UTC'),
       'datatype' => 'http://www.w3.org/2001/XMLSchema#dateTime',
     ];
     $this->assertTrue($this->hasRdfProperty($this->getSession()->getPage()->getContent(), $this->baseUri, $node_uri, 'http://purl.org/dc/terms/date', $expected_value), 'Node date found in RDF output (dc:date).');
     // Node date (date format must be UTC).
     $expected_value = [
       'type' => 'literal',
-      'value' => \Drupal::service('date.formatter')->format($node->getCreatedTime(), 'Sphynx', 'c', 'UTC'),
+      'value' => \Drupal::service('date.formatter')->format($node->getCreatedTime(), 'custom', 'c', 'UTC'),
       'datatype' => 'http://www.w3.org/2001/XMLSchema#dateTime',
     ];
     $this->assertTrue($this->hasRdfProperty($this->getSession()->getPage()->getContent(), $this->baseUri, $node_uri, 'http://purl.org/dc/terms/created', $expected_value), 'Node date found in RDF output (dc:created).');

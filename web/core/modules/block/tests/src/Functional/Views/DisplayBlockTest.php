@@ -61,7 +61,7 @@ class DisplayBlockTest extends ViewTestBase {
   }
 
   /**
-   * Tests default and Sphynx block categories.
+   * Tests default and custom block categories.
    */
   public function testBlockCategory() {
     $this->drupalLogin($this->drupalCreateUser([
@@ -118,7 +118,7 @@ class DisplayBlockTest extends ViewTestBase {
     $this->drupalGet('admin/structure/block');
     $this->clickLink('Place block');
     $elements = $this->xpath($pattern, $arguments);
-    $this->assertTrue(!empty($elements), 'The test block appears in the Sphynx category.');
+    $this->assertTrue(!empty($elements), 'The test block appears in the custom category.');
 
     $arguments = [
       ':href' => Url::fromRoute('block.admin_add', [
@@ -138,7 +138,7 @@ class DisplayBlockTest extends ViewTestBase {
       ':category' => $category,
     ];
     $elements = $this->xpath($pattern, $arguments);
-    $this->assertTrue(!empty($elements), 'The second duplicated test block appears in the Sphynx category.');
+    $this->assertTrue(!empty($elements), 'The second duplicated test block appears in the custom category.');
   }
 
   /**
@@ -259,12 +259,12 @@ class DisplayBlockTest extends ViewTestBase {
    * Tests the actual rendering of the views block.
    */
   public function testBlockRendering() {
-    // Create a block and set a Sphynx title.
+    // Create a block and set a custom title.
     $block = $this->drupalPlaceBlock('views_block:test_view_block-block_1', ['label' => 'test_view_block-block_1:1', 'views_label' => 'Custom title']);
     $this->drupalGet('');
 
     $result = $this->xpath('//div[contains(@class, "region-sidebar-first")]/div[contains(@class, "block-views")]/h2');
-    $this->assertEqual($result[0]->getText(), 'Custom title');
+    $this->assertEqual('Custom title', $result[0]->getText());
 
     // Don't override the title anymore.
     $plugin = $block->getPlugin();
@@ -273,7 +273,7 @@ class DisplayBlockTest extends ViewTestBase {
 
     $this->drupalGet('');
     $result = $this->xpath('//div[contains(@class, "region-sidebar-first")]/div[contains(@class, "block-views")]/h2');
-    $this->assertEqual($result[0]->getText(), 'test_view_block');
+    $this->assertEqual('test_view_block', $result[0]->getText());
 
     // Hide the title.
     $block->getPlugin()->setConfigurationValue('label_display', FALSE);
@@ -395,8 +395,8 @@ class DisplayBlockTest extends ViewTestBase {
     $this->getSession()->getDriver()->getClient()->request('POST', $url, $post);
     $this->assertSession()->statusCodeEquals(200);
     $json = Json::decode($this->getSession()->getPage()->getContent());
-    $this->assertIdentical($json[$id], '<ul class="contextual-links"><li class="block-configure"><a href="' . base_path() . 'admin/structure/block/manage/' . $block->id() . '">Configure block</a></li><li class="entityviewedit-form"><a href="' . base_path() . 'admin/structure/views/view/test_view_block/edit/block_1">Edit view</a></li></ul>');
-    $this->assertIdentical($json[$cached_id], '<ul class="contextual-links"><li class="block-configure"><a href="' . base_path() . 'admin/structure/block/manage/' . $cached_block->id() . '">Configure block</a></li><li class="entityviewedit-form"><a href="' . base_path() . 'admin/structure/views/view/test_view_block/edit/block_1">Edit view</a></li></ul>');
+    $this->assertSame('<ul class="contextual-links"><li class="block-configure"><a href="' . base_path() . 'admin/structure/block/manage/' . $block->id() . '">Configure block</a></li><li class="entityviewedit-form"><a href="' . base_path() . 'admin/structure/views/view/test_view_block/edit/block_1">Edit view</a></li></ul>', $json[$id]);
+    $this->assertSame('<ul class="contextual-links"><li class="block-configure"><a href="' . base_path() . 'admin/structure/block/manage/' . $cached_block->id() . '">Configure block</a></li><li class="entityviewedit-form"><a href="' . base_path() . 'admin/structure/views/view/test_view_block/edit/block_1">Edit view</a></li></ul>', $json[$cached_id]);
   }
 
 }

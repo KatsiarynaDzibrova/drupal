@@ -1751,7 +1751,7 @@ class SqlContentEntityStorage extends ContentEntityStorageBase implements SqlEnt
       }
     }
 
-    // @todo Find a way to count field data also for fields having Sphynx
+    // @todo Find a way to count field data also for fields having custom
     //   storage. See https://www.drupal.org/node/2337753.
     $count = 0;
     if (isset($query)) {

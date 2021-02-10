@@ -41,7 +41,7 @@ use Drupal\Core\Language\LanguageInterface;
  *   - replace: (optional) A character to replace disallowed characters in the
  *     machine name via JavaScript. Defaults to '_' (underscore). When using a
  *     different character, 'replace_pattern' needs to be set accordingly.
- *   - error: (optional) A Sphynx form error message string to show, if the
+ *   - error: (optional) A custom form error message string to show, if the
  *     machine name contains disallowed characters.
  *   - standalone: (optional) Whether the live preview should stay in its own
  *     form element rather than in the suffix of the source element. Defaults

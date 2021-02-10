@@ -125,7 +125,7 @@ display:
           admin_label: ''
           label: ''
           empty: true
-          content: 'Sphynx text'
+          content: 'custom text'
           tokenize: false
           plugin_id: text_custom
     display_plugin: default
