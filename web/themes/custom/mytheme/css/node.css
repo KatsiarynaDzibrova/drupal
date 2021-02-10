@@ -1,0 +1,39 @@
+body {
+  font: normal 81.3%/1.538em "Lucida Grande", "Lucida Sans Unicode", "DejaVu Sans", "Lucida Sans", sans-serif;
+}
+
+.node__content .field--name-field-boolean {
+  font-weight: bold;
+}
+
+.field--name-field-number-decimal {
+  text-align: right;
+  font-weight: bold;
+}
+
+p {
+  font-size: 1.5em;
+}
+
+.field--name-field-tags li {
+  border: solid;
+  border-radius: 1em;
+  text-align: center;
+  background: #3366ff;
+  color: #fff;
+}
+
+.field--name-field-tags .field__label {
+  display:inline-block;
+}
+.field--name-field-tags ul {
+  vertical-align: center;
+  display:inline-block;
+}
+.field--name-field-tags ul.links li {
+  padding: 0 1em 0 1em;
+}
+
+.field--name-field-tags a {
+  color: #fff;
+}
